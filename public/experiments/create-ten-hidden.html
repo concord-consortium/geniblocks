@@ -1,0 +1,121 @@
+<html>
+  <head>
+    <script src="../js/lib/react/react.js"></script>
+    <script src="../js/lib/react/react-dom.js"></script>
+    <script src="../js/lib/biologica.js/dist/biologica.js"></script>
+    <link rel="stylesheet" href="../css/app.css">
+    <style>
+      #game {
+        display: flex;
+      }
+      #organism {
+        position: relative;
+      }
+      #org, #blocker {
+        margin-left: 61px;
+      }
+      #blocker {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 200px;
+        height: 200px;
+        background-color: black;
+        border-radius: 32px;
+        -webkit-transition: top 1s;
+        transition: top 1s;
+      }
+      #keep {
+        font-size: 1.5em;
+        margin-top: 100px;
+      }
+      #pen>div {
+        height: 160px;
+        margin-top: 42px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Welcome!</h3>
+    <div>
+      Your goal is to create <b>ten</b> dragons, all of which <b>look different</b>.
+    </div>
+    <div id="game">
+      <div id="organism">
+        <div id="org"></div>
+        <div id="genome"></div>
+        <div id="blocker"></div>
+      </div>
+      <div>
+        <button id="keep">⟹ Keep this one!</button>
+      </div>
+      <div id="pen"></div>
+    </div>
+    <script src="../js/app.js"></script>
+    <script>
+      var org = new BioLogica.Organism(BioLogica.Species.Drake, ""),
+          collection = [];
+      function render() {
+        ReactDOM.render(
+          React.createElement(GeniBlocks.OrganismView, {org: org}),
+          document.getElementById('org')
+        );
+        ReactDOM.render(
+          React.createElement(GeniBlocks.GenomeView, {org: org, alleleChanged: function(chrom, side, prevAllele, newAllele) {
+            org.genetics.genotype.chromosomes[chrom][side].alleles.replaceFirst(prevAllele, newAllele);
+            org = new BioLogica.Organism(BioLogica.Species.Drake, org.getAlleleString());
+            render(org);
+          }}),
+          document.getElementById('genome')
+        );
+        ReactDOM.render(
+          React.createElement(GeniBlocks.PenView, {orgs: collection}),
+          document.getElementById('pen')
+        );
+      }
+
+      document.getElementById("keep").onclick = function() {
+        if (collection.length == 10) {
+          return;
+        }
+
+        blocker = document.getElementById("blocker");
+        blocker.style.top = -1000;
+
+        setTimeout( function() {
+          var imageName = org.getImageName(),
+              duplicate = false;
+          for (existingOrg of collection) {
+            if (imageName == existingOrg.getImageName()) {
+              duplicate = true;
+              break;
+            }
+          }
+          if (duplicate) {
+            alert("You've already got a dragon that looks like that!");
+            blocker.style.top = 0;
+          } else {
+            collection.push(org);
+            render();
+
+            if (collection.length == 10) {
+              victory();
+            }
+
+            blocker.style.top = 0;
+          }
+        }, 1000);
+      }
+
+      function victory() {
+        setTimeout( function() {
+          if (confirm("You did it! Start over?")) {
+            collection = [];
+            render();
+          }
+        }, 500);
+      }
+      render();
+    </script>
+  </body>
+</html>

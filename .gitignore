@@ -1,6 +1,4 @@
 # Built files
-dist/
-public/
 
 # Packages
 node_modules/
