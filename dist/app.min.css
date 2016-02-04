@@ -1,0 +1,5 @@
+.geniblocks.chromosome-container{display:flex;}.geniblocks.chromosome-container .items{display:flex;}.geniblocks.chromosome-container .items .labels{display:flex;flex-direction:column;justify-content:space-between;width:110px;padding-left:10px;padding-right:10px;align-items:flex-start;}.geniblocks.chromosome-container .items .labels div{order:0;flex:0 1 40px;align-self:auto}.geniblocks.chromosome-container .items.rtl{flex-direction:row-reverse;}.geniblocks.chromosome-container .items.rtl .labels{align-items:flex-end}
+.geniblocks.allele.noneditable span{font-size:1em;font-family:Palatino;border:1px solid #222;padding:4px;background:#eee}
+.geniblocks.genome div{display:flex;}.geniblocks.genome div .geniblocks.chromosome-container{padding:5px}
+.geniblocks.organism .unknown-organism{font-size:14em;font-family:Palatino}
+.geniblocks.pen{display:flex;width:400px;flex-wrap:wrap;border:1px solid #000;margin:3px;margin-left:50px;margin-top:10px;padding:2px;height:320px}
