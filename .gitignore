@@ -1,8 +1,0 @@
-# Built files
-
-# Packages
-node_modules/
-bower_components/
-
-# OS or Editor folders
-.DS_Store

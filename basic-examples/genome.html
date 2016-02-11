@@ -10,23 +10,24 @@
     <div id="genome"></div>
     <script src="../js/app.js"></script>
     <script>
-      function render(org) {
+      var dragon;
+
+      function render() {
         ReactDOM.render(
-          React.createElement(GeniBlocks.OrganismView, {org: org}),
+          React.createElement(GeniBlocks.OrganismView, {org: dragon}),
           document.getElementById('org')
         );
         ReactDOM.render(
-          React.createElement(GeniBlocks.GenomeView, {org: org, alleleChanged: function(chrom, side, prevAllele, newAllele) {
-            window.org.genetics.genotype.chromosomes[chrom][side].alleles.replaceFirst(prevAllele, newAllele);
-            window.org = new BioLogica.Organism(BioLogica.Species.Drake, org.getAlleleString());
-            render(window.org);
+          React.createElement(GeniBlocks.GenomeView, {org: dragon, alleleChanged: function(chrom, side, prevAllele, newAllele) {
+            dragon.genetics.genotype.chromosomes[chrom][side].alleles.replaceFirst(prevAllele, newAllele);
+            render();
           }}),
           document.getElementById('genome')
         );
       }
 
-      window.org = new BioLogica.Organism(BioLogica.Species.Drake, "");
-      render(window.org);
+      dragon = new BioLogica.Organism(BioLogica.Species.Drake, "");
+      render();
     </script>
   </body>
 </html>
