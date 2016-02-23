@@ -10,7 +10,8 @@
     <div id="genome"></div>
     <script src="../js/app.js"></script>
     <script>
-      var dragon;
+      var dragon,
+          selection = {};
 
       function render() {
         ReactDOM.render(
@@ -18,12 +19,12 @@
           document.getElementById('org')
         );
         ReactDOM.render(
-          React.createElement(GeniBlocks.GenomeView, {
+          React.createElement(GeniBlocks.GenomeTestView, {
             org: dragon,
-            alleleChanged: function(chrom, side, prevAllele, newAllele) {
-            dragon.genetics.genotype.chromosomes[chrom][side].alleles.replaceFirst(prevAllele, newAllele);
-            dragon = new BioLogica.Organism(BioLogica.Species.Drake, dragon.getAlleleString(), 1);
-            render();
+            selection: selection,
+            selectionChanged: function(gene, newValue) {
+              selection[gene.name] = newValue;
+              render();
           }}),
           document.getElementById('genome')
         );

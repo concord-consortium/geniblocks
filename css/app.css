@@ -33,6 +33,21 @@
   background: #eee;
 }
 
+.geniblocks.genome-test .items {
+  display: flex;
+}
+.geniblocks.genome-test .genome-test-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-left: 10px;
+}
+.geniblocks.genome-test .genome-test-options select {
+  order: 0;
+  flex: 0 1 32px;
+}
+
 .geniblocks.genome div {
   display: flex;
 }
@@ -51,8 +66,16 @@
   flex-wrap: wrap;
   border: 1px solid #000;
   margin: 3px;
-  margin-left: 50px;
-  margin-top: 10px;
+  padding: 2px;
+  height: 320px;
+}
+
+.geniblocks.stats {
+  display: flex;
+  width: 400px;
+  flex-wrap: wrap;
+  border: 1px solid #000;
+  margin: 3px;
   padding: 2px;
   height: 320px;
 }
