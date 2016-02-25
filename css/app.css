@@ -25,6 +25,26 @@
   align-items: flex-end;
 }
 
+.geniblocks.gamete-pool {
+  display: flex;
+  width: 300px;
+  flex-wrap: wrap;
+  border: 1px solid #000;
+  margin: 3px;
+  padding: 2px;
+  height: 320px;
+}
+
+.geniblocks.gamete {
+  border: 1px;
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+}
+.geniblocks.gamete.selected {
+  background-color: rgba(255,255,255,0.4);
+}
+
 .geniblocks.allele.noneditable span {
   font-size: 1em;
   font-family: Palatino;

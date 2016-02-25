@@ -1,0 +1,75 @@
+body {
+  background: url("https://geniverse-lab.concord.org/static/lab/en/e0b89b3afdf312f5315d701ddf9924d47d0a4795/resources/images/lab_background.jpg") top center no-repeat;
+  display: flex;
+  justify-content: center;
+}
+
+#wrapper {
+  width: 1080px;
+  margin-top: 90px;
+  height: 880px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#breed-button {
+  margin: 50px 0 10px 0;
+  padding: 2px 19px 3px 19px;
+}
+
+#offspring {
+  min-width: 200px;
+  min-height: 200px;
+}
+
+#meiosis {
+  background-color: rgba(100%, 100%, 100%, 0.4);
+}
+
+.parent-gamete {
+  min-width: 150px;
+  min-height: 150px;
+  float: left;
+}
+
+.geniblocks.gamete-pool {
+  background-color: rgba(100%, 100%, 100%, 0.4);
+}
+
+.parent-gamete .geniblocks.gamete {
+  width: 150px;
+  height: 150px;
+}
+
+.geniblocks.gamete {
+  background-image: url("gamete-placeholder.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.geniblocks.gamete.group0 {
+  transform: rotate(0deg);
+}
+
+.geniblocks.gamete.group1 {
+  transform: rotate(90deg);
+}
+
+.geniblocks.gamete.group2 {
+  transform: rotate(180deg);
+}
+
+.geniblocks.gamete.group3 {
+  transform: rotate(270deg);
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
