@@ -26,23 +26,23 @@
 }
 
 .geniblocks.gamete-pool {
-  display: flex;
-  width: 300px;
-  flex-wrap: wrap;
+  position: relative;
+  background-color: rgba(255,255,255,0.4);
   border: 1px solid #000;
   margin: 3px;
   padding: 2px;
-  height: 320px;
 }
 
 .geniblocks.gamete {
+  position: absolute;
   border: 1px;
-  width: 30px;
-  height: 30px;
   margin: 5px;
 }
 .geniblocks.gamete.selected {
   background-color: rgba(255,255,255,0.4);
+}
+.geniblocks.gamete.disabled {
+  background-color: rgba(0,0,0,0.2);
 }
 
 .geniblocks.allele.noneditable span {

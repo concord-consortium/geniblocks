@@ -29,6 +29,7 @@ body {
 }
 
 #meiosis {
+  position: relative;
   background-color: rgba(100%, 100%, 100%, 0.4);
 }
 
@@ -38,9 +39,13 @@ body {
   float: left;
 }
 
-.geniblocks.gamete-pool {
+.allele-filters-container {
   background-color: rgba(100%, 100%, 100%, 0.4);
+  width: 300px;
 }
+
+.gene-allele-list
+  list-style: none;
 
 .parent-gamete .geniblocks.gamete {
   width: 150px;
@@ -51,22 +56,6 @@ body {
   background-image: url("gamete-placeholder.png");
   background-repeat: no-repeat;
   background-size: contain;
-}
-
-.geniblocks.gamete.group0 {
-  transform: rotate(0deg);
-}
-
-.geniblocks.gamete.group1 {
-  transform: rotate(90deg);
-}
-
-.geniblocks.gamete.group2 {
-  transform: rotate(180deg);
-}
-
-.geniblocks.gamete.group3 {
-  transform: rotate(270deg);
 }
 
 img {

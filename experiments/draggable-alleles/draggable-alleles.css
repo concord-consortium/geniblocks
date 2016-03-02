@@ -1,0 +1,105 @@
+#game {
+  margin: 20px;
+}
+
+#game>div, .genomes {
+  display: flex;
+}
+
+.genomes {
+  margin-left: 20px;
+  margin-right: 75px;
+}
+
+.genomes>div {
+  padding: 7px;
+  margin: 5px;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+}
+
+.org {
+  width: 200px;
+  height:200px;
+}
+
+.unknown {
+  position: relative;
+  left: -17px;
+  top: 3px;
+  text-align: center;
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 12em;
+  line-height: 1;
+  color: #0D0D8C;
+  text-shadow: -2px 1px #A6AB58, 0 2px #565408, 3px 0 #A8AB07, 0 -2px #656205;
+}
+
+.chromosomes {
+  display: flex;
+  width: 97px;
+  justify-content: space-around;
+  margin-left: 37px;
+}
+
+.chromosomes.wide {
+  width: 130px;
+  margin-left: 10px;
+}
+
+.alleles {
+  position: relative;
+  top: -120px;
+}
+
+.allele-targets {
+  display: flex;
+  width: 97px;
+  height: 95px;
+  justify-content: space-around;
+  margin-left: 48px;
+  flex-wrap: wrap;
+}
+
+.allele-targets.wide {
+  width: 130px;
+  margin-left: 47px;
+}
+
+.allele-targets>div {
+  flex-basis: 45px;
+}
+
+.allele-pool {
+  position: absolute;
+  top: 140px;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  width: 130px;
+  height: 50px;
+  padding: 4px;
+  margin-left: 25px;
+}
+
+.punnet-square>div {
+  display: flex;
+  align-items: center;
+}
+
+.punnet-square .top {
+  width: 430px;
+  justify-content: space-around;
+  padding-bottom: 10px;
+}
+
+.punnet-square .row>div:first-child {
+  margin-right: 10px;
+}
+
+.punnet-square .box {
+  height: 200px;
+  width: 200px;
+  border: 1px solid black;
+}
