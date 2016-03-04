@@ -83,22 +83,22 @@
   margin-left: 25px;
 }
 
-.punnet-square>div {
+.punnett-square>div {
   display: flex;
   align-items: center;
 }
 
-.punnet-square .top {
+.punnett-square .top {
   width: 430px;
   justify-content: space-around;
   padding-bottom: 10px;
 }
 
-.punnet-square .row>div:first-child {
+.punnett-square .row>div:first-child {
   margin-right: 10px;
 }
 
-.punnet-square .box {
+.punnett-square .box {
   height: 200px;
   width: 200px;
   border: 1px solid black;
