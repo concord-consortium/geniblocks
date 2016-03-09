@@ -1,11 +1,11 @@
 .geniblocks.change-sex-buttons.male-selected {
-  background-image: url("../../resources/images/change-sex-buttons.png");
+  background-image: url("../resources/images/change-sex-buttons.png");
   background-position: 0px 0px;
   width: 100px;
   height: 43px;
 }
 .geniblocks.change-sex-buttons.female-selected {
-  background-image: url("../../resources/images/change-sex-buttons.png");
+  background-image: url("../resources/images/change-sex-buttons.png");
   background-position: 0px 43px;
   width: 100px;
   height: 43px;
