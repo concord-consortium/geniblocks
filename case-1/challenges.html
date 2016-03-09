@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script src="../js/lib/react/react.js"></script>
+    <script src="../js/lib/react/react-dom.js"></script>
+    <script src="../js/lib/react-motion/build/react-motion.js"></script>
+    <script src="../js/lib/biologica.js/dist/biologica.js"></script>
+    <script src="../js/lib/custombox/dist/custombox.min.js"></script>
+    <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+    <script src="../js/app.js"></script>
+    <link rel="stylesheet" href="../js/lib/custombox/dist/custombox.min.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="stylesheet" href="case-1.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="challenges-wrapper">
+        <div id="left" class="column">
+          <div id="target-drake-label" class="column-label">Target Drake</div>
+          <div id="target-drake" class="drake-image"></div>
+          <div id="trial-feedback" class="feedback-view"></div>
+          <div id="goal-feedback" class="feedback-view"></div>
+        </div>
+        <div id="center" class="column">
+          <div id="your-drake-label" class="column-label">Your Drake</div>
+          <div id="your-drake" class="drake-image"></div>
+          <div id="change-sex-buttons" class="no-label"></div>
+          <div id="alert-wrapper">
+            <h3 id="alert-title"></h3>
+            <div id="alert-message1"></div>
+            <div id="alert-message2"></div>
+            <button id="alert-try-button">Try Again</button>
+            <button id="alert-ok-button">OK</button>
+          </div>
+        </div>
+        <div id="right" class="column">
+          <div id="drake-genome-label" class="column-label">Chromosome Control</div>
+          <div id="drake-genome"></div>
+          <button id="test-drake-button">Check Drake</button>
+        </div>
+      </div>
+    </div>
+    <div id="overlay"></div>
+    <script src="challenges.js"></script>
+  </body>
+</html>

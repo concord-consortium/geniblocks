@@ -1,0 +1,124 @@
+body {
+  background: url("https://geniverse-lab.concord.org/static/lab/en/e0b89b3afdf312f5315d701ddf9924d47d0a4795/resources/images/lab_background.jpg") top center no-repeat;
+  display: flex;
+  justify-content: center;
+}
+
+#wrapper {
+  width: 1080px;
+  margin: 90px auto;
+  height: 880px;
+  display: flex;
+  justify-content: center;
+}
+
+#playground-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+#challenges-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.column-label {
+  margin-top: 40px;
+  margin-bottom: 25px;
+  color: white;
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+#change-sex-buttons {
+  margin: 40px 0 30px -100px;
+  width: 100px;
+  height: 43px;
+}
+
+#change-sex-buttons.no-label {
+  margin-left: 0;
+}
+
+/* playground */
+#drake-image {
+  margin: 100px 25px 0;
+}
+
+/* challenges */
+.drake-image {
+  margin: 0 25px;
+}
+
+.geniblocks.text-glow.question-mark {
+  background: url("https://geniverse-lab.concord.org/static/geniverse/en/210c92b4b8770b8f01a6ade4e4ba0e12179d2ee4/resources/images/question_mark.png");
+}
+
+#advance-button {
+  margin: 130px 0 10px 0;
+  padding: 2px 19px 3px 19px;
+}
+
+#test-drake-button {
+  margin: 30px 0 10px 0;
+  padding: 2px 19px 3px 19px;
+}
+
+.feedback-view {
+  margin-top: 30px;
+  width: 200px;
+}
+
+.geniblocks.feedback.text-line {
+  margin-top: 3px;
+}
+
+.geniblocks.glow {
+  position: absolute;
+}
+
+.geniblocks.organism {
+  position: absolute;
+  top: 0px;
+}
+
+#overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+
+#alert-wrapper {
+  display: none;
+  z-index: 2;
+  position: relative;
+  width: 200px;
+  background-color: #DDD;
+  padding: 15px;
+  box-shadow: 0px 0px 15px #C2C793;
+}
+
+#alert-try-button {
+  margin-top: 30px;
+  float: left;
+  width: 90px;
+}
+
+#alert-ok-button {
+  margin-top: 30px;
+  float: right;
+  width: 90px;
+}
