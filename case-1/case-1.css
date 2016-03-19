@@ -59,16 +59,18 @@ body {
   margin: 0 25px;
 }
 
-.geniblocks.text-glow.question-mark {
+.geniblocks.question-glow.question-mark {
   background: url("https://geniverse-lab.concord.org/static/geniverse/en/210c92b4b8770b8f01a6ade4e4ba0e12179d2ee4/resources/images/question_mark.png");
 }
 
 #advance-button {
+  background-color: white;
   margin: 130px 0 10px 0;
   padding: 2px 19px 3px 19px;
 }
 
 #test-drake-button {
+  background-color: white;
   margin: 30px 0 10px 0;
   padding: 2px 19px 3px 19px;
 }
