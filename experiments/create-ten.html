@@ -2,9 +2,8 @@
   <head>
     <script src="../js/lib/react/react.js"></script>
     <script src="../js/lib/react/react-dom.js"></script>
-    <script src="../js/lib/react-motion/build/react-motion.js"></script>
     <script src="../js/lib/biologica.js/dist/biologica.js"></script>
-    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/geniblocks.css">
     <style>
       #game {
         display: flex;
@@ -37,7 +36,7 @@
       </div>
       <div id="pen"></div>
     </div>
-    <script src="../js/app.js"></script>
+    <script src="../js/geniblocks.js"></script>
     <script>
       var org = new BioLogica.Organism(BioLogica.Species.Drake, ""),
           collection = [];
@@ -48,7 +47,7 @@
         );
         ReactDOM.render(
           React.createElement(GeniBlocks.GenomeView, {org: org, alleleChanged: function(chrom, side, prevAllele, newAllele) {
-            org.genetics.genotype.chromosomes[chrom][side].alleles.replaceFirst(prevAllele, newAllele);
+            org.genetics.genotype.replaceAlleleChromName(chrom, side, prevAllele, newAllele);
             org = new BioLogica.Organism(BioLogica.Species.Drake, org.getAlleleString());
             render(org);
           }}),
