@@ -1,5 +1,5 @@
 body {
-  background: url("https://geniverse-lab.concord.org/static/lab/en/e0b89b3afdf312f5315d701ddf9924d47d0a4795/resources/images/lab_background.jpg") top center no-repeat;
+  background: url("../resources/images/lab_background.jpg") top center no-repeat;
   display: flex;
   justify-content: center;
 }

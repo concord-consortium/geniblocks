@@ -1,5 +1,5 @@
 body {
-  background: url("https://geniverse-lab.concord.org/static/lab/en/e0b89b3afdf312f5315d701ddf9924d47d0a4795/resources/images/lab_background.jpg") top center no-repeat;
+  background: url("../resources/images/lab_background.jpg") top center no-repeat;
   display: flex;
   justify-content: center;
 }
@@ -60,7 +60,7 @@ body {
 }
 
 .geniblocks.question-glow.question-mark {
-  background: url("https://geniverse-lab.concord.org/static/geniverse/en/210c92b4b8770b8f01a6ade4e4ba0e12179d2ee4/resources/images/question_mark.png");
+  background: url("../resources/images/question_mark.png");
 }
 
 #advance-button {
