@@ -39,8 +39,15 @@ body {
   font-weight: bold;
 }
 
-#change-sex-buttons {
+#center-column {
+  width: 300px;
+}
+
+#playground-wrapper #change-sex-buttons {
   margin: 40px 0 30px -100px;
+}
+
+#change-sex-buttons {
   width: 100px;
   height: 43px;
 }
@@ -75,7 +82,7 @@ body {
   padding: 2px 19px 3px 19px;
 }
 
-.feedback-view {
+.geniblocks.feedback-view {
   margin-top: 30px;
   width: 200px;
 }

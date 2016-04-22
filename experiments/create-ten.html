@@ -46,7 +46,7 @@
           document.getElementById('org')
         );
         ReactDOM.render(
-          React.createElement(GeniBlocks.GenomeView, {org: org, alleleChanged: function(chrom, side, prevAllele, newAllele) {
+          React.createElement(GeniBlocks.GenomeView, {org: org, onAlleleChange: function(chrom, side, prevAllele, newAllele) {
             org.genetics.genotype.replaceAlleleChromName(chrom, side, prevAllele, newAllele);
             org = new BioLogica.Organism(BioLogica.Species.Drake, org.getAlleleString());
             render(org);

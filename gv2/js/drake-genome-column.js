@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -22,31 +22,37 @@ DrakeGenomeColumn = function (_React$Component) {
   }
 
   _createClass(DrakeGenomeColumn, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       var _props = this.props;
       var id = _props.id;
-      var sex = _props.sex;
+      var idPrefix = _props.idPrefix;
+      var columnLabel = _props.columnLabel;
       var drake = _props.drake;
-      var isDrakeEditable = _props.isDrakeEditable;
+      var showDrake = _props.showDrake;
+      var editable = _props.editable;
       var hiddenAlleles = _props.hiddenAlleles;
-      var alleleChanged = _props.alleleChanged;
-      var drakeLabelID = sex + "-drake-label";
-      var columnLabel = sex.charAt(0).toUpperCase() + sex.slice(1) + " Drake";
-      var drakeOrgID = sex + "-drake";
+      var buttonID = _props.buttonID;
+      var buttonLabel = _props.buttonLabel;
+      var drakeLabelID = idPrefix + '-drake-label';
+      var drakeOrgID = idPrefix + '-drake';
+      var drakeImage = showDrake ? React.createElement(GeniBlocks.OrganismGlowView, { id: drakeOrgID, className: 'parent-drake',
+        org: drake, color: '#FFFFAA', size: 200 }) : null;
+      var button = buttonID ? React.createElement(GeniBlocks.Button, { id: buttonID, label: buttonLabel,
+        onClick: this.props.onButtonClick }) : null;
       return React.createElement(
-        "div",
-        { id: id, className: "column" },
+        'div',
+        { id: id, className: 'column' },
         React.createElement(
-          "div",
-          { id: drakeLabelID, className: "column-label" },
+          'div',
+          { id: drakeLabelID, className: 'column-label' },
           columnLabel
         ),
-        React.createElement(GeniBlocks.OrganismGlowView, {
-          id: drakeOrgID, className: "parent-drake", org: drake, color: "#FFFFAA", size: 200 }),
+        drakeImage,
         React.createElement(GeniBlocks.GenomeView, {
-          className: "parent-genome", org: drake, hiddenAlleles: hiddenAlleles,
-          editable: isDrakeEditable, alleleChanged: alleleChanged })
+          className: 'parent-genome', org: drake, hiddenAlleles: hiddenAlleles,
+          editable: editable, onAlleleChange: this.props.onAlleleChange }),
+        button
       );
     }
   }]);
@@ -56,14 +62,23 @@ DrakeGenomeColumn = function (_React$Component) {
 
 DrakeGenomeColumn.propTypes = {
   id: React.PropTypes.string.isRequired,
-  sex: React.PropTypes.string.isRequired,
+  idPrefix: React.PropTypes.string.isRequired,
+  columnLabel: React.PropTypes.string,
   drake: React.PropTypes.object.isRequired,
-  isDrakeEditable: React.PropTypes.bool.isRequired,
+  showDrake: React.PropTypes.bool,
+  editable: React.PropTypes.bool.isRequired,
   hiddenAlleles: React.PropTypes.arrayOf(React.PropTypes.string),
-  alleleChanged: React.PropTypes.func.isRequired
+  onAlleleChange: React.PropTypes.func.isRequired,
+  buttonID: React.PropTypes.string,
+  buttonLabel: React.PropTypes.string,
+  onButtonClick: React.PropTypes.func
+};
+DrakeGenomeColumn.defaultProps = {
+  columnLabel: "",
+  showDrake: true
 };
 
 
 DrakeGenomeColumn;
 //export default DrakeGenomeColumn;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImpzL2RyYWtlLWdlbm9tZS1jb2x1bW4uanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7QUFJTTs7Ozs7Ozs7Ozs7NkJBV0s7bUJBQ21FLEtBQUssS0FBTCxDQURuRTtVQUNDLGVBREQ7VUFDSyxpQkFETDtVQUNVLHFCQURWO1VBQ2lCLHlDQURqQjtVQUNrQyxxQ0FEbEM7QUFDRCxVQUFrRCxvQ0FBbEQsQ0FEQztBQUVELHlCQUFrQixvQkFBbEIsQ0FGQztBQUdELHdCQUFpQixJQUFJLE1BQUosQ0FBVyxDQUFYLEVBQWMsV0FBZCxLQUE4QixJQUFJLEtBQUosQ0FBVSxDQUFWLENBQTlCLFdBQWpCLENBSEM7QUFJRCx1QkFBZ0IsY0FBaEIsQ0FKQztBQUtQLGFBQ0U7O1VBQUssSUFBSSxFQUFKLEVBQVEsV0FBVSxRQUFWLEVBQWI7UUFHRTs7WUFBSyxJQUFJLFlBQUosRUFBa0IsV0FBVSxjQUFWLEVBQXZCO1VBQWlELFdBQWpEO1NBSEY7UUFNRSxvQkFBQyxXQUFXLGdCQUFaO0FBQ0UsY0FBSSxVQUFKLEVBQWdCLFdBQVUsY0FBVixFQUF5QixLQUFLLEtBQUwsRUFBWSxPQUFNLFNBQU4sRUFBZ0IsTUFBTSxHQUFOLEVBRHZFLENBTkY7UUFVRSxvQkFBQyxXQUFXLFVBQVo7QUFDRSxxQkFBVSxlQUFWLEVBQTBCLEtBQUssS0FBTCxFQUFZLGVBQWUsYUFBZjtBQUN0QyxvQkFBVSxlQUFWLEVBQTJCLGVBQWUsYUFBZixFQUY3QixDQVZGO09BREYsQ0FMTzs7OztTQVhMO0VBQTBCLE1BQU0sU0FBTjs7QUFBMUIsa0JBRUcsWUFBWTtBQUNqQixNQUFJLE1BQU0sU0FBTixDQUFnQixNQUFoQixDQUF1QixVQUF2QjtBQUNKLE9BQUssTUFBTSxTQUFOLENBQWdCLE1BQWhCLENBQXVCLFVBQXZCO0FBQ0wsU0FBTyxNQUFNLFNBQU4sQ0FBZ0IsTUFBaEIsQ0FBdUIsVUFBdkI7QUFDUCxtQkFBaUIsTUFBTSxTQUFOLENBQWdCLElBQWhCLENBQXFCLFVBQXJCO0FBQ2pCLGlCQUFlLE1BQU0sU0FBTixDQUFnQixPQUFoQixDQUF3QixNQUFNLFNBQU4sQ0FBZ0IsTUFBaEIsQ0FBdkM7QUFDQSxpQkFBZSxNQUFNLFNBQU4sQ0FBZ0IsSUFBaEIsQ0FBcUIsVUFBckI7Ozs7QUEyQm5CIiwiZmlsZSI6ImpzL2RyYWtlLWdlbm9tZS1jb2x1bW4uanMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIERyYWtlR2Vub21lQ29sdW1uIC0gc2hvd3MgZHJha2UgaW1hZ2UgYW5kIGdlbm9tZVxuICovXG4vKiBleHBvcnRlZCBEcmFrZUdlbm9tZUNvbHVtbiAqL1xuY2xhc3MgRHJha2VHZW5vbWVDb2x1bW4gZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuXG4gIHN0YXRpYyBwcm9wVHlwZXMgPSB7XG4gICAgaWQ6IFJlYWN0LlByb3BUeXBlcy5zdHJpbmcuaXNSZXF1aXJlZCxcbiAgICBzZXg6IFJlYWN0LlByb3BUeXBlcy5zdHJpbmcuaXNSZXF1aXJlZCxcbiAgICBkcmFrZTogUmVhY3QuUHJvcFR5cGVzLm9iamVjdC5pc1JlcXVpcmVkLFxuICAgIGlzRHJha2VFZGl0YWJsZTogUmVhY3QuUHJvcFR5cGVzLmJvb2wuaXNSZXF1aXJlZCxcbiAgICBoaWRkZW5BbGxlbGVzOiBSZWFjdC5Qcm9wVHlwZXMuYXJyYXlPZihSZWFjdC5Qcm9wVHlwZXMuc3RyaW5nKSxcbiAgICBhbGxlbGVDaGFuZ2VkOiBSZWFjdC5Qcm9wVHlwZXMuZnVuYy5pc1JlcXVpcmVkXG4gIH1cblxuICByZW5kZXIoKSB7XG4gICAgY29uc3QgeyBpZCwgc2V4LCBkcmFrZSwgaXNEcmFrZUVkaXRhYmxlLCBoaWRkZW5BbGxlbGVzLCBhbGxlbGVDaGFuZ2VkIH0gPSB0aGlzLnByb3BzLFxuICAgICAgICAgIGRyYWtlTGFiZWxJRCA9IGAke3NleH0tZHJha2UtbGFiZWxgLFxuICAgICAgICAgIGNvbHVtbkxhYmVsID0gYCR7c2V4LmNoYXJBdCgwKS50b1VwcGVyQ2FzZSgpICsgc2V4LnNsaWNlKDEpfSBEcmFrZWAsXG4gICAgICAgICAgZHJha2VPcmdJRCA9IGAke3NleH0tZHJha2VgO1xuICAgIHJldHVybiAoXG4gICAgICA8ZGl2IGlkPXtpZH0gY2xhc3NOYW1lPVwiY29sdW1uXCI+XG5cbiAgICAgICAgey8qIHBhcmVudCBkcmFrZSBsYWJlbCAqL31cbiAgICAgICAgPGRpdiBpZD17ZHJha2VMYWJlbElEfSBjbGFzc05hbWU9XCJjb2x1bW4tbGFiZWxcIj57Y29sdW1uTGFiZWx9PC9kaXY+XG5cbiAgICAgICAgey8qIHBhcmVudCBkcmFrZSBpbWFnZSAqL31cbiAgICAgICAgPEdlbmlCbG9ja3MuT3JnYW5pc21HbG93Vmlld1xuICAgICAgICAgIGlkPXtkcmFrZU9yZ0lEfSBjbGFzc05hbWU9J3BhcmVudC1kcmFrZScgb3JnPXtkcmFrZX0gY29sb3I9JyNGRkZGQUEnIHNpemU9ezIwMH0gLz5cblxuICAgICAgICB7LyogcGFyZW50IGRyYWtlIGdlbm9tZSAqL31cbiAgICAgICAgPEdlbmlCbG9ja3MuR2Vub21lVmlld1xuICAgICAgICAgIGNsYXNzTmFtZT0ncGFyZW50LWdlbm9tZScgb3JnPXtkcmFrZX0gaGlkZGVuQWxsZWxlcz17aGlkZGVuQWxsZWxlc31cbiAgICAgICAgICBlZGl0YWJsZT17aXNEcmFrZUVkaXRhYmxlfSBhbGxlbGVDaGFuZ2VkPXthbGxlbGVDaGFuZ2VkfSAvPlxuICAgICAgPC9kaXY+XG4gICAgKTtcbiAgfVxufVxuXG5EcmFrZUdlbm9tZUNvbHVtbjtcbi8vZXhwb3J0IGRlZmF1bHQgRHJha2VHZW5vbWVDb2x1bW47XG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImpzL2RyYWtlLWdlbm9tZS1jb2x1bW4uanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7QUFJTTs7Ozs7Ozs7Ozs7NkJBcUJLO21CQUUwQyxLQUFLLEtBQUwsQ0FGMUM7VUFDQyxlQUREO1VBQ0ssMkJBREw7VUFDZSxpQ0FEZjtVQUM0QixxQkFENUI7VUFDbUMsNkJBRG5DO1VBQzhDLDJCQUQ5QztVQUVDLHFDQUZEO1VBRWdCLDJCQUZoQjtBQUNELFVBQzJCLGdDQUQzQixDQURDO0FBR0QseUJBQWtCLHlCQUFsQixDQUhDO0FBSUQsdUJBQWdCLG1CQUFoQixDQUpDO0FBS0QsdUJBQWEsWUFDRyxvQkFBQyxXQUFXLGdCQUFaLElBQTZCLElBQUksVUFBSixFQUFnQixXQUFVLGNBQVY7QUFDM0MsYUFBSyxLQUFMLEVBQVksT0FBTSxTQUFOLEVBQWdCLE1BQU0sR0FBTixFQUQ5QixDQURILEdBR0csSUFISCxDQUxaO0FBU0QsbUJBQVMsV0FDRyxvQkFBQyxXQUFXLE1BQVosSUFBbUIsSUFBSSxRQUFKLEVBQWMsT0FBTyxXQUFQO0FBQ2IsaUJBQVMsS0FBSyxLQUFMLENBQVcsYUFBWCxFQUQ3QixDQURILEdBR0csSUFISCxDQVRSO0FBYVAsYUFDRTs7VUFBSyxJQUFJLEVBQUosRUFBUSxXQUFVLFFBQVYsRUFBYjtRQUdFOztZQUFLLElBQUksWUFBSixFQUFrQixXQUFVLGNBQVYsRUFBdkI7VUFBaUQsV0FBakQ7U0FIRjtRQU1HLFVBTkg7UUFTRSxvQkFBQyxXQUFXLFVBQVo7QUFDRSxxQkFBVSxlQUFWLEVBQTBCLEtBQUssS0FBTCxFQUFZLGVBQWUsYUFBZjtBQUN0QyxvQkFBVSxRQUFWLEVBQW9CLGdCQUFnQixLQUFLLEtBQUwsQ0FBVyxjQUFYLEVBRnRDLENBVEY7UUFjRyxNQWRIO09BREYsQ0FiTzs7OztTQXJCTDtFQUEwQixNQUFNLFNBQU47O0FBQTFCLGtCQUVHLFlBQVk7QUFDakIsTUFBSSxNQUFNLFNBQU4sQ0FBZ0IsTUFBaEIsQ0FBdUIsVUFBdkI7QUFDSixZQUFVLE1BQU0sU0FBTixDQUFnQixNQUFoQixDQUF1QixVQUF2QjtBQUNWLGVBQWEsTUFBTSxTQUFOLENBQWdCLE1BQWhCO0FBQ2IsU0FBTyxNQUFNLFNBQU4sQ0FBZ0IsTUFBaEIsQ0FBdUIsVUFBdkI7QUFDUCxhQUFXLE1BQU0sU0FBTixDQUFnQixJQUFoQjtBQUNYLFlBQVUsTUFBTSxTQUFOLENBQWdCLElBQWhCLENBQXFCLFVBQXJCO0FBQ1YsaUJBQWUsTUFBTSxTQUFOLENBQWdCLE9BQWhCLENBQXdCLE1BQU0sU0FBTixDQUFnQixNQUFoQixDQUF2QztBQUNBLGtCQUFnQixNQUFNLFNBQU4sQ0FBZ0IsSUFBaEIsQ0FBcUIsVUFBckI7QUFDaEIsWUFBVSxNQUFNLFNBQU4sQ0FBZ0IsTUFBaEI7QUFDVixlQUFhLE1BQU0sU0FBTixDQUFnQixNQUFoQjtBQUNiLGlCQUFlLE1BQU0sU0FBTixDQUFnQixJQUFoQjs7QUFiYixrQkFnQkcsZUFBZTtBQUNwQixlQUFhLEVBQWI7QUFDQSxhQUFXLElBQVg7Ozs7QUFxQ0oiLCJmaWxlIjoianMvZHJha2UtZ2Vub21lLWNvbHVtbi5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogRHJha2VHZW5vbWVDb2x1bW4gLSBzaG93cyBkcmFrZSBpbWFnZSBhbmQgZ2Vub21lXG4gKi9cbi8qIGV4cG9ydGVkIERyYWtlR2Vub21lQ29sdW1uICovXG5jbGFzcyBEcmFrZUdlbm9tZUNvbHVtbiBleHRlbmRzIFJlYWN0LkNvbXBvbmVudCB7XG5cbiAgc3RhdGljIHByb3BUeXBlcyA9IHtcbiAgICBpZDogUmVhY3QuUHJvcFR5cGVzLnN0cmluZy5pc1JlcXVpcmVkLFxuICAgIGlkUHJlZml4OiBSZWFjdC5Qcm9wVHlwZXMuc3RyaW5nLmlzUmVxdWlyZWQsXG4gICAgY29sdW1uTGFiZWw6IFJlYWN0LlByb3BUeXBlcy5zdHJpbmcsXG4gICAgZHJha2U6IFJlYWN0LlByb3BUeXBlcy5vYmplY3QuaXNSZXF1aXJlZCxcbiAgICBzaG93RHJha2U6IFJlYWN0LlByb3BUeXBlcy5ib29sLFxuICAgIGVkaXRhYmxlOiBSZWFjdC5Qcm9wVHlwZXMuYm9vbC5pc1JlcXVpcmVkLFxuICAgIGhpZGRlbkFsbGVsZXM6IFJlYWN0LlByb3BUeXBlcy5hcnJheU9mKFJlYWN0LlByb3BUeXBlcy5zdHJpbmcpLFxuICAgIG9uQWxsZWxlQ2hhbmdlOiBSZWFjdC5Qcm9wVHlwZXMuZnVuYy5pc1JlcXVpcmVkLFxuICAgIGJ1dHRvbklEOiBSZWFjdC5Qcm9wVHlwZXMuc3RyaW5nLFxuICAgIGJ1dHRvbkxhYmVsOiBSZWFjdC5Qcm9wVHlwZXMuc3RyaW5nLFxuICAgIG9uQnV0dG9uQ2xpY2s6IFJlYWN0LlByb3BUeXBlcy5mdW5jXG4gIH1cblxuICBzdGF0aWMgZGVmYXVsdFByb3BzID0ge1xuICAgIGNvbHVtbkxhYmVsOiBcIlwiLFxuICAgIHNob3dEcmFrZTogdHJ1ZVxuICB9XG5cbiAgcmVuZGVyKCkge1xuICAgIGNvbnN0IHsgaWQsIGlkUHJlZml4LCBjb2x1bW5MYWJlbCwgZHJha2UsIHNob3dEcmFrZSwgZWRpdGFibGUsXG4gICAgICAgICAgICBoaWRkZW5BbGxlbGVzLCBidXR0b25JRCwgYnV0dG9uTGFiZWwgfSA9IHRoaXMucHJvcHMsXG4gICAgICAgICAgZHJha2VMYWJlbElEID0gYCR7aWRQcmVmaXh9LWRyYWtlLWxhYmVsYCxcbiAgICAgICAgICBkcmFrZU9yZ0lEID0gYCR7aWRQcmVmaXh9LWRyYWtlYCxcbiAgICAgICAgICBkcmFrZUltYWdlID0gc2hvd0RyYWtlXG4gICAgICAgICAgICAgICAgICAgICAgICA/IDxHZW5pQmxvY2tzLk9yZ2FuaXNtR2xvd1ZpZXcgaWQ9e2RyYWtlT3JnSUR9IGNsYXNzTmFtZT0ncGFyZW50LWRyYWtlJyBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBvcmc9e2RyYWtlfSBjb2xvcj0nI0ZGRkZBQScgc2l6ZT17MjAwfSAvPlxuICAgICAgICAgICAgICAgICAgICAgICAgOiBudWxsLFxuICAgICAgICAgIGJ1dHRvbiA9IGJ1dHRvbklEXG4gICAgICAgICAgICAgICAgICAgID8gPEdlbmlCbG9ja3MuQnV0dG9uIGlkPXtidXR0b25JRH0gbGFiZWw9e2J1dHRvbkxhYmVsfVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgb25DbGljaz17dGhpcy5wcm9wcy5vbkJ1dHRvbkNsaWNrfS8+XG4gICAgICAgICAgICAgICAgICAgIDogbnVsbDtcbiAgICByZXR1cm4gKFxuICAgICAgPGRpdiBpZD17aWR9IGNsYXNzTmFtZT0nY29sdW1uJz5cblxuICAgICAgICB7LyogY29sdW1uIGxhYmVsICovfVxuICAgICAgICA8ZGl2IGlkPXtkcmFrZUxhYmVsSUR9IGNsYXNzTmFtZT1cImNvbHVtbi1sYWJlbFwiPntjb2x1bW5MYWJlbH08L2Rpdj5cblxuICAgICAgICB7Lyogb3B0aW9uYWwgZHJha2UgaW1hZ2UgKi99XG4gICAgICAgIHtkcmFrZUltYWdlfVxuXG4gICAgICAgIHsvKiBkcmFrZSBnZW5vbWUgKi99XG4gICAgICAgIDxHZW5pQmxvY2tzLkdlbm9tZVZpZXdcbiAgICAgICAgICBjbGFzc05hbWU9J3BhcmVudC1nZW5vbWUnIG9yZz17ZHJha2V9IGhpZGRlbkFsbGVsZXM9e2hpZGRlbkFsbGVsZXN9XG4gICAgICAgICAgZWRpdGFibGU9e2VkaXRhYmxlfSBvbkFsbGVsZUNoYW5nZT17dGhpcy5wcm9wcy5vbkFsbGVsZUNoYW5nZX0gLz5cblxuICAgICAgICB7Lyogb3B0aW9uYWwgYnV0dG9uICovfVxuICAgICAgICB7YnV0dG9ufVxuICAgICAgPC9kaXY+XG4gICAgKTtcbiAgfVxufVxuXG5EcmFrZUdlbm9tZUNvbHVtbjtcbi8vZXhwb3J0IGRlZmF1bHQgRHJha2VHZW5vbWVDb2x1bW47XG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
