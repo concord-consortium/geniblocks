@@ -98,6 +98,7 @@
   background: url('../resources/images/dragon_icon_yellow.png') top left no-repeat;
   height: 157px;
   margin-top: 8px;
+  margin-left: -0.5px;  /* to match up with rope */
 }
 
 #caselog-book .case.case3 {
