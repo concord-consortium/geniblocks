@@ -1,6 +1,8 @@
 @font-face{
   font-family:'Rather Unfortunate';
-  src:url('../resources/fonts/RatherUnfortunate.ttf');
+  /* woff generated from ttf using https://font-converter.net */
+  src: url('../resources/fonts/RatherUnfortunate.woff') format('woff'),     /* Modern Browsers */
+       url('../resources/fonts/RatherUnfortunate.ttf') format('truetype');  /* Safari, Android, iOS */
 }
 
 .caselog-view {
