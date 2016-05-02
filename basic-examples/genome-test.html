@@ -22,7 +22,7 @@
           React.createElement(GeniBlocks.GenomeTestView, {
             org: dragon,
             selection: selection,
-            selectionChanged: function(gene, newValue) {
+            onSelectionChange: function(gene, newValue) {
               selection[gene.name] = newValue;
               render();
           }}),
