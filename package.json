@@ -1,4 +1,6 @@
 {
+  "name": "geniblocks-build",
+  "private": true,
   "comments": {
     "comment": "workaround for the lack of true comments in JSON",
     "general": "Currently, this package.json is serving the needs of the GeniBlocks library, the standalone examples, and the GV2 application. This isn't ideal where dependencies are concerned. These comments attempt to document some of the dependencies, but in the long run a proper division into modules with separate package.jsons will be preferable.",

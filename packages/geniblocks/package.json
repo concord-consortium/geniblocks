@@ -1,0 +1,22 @@
+{
+  "name": "geniblocks",
+  "version": "0.0.1",
+  "description": "React building-blocks for genetics-based applications",
+  "main": "src/code/geniblocks.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/concord-consortium/geniblocks.git"
+  },
+  "keywords": [
+    "genetics",
+    "react-component"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/concord-consortium/geniblocks/issues"
+  },
+  "homepage": "https://github.com/concord-consortium/geniblocks/tree/master/packages/geniblocks"
+}
