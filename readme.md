@@ -13,6 +13,7 @@ organism as a property.
 
 ## Development Setup
 
+    npm install --global lerna@2.0.0-beta.13      # install lerna globally
     npm install
     bower install
     gulp                  # or its alias 'npm run build:watch'
