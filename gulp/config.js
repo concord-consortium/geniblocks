@@ -1,4 +1,4 @@
-var src = './src',
+var geniblocks = './packages/geniblocks/src',
     bower = './bower_components',
     node = './node_modules',
     examples = './examples',
@@ -8,21 +8,21 @@ var src = './src',
 
 module.exports = {
   geniblocksJS: {
-    watch: [src + '/code/**/*.*'],
-    src: src + '/code/geniblocks.js',
+    watch: [geniblocks + '/code/**/*.*'],
+    src: geniblocks + '/code/geniblocks.js',
     public: pub + '/js/',
     dist: dist
   },
   geniblocksCSS: {
-    watch: src + '/stylus/**/*.styl',
+    watch: geniblocks + '/stylus/**/*.styl',
     src: [node + '/react-simpletabs/lib/react-simpletabs.css',
-          src + '/stylus/**/*.styl'],
+          geniblocks + '/stylus/**/*.styl'],
     public: pub + '/css/',
     dist: dist
   },
   geniblocksRsrc: {
-    watch: src + '/resources/**/*.*',
-    src: src + '/resources/**/*.*',
+    watch: geniblocks + '/resources/**/*.*',
+    src: geniblocks + '/resources/**/*.*',
     dest: pub + '/resources'
   },
   examples: {
@@ -60,12 +60,12 @@ module.exports = {
       dest: examples
     },
     code: {
-      src: src + '/code/**/*.*',
-      dest: src + '/code/'
+      src: geniblocks + '/code/**/*.*',
+      dest: geniblocks + '/code/'
     },
     stylus: {
-      src: src + '/stylus/**/*.*',
-      dest: src + '/stylus/'
+      src: geniblocks + '/stylus/**/*.*',
+      dest: geniblocks + '/stylus/'
     }
   },
   deploy: {
