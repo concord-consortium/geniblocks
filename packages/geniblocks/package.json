@@ -18,5 +18,14 @@
   "bugs": {
     "url": "https://github.com/concord-consortium/geniblocks/issues"
   },
-  "homepage": "https://github.com/concord-consortium/geniblocks/tree/master/packages/geniblocks"
+  "homepage": "https://github.com/concord-consortium/geniblocks/tree/master/packages/geniblocks",
+  "dependencies": {
+    "react-motion": "^0.4.2",
+    "react-overlays": "^0.6.3",
+    "react-simpletabs": "^0.7.0"
+  },
+  "peerDependencies": {
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1"
+  }
 }
