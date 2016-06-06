@@ -46,9 +46,11 @@
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.0",
     "gulp-gh-pages": "^0.5.4",
+    "gulp-src-ordered-globs": "^1.0.3",
     "gulp-streamify": "^1.0.2",
     "gulp-stylus": "^2.3.1",
     "gulp-uglify": "^1.5.3",
+    "lerna": "2.0.0-beta.13",
     "mocha": "^2.4.5",
     "react": "^15.0.1",
     "react-addons-test-utils": "^15.0.1",
@@ -56,8 +58,7 @@
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.5",
     "uglify-js": "^2.6.2",
-    "vinyl-source-stream": "^1.1.0",
-    "lerna": "2.0.0-beta.13"
+    "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
     "prebuild": "npm run lint",
