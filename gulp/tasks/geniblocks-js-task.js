@@ -33,8 +33,7 @@ gulp.task('geniblocks-js-dev', function(){
   return b.bundle()
     .on('error', errorHandler)
     .pipe(source('geniblocks.js'))
-    .pipe(gulp.dest(config.public))
-    .pipe(gulp.dest(config.dist));
+    .pipe(gulp.dest(config.public));
 });
 
 gulp.task('geniblocks-js-min', function(){
@@ -56,8 +55,7 @@ gulp.task('geniblocks-js-min', function(){
     .on('error', errorHandler)
     .pipe(source('geniblocks.min.js'))
     .pipe(streamify(uglify()))
-    .pipe(gulp.dest(config.public))
-    .pipe(gulp.dest(config.dist));
+    .pipe(gulp.dest(config.public));
 });
 
 gulp.task('geniblocks-js', ['geniblocks-js-dev', 'geniblocks-js-min']);

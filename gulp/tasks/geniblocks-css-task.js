@@ -7,12 +7,10 @@ gulp.task('geniblocks-css', function() {
   gulp.src(config.src)
     .pipe(stylus({ compress: false}))
     .pipe(concat('geniblocks.css'))
-    .pipe(gulp.dest(config.public))
-    .pipe(gulp.dest(config.dist));
+    .pipe(gulp.dest(config.public));
 
   gulp.src(config.src)
     .pipe(stylus({ compress: true}))
     .pipe(concat('geniblocks.min.css'))
-    .pipe(gulp.dest(config.public))
-    .pipe(gulp.dest(config.dist));
+    .pipe(gulp.dest(config.public));
 });

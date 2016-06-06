@@ -3,22 +3,19 @@ var geniblocks = './packages/geniblocks/src',
     node = './node_modules',
     examples = './examples',
     gv2 = './gv2',
-    publicExamples  = './public/examples',
-    dist = './dist';
+    publicExamples  = './public/examples';
 
 module.exports = {
   geniblocksJS: {
     watch: [geniblocks + '/code/**/*.*'],
     src: geniblocks + '/code/geniblocks.js',
-    public: publicExamples + '/js/',
-    dist: dist
+    public: publicExamples + '/js/'
   },
   geniblocksCSS: {
     watch: geniblocks + '/stylus/**/*.styl',
     src: [node + '/react-simpletabs/lib/react-simpletabs.css',
           geniblocks + '/stylus/**/*.styl'],
-    public: publicExamples + '/css/',
-    dist: dist
+    public: publicExamples + '/css/'
   },
   geniblocksRsrc: {
     watch: geniblocks + '/resources/**/*.*',
