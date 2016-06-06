@@ -1,4 +1,4 @@
-import StatsView from '../../src/code/components/stats';
+import StatsView from '../../packages/geniblocks/src/code/components/stats';
 
 describe("<StatsView />", function(){
   const tailAlleles = BioLogica.Species.Drake.geneList.tail.alleles,

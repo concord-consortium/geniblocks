@@ -1,4 +1,4 @@
-import CircularGlowView from '../../src/code/components/circular-glow';
+import CircularGlowView from '../../packages/geniblocks/src/code/components/circular-glow';
 
 describe("<CircularGlowView />", function(){
 

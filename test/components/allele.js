@@ -1,4 +1,4 @@
-import AlleleView from '../../src/code/components/allele';
+import AlleleView from '../../packages/geniblocks/src/code/components/allele';
 
 describe("<AlleleView />", function(){
 

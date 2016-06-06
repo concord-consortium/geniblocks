@@ -1,4 +1,4 @@
-import FertilizingGameteView from '../../src/code/components/fertilizing-gamete';
+import FertilizingGameteView from '../../packages/geniblocks/src/code/components/fertilizing-gamete';
 
 describe("<FertilizingGameteView />", function(){
   const drake = new BioLogica.Organism(BioLogica.Species.Drake, '', BioLogica.FEMALE),

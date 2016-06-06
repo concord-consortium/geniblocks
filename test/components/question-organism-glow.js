@@ -1,4 +1,4 @@
-import QuestionOrganismGlowView from '../../src/code/components/question-organism-glow';
+import QuestionOrganismGlowView from '../../packages/geniblocks/src/code/components/question-organism-glow';
 
 describe("<QuestionOrganismGlowView />", function(){
   const drake = new BioLogica.Organism(BioLogica.Species.Drake, '');

@@ -1,4 +1,4 @@
-import AlleleFilters from '../../src/code/components/allele-filters';
+import AlleleFilters from '../../packages/geniblocks/src/code/components/allele-filters';
 
 describe("<AlleleFilters />", function(){
 

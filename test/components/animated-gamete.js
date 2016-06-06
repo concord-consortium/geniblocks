@@ -1,4 +1,4 @@
-import AnimatedGameteView from '../../src/code/components/animated-gamete';
+import AnimatedGameteView from '../../packages/geniblocks/src/code/components/animated-gamete';
 
 describe("<AnimatedGameteView />", function(){
   const drake = new BioLogica.Organism(BioLogica.Species.Drake, ''),

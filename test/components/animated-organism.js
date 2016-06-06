@@ -1,4 +1,4 @@
-import AnimatedOrganismView from '../../src/code/components/animated-organism';
+import AnimatedOrganismView from '../../packages/geniblocks/src/code/components/animated-organism';
 
 describe("<AnimatedOrganismView />", function(){
   const drake = new BioLogica.Organism(BioLogica.Species.Drake, '');

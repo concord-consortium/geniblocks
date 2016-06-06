@@ -1,4 +1,4 @@
-import GeneLabelView from '../../src/code/components/gene-label';
+import GeneLabelView from '../../packages/geniblocks/src/code/components/gene-label';
 
 describe("<GeneLabelView />", function(){
   const drake = BioLogica.Species.Drake,

@@ -1,4 +1,4 @@
-import Button from '../../src/code/components/button';
+import Button from '../../packages/geniblocks/src/code/components/button';
 
 describe("<Button />", function() {
 

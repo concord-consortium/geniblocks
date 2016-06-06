@@ -1,4 +1,4 @@
-import GameteView from '../../src/code/components/gamete';
+import GameteView from '../../packages/geniblocks/src/code/components/gamete';
 
 describe("<GameteView />", function(){
   const drake = new BioLogica.Organism(BioLogica.Species.Drake, ''),

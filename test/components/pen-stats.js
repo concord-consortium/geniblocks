@@ -1,4 +1,4 @@
-import PenStatsView from '../../src/code/components/pen-stats';
+import PenStatsView from '../../packages/geniblocks/src/code/components/pen-stats';
 
 describe("<PenStatsView />", function(){
 
