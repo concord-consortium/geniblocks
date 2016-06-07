@@ -1,4 +1,9 @@
-# GeniBlocks
+This is a monorepo containing two related projects, **GeniBlocks** and
+**Geniverse-React**. To reduce development-friction, it uses
+[Lerna](https://github.com/lerna/lerna/) to link together the packages,
+so that we can easily `import GeniBlocks` from Geniverse-React.
+
+## GeniBlocks
 
 GeniBlocks is a collection of small, modular React components that can be
 used as building blocks for genetics-based applications.
@@ -11,9 +16,15 @@ can be written as [Stateless functional components](https://facebook.github.io/r
 Many views take a [Biologica.js](https://github.com/concord-consortium/biologica.js)
 organism as a property.
 
+## Geniverse-React
+
+Geniverse-React is a genetics-based game engine, based on the original
+[Geniverse](https://github.com/concord-consortium/Geniverse-Sproutcore) project.
+
 ## Development Setup
 
     npm install --global lerna@2.0.0-beta.13      # install lerna globally
+    lerna bootstrap
     npm install
     bower install
     gulp                  # or its alias 'npm run build:watch'
@@ -26,11 +37,7 @@ in a separate shell/console:
 
     npm run examples      # or its alias 'live-server public'
 
-which will launch a browser tab pointing to the examples at http://localhost:8080/, or
-
-    npm run gv2           # or its alias 'live-server public --open=gv2'
-
-which will launch a browser tab pointing to the GV2 prototype at http://localhost:8080/gv2/
+which will launch a browser tab pointing to the examples at http://localhost:8080/
 
 ### Deploy Examples to gh-pages
 
