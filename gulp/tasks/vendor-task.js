@@ -1,8 +1,12 @@
 var gulp   = require('gulp');
-var config = require('../config').vendor;
+var examples = require('../config').vendorExamples;
+var geniverse = require('../config').vendorGeniverse;
 
 // copy files directly simple
 gulp.task('vendor', function() {
-  return gulp.src(config.src)
-    .pipe(gulp.dest(config.dest));
+  gulp.src(examples.src)
+    .pipe(gulp.dest(examples.dest));
+
+  return gulp.src(geniverse.src)
+    .pipe(gulp.dest(geniverse.dest));
 });
