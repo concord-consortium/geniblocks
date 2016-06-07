@@ -1,4 +1,4 @@
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import CircularGlowView from './circular-glow';
 
 const QuestionGlowView = ({glowColor, size=200}) => {

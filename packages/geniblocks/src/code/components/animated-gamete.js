@@ -1,4 +1,4 @@
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import {Motion, spring} from 'react-motion';
 import GameteView from './gamete';
 

@@ -1,4 +1,4 @@
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 
 const OrganismView = ({org, id, width=200, style={}, onClick, wrapper }) => {
   const baseUrl = "https://geniverse-resources.concord.org/resources/drakes/images/",
@@ -21,7 +21,7 @@ const OrganismView = ({org, id, width=200, style={}, onClick, wrapper }) => {
   }
 
   return divWrapper(
-    <div className="geniblocks organism" id={id} style={style} 
+    <div className="geniblocks organism" id={id} style={style}
           onMouseDown={handleMouseDown} onClick={handleClick}>
       <img src={url} width={width} />
     </div>

@@ -1,4 +1,4 @@
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 
 /**
  * Implements a rectangular text area for providing feedback to users, such as
@@ -13,7 +13,7 @@ const FeedbackView = ({text, style={}}) => {
         lineCount = tText.length,
         height = 20 * lineCount + 2,
         defaultStyle = { height: height, ...style },
-        textLines = tText.map((iText, index) => 
+        textLines = tText.map((iText, index) =>
                       <div className="geniblocks feedback text-line" key={index}>{iText}</div>);
 
   return (

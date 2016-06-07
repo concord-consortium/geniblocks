@@ -1,4 +1,4 @@
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 
 /**
  * Uses an SVG circular gradient to implement a fading glow background.

@@ -1,4 +1,4 @@
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 
 const AlleleView = ({allele, width=21, target, color, shape, hovering}) => {
   let radius = width/2,

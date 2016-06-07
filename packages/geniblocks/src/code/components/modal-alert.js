@@ -3,7 +3,7 @@
  */
 import Modal from 'react-overlays/lib/Modal';
 import Button from './button';
-import { PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 const modalStyle = {
   position: 'fixed',
@@ -23,7 +23,6 @@ const dialogStyle = function() {
   // don't sit right on top of each other.
   let top = 50;
   let left = 50;
-
   return {
     position: 'absolute',
     width: 400,

@@ -1,4 +1,4 @@
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import OrganismGlowView from './organism-glow';
 import QuestionGlowView from './question-glow';
 

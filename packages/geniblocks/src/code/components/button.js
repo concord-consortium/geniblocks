@@ -1,7 +1,7 @@
 /*
  * This component is a very thin wrapper around a standard button designed to prevent
  * extraneous focus highlighting added by browsers when clicking on a button while
- * maintaining keyboard accessibility. See 
+ * maintaining keyboard accessibility. See
  * https://www.paciellogroup.com/blog/2012/04/how-to-remove-css-outlines-in-an-accessible-manner/
  * for details. The upshot is that we use mouse events on the button to disable the
  * focus highlight -- mousing/clicking on a push button should not be used as an
@@ -12,7 +12,7 @@
  * Button.enableButtonFocusHighlightOnKeyDown() during application/page initialization,
  * or by adding your own event handler that calls Button.enableButtonFocusHighlight().
  */
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 
 class Button extends React.Component {
 

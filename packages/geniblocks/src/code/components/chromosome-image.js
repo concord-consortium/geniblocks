@@ -1,4 +1,4 @@
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 
 const ChromosomeImageView = ({width=23, height=126, color='#FF9999'}) => {
   const split=45,

@@ -1,4 +1,4 @@
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import ChromosomeImageView from './chromosome-image';
 import GeneticsUtils from '../utilities/genetics-utils';
 

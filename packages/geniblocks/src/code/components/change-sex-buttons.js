@@ -1,4 +1,4 @@
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 
 /**
  * Stateless functional React component for displaying male/female change buttons

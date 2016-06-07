@@ -1,4 +1,4 @@
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 import CircularGlowView from './circular-glow';
 import OrganismView from './organism';
 

@@ -1,4 +1,4 @@
-import {PropTypes} from 'react';
+import React, {PropTypes} from 'react';
 
 const AlleleFiltersView = ({species, hiddenAlleles=[], disabledAlleles = [], onFilterChange}) => {
   let hiddenGenes = new Set,
@@ -30,7 +30,7 @@ const AlleleFiltersView = ({species, hiddenAlleles=[], disabledAlleles = [], onF
       );
     }
   }
- 
+
   function handleChange(evt) {
     const elt = evt.target,
           allele = elt && elt.value,
