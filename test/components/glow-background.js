@@ -1,5 +1,5 @@
-import GlowBackgroundView from '../../src/code/components/glow-background';
-import OrganismView from '../../src/code/components/organism';
+import GlowBackgroundView from '../../packages/geniblocks/src/code/components/glow-background';
+import OrganismView from '../../packages/geniblocks/src/code/components/organism';
 
 describe("<GlowBackgroundView />", function(){
   const drake = new BioLogica.Organism(BioLogica.Species.Drake, '');

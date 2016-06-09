@@ -1,4 +1,4 @@
-import FeedbackView from '../../src/code/components/feedback';
+import FeedbackView from '../../packages/geniblocks/src/code/components/feedback';
 
 describe("<FeedbackView />", function(){
 

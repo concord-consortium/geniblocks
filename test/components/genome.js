@@ -1,4 +1,4 @@
-import GenomeView from '../../src/code/components/genome';
+import GenomeView from '../../packages/geniblocks/src/code/components/genome';
 
 describe("<GenomeView />", function(){
   const drake = new BioLogica.Organism(BioLogica.Species.Drake, '');

@@ -1,4 +1,4 @@
-import GametePoolView from '../../src/code/components/gamete-pool';
+import GametePoolView from '../../packages/geniblocks/src/code/components/gamete-pool';
 
 describe("<GametePoolView />", function(){
   const drake = new BioLogica.Organism(BioLogica.Species.Drake, ''),

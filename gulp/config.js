@@ -1,58 +1,59 @@
-var src = './src',
+var geniblocks = './packages/geniblocks/src',
+    geniverse = './packages/geniverse-react/src',
     bower = './bower_components',
     node = './node_modules',
     examples = './examples',
     gv2 = './gv2',
-    pub  = './public',
-    dist = './dist';
+    publicExamples  = './public/examples',
+    publicGeniverse  = './public/geniverse';
 
 module.exports = {
   geniblocksJS: {
-    watch: [src + '/code/**/*.*'],
-    src: src + '/code/geniblocks.js',
-    public: pub + '/js/',
-    dist: dist
+    watch: [geniblocks + '/code/**/*.*'],
+    src: geniblocks + '/code/geniblocks.js',
+    public: publicExamples + '/js/'
   },
   geniblocksCSS: {
-    watch: src + '/stylus/**/*.styl',
+    watch: geniblocks + '/stylus/**/*.styl',
     src: [node + '/react-simpletabs/lib/react-simpletabs.css',
-          src + '/stylus/**/*.styl'],
-    public: pub + '/css/',
-    dist: dist
+          geniblocks + '/stylus/**/*.styl'],
+    public: publicExamples + '/css/'
   },
   geniblocksRsrc: {
-    watch: src + '/resources/**/*.*',
-    src: src + '/resources/**/*.*',
-    dest: pub + '/resources'
+    watch: geniblocks + '/resources/**/*.*',
+    src: geniblocks + '/resources/**/*.*',
+    dest: publicExamples + '/resources'
+  },
+  geniverseJS: {
+    watch: [geniverse + '/code/**/*.*'],
+    src: geniverse + '/code/gv.js',
+    public: publicGeniverse + '/js/'
+  },
+  geniverseRsrc: {
+    watch: geniverse + '/resources/**/*.*',
+    src: geniverse + '/resources/**/*.*',
+    dest: publicGeniverse
   },
   examples: {
-    watch: [examples + '/**/*.*', '!' + examples + '/**/*.js'],
-    src: [examples + '/**/*.*', '!' + examples + '/**/*.js'],
-    dest: pub
+    watch: [examples + '/**/*.*', '!' + examples + '/**/*.js', '!' + examples + '/**/*.styl'],
+    src: [examples + '/**/*.*', '!' + examples + '/**/*.js', '!' + examples + '/**/*.styl'],
+    jssrc: [examples + '/experiments/**/*.js'],
+    dir: examples,
+    dest: publicExamples
   },
   examplesJS: {
     watch: examples + '/**/*.js',
-    src: examples + '/**/*.js',
-    dest: pub
+    src: [examples + '/gv2-prototype/gv2.js'],
+    dir: examples,
+    dest: publicExamples
   },
-  gv2: {
-    watch: [gv2 + '/**/*.*', '!' + gv2 + '/**/*.js', '!' + gv2 + '/**/*.styl'],
-    src: [gv2 + '/**/*.*', '!' + gv2 + '/**/*.js', '!' + gv2 + '/**/*.styl'],
-    dest: pub + '/gv2'
-  },
-  gv2CSS: {
-    watch: gv2 + '/**/*.styl',
-    src: gv2 + '/**/*.styl',
-    dest: pub + '/gv2'
-  },
-  gv2JS: {
-    watch: gv2 + '/**/*.js',
-    src: gv2 + '/gv2.js',
-    dest: pub + '/gv2'
-  },
-  vendor: {
+  vendorExamples: {
     src: [ bower + '/*/*.js', bower + '/*/*/*.js', bower + '/*/*/*.css' ],
-    dest: pub + '/js/lib/'
+    dest: publicExamples + '/js/lib/'
+  },
+  vendorGeniverse: {
+    src: [ bower + '/biologica.js/dist/*.js' ],
+    dest: publicGeniverse + '/js/lib/'
   },
   trim: {
     examples: {
@@ -60,15 +61,15 @@ module.exports = {
       dest: examples
     },
     code: {
-      src: src + '/code/**/*.*',
-      dest: src + '/code/'
+      src: geniblocks + '/code/**/*.*',
+      dest: geniblocks + '/code/'
     },
     stylus: {
-      src: src + '/stylus/**/*.*',
-      dest: src + '/stylus/'
+      src: geniblocks + '/stylus/**/*.*',
+      dest: geniblocks + '/stylus/'
     }
   },
   deploy: {
-    src: pub + '/**/*'
+    src: publicExamples + '/**/*'
   }
 };

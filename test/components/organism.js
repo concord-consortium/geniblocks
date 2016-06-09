@@ -1,4 +1,4 @@
-import OrganismView from '../../src/code/components/organism';
+import OrganismView from '../../packages/geniblocks/src/code/components/organism';
 
 describe("<OrganismView />", function(){
   const drake = new BioLogica.Organism(BioLogica.Species.Drake, ''),

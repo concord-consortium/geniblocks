@@ -1,4 +1,4 @@
-import QuestionGlowView from '../../src/code/components/question-glow';
+import QuestionGlowView from '../../packages/geniblocks/src/code/components/question-glow';
 
 describe("<QuestionGlowView />", function(){
 

@@ -1,4 +1,4 @@
-import ChangeSexButtons from '../../src/code/components/change-sex-buttons';
+import ChangeSexButtons from '../../packages/geniblocks/src/code/components/change-sex-buttons';
 
 describe("<ChangeSexButtons />", function(){
 

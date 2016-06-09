@@ -1,4 +1,4 @@
-import ChromosomeImageView from '../../src/code/components/chromosome-image';
+import ChromosomeImageView from '../../packages/geniblocks/src/code/components/chromosome-image';
 
 describe("<ChromosomeImageView />", function(){
 

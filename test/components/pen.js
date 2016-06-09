@@ -1,6 +1,6 @@
-import PenView from '../../src/code/components/pen';
+import PenView from '../../packages/geniblocks/src/code/components/pen';
 
-import OrganismGlowView from '../../src/code/components/organism-glow';
+import OrganismGlowView from '../../packages/geniblocks/src/code/components/organism-glow';
 
 describe("<PenView />", function(){
   const drakes = [...Array(20).keys()].map( () => new BioLogica.Organism(BioLogica.Species.Drake, ''));

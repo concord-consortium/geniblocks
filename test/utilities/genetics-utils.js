@@ -1,4 +1,4 @@
-import GeneticsUtils from '../../src/code/utilities/genetics-utils';
+import GeneticsUtils from '../../packages/geniblocks/src/code/utilities/genetics-utils';
 
 describe("GeneticsUtils.filterAlleles()", function() {
   const initialAlleles = ['T', 't', 'A1', 'a'];

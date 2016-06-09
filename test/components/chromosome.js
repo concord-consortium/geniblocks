@@ -1,4 +1,4 @@
-import ChromosomeView from '../../src/code/components/chromosome';
+import ChromosomeView from '../../packages/geniblocks/src/code/components/chromosome';
 
 describe("<ChromosomeView />", function(){
   const drake = new BioLogica.Organism(BioLogica.Species.Drake, '');
