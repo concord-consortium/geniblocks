@@ -1,114 +1,150 @@
-"use strict";
-
 /* global ReactDnD */
 /* eslint react/prop-types:0 */
 var DragSource = ReactDnD.DragSource,
     DropTarget = ReactDnD.DropTarget,
+
     shapeColorMap = {
-  W: { shape: "circle", color: "blue" },
-  w: { shape: "circle", color: "lightskyblue" },
-  T: { shape: "square", color: "forestgreen" },
-  Tk: { shape: "square", color: "limegreen" },
-  t: { shape: "square", color: "mediumspringgreen" }
-},
+      W:  {shape: "circle", color: "blue"},
+      w:  {shape: "circle", color: "lightskyblue"},
+      T:  {shape: "square", color: "forestgreen"},
+      Tk: {shape: "square", color: "limegreen"},
+      t:  {shape: "square", color: "mediumspringgreen"}
+    },
+
     ItemTypes = {
-  ALLELE: 'allele'
-},
+      ALLELE: 'allele'
+    },
+
     alleleSource = {
-  beginDrag: function beginDrag(props) {
-    return { index: props.index, org: props.org, shape: shapeColorMap[props.allele].shape };
-  }
-},
-    collectSource = function collectSource(connect, monitor) {
-  return {
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-  };
-},
-    WrappedAllele = React.createClass({
-  displayName: "WrappedAllele",
-
-  render: function render() {
-    var connectDragSource = this.props.connectDragSource,
-        isDragging = this.props.isDragging,
-        allele = this.props.allele;
-    return connectDragSource(React.createElement('div', {}, !isDragging ? React.createElement(GeniBlocks.AlleleView, { allele: allele, color: shapeColorMap[allele].color, shape: shapeColorMap[allele].shape }) : null));
-  }
-}),
-    DraggableAllele = DragSource(ItemTypes.ALLELE, alleleSource, collectSource)(WrappedAllele),
-    alleleTarget = {
-  drop: function drop(props, monitor) {
-    props.moveAllele(monitor.getItem().index, monitor.getItem().org, props.index, props.org);
-  },
-  canDrop: function canDrop(props, monitor) {
-    //console.log("can drop??");
-    //console.log(monitor.getItem());
-    //console.log(props);
-    return monitor.getItem().shape === props.shape;
-  }
-},
-    collectTarget = function collectTarget(connect, monitor) {
-  return {
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
-    canDrop: monitor.canDrop()
-  };
-},
-    WrappedAlleleTarget = React.createClass({
-  displayName: "WrappedAlleleTarget",
-
-  render: function render() {
-    var connectDropTarget = this.props.connectDropTarget,
-        isOver = this.props.isOver,
-        canDrop = this.props.canDrop,
-        shape = this.props.shape,
-        allele = this.props.allele;
-    return connectDropTarget(React.createElement('div', {}, React.createElement(GeniBlocks.AlleleView, { allele: allele, color: allele ? shapeColorMap[allele].color : null, shape: allele ? shapeColorMap[allele].shape : shape, target: true, hovering: isOver && canDrop })));
-  }
-}),
-    AlleleDropTarget = DropTarget(ItemTypes.ALLELE, alleleTarget, collectTarget)(WrappedAlleleTarget),
-    AlleleContainer = React.createClass({
-  displayName: "AlleleContainer",
-
-  render: function render() {
-    var allelePool = this.props.pool,
-        alleleTargets = this.props.targets,
-        org = this.props.org,
-        moveAllele = this.props.moveAllele;
-
-    var pool = allelePool.map(function (allele, i) {
-      if (!allele) return null;
-      return React.createElement(DraggableAllele, { allele: allele, key: i, index: i, org: org });
-    });
-
-    var targets = alleleTargets.map(function (allele, i) {
-      if (allele === "circle" || allele === "square") {
-        var shape = allele;
-        allele = null;
-      } else {
-        shape = shapeColorMap[allele].shape;
+      beginDrag: function (props) {
+        return {index: props.index, org: props.org, shape: shapeColorMap[props.allele].shape};
       }
-      return React.createElement(AlleleDropTarget, { allele: allele, key: i, shape: shape, index: i, org: org, moveAllele: moveAllele });
-    });
+    },
 
-    return React.createElement('div', { className: "allele-container" }, React.createElement('div', { className: "allele-targets labelable" }, targets), React.createElement('div', { className: "allele-pool" }, pool));
-  }
-}),
+    collectSource = function(connect, monitor) {
+      return {
+        connectDragSource: connect.dragSource(),
+        isDragging: monitor.isDragging()
+      };
+    },
+
+    WrappedAllele = React.createClass({
+      render: function () {
+        var connectDragSource = this.props.connectDragSource,
+            isDragging = this.props.isDragging,
+            allele = this.props.allele;
+        return connectDragSource(
+          React.createElement('div', {},
+            !isDragging ? React.createElement(GeniBlocks.AlleleView, {allele: allele, color: shapeColorMap[allele].color, shape: shapeColorMap[allele].shape}) : null
+          )
+        );
+      }
+    }),
+
+    DraggableAllele = DragSource(ItemTypes.ALLELE, alleleSource, collectSource)(WrappedAllele),
+
+    alleleTarget = {
+      drop: function (props, monitor) {
+        props.moveAllele(monitor.getItem().index, monitor.getItem().org, props.index, props.org);
+      },
+      canDrop: function (props, monitor) {
+        //console.log("can drop??");
+        //console.log(monitor.getItem());
+        //console.log(props);
+        return (monitor.getItem().shape === props.shape);
+      }
+    },
+
+    collectTarget = function(connect, monitor) {
+      return {
+        connectDropTarget: connect.dropTarget(),
+        isOver: monitor.isOver(),
+        canDrop: monitor.canDrop()
+      };
+    },
+
+    WrappedAlleleTarget = React.createClass({
+      render: function () {
+        var connectDropTarget = this.props.connectDropTarget,
+            isOver = this.props.isOver,
+            canDrop = this.props.canDrop,
+            shape = this.props.shape,
+            allele = this.props.allele;
+        return connectDropTarget(
+          React.createElement('div', {},
+            React.createElement(GeniBlocks.AlleleView, {allele: allele, color: (allele ? shapeColorMap[allele].color : null), shape: (allele ? shapeColorMap[allele].shape : shape), target: true, hovering: (isOver && canDrop)})
+          )
+        );
+      }
+    }),
+
+    AlleleDropTarget = DropTarget(ItemTypes.ALLELE, alleleTarget, collectTarget)(WrappedAlleleTarget),
+
+    AlleleContainer = React.createClass({
+      render: function () {
+        var allelePool = this.props.pool,
+            alleleTargets = this.props.targets,
+            org = this.props.org,
+            moveAllele = this.props.moveAllele;
+
+        var pool = allelePool.map(function(allele, i) {
+          if (!allele) return null;
+          return React.createElement(DraggableAllele, {allele: allele, key: i, index: i, org: org});
+        });
+
+        var targets = alleleTargets.map(function(allele, i) {
+          if (allele === "circle" || allele === "square") {
+            var shape = allele;
+            allele = null;
+          } else {
+            shape = shapeColorMap[allele].shape;
+          }
+          return React.createElement(AlleleDropTarget, {allele: allele, key: i, shape: shape, index: i, org: org, moveAllele: moveAllele});
+        });
+
+        return (
+          React.createElement('div', {className: "allele-container"},
+            React.createElement('div', {className: "allele-targets labelable"},
+              targets
+            ),
+            React.createElement('div', {className: "allele-pool"},
+              pool
+            )
+          )
+        );
+      }
+    }),
+
     PunnettContainer = React.createClass({
-  displayName: "PunnettContainer",
+      render: function () {
+        var alleles = this.props.alleles,
+            orgs = this.props.orgs,
+            moveAllele = this.props.moveAllele,
 
-  render: function render() {
-    var alleles = this.props.alleles,
-        orgs = this.props.orgs,
-        moveAllele = this.props.moveAllele,
-        orgViews = orgs.map(function (org, index) {
-      return org ? React.createElement(GeniBlocks.OrganismView, { org: org, key: index }) : null;
+            orgViews = orgs.map(function(org, index) {
+              return org ?  React.createElement(GeniBlocks.OrganismView, {org: org, key: index}) : null;
+            });
+
+        return (
+          React.createElement('div', {className: "punnett-square"},
+            React.createElement('div', {className: "top"},
+              React.createElement(AlleleDropTarget, {allele: alleles[0], shape: "circle", index: 0, moveAllele: moveAllele}),
+              React.createElement(AlleleDropTarget, {allele: alleles[1], shape: "circle", index: 1, moveAllele: moveAllele})
+            ),
+            React.createElement('div', {className: "row"},
+              React.createElement(AlleleDropTarget, {allele: alleles[2], shape: "circle", index: 2, moveAllele: moveAllele}),
+              React.createElement('div', {className: "box org-1"}, orgViews[0]),
+              React.createElement('div', {className: "box org-2"}, orgViews[2])
+            ),
+            React.createElement('div', {className: "row"},
+              React.createElement(AlleleDropTarget, {allele: alleles[3], shape: "circle", index: 3, moveAllele: moveAllele}),
+              React.createElement('div', {className: "box org-3"}, orgViews[1]),
+              React.createElement('div', {className: "box org-4"}, orgViews[3])
+            )
+          )
+        );
+      }
     });
-
-    return React.createElement('div', { className: "punnett-square" }, React.createElement('div', { className: "top" }, React.createElement(AlleleDropTarget, { allele: alleles[0], shape: "circle", index: 0, moveAllele: moveAllele }), React.createElement(AlleleDropTarget, { allele: alleles[1], shape: "circle", index: 1, moveAllele: moveAllele })), React.createElement('div', { className: "row" }, React.createElement(AlleleDropTarget, { allele: alleles[2], shape: "circle", index: 2, moveAllele: moveAllele }), React.createElement('div', { className: "box org-1" }, orgViews[0]), React.createElement('div', { className: "box org-2" }, orgViews[2])), React.createElement('div', { className: "row" }, React.createElement(AlleleDropTarget, { allele: alleles[3], shape: "circle", index: 3, moveAllele: moveAllele }), React.createElement('div', { className: "box org-3" }, orgViews[1]), React.createElement('div', { className: "box org-4" }, orgViews[3])));
-  }
-});
 
 window.AlleleContainer = AlleleContainer;
 window.PunnettContainer = PunnettContainer;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImV4cGVyaW1lbnRzL2RyYWdnYWJsZS1hbGxlbGVzL2RyYWdnYWJsZS12aWV3cy5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBRUEsSUFBSSxhQUFhLFNBQVMsVUFBMUI7SUFDSSxhQUFhLFNBQVMsVUFEMUI7SUFHSSxnQkFBZ0I7QUFDZCxLQUFJLEVBQUMsT0FBTyxRQUFSLEVBQWtCLE9BQU8sTUFBekIsRUFEVTtBQUVkLEtBQUksRUFBQyxPQUFPLFFBQVIsRUFBa0IsT0FBTyxjQUF6QixFQUZVO0FBR2QsS0FBSSxFQUFDLE9BQU8sUUFBUixFQUFrQixPQUFPLGFBQXpCLEVBSFU7QUFJZCxNQUFJLEVBQUMsT0FBTyxRQUFSLEVBQWtCLE9BQU8sV0FBekIsRUFKVTtBQUtkLEtBQUksRUFBQyxPQUFPLFFBQVIsRUFBa0IsT0FBTyxtQkFBekI7QUFMVSxDQUhwQjtJQVdJLFlBQVk7QUFDVixVQUFRO0FBREUsQ0FYaEI7SUFlSSxlQUFlO0FBQ2IsYUFBVyxtQkFBVSxLQUFWLEVBQWlCO0FBQzFCLFdBQU8sRUFBQyxPQUFPLE1BQU0sS0FBZCxFQUFxQixLQUFLLE1BQU0sR0FBaEMsRUFBcUMsT0FBTyxjQUFjLE1BQU0sTUFBcEIsRUFBNEIsS0FBeEUsRUFBUDtBQUNEO0FBSFksQ0FmbkI7SUFxQkksZ0JBQWdCLFNBQWhCLGFBQWdCLENBQVMsT0FBVCxFQUFrQixPQUFsQixFQUEyQjtBQUN6QyxTQUFPO0FBQ0wsdUJBQW1CLFFBQVEsVUFBUixFQURkO0FBRUwsZ0JBQVksUUFBUSxVQUFSO0FBRlAsR0FBUDtBQUlELENBMUJMO0lBNEJJLGdCQUFnQixNQUFNLFdBQU4sQ0FBa0I7QUFBQTs7QUFDaEMsVUFBUSxrQkFBWTtBQUNsQixRQUFJLG9CQUFvQixLQUFLLEtBQUwsQ0FBVyxpQkFBbkM7UUFDSSxhQUFhLEtBQUssS0FBTCxDQUFXLFVBRDVCO1FBRUksU0FBUyxLQUFLLEtBQUwsQ0FBVyxNQUZ4QjtBQUdBLFdBQU8sa0JBQ0wsTUFBTSxhQUFOLENB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MkIsRUFBQyxXQUFXLFdBQVosRUFBM0IsRUFBcUQsU0FBUyxDQUFULENBQXJELENBSEYsQ0FWRixDQURGO0FBa0JEO0FBNUJrQyxDQUFsQixDQW5IdkI7O0FBa0pBLE9BQU8sZUFBUCxHQUF5QixlQUF6QjtBQUNBLE9BQU8sZ0JBQVAsR0FBMEIsZ0JBQTFCIiwiZmlsZSI6ImV4cGVyaW1lbnRzL2RyYWdnYWJsZS1hbGxlbGVzL2RyYWdnYWJsZS12aWV3cy5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIGdsb2JhbCBSZWFjdERuRCAqL1xuLyogZXNsaW50IHJlYWN0L3Byb3AtdHlwZXM6MCAqL1xudmFyIERyYWdTb3VyY2UgPSBSZWFjdERuRC5EcmFnU291cmNlLFxuICAgIERyb3BUYXJnZXQgPSBSZWFjdERuRC5Ecm9wVGFyZ2V0LFxuXG4gICAgc2hhcGVDb2xvck1hcCA9IHtcbiAgICAgIFc6ICB7c2hhcGU6IFwiY2lyY2xlXCIsIGNvbG9yOiBcImJsdWVcIn0sXG4gICAgICB3OiAge3NoYXBlOiBcImNpcmNsZVwiLCBjb2xvcjogXCJsaWdodHNreWJsdWVcIn0sXG4gICAgICBUOiAge3NoYXBlOiBcInNxdWFyZVwiLCBjb2xvcjogXCJmb3Jlc3RncmVlblwifSxcbiAgICAgIFRrOiB7c2hhcGU6IFwic3F1YXJlXCIsIGNvbG9yOiBcImxpbWVncmVlblwifSxcbiAgICAgIHQ6ICB7c2hhcGU6IFwic3F1YXJlXCIsIGNvbG9yOiBcIm1lZGl1bXNwcmluZ2dyZWVuXCJ9XG4gICAgfSxcblxuICAgIEl0ZW1UeXBlcyA9IHtcbiAgICAgIEFMTEVMRTogJ2FsbGVsZSdcbiAgICB9LFxuXG4gICAgYWxsZWxlU291cmNlID0ge1xuICAgICAgYmVnaW5EcmFnOiBmdW5jdGlvbiAocHJvcHMpIHtcbiAgICAgICAgcmV0dXJuIHtpbmRleDogcHJvcHMuaW5kZXgsIG9yZzogcHJvcHMub3JnLCBzaGFwZTogc2hhcGVDb2xvck1hcFtwcm9wcy5hbGxlbGVdLnNoYXBlfTtcbiAgICAgIH1cbiAgICB9LFxuXG4gICAgY29sbGVjdFNvdXJjZSA9IGZ1bmN0aW9uKGNvbm5lY3QsIG1vbml0b3IpIHtcbiAgICAgIHJldHVybiB7XG4gICAgICAgIGNvbm5lY3REcmFnU291cmNlOiBjb25uZWN0LmRyYWdTb3VyY2UoKSxcbiAgICAgICAgaXNEcmFnZ2luZzogbW9uaXRvci5pc0RyYWdnaW5nKClcbiAgICAgIH07XG4gICAgfSxcblxuICAgIFdyYXBwZWRBbGxlbGUgPSBSZWFjdC5jcmVhdGVDbGFzcyh7XG4gICAgICByZW5kZXI6IGZ1bmN0aW9uICgpIHtcbiAgICAgICAgdmFyIGNvbm5lY3REcmFnU291cmNlID0gdGhpcy5wcm9wcy5jb25uZWN0RHJhZ1NvdXJjZSxcbiAgICAgICAgICAgIGlzRHJhZ2dpbmcgPSB0aGlzLnByb3BzLmlzRHJhZ2dpbmcsXG4gICAgICAgICAgICBhbGxlbGUgPSB0aGlzLnByb3BzLmFsbGVsZTtcbiAgICAgICAgcmV0dXJuIGNvbm5lY3REcmFnU291cmNlKFxuICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHt9LFxuICAgICAgICAgICAgIWlzRHJhZ2dpbmcgPyBSZWFjdC5jcmVhdGVFbGVtZW50KEdlbmlCbG9ja3MuQWxsZWxlVmlldywge2FsbGVsZTogYWxsZWxlLCBjb2xvcjogc2hhcGVDb2xvck1hcFthbGxlbGVdLmNvbG9yLCBzaGFwZTogc2hhcGVDb2xvck1hcFthbGxlbGVdLnNoYXBlfSkgOiBudWxsXG4gICAgICAgICAgKVxuICAgICAgICApO1xuICAgICAgfVxuICAgIH0pLFxuXG4gICAgRHJhZ2dhYmxlQWxsZWxlID0gRHJhZ1NvdXJjZShJdGVtVHlwZXMuQUxMRUxFLCBhbGxlbGVTb3VyY2UsIGNvbGxlY3RTb3VyY2UpKFdyYXBwZWRBbGxlbGUpLFxuXG4gICAgYWxsZWxlVGFyZ2V0ID0ge1xuICAgICAgZHJvcDogZnVuY3Rpb24gKHByb3BzLCBtb25pdG9yKSB7XG4gICAgICAgIHByb3BzLm1vdmVBbGxlbGUobW9uaXRvci5nZXRJdGVtKCkuaW5kZXgsIG1vbml0b3IuZ2V0SXRlbSgpLm9yZywgcHJvcHMuaW5kZXgsIHByb3BzLm9yZyk7XG4gICAgICB9LFxuICAgICAgY2FuRHJvcDogZnVuY3Rpb24gKHByb3BzLCBtb25pdG9yKSB7XG4gICAgICAgIC8vY29uc29sZS5sb2coXCJjYW4gZHJvcD8/XCIpO1xuICAgICAgICAvL2NvbnNvbGUubG9nKG1vbml0b3IuZ2V0SXRlbSgpKTtcbiAgICAgICAgLy9jb25zb2xlLmxvZyhwcm9wcyk7XG4gICAgICAgIHJldHVybiAobW9uaXRvci5nZXRJdGVtKCkuc2hhcGUgPT09IHByb3BzLnNoYXBlKTtcbiAgICAgIH1cbiAgICB9LFxuXG4gICAgY29sbGVjdFRhcmdldCA9IGZ1bmN0aW9uKGNvbm5lY3QsIG1vbml0b3IpIHtcbiAgICAgIHJldHVybiB7XG4gICAgICAgIGNvbm5lY3REcm9wVGFyZ2V0OiBjb25uZWN0LmRyb3BUYXJnZXQoKSxcbiAgICAgICAgaXNPdmVyOiBtb25pdG9yLmlzT3ZlcigpLFxuICAgICAgICBjYW5Ecm9wOiBtb25pdG9yLmNhbkRyb3AoKVxuICAgICAgfTtcbiAgICB9LFxuXG4gICAgV3JhcHBlZEFsbGVsZVRhcmdldCA9IFJlYWN0LmNyZWF0ZUNsYXNzKHtcbiAgICAgIHJlbmRlcjogZnVuY3Rpb24gKCkge1xuICAgICAgICB2YXIgY29ubmVjdERyb3BUYXJnZXQgPSB0aGlzLnByb3BzLmNvbm5lY3REcm9wVGFyZ2V0LFxuICAgICAgICAgICAgaXNPdmVyID0gdGhpcy5wcm9wcy5pc092ZXIsXG4gICAgICAgICAgICBjYW5Ecm9wID0gdGhpcy5wcm9wcy5jYW5Ecm9wLFxuICAgICAgICAgICAgc2hhcGUgPSB0aGlzLnByb3BzLnNoYXBlLFxuICAgICAgICAgICAgYWxsZWxlID0gdGhpcy5wcm9wcy5hbGxlbGU7XG4gICAgICAgIHJldHVybiBjb25uZWN0RHJvcFRhcmdldChcbiAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7fSxcbiAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoR2VuaUJsb2Nrcy5BbGxlbGVWaWV3LCB7YWxsZWxlOiBhbGxlbGUsIGNvbG9yOiAoYWxsZWxlID8gc2hhcGVDb2xvck1hcFthbGxlbGVdLmNvbG9yIDogbnVsbCksIHNoYXBlOiAoYWxsZWxlID8gc2hhcGVDb2xvck1hcFthbGxlbGVdLnNoYXBlIDogc2hhcGUpLCB0YXJnZXQ6IHRydWUsIGhvdmVyaW5nOiAoaXNPdmVyICYmIGNhbkRyb3ApfSlcbiAgICAgICAgICApXG4gICAgICAgICk7XG4gICAgICB9XG4gICAgfSksXG5cbiAgICBBbGxlbGVEcm9wVGFyZ2V0ID0gRHJvcFRhcmdldChJdGVtVHlwZXMuQUxMRUxFLCBhbGxlbGVUYXJnZXQsIGNvbGxlY3RUYXJnZXQpKFdyYXBwZWRBbGxlbGVUYXJnZXQpLFxuXG4gICAgQWxsZWxlQ29udGFpbmVyID0gUmVhY3QuY3JlYXRlQ2xhc3Moe1xuICAgICAgcmVuZGVyOiBmdW5jdGlvbiAoKSB7XG4gICAgICAgIHZhciBhbGxlbGVQb29sID0gdGhpcy5wcm9wcy5wb29sLFxuICAgICAgICAgICAgYWxsZWxlVGFyZ2V0cyA9IHRoaXMucHJvcHMudGFyZ2V0cyxcbiAgICAgICAgICAgIG9yZyA9IHRoaXMucHJvcHMub3JnLFxuICAgICAgICAgICAgbW92ZUFsbGVsZSA9IHRoaXMucHJvcHMubW92ZUFsbGVsZTtcblxuICAgICAgICB2YXIgcG9vbCA9IGFsbGVsZVBvb2wubWFwKGZ1bmN0aW9uKGFsbGVsZSwgaSkge1xuICAgICAgICAgIGlmICghYWxsZWxlKSByZXR1cm4gbnVsbDtcbiAgICAgICAgICByZXR1cm4gUmVhY3QuY3JlYXRlRWxlbWVudChEcmFnZ2FibGVBbGxlbGUsIHthbGxlbGU6IGFsbGVsZSwga2V5OiBpLCBpbmRleDogaSwgb3JnOiBvcmd9KTtcbiAgICAgICAgfSk7XG5cbiAgICAgICAgdmFyIHRhcmdldHMgPSBhbGxlbGVUYXJnZXRzLm1hcChmdW5jdGlvbihhbGxlbGUsIGkpIHtcbiAgICAgICAgICBpZiAoYWxsZWxlID09PSBcImNpcmNsZVwiIHx8IGFsbGVsZSA9PT0gXCJzcXVhcmVcIikge1xuICAgICAgICAgICAgdmFyIHNoYXBlID0gYWxsZWxlO1xuICAgICAgICAgICAgYWxsZWxlID0gbnVsbDtcbiAgICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgc2hhcGUgPSBzaGFwZUNvbG9yTWFwW2FsbGVsZV0uc2hhcGU7XG4gICAgICAgICAgfVxuICAgICAgICAgIHJldHVybiBSZWFjdC5jcmVhdGVFbGVtZW50KEFsbGVsZURyb3BUYXJnZXQsIHthbGxlbGU6IGFsbGVsZSwga2V5OiBpLCBzaGFwZTogc2hhcGUsIGluZGV4OiBpLCBvcmc6IG9yZywgbW92ZUFsbGVsZTogbW92ZUFsbGVsZX0pO1xuICAgICAgICB9KTtcblxuICAgICAgICByZXR1cm4gKFxuICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtjbGFzc05hbWU6IFwiYWxsZWxlLWNvbnRhaW5lclwifSxcbiAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtjbGFzc05hbWU6IFwiYWxsZWxlLXRhcmdldHMgbGFiZWxhYmxlXCJ9LFxuICAgICAgICAgICAgICB0YXJnZXRzXG4gICAgICAgICAgICApLFxuICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge2NsYXNzTmFtZTogXCJhbGxlbGUtcG9vbFwifSxcbiAgICAgICAgICAgICAgcG9vbFxuICAgICAgICAgICAgKVxuICAgICAgICAgIClcbiAgICAgICAgKTtcbiAgICAgIH1cbiAgICB9KSxcblxuICAgIFB1bm5ldHRDb250YWluZXIgPSBSZWFjdC5jcmVhdGVDbGFzcyh7XG4gICAgICByZW5kZXI6IGZ1bmN0aW9uICgpIHtcbiAgICAgICAgdmFyIGFsbGVsZXMgPSB0aGlzLnByb3BzLmFsbGVsZXMsXG4gICAgICAgICAgICBvcmdzID0gdGhpcy5wcm9wcy5vcmdzLFxuICAgICAgICAgICAgbW92ZUFsbGVsZSA9IHRoaXMucHJvcHMubW92ZUFsbGVsZSxcblxuICAgICAgICAgICAgb3JnVmlld3MgPSBvcmdzLm1hcChmdW5jdGlvbihvcmcsIGluZGV4KSB7XG4gICAgICAgICAgICAgIHJldHVybiBvcmcgPyAgUmVhY3QuY3JlYXRlRWxlbWVudChHZW5pQmxvY2tzLk9yZ2FuaXNtVmlldywge29yZzogb3JnLCBrZXk6IGluZGV4fSkgOiBudWxsO1xuICAgICAgICAgICAgfSk7XG5cbiAgICAgICAgcmV0dXJuIChcbiAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7Y2xhc3NOYW1lOiBcInB1bm5ldHQtc3F1YXJlXCJ9LFxuICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge2NsYXNzTmFtZTogXCJ0b3BcIn0sXG4gICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoQWxsZWxlRHJvcFRhcmdldCwge2FsbGVsZTogYWxsZWxlc1swXSwgc2hhcGU6IFwiY2lyY2xlXCIsIGluZGV4OiAwLCBtb3ZlQWxsZWxlOiBtb3ZlQWxsZWxlfSksXG4gICAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoQWxsZWxlRHJvcFRhcmdldCwge2FsbGVsZTogYWxsZWxlc1sxXSwgc2hhcGU6IFwiY2lyY2xlXCIsIGluZGV4OiAxLCBtb3ZlQWxsZWxlOiBtb3ZlQWxsZWxlfSlcbiAgICAgICAgICAgICksXG4gICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7Y2xhc3NOYW1lOiBcInJvd1wifSxcbiAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudChBbGxlbGVEcm9wVGFyZ2V0LCB7YWxsZWxlOiBhbGxlbGVzWzJdLCBzaGFwZTogXCJjaXJjbGVcIiwgaW5kZXg6IDIsIG1vdmVBbGxlbGU6IG1vdmVBbGxlbGV9KSxcbiAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge2NsYXNzTmFtZTogXCJib3ggb3JnLTFcIn0sIG9yZ1ZpZXdzWzBdKSxcbiAgICAgICAgICAgICAgUmVhY3QuY3JlYXRlRWxlbWVudCgnZGl2Jywge2NsYXNzTmFtZTogXCJib3ggb3JnLTJcIn0sIG9yZ1ZpZXdzWzJdKVxuICAgICAgICAgICAgKSxcbiAgICAgICAgICAgIFJlYWN0LmNyZWF0ZUVsZW1lbnQoJ2RpdicsIHtjbGFzc05hbWU6IFwicm93XCJ9LFxuICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KEFsbGVsZURyb3BUYXJnZXQsIHthbGxlbGU6IGFsbGVsZXNbM10sIHNoYXBlOiBcImNpcmNsZVwiLCBpbmRleDogMywgbW92ZUFsbGVsZTogbW92ZUFsbGVsZX0pLFxuICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7Y2xhc3NOYW1lOiBcImJveCBvcmctM1wifSwgb3JnVmlld3NbMV0pLFxuICAgICAgICAgICAgICBSZWFjdC5jcmVhdGVFbGVtZW50KCdkaXYnLCB7Y2xhc3NOYW1lOiBcImJveCBvcmctNFwifSwgb3JnVmlld3NbM10pXG4gICAgICAgICAgICApXG4gICAgICAgICAgKVxuICAgICAgICApO1xuICAgICAgfVxuICAgIH0pO1xuXG53aW5kb3cuQWxsZWxlQ29udGFpbmVyID0gQWxsZWxlQ29udGFpbmVyO1xud2luZG93LlB1bm5ldHRDb250YWluZXIgPSBQdW5uZXR0Q29udGFpbmVyO1xuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
