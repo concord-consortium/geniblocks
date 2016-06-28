@@ -1,13 +1,15 @@
 import React, {PropTypes} from 'react';
 import ChromosomeImageView from './chromosome-image';
 import GeneLabelView from './gene-label';
+import AlleleView from './allele';
 import GeneticsUtils from '../utilities/genetics-utils';
 
-const ChromosomeView = ({org, chromosomeName, side, hiddenAlleles=[], editable=true, onAlleleChange, onChromosomeSelected, showLabels=true, labelsOnRight=true, draggable=false}) => {
+const ChromosomeView = ({org, chromosomeName, side, hiddenAlleles=[], editable=true, onAlleleChange, onChromosomeSelected, showLabels=true, showAlleles=false, labelsOnRight=true, draggable=false}) => {
   let alleles = org.getGenotype().chromosomes[chromosomeName][side].alleles,
       visibleAlleles = GeneticsUtils.filterAlleles(alleles, hiddenAlleles, org.species),
       containerClass = "items",
-      labelsContainer = null;
+      labelsContainer = null,
+      allelesContainer = null;
 
   if (showLabels) {
     let labels = visibleAlleles.map(a => {
@@ -30,6 +32,20 @@ const ChromosomeView = ({org, chromosomeName, side, hiddenAlleles=[], editable=t
     }
   }
 
+  if (showAlleles) {
+    let alleleSymbols = visibleAlleles.map(a => {
+      return (
+        <AlleleView key={a} allele={a} />
+      );
+    });
+
+    allelesContainer = (
+      <div className="alleles">
+        { alleleSymbols }
+      </div>
+    );
+  }
+
   const handleSelect = function() {
     if (onChromosomeSelected) {
       onChromosomeSelected(org, org.getGenotype().chromosomes[chromosomeName]);
@@ -40,6 +56,7 @@ const ChromosomeView = ({org, chromosomeName, side, hiddenAlleles=[], editable=t
     <div className="geniblocks chromosome-container" onClick={ handleSelect } >
       <div className={ containerClass }>
         <ChromosomeImageView />
+        { allelesContainer }
         { labelsContainer }
       </div>
     </div>
@@ -53,6 +70,7 @@ ChromosomeView.propTypes = {
   hiddenAlleles: PropTypes.array,
   editable: PropTypes.bool,
   showLabels: PropTypes.bool,
+  showAlleles: PropTypes.bool,
   labelsOnRight: PropTypes.bool,
   draggable: PropTypes.bool,
   onAlleleChange: PropTypes.func,

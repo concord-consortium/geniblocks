@@ -13,10 +13,12 @@
       <tr>
         <th>Chromosome with no labels</th>
         <th>Chromosome with labels</th>
+        <th>Chromosome with alleles</th>
       </tr>
       <tr>
         <td id="chromosome-no-labels"></td>
         <td id="chromosome-labels"></td>
+        <td id="chromosome-alleles"></td>
       </tr>
     </table>
 
@@ -42,6 +44,17 @@
             side: "a"
           }),
           document.getElementById('chromosome-labels')
+        );
+
+        ReactDOM.render(
+          React.createElement(GeniBlocks.ChromosomeView, {
+            org: dragon,
+            chromosomeName: 1,
+            side: "a",
+            showLabels: false,
+            showAlleles: true
+          }),
+          document.getElementById('chromosome-alleles')
         );
       }
 
