@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <script src="../js/lib/react/react.js"></script>
+    <script src="../js/lib/react/react-dom.js"></script>
+    <script src="../js/lib/biologica.js/dist/biologica.js"></script>
+    <link rel="stylesheet" href="../css/geniblocks.css">
+    <style>
+      td, th { border: 1px solid #CCC; padding: 6px; }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Chromosome with no labels</th>
+        <th>Chromosome with labels</th>
+      </tr>
+      <tr>
+        <td id="chromosome-no-labels"></td>
+        <td id="chromosome-labels"></td>
+      </tr>
+    </table>
+
+    <script src="../js/geniblocks.js"></script>
+    <script>
+      var dragon;
+
+      function render() {
+        ReactDOM.render(
+          React.createElement(GeniBlocks.ChromosomeView, {
+            org: dragon,
+            chromosomeName: 1,
+            side: "a",
+            showLabels: false
+          }),
+          document.getElementById('chromosome-no-labels')
+        );
+
+        ReactDOM.render(
+          React.createElement(GeniBlocks.ChromosomeView, {
+            org: dragon,
+            chromosomeName: 1,
+            side: "a"
+          }),
+          document.getElementById('chromosome-labels')
+        );
+      }
+
+      dragon = new BioLogica.Organism(BioLogica.Species.Drake, "", 0);
+      render();
+    </script>
+  </body>
+</html>

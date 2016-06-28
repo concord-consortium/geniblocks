@@ -27,6 +27,12 @@ describe("<ChromosomeView />", function(){
     assert.lengthOf(labelsWrapper, 1, "should create a single <div> with 'labels' class");
   });
 
+  it("should create no labels if showLabels is false", function() {
+    const wrapper = shallow(<ChromosomeView org={drake} chromosomeName='1' side='a' showLabels={false}/>),
+          labelsWrapper = wrapper.find('div.labels');
+    assert.lengthOf(labelsWrapper, 0, "should create no <div> with 'labels' class");
+  });
+
   it("should create a <ChromosomeImageView> tag", function() {
     const wrapper = shallow(<ChromosomeView org={drake} chromosomeName='1' side='a'/>);
     assert.lengthOf(wrapper.find('ChromosomeImageView'), 1, "Should create a single <ChromosomeImageView> component");
