@@ -3,12 +3,12 @@ import ChromosomeImageView from './chromosome-image';
 import GeneLabelView from './gene-label';
 import GeneticsUtils from '../utilities/genetics-utils';
 
-const ChromosomeView = ({org, chromosomeName, side, hiddenAlleles=[], editable=true, onAlleleChange, labelsOnRight=true}) => {
+const ChromosomeView = ({org, chromosomeName, side, hiddenAlleles=[], editable=true, onAlleleChange, onChromosomeSelected, labelsOnRight=true, draggable=false}) => {
   let alleles = org.getGenotype().chromosomes[chromosomeName][side].alleles,
       visibleAlleles = GeneticsUtils.filterAlleles(alleles, hiddenAlleles, org.species),
       labels  = visibleAlleles.map(a => {
         return (
-          <GeneLabelView key={a} species={org.species} allele={a} editable={editable}
+          <GeneLabelView key={a} species={org.species} allele={a} editable={editable} draggable={draggable}
           onAlleleChange={function(event) {
             onAlleleChange(a, event.target.value);
           }}/>
@@ -20,9 +20,12 @@ const ChromosomeView = ({org, chromosomeName, side, hiddenAlleles=[], editable=t
   if (!labelsOnRight) {
     containerClass += " rtl";
   }
-
+  const handleSelect = function() {
+      console.log(chromosomeName);
+      onChromosomeSelected(org, org.getGenotype().chromosomes[chromosomeName]);
+  };
   return (
-    <div className="geniblocks chromosome-container">
+    <div className="geniblocks chromosome-container" onClick={ handleSelect } >
       <div className={ containerClass }>
         <ChromosomeImageView />
         <div className="labels">
@@ -40,7 +43,9 @@ ChromosomeView.propTypes = {
   hiddenAlleles: PropTypes.array,
   editable: PropTypes.bool,
   onAlleleChange: PropTypes.func,
-  labelsOnRight: PropTypes.bool
+  labelsOnRight: PropTypes.bool,
+  draggable: PropTypes.bool,
+  onChromosomeSelected: PropTypes.func.isRequired
 };
 
 export default ChromosomeView;

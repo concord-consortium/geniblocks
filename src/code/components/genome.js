@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import ChromosomeView from './chromosome';
 
-const GenomeView = ({org, hiddenAlleles = [], editable=true, onAlleleChange}) => {
+const GenomeView = ({org, hiddenAlleles = [], editable=true, onAlleleChange, onChromosomeSelected}) => {
   let pairWrappers = [];
   for (let chromosomeName of org.species.chromosomeNames) {
     let chrom = org.genetics.genotype.chromosomes[chromosomeName],
@@ -16,8 +16,12 @@ const GenomeView = ({org, hiddenAlleles = [], editable=true, onAlleleChange}) =>
           hiddenAlleles={hiddenAlleles}
           labelsOnRight={pairs.length>0}
           editable={editable}
+          draggable={!editable}
           onAlleleChange={function(prevAllele, newAllele) {
             onAlleleChange(chromosomeName, side, prevAllele, newAllele);
+          }}
+          onChromosomeSelected={function(organism, chromosome){
+            onChromosomeSelected(organism, chromosome);
           }}/>
       );
     }
@@ -38,7 +42,8 @@ GenomeView.propTypes = {
   org: PropTypes.object.isRequired,
   hiddenAlleles: PropTypes.array,
   onAlleleChange: PropTypes.func.isRequired,
-  editable: PropTypes.bool
+  editable: PropTypes.bool,
+  onChromosomeSelected: PropTypes.func.isRequired
 };
 
 export default GenomeView;

@@ -60,6 +60,12 @@ export default function reducer(state, action) {
       let path = ["drakes", action.index, "sex"];
       return state.setIn(path, action.newSex);
     }
+    
+    case actionTypes.CHROMOSOME_SELECTED: {
+      console.log(action.chromosome, action.organism);
+      return state;
+    }
+
     case actionTypes.DRAKE_SUBMITTED: {
       let challengeComplete = false;
       let progress = updateProgress(state, action.correct);

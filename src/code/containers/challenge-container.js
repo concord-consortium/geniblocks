@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import templates from '../templates';
-import { changeAllele, changeSex, submitDrake, navigateToCurrentRoute, navigateToChallenge, navigateToNextChallenge } from '../actions';
+import { changeAllele, changeSex, submitDrake, navigateToCurrentRoute, navigateToChallenge, navigateToNextChallenge, selectChromosome } from '../actions';
 
 class ChallengeContainer extends Component {
   componentWillMount() {
@@ -58,7 +58,8 @@ function mapDispatchToProps(dispatch) {
     onDrakeSubmission: (targetPhenotype, userPhenotype, correct) => dispatch(submitDrake(targetPhenotype, userPhenotype, correct)),
     onNavigateNextChallenge: () => dispatch(navigateToNextChallenge()),
     navigateToChallenge: (_case, challenge) => dispatch(navigateToChallenge(_case, challenge)),
-    navigateToCurrentRoute: (_case, challenge) => dispatch(navigateToCurrentRoute(_case, challenge))
+    navigateToCurrentRoute: (_case, challenge) => dispatch(navigateToCurrentRoute(_case, challenge)),
+    onChromosomeSelected: (organism, chromosome) => dispatch(selectChromosome(organism, chromosome))
   };
 }
 
