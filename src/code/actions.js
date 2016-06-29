@@ -5,7 +5,7 @@ export const actionTypes = {
   BRED: "Bred",
   ALLELE_CHANGED: "Allele changed",
   SEX_CHANGED: "Sex changed",
-  CHROMOSOME_SELECTED: "Chromosome selected",
+  GAMETE_CHROMOSOME_ADDED: "Gamete chromosome added",
   DRAKE_SUBMITTED: "Drake submitted",
   NAVIGATED_NEXT_CHALLENGE: "Navigated to next challenge",
   MODAL_DIALOG_DISMISSED: "Modal dialog dismissed",
@@ -125,10 +125,11 @@ export function advanceChallenge() {
   };
 }
 
-export function selectChromosome(organism, chromosome) {
+export function addGameteChromosome(index, number, chromosome) {
   return{
-    type: actionTypes.CHROMOSOME_SELECTED,
-    organism,
+    type: actionTypes.GAMETE_CHROMOSOME_ADDED,
+    index,
+    number,
     chromosome
   };
 }

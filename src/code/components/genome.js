@@ -21,8 +21,9 @@ const GenomeView = ({org, hiddenAlleles = [], editable=true, showLabels=true, sh
           onAlleleChange={function(prevAllele, newAllele) {
             onAlleleChange(chromosomeName, side, prevAllele, newAllele);
           }}
-          onChromosomeSelected={function(organism, chromosome){
-            onChromosomeSelected(organism, chromosome);
+          onChromosomeSelected={function(){
+            if (onChromosomeSelected)
+              onChromosomeSelected(org, chromosomeName, side);
           }}/>
       );
     }
@@ -44,7 +45,7 @@ GenomeView.propTypes = {
   hiddenAlleles: PropTypes.array,
   onAlleleChange: PropTypes.func.isRequired,
   editable: PropTypes.bool,
-  onChromosomeSelected: PropTypes.func.isRequired
+  onChromosomeSelected: PropTypes.func
 };
 
 export default GenomeView;

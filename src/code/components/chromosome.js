@@ -53,7 +53,7 @@ const ChromosomeView = ({org, chromosomeName, side, hiddenAlleles=[], editable=t
 
   const handleSelect = function() {
     if (onChromosomeSelected) {
-      onChromosomeSelected(org, org.getGenotype().chromosomes[chromosomeName]);
+      onChromosomeSelected();
     }
   };
 

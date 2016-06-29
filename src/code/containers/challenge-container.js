@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import templates from '../templates';
-import { changeAllele, changeSex, submitDrake, navigateToCurrentRoute, navigateToChallenge, navigateToNextChallenge, selectChromosome } from '../actions';
+import { changeAllele, changeSex, submitDrake, navigateToCurrentRoute, navigateToChallenge, navigateToNextChallenge, addGameteChromosome } from '../actions';
 
 class ChallengeContainer extends Component {
   componentWillMount() {
@@ -40,6 +40,7 @@ function mapStateToProps (state) {
     return {
       template: state.template,
       drakes: state.drakes,
+      gametes: state.gametes,
       hiddenAlleles: state.hiddenAlleles.asMutable(),
       trial: state.trial,
       trials: state.trials,
@@ -59,7 +60,7 @@ function mapDispatchToProps(dispatch) {
     onNavigateNextChallenge: () => dispatch(navigateToNextChallenge()),
     navigateToChallenge: (_case, challenge) => dispatch(navigateToChallenge(_case, challenge)),
     navigateToCurrentRoute: (_case, challenge) => dispatch(navigateToCurrentRoute(_case, challenge)),
-    onChromosomeSelected: (organism, chromosome) => dispatch(selectChromosome(organism, chromosome))
+    onGameteChromosomeAdded: (index, number, chromosome) => dispatch(addGameteChromosome(index, number, chromosome))
   };
 }
 

@@ -25,14 +25,20 @@ export function loadStateFromAuthoring(state, authoring, progress={}) {
     goalMoves = template.calculateGoalMoves(drakes);
   }
 
+  let gametes = [];
+  if (template.initialGametesArray) {
+    gametes = template.initialGametesArray();
+  }
+
   return state.merge({
     template: templateName,
-    drakes: drakes,
+    drakes,
+    gametes,
     trial,
     trials,
     challenges,
     moves: 0,
-    goalMoves: goalMoves,
+    goalMoves,
     showingInfoMessage: false,
     userDrakeHidden: true,
     trialSuccess: false,

@@ -8,6 +8,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 const initialState = Immutable({
   template: null,
   drakes: [],
+  gametes: [],
   hiddenAlleles: ['t','tk','h','c','a','b','d','bog','rh'],
   trial: 0,
   moves: 0,
@@ -60,10 +61,10 @@ export default function reducer(state, action) {
       let path = ["drakes", action.index, "sex"];
       return state.setIn(path, action.newSex);
     }
-    
-    case actionTypes.CHROMOSOME_SELECTED: {
-      console.log(action.chromosome, action.organism);
-      return state;
+
+    case actionTypes.GAMETE_CHROMOSOME_ADDED: {
+      let path = ["gametes", action.index, action.number];
+      return state.setIn(path, action.chromosome);
     }
 
     case actionTypes.DRAKE_SUBMITTED: {
