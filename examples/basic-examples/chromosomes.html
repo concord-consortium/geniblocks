@@ -14,11 +14,13 @@
         <th>Chromosome with no labels</th>
         <th>Chromosome with labels</th>
         <th>Chromosome with alleles</th>
+        <th>Chromosome with both</th>
       </tr>
       <tr>
         <td id="chromosome-no-labels"></td>
         <td id="chromosome-labels"></td>
         <td id="chromosome-alleles"></td>
+        <td id="chromosome-both"></td>
       </tr>
     </table>
 
@@ -26,13 +28,20 @@
     <script>
       var dragon;
 
+      function onAlleleChange(prevAllele, newAllele) {
+        dragon.genetics.genotype.replaceAlleleChromName(1, "a", prevAllele, newAllele);
+        dragon = new BioLogica.Organism(BioLogica.Species.Drake, dragon.getAlleleString(), 1);
+        render();
+      }
+
       function render() {
         ReactDOM.render(
           React.createElement(GeniBlocks.ChromosomeView, {
             org: dragon,
             chromosomeName: 1,
             side: "a",
-            showLabels: false
+            showLabels: false,
+            onAlleleChange
           }),
           document.getElementById('chromosome-no-labels')
         );
@@ -41,7 +50,8 @@
           React.createElement(GeniBlocks.ChromosomeView, {
             org: dragon,
             chromosomeName: 1,
-            side: "a"
+            side: "a",
+            onAlleleChange
           }),
           document.getElementById('chromosome-labels')
         );
@@ -52,9 +62,22 @@
             chromosomeName: 1,
             side: "a",
             showLabels: false,
-            showAlleles: true
+            showAlleles: true,
+            onAlleleChange
           }),
           document.getElementById('chromosome-alleles')
+        );
+
+        ReactDOM.render(
+          React.createElement(GeniBlocks.ChromosomeView, {
+            org: dragon,
+            chromosomeName: 1,
+            side: "a",
+            showLabels: true,
+            showAlleles: true,
+            onAlleleChange
+          }),
+          document.getElementById('chromosome-both')
         );
       }
 

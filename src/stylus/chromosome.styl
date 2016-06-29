@@ -12,14 +12,20 @@
       align-items: flex-start;
       div
         order: 0
-        flex: 0 1 40px
+        flex: 0 1 32px
         align-self: auto
       select
         height: 20px
-    .alleles
-      display: flex
-      flex-direction: column
-      justify-content: space-around
+    .chromosome-allele-container
+      position: relative
+      .alleles
+        display: flex
+        flex-direction: column
+        justify-content: space-around
+        position: absolute
+        top: 9px
+        left: 2px
+        height: 90%
 
 
     &.rtl

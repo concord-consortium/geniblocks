@@ -55,8 +55,10 @@ const ChromosomeView = ({org, chromosomeName, side, hiddenAlleles=[], editable=t
   return (
     <div className="geniblocks chromosome-container" onClick={ handleSelect } >
       <div className={ containerClass }>
-        <ChromosomeImageView />
-        { allelesContainer }
+        <div className="chromosome-allele-container">
+          <ChromosomeImageView />
+          { allelesContainer }
+        </div>
         { labelsContainer }
       </div>
     </div>
