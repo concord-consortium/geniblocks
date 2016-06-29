@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import OrganismView from '../components/organism';
 import GenomeView from '../components/genome';
 import ButtonView from '../components/button';
 
@@ -22,19 +23,25 @@ export default class EggGame extends Component {
       <div id="egg-game">
         <div className='column'>
           <div>Mother</div>
+            <OrganismView org={ mother } />
             <GenomeView className="drake-genome" org={ mother } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} showAlleles={true} hiddenAlleles= { hiddenAlleles } />
+        </div>
+        <div className='egg'>
+          <div className='column'>
             <div>Ovum</div>
             <div className='egg-alleles' />
+          </div>
+          <img src="resources/images/egg_yellow.png" />
+          <div className='column'>
+            <div>Sperm</div>
+            <div className='egg-alleles' />
+          </div>
         </div>
         <div className='column'>
           <div>Father</div>
+            <OrganismView org={ father } />
             <GenomeView className="drake-genome" org={ father } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} showAlleles={true} hiddenAlleles= { hiddenAlleles } />
-            <div>Sperm</div>
-            <div className='egg-alleles' />
         </div>
-          <div className='egg'>
-            <img src="resources/images/egg_yellow.png" />
-          </div>
       </div>
     );
     }
