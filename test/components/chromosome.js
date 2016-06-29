@@ -44,4 +44,13 @@ describe("<ChromosomeView />", function(){
     assert.lengthOf(wrapper.find('ChromosomeImageView'), 1, "Should create a single <ChromosomeImageView> component");
   });
 
+  it("should create an empty chromosome if there is no organism", function() {
+    const wrapper = shallow(<ChromosomeView />),
+          labelsWrapper = wrapper.find('div.labels'),
+          allelesWrapper = wrapper.find('div.alleles');
+    assert.lengthOf(labelsWrapper, 0, "Should create no labels");
+    assert.lengthOf(allelesWrapper, 0, "Should create no alleles");
+    assert.lengthOf(wrapper.find('ChromosomeImageView'), 1, "Should still create a <ChromosomeImageView>");
+  });
+
 });

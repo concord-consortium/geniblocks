@@ -15,12 +15,14 @@
         <th>Chromosome with labels</th>
         <th>Chromosome with alleles</th>
         <th>Chromosome with both</th>
+        <th>Chromosome with no organism</th>
       </tr>
       <tr>
         <td id="chromosome-no-labels"></td>
         <td id="chromosome-labels"></td>
         <td id="chromosome-alleles"></td>
         <td id="chromosome-both"></td>
+        <td id="chromosome-orgless"></td>
       </tr>
     </table>
 
@@ -78,6 +80,12 @@
             onAlleleChange
           }),
           document.getElementById('chromosome-both')
+        );
+
+        ReactDOM.render(
+          React.createElement(GeniBlocks.ChromosomeView, {
+          }),
+          document.getElementById('chromosome-orgless')
         );
       }
 
