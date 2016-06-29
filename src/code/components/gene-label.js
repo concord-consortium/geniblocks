@@ -1,17 +1,11 @@
 import React, {PropTypes} from 'react';
 import AlleleView from './allele';
 
-const GeneLabelView = ({species, allele, editable=false, onAlleleChange, draggable}) => {
-  let alleleIcon = null;
-
-  if (draggable){
-    alleleIcon = <AlleleView allele={allele} />;
-  }
+const GeneLabelView = ({species, allele, editable=false, onAlleleChange}) => {
   if (!editable) {
     const alleleName = species.alleleLabelMap[allele];
     return (
       <div className="geniblocks gene-label allele noneditable">
-      { alleleIcon }
         <span>
           { alleleName }
         </span>
@@ -37,8 +31,7 @@ GeneLabelView.propTypes = {
   species: PropTypes.object.isRequired,
   allele: PropTypes.string.isRequired,
   editable: PropTypes.bool,
-  onAlleleChange: PropTypes.func,
-  draggable: PropTypes.bool
+  onAlleleChange: PropTypes.func
 };
 
 export default GeneLabelView;

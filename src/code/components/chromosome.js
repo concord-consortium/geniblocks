@@ -4,7 +4,7 @@ import GeneLabelView from './gene-label';
 import AlleleView from './allele';
 import GeneticsUtils from '../utilities/genetics-utils';
 
-const ChromosomeView = ({org, chromosomeName, side, hiddenAlleles=[], editable=true, onAlleleChange, onChromosomeSelected, showLabels=true, showAlleles=false, labelsOnRight=true, draggable=false}) => {
+const ChromosomeView = ({org, chromosomeName, side, hiddenAlleles=[], editable=true, onAlleleChange, onChromosomeSelected, showLabels=true, showAlleles=false, labelsOnRight=true}) => {
   var containerClass = "items",
       empty = false,
       labelsContainer, allelesContainer;
@@ -16,7 +16,7 @@ const ChromosomeView = ({org, chromosomeName, side, hiddenAlleles=[], editable=t
     if (showLabels) {
       let labels = visibleAlleles.map(a => {
         return (
-          <GeneLabelView key={a} species={org.species} allele={a} editable={editable} draggable={draggable}
+          <GeneLabelView key={a} species={org.species} allele={a} editable={editable}
           onAlleleChange={function(event) {
             onAlleleChange(a, event.target.value);
           }}/>
@@ -79,7 +79,6 @@ ChromosomeView.propTypes = {
   showLabels: PropTypes.bool,
   showAlleles: PropTypes.bool,
   labelsOnRight: PropTypes.bool,
-  draggable: PropTypes.bool,
   onAlleleChange: PropTypes.func,
   onChromosomeSelected: PropTypes.func
 };
