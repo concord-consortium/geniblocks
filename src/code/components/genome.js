@@ -1,18 +1,28 @@
 import React, {PropTypes} from 'react';
 import ChromosomeView from './chromosome';
 
-const GenomeView = ({org, hiddenAlleles = [], editable=true, showLabels=true, showAlleles=false, onAlleleChange, onChromosomeSelected}) => {
+/**
+ * View of the set of chromosomes of an organism, ordered as matched pairs.
+ *
+ * Usually defined by passing in a Biologica Organism, but may also be defined by
+ * passing in a map of Biologica Chromosomes and a Biologica Species.
+ */
+const GenomeView = ({org, chromosomes, species, hiddenAlleles = [], editable=true, showLabels=true, showAlleles=false, onAlleleChange, onChromosomeSelected}) => {
   let pairWrappers = [];
-  for (let chromosomeName of org.species.chromosomeNames) {
-    let chrom = org.genetics.genotype.chromosomes[chromosomeName],
+  if (org) {
+    chromosomes = org.genetics.genotype.chromosomes;
+    species = org.species;
+  }
+
+  for (let chromosomeName of species.chromosomeNames) {
+    let chrom = chromosomes[chromosomeName],
         pairs = [];
     for (let side in chrom) {
+      let chromosome = chrom[side];
       pairs.push(
         <ChromosomeView
-          org={org}
+          chromosome={chromosome}
           key={pairs.length + 1}
-          chromosomeName={chromosomeName}
-          side={side}
           hiddenAlleles={hiddenAlleles}
           labelsOnRight={pairs.length>0}
           editable={editable}
@@ -41,7 +51,9 @@ const GenomeView = ({org, hiddenAlleles = [], editable=true, showLabels=true, sh
 };
 
 GenomeView.propTypes = {
-  org: PropTypes.object.isRequired,
+  org: PropTypes.object,
+  chromosomes: PropTypes.object,
+  species: PropTypes.object,
   hiddenAlleles: PropTypes.array,
   onAlleleChange: PropTypes.func.isRequired,
   editable: PropTypes.bool,
