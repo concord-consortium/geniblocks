@@ -1,7 +1,8 @@
 import ChromosomeView from '../../src/code/components/chromosome';
 
 describe("<ChromosomeView />", function(){
-  const drake = new BioLogica.Organism(BioLogica.Species.Drake, '');
+  const drake = new BioLogica.Organism(BioLogica.Species.Drake, ''),
+        chromosome = drake.getGenotype().chromosomes[1]["a"];
 
   it("should create a <div> tag with appropriate classes", function() {
     const wrapper = shallow(<ChromosomeView org={drake} chromosomeName='1' side='a'/>);
@@ -51,6 +52,13 @@ describe("<ChromosomeView />", function(){
     assert.lengthOf(labelsWrapper, 0, "Should create no labels");
     assert.lengthOf(allelesWrapper, 0, "Should create no alleles");
     assert.lengthOf(wrapper.find('ChromosomeImageView'), 1, "Should still create a <ChromosomeImageView>");
+  });
+
+  it("should create the view when passed a chromosome object", function() {
+    const wrapper = shallow(<ChromosomeView chromosome={chromosome}/>),
+          labelsWrapper = wrapper.find('div.labels');
+    assert.lengthOf(wrapper.find('ChromosomeImageView'), 1, "Should create a single <ChromosomeImageView> component");
+    assert.lengthOf(labelsWrapper, 1, "should create a single <div> with 'labels' class");
   });
 
 });
