@@ -196,18 +196,26 @@
   top: -33px;
 }
 
-.egg{
+.egg
   position: relative;
   top: 200px;
   display: flex;
-  width: 350px;
-}
+  width: 420px;
 
-.egg .geniblocks.genome {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
+  .gametes
+    display: flex
+    justify-content: space-between
+    >div
+      width: 170px
+      padding: 0 0 0 0
+      transition: padding 2s
+      &.half-genome-left .chromosome-pair
+          justify-content: flex-end
+    &.unfertilized
+      >div.half-genome-left
+        padding: 0 50px 0 0
+      >div.half-genome-right
+        padding: 0 0 0 50px
 
 .egg img{
   width:100px

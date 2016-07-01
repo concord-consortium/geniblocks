@@ -25,28 +25,44 @@ export default class EggGame extends Component {
         }
       }
 
-      const gameteChromosomeMap = {
-        "1":  { a: getGameteChromosome(1, 1),    b: getGameteChromosome(0, 1) },
-        "2":  { a: getGameteChromosome(1, 2),    b: getGameteChromosome(0, 2) },
-        "XY": { a: getGameteChromosome(1, "XY"), b: getGameteChromosome(0, "XY") }
+      const femaleGameteChromosomeMap = {
+        "1":  { a: getGameteChromosome(1, 1)},
+        "2":  { a: getGameteChromosome(1, 2)},
+        "XY": { a: getGameteChromosome(1, "XY") }
       };
 
+      const maleGameteChromosomeMap = {
+        "1":  { b: getGameteChromosome(0, 1)},
+        "2":  { b: getGameteChromosome(0, 2)},
+        "XY": { b: getGameteChromosome(0, "XY") }
+      };
 
+      let gametesClass = "gametes";
+      if (Object.keys(gametes[0]).length !== 3 || Object.keys(gametes[1]).length !== 3) {
+        gametesClass += " unfertilized";
+      }
 
       return (
       <div id="egg-game">
         <div className='column'>
           <div>Mother</div>
             <OrganismView org={ mother } />
-            <GenomeView className="drake-genome" org={ mother } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } />
+            <GenomeView org={ mother } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } />
         </div>
         <div className='egg column'>
-          <GenomeView className="gamete-genomes" chromosomes={ gameteChromosomeMap } species={ mother.species } editable={false} hiddenAlleles= { hiddenAlleles } />
+          <div className={ gametesClass }>
+            <div className='half-genome-left'>
+              <GenomeView chromosomes={ femaleGameteChromosomeMap } species={ mother.species } editable={false} hiddenAlleles= { hiddenAlleles } />
+            </div>
+            <div className='half-genome-right'>
+              <GenomeView chromosomes={ maleGameteChromosomeMap }   species={ mother.species } editable={false} hiddenAlleles= { hiddenAlleles } />
+            </div>
+          </div>
         </div>
         <div className='column'>
           <div>Father</div>
             <OrganismView org={ father } />
-            <GenomeView className="drake-genome" org={ father } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } />
+            <GenomeView org={ father } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } />
         </div>
       </div>
     );

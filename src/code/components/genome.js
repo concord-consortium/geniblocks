@@ -24,7 +24,7 @@ const GenomeView = ({org, chromosomes, species, hiddenAlleles = [], editable=tru
           chromosome={chromosome}
           key={pairs.length + 1}
           hiddenAlleles={hiddenAlleles}
-          labelsOnRight={pairs.length>0}
+          labelsOnRight={pairs.length>0 || side==="b"}
           editable={editable}
           showLabels={showLabels}
           showAlleles={showAlleles}
