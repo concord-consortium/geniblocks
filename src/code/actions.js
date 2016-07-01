@@ -125,12 +125,12 @@ export function advanceChallenge() {
   };
 }
 
-export function addGameteChromosome(index, number, chromosome) {
+export function addGameteChromosome(index, name, side) {
   return{
     type: actionTypes.GAMETE_CHROMOSOME_ADDED,
     index,
-    number,
-    chromosome
+    name,
+    side
   };
 }
 

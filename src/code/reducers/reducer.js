@@ -63,8 +63,8 @@ export default function reducer(state, action) {
     }
 
     case actionTypes.GAMETE_CHROMOSOME_ADDED: {
-      let path = ["gametes", action.index, action.number];
-      return state.setIn(path, action.chromosome);
+      let path = ["gametes", action.index, action.name];
+      return state.setIn(path, action.side);
     }
 
     case actionTypes.DRAKE_SUBMITTED: {

@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import OrganismView from '../components/organism';
 import GenomeView from '../components/genome';
-import GameteGenomeView from '../components/gamete-genome';
-import ButtonView from '../components/button';
 
 export default class EggGame extends Component {
     render() {
@@ -17,37 +15,38 @@ export default class EggGame extends Component {
         onNavigateNextChallenge(challenge+1);
       };
       const handleChromosomeSelected = function(org, name, side) {
-        let chromosomeObj = {orgAlleles: org.getAlleleString(), orgSex: org.sex, name, side},
-            chromoNumber = {1: 0, 2: 1, "XY": 2}[name];
-        onGameteChromosomeAdded(org.sex, chromoNumber, chromosomeObj);
+        onGameteChromosomeAdded(org.sex, name, side);
       };
+
+      function getGameteChromosome(index, chromosomeName) {
+        var parent = index === 1 ? mother : father;
+        if (gametes[index][chromosomeName]) {
+          return parent.getGenotype().chromosomes[chromosomeName][gametes[index][chromosomeName]];
+        }
+      }
+
+      const gameteChromosomeMap = {
+        "1":  { a: getGameteChromosome(1, 1),    b: getGameteChromosome(0, 1) },
+        "2":  { a: getGameteChromosome(1, 2),    b: getGameteChromosome(0, 2) },
+        "XY": { a: getGameteChromosome(1, "XY"), b: getGameteChromosome(0, "XY") }
+      };
+
+
 
       return (
       <div id="egg-game">
         <div className='column'>
           <div>Mother</div>
             <OrganismView org={ mother } />
-            <GenomeView className="drake-genome" org={ mother } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} showAlleles={true} hiddenAlleles= { hiddenAlleles } />
+            <GenomeView className="drake-genome" org={ mother } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } />
         </div>
-        <div className='egg'>
-          <div className='column'>
-            <div>Ovum</div>
-            <div className='egg-alleles'>
-              <GameteGenomeView chromosomes={gametes[1]} hiddenAlleles= { hiddenAlleles } />
-            </div>
-          </div>
-          <img src="resources/images/egg_yellow.png" />
-          <div className='column'>
-            <div>Sperm</div>
-            <div className='egg-alleles'>
-              <GameteGenomeView chromosomes={gametes[0]} hiddenAlleles= { hiddenAlleles } />
-            </div>
-          </div>
+        <div className='egg column'>
+          <GenomeView className="gamete-genomes" chromosomes={ gameteChromosomeMap } species={ mother.species } editable={false} hiddenAlleles= { hiddenAlleles } />
         </div>
         <div className='column'>
           <div>Father</div>
             <OrganismView org={ father } />
-            <GenomeView className="drake-genome" org={ father } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} showAlleles={true} hiddenAlleles= { hiddenAlleles } />
+            <GenomeView className="drake-genome" org={ father } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } />
         </div>
       </div>
     );
@@ -66,6 +65,6 @@ export default class EggGame extends Component {
     return [authoredChallenge.mother, authoredChallenge.father];
   }
   static initialGametesArray = function() {
-    return [[{},{},{}], [{},{},{}]];
+    return [{}, {}];
   }
 }

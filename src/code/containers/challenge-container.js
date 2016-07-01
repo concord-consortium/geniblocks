@@ -60,7 +60,7 @@ function mapDispatchToProps(dispatch) {
     onNavigateNextChallenge: () => dispatch(navigateToNextChallenge()),
     navigateToChallenge: (_case, challenge) => dispatch(navigateToChallenge(_case, challenge)),
     navigateToCurrentRoute: (_case, challenge) => dispatch(navigateToCurrentRoute(_case, challenge)),
-    onGameteChromosomeAdded: (index, number, chromosome) => dispatch(addGameteChromosome(index, number, chromosome))
+    onGameteChromosomeAdded: (index, name, side) => dispatch(addGameteChromosome(index, name, side))
   };
 }
 
