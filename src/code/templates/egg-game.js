@@ -59,7 +59,7 @@ export default class EggGame extends Component {
         <div className='column'>
           <div>Mother</div>
             <OrganismView org={ mother } flipped={ true }/>
-            <GenomeView org={ mother } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } />
+            <GenomeView org={ mother } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } selectedChromosomes={ gametes[1] } />
         </div>
         <div className='egg column'>
           <div className='top'>
@@ -77,7 +77,7 @@ export default class EggGame extends Component {
         <div className='column'>
           <div>Father</div>
             <OrganismView org={ father } />
-            <GenomeView org={ father } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } />
+            <GenomeView org={ father } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } selectedChromosomes={ gametes[0] } />
         </div>
       </div>
     );

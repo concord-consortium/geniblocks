@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-const ChromosomeImageView = ({width=23, height=126, color='#FF9999', empty=false}) => {
+const ChromosomeImageView = ({width=23, height=126, color='#FF9999', bold=false, empty=false}) => {
   const split=45,
         radius = width/2,
         imageWidth = width+4,
@@ -9,6 +9,10 @@ const ChromosomeImageView = ({width=23, height=126, color='#FF9999', empty=false
 
   let strokeWidth = 2;
 
+  if (bold) {
+    color = '#FF6666';
+    strokeWidth = 3;
+  }
   if (empty) {
     color = '#FFF';
     strokeWidth = 1;
