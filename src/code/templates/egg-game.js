@@ -58,7 +58,7 @@ export default class EggGame extends Component {
       <div id="egg-game">
         <div className='column'>
           <div>Mother</div>
-            <OrganismView org={ mother } />
+            <OrganismView org={ mother } flipped={ true }/>
             <GenomeView org={ mother } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } />
         </div>
         <div className='egg column'>

@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 
-const OrganismView = ({org, id, width=200, style={}, onClick, wrapper }) => {
+const OrganismView = ({org, id, width=200, flipped=false, style={}, onClick, wrapper }) => {
   const baseUrl = "https://geniverse-resources.concord.org/resources/drakes/images/",
         url     = baseUrl + org.getImageName(),
         // The goal here was to have the onMouseDown handler select the organism,
@@ -16,12 +16,17 @@ const OrganismView = ({org, id, width=200, style={}, onClick, wrapper }) => {
         handleMouseDown = isFirefox ? undefined : handleClick,
         divWrapper = wrapper || function(elt) { return elt; };
 
+  let className = "geniblocks organism";
+  if (flipped) {
+    className += " flipped";
+  }
+
   function handleClick() {
     if (onClick) onClick(id, org);
   }
 
   return divWrapper(
-    <div className="geniblocks organism" id={id} style={style}
+    <div className={className} id={id} style={style}
           onMouseDown={handleMouseDown} onClick={handleClick}>
       <img src={url} width={width} />
     </div>
