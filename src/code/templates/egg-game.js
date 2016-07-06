@@ -17,7 +17,9 @@ export default class EggGame extends Component {
         onGameteChromosomeAdded(org.sex, name, side);
       };
       const handleFertilize = function() {
-        onFertilize(2000, 0, 1);
+        if (Object.keys(gametes[0]).length === 3 && Object.keys(gametes[1]).length === 3) {
+          onFertilize(2000, 0, 1);
+        }
       };
       const handleReset = function() {
         onReset();
@@ -53,8 +55,14 @@ export default class EggGame extends Component {
         childView = <OrganismView org={ child } width={170} />;
       } else if (transientStates.indexOf(transientStateTypes.HATCHING) > -1) {
         childView = <img className="egg-image" src="resources/images/egg_yellow.png" />;
-      } else {
-        childView = <ButtonView className="fertilize-button" label="Fertilize ❤️" onClick={ handleFertilize } />;
+      } else if (transientStates.indexOf(transientStateTypes.FERTILIZING) === -1) {
+        let text = "Fertilize ❤️",
+            className = "fertilize-button";
+        if (Object.keys(gametes[0]).length !== 3 || Object.keys(gametes[1]).length !== 3) {
+          text = "Fertilize",
+          className += " disabled";
+        }
+        childView = <ButtonView className={ className } label={ text } onClick={ handleFertilize } />;
       }
 
       var ovumView, spermView;
