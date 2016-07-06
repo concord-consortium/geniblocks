@@ -8,6 +8,7 @@ export const actionTypes = {
   GAMETE_CHROMOSOME_ADDED: "Gamete chromosome added",
   FERTILIZED: "Fertilized",
   DRAKE_SUBMITTED: "Drake submitted",
+  RESET_CHALLENGE: "Challenge reset",
   NAVIGATED_NEXT_CHALLENGE: "Navigated to next challenge",
   MODAL_DIALOG_DISMISSED: "Modal dialog dismissed",
   ADVANCED_TRIAL: "Advanced to next trial",
@@ -44,6 +45,13 @@ export function navigateToNextChallenge() {
   return (dispatch, getState) => {
     const { case: currentCase, challenge: currentChallenge} = getState();
     dispatch(navigateToChallenge(currentCase, currentChallenge+1));
+  };
+}
+
+export function resetChallenge() {
+  return (dispatch, getState) => {
+    const { case: currentCase, challenge: currentChallenge} = getState();
+    dispatch(navigateToChallenge(currentCase, currentChallenge));
   };
 }
 
@@ -166,6 +174,10 @@ export function initiateDelayedFertilization(delay, gamete1, gamete2) {
         transientState: transientStateTypes.HATCHING
       });
       setTimeout( () => {
+        dispatch({
+          type: actionTypes.REMOVE_TRANSIENT_STATE,
+          transientState: transientStateTypes.HATCHING
+        });
         dispatch(fertilize(gamete1, gamete2));
       }, 3000);
     }, delay);

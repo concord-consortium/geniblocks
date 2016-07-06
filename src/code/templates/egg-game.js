@@ -6,7 +6,7 @@ import { transientStateTypes } from '../actions';
 
 export default class EggGame extends Component {
     render() {
-      const { drakes, gametes, onChromosomeAlleleChange, onGameteChromosomeAdded, onFertilize, hiddenAlleles, transientStates } = this.props,
+      const { drakes, gametes, onChromosomeAlleleChange, onGameteChromosomeAdded, onFertilize, onReset, hiddenAlleles, transientStates } = this.props,
           mother = new BioLogica.Organism(BioLogica.Species.Drake, drakes[0].alleleString, drakes[0].sex),
           father = new BioLogica.Organism(BioLogica.Species.Drake, drakes[1].alleleString, drakes[1].sex);
 
@@ -18,6 +18,9 @@ export default class EggGame extends Component {
       };
       const handleFertilize = function() {
         onFertilize(2000, 0, 1);
+      };
+      const handleReset = function() {
+        onReset();
       };
 
       function getGameteChromosome(index, chromosomeName) {
@@ -51,7 +54,12 @@ export default class EggGame extends Component {
       } else if (transientStates.indexOf(transientStateTypes.HATCHING) > -1) {
         childView = <img className="egg-image" src="resources/images/egg_yellow.png" />;
       } else {
-        childView = <ButtonView label="Fertilize ❤️" onClick={ handleFertilize } />;
+        childView = <ButtonView className="fertilize-button" label="Fertilize ❤️" onClick={ handleFertilize } />;
+      }
+
+      var resetButtonView = null;
+      if (drakes[2]) {
+        resetButtonView = <ButtonView label="Reset" onClick={ handleReset } />;
       }
 
       return (
@@ -72,6 +80,9 @@ export default class EggGame extends Component {
             <div className='half-genome-right'>
               <GenomeView chromosomes={ maleGameteChromosomeMap }   species={ mother.species } editable={false} hiddenAlleles= { hiddenAlleles } />
             </div>
+          </div>
+          <div>
+            { resetButtonView }
           </div>
         </div>
         <div className='column'>
