@@ -50,11 +50,17 @@ export default class EggGame extends Component {
       var childView;
       if (drakes[2]) {
         let child = new BioLogica.Organism(BioLogica.Species.Drake, drakes[2].alleleString, drakes[2].sex);
-        childView = <OrganismView org={ child } width={150} />;
+        childView = <OrganismView org={ child } width={170} />;
       } else if (transientStates.indexOf(transientStateTypes.HATCHING) > -1) {
         childView = <img className="egg-image" src="resources/images/egg_yellow.png" />;
       } else {
         childView = <ButtonView className="fertilize-button" label="Fertilize ❤️" onClick={ handleFertilize } />;
+      }
+
+      var ovumView, spermView;
+      if ((transientStates.length === 0 && !drakes[2]) ||  transientStates.indexOf(transientStateTypes.FERTILIZING) > -1) {
+        ovumView  = <img className="ovum" src="resources/images/egg.svg" />;
+        spermView = <img className="sperm" src="resources/images/sperm.svg" />;
       }
 
       var resetButtonView = null;
@@ -74,10 +80,12 @@ export default class EggGame extends Component {
             { childView }
           </div>
           <div className={ gametesClass }>
-            <div className='half-genome-left'>
+            <div className='half-genome half-genome-left'>
+              { ovumView }
               <GenomeView chromosomes={ femaleGameteChromosomeMap } species={ mother.species } editable={false} hiddenAlleles= { hiddenAlleles } />
             </div>
-            <div className='half-genome-right'>
+            <div className='half-genome half-genome-right'>
+              { spermView }
               <GenomeView chromosomes={ maleGameteChromosomeMap }   species={ mother.species } editable={false} hiddenAlleles= { hiddenAlleles } />
             </div>
           </div>

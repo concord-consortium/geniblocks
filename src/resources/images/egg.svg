@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="68.84375"
+   height="81.125"
+   id="svg2">
+  <title
+     id="title4">my vector image</title>
+  <metadata
+     id="metadata18">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>my vector image</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs16" />
+  <path
+     d="m 0.987473,40.556786 c 0,-21.857735 14.961774,-39.5625 33.433099,-39.5625 18.471326,0 33.433099,17.704765 33.433099,39.5625 0,21.857735 -14.961773,39.5625 -33.433099,39.5625 -18.471325,0 -33.433099,-17.704765 -33.433099,-39.5625 z"
+     id="svg_2"
+     style="fill:#ffffff;fill-opacity:0.5;stroke:#222222;stroke-width:2;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;stroke-dasharray:none" />
+</svg>

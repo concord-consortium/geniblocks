@@ -218,16 +218,36 @@
         padding: 0 65px 0 0
       >div.half-genome-right
         padding: 0 0 0 65px
+    .half-genome
+      position: relative
+
+    .ovum
+      position: absolute
+      transition: left 2s
+      top: -135px
+      left: 110px
+    .sperm
+      position: absolute
+      transition: left 2s
+      top: -117px
+      left: -12px
+
+
+    &.unfertilized
+      .ovum
+        left: 75px
+      .sperm
+        left: 65px
 
   .fertilize-button
-    margin: 90px 0 105px 0
+    margin-top: 45px
 
   .egg-image
     width: 103px
     padding: 34px
 
   .organism
-    padding-top: 50px
+    padding-top: 40px
 
 
 .egg-alleles {
