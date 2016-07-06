@@ -40,7 +40,9 @@ window.GV2Authoring = [
       },
       "targetDrakes": [{},{},{}],
       "hiddenAlleles": "t,tk,h,c,a,b,d,bog,rh"
-    },
+    }
+  ],
+  [
     {
       "template": "EggGame",
       "mother":{
