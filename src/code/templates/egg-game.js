@@ -40,14 +40,16 @@ export default class EggGame extends Component {
       };
 
       let gametesClass = "gametes";
-      if (transientStates.indexOf(transientStateTypes.FERTILIZING) === -1 && !drakes[2]) {
+      if (transientStates.length === 0 && !drakes[2]) {
         gametesClass += " unfertilized";
       }
 
       var childView;
       if (drakes[2]) {
         let child = new BioLogica.Organism(BioLogica.Species.Drake, drakes[2].alleleString, drakes[2].sex);
-        childView = <OrganismView org={ child } />;
+        childView = <OrganismView org={ child } width={150} />;
+      } else if (transientStates.indexOf(transientStateTypes.HATCHING) > -1) {
+        childView = <img className="egg-image" src="resources/images/egg_yellow.png" />;
       } else {
         childView = <ButtonView label="Fertilize ❤️" onClick={ handleFertilize } />;
       }
@@ -60,7 +62,7 @@ export default class EggGame extends Component {
             <GenomeView org={ mother } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } />
         </div>
         <div className='egg column'>
-          <div>
+          <div className='top'>
             { childView }
           </div>
           <div className={ gametesClass }>
