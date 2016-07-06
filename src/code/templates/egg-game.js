@@ -1,21 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import OrganismView from '../components/organism';
 import GenomeView from '../components/genome';
+import ButtonView from '../components/button';
 
 export default class EggGame extends Component {
     render() {
-      const { drakes, gametes, onChromosomeAlleleChange, onGameteChromosomeAdded, onNavigateNextChallenge, hiddenAlleles, challenge } = this.props,
+      const { drakes, gametes, onChromosomeAlleleChange, onGameteChromosomeAdded, onFertilize, hiddenAlleles } = this.props,
           mother = new BioLogica.Organism(BioLogica.Species.Drake, drakes[0].alleleString, drakes[0].sex),
           father = new BioLogica.Organism(BioLogica.Species.Drake, drakes[1].alleleString, drakes[1].sex);
 
       const handleAlleleChange = function(chrom, side, prevAllele, newAllele) {
         onChromosomeAlleleChange(0, chrom, side, prevAllele, newAllele);
       };
-      const handleAdvanceChallenge = function() {
-        onNavigateNextChallenge(challenge+1);
-      };
       const handleChromosomeSelected = function(org, name, side) {
         onGameteChromosomeAdded(org.sex, name, side);
+      };
+      const handleFertilize = function() {
+        onFertilize(2000, 0, 1);
       };
 
       function getGameteChromosome(index, chromosomeName) {
@@ -42,6 +43,14 @@ export default class EggGame extends Component {
         gametesClass += " unfertilized";
       }
 
+      var childView;
+      if (drakes[2]) {
+        let child = new BioLogica.Organism(BioLogica.Species.Drake, drakes[2].alleleString, drakes[2].sex);
+        childView = <OrganismView org={ child } />;
+      } else {
+        childView = <ButtonView label="Fertilize ❤️" onClick={ handleFertilize } />;
+      }
+
       return (
       <div id="egg-game">
         <div className='column'>
@@ -50,6 +59,9 @@ export default class EggGame extends Component {
             <GenomeView org={ mother } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } />
         </div>
         <div className='egg column'>
+          <div>
+            { childView }
+          </div>
           <div className={ gametesClass }>
             <div className='half-genome-left'>
               <GenomeView chromosomes={ femaleGameteChromosomeMap } species={ mother.species } editable={false} hiddenAlleles= { hiddenAlleles } />
@@ -74,7 +86,7 @@ export default class EggGame extends Component {
     hiddenAlleles: PropTypes.array.isRequired,
     onChromosomeAlleleChange: PropTypes.func.isRequired,
     onGameteChromosomeAdded: PropTypes.func.isRequired,
-    onNavigateNextChallenge: PropTypes.func.isRequired,
+    onFertilize: PropTypes.func.isRequired,
     challenge: PropTypes.number.isRequired
   }
   static authoredDrakesToDrakeArray = function(authoredChallenge) {

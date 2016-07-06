@@ -6,6 +6,8 @@ export const actionTypes = {
   ALLELE_CHANGED: "Allele changed",
   SEX_CHANGED: "Sex changed",
   GAMETE_CHROMOSOME_ADDED: "Gamete chromosome added",
+  FERTILIZED: "Fertilized",
+  FERTILIZING: "Fertilizing",
   DRAKE_SUBMITTED: "Drake submitted",
   NAVIGATED_NEXT_CHALLENGE: "Navigated to next challenge",
   MODAL_DIALOG_DISMISSED: "Modal dialog dismissed",
@@ -131,6 +133,23 @@ export function addGameteChromosome(index, name, side) {
     index,
     name,
     side
+  };
+}
+
+export function fertilize(gamete1, gamete2) {
+  return {
+    type: actionTypes.FERTILIZED,
+    gamete1,
+    gamete2
+  };
+}
+
+export function initiateDelayedFertilization(delay, gamete1, gamete2) {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.FERTILIZING
+    });
+    setTimeout( function() {dispatch(fertilize(gamete1, gamete2));}, delay);
   };
 }
 

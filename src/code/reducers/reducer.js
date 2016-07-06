@@ -67,6 +67,31 @@ export default function reducer(state, action) {
       return state.setIn(path, action.side);
     }
 
+    case actionTypes.FERTILIZED: {
+      let chromosomes0 = new BioLogica.Organism(BioLogica.Species.Drake, state.drakes[0].alleleString, state.drakes[0].sex).getGenotype().chromosomes,
+          chromosomes1 = new BioLogica.Organism(BioLogica.Species.Drake, state.drakes[1].alleleString, state.drakes[1].sex).getGenotype().chromosomes,
+          alleleString = "",
+          sex = 1;
+      for (let name in chromosomes0) {
+        let side = state.gametes[1][name];
+        if (name === "XY") side = side === "a" ? "x1" : "x2";
+        let chromosome = chromosomes0[name][side];
+        if (chromosome && chromosome.alleles) alleleString += "a:" + chromosome.alleles.join(",a:") + ",";
+      }
+      for (let name in chromosomes1) {
+        let side = state.gametes[0][name];
+        if (name === "XY") side = side === "a" ? "x" : "y";
+        if (side === "y") sex = 0;
+        let chromosome = chromosomes1[name][side];
+        if (chromosome && chromosome.alleles && chromosome.alleles.length) alleleString += "b:" + chromosome.alleles.join(",b:") + ",";
+      }
+
+      return state.setIn(["drakes", 2], {
+        alleleString,
+        sex
+      });
+    }
+
     case actionTypes.DRAKE_SUBMITTED: {
       let challengeComplete = false;
       let progress = updateProgress(state, action.correct);
