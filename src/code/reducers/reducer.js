@@ -19,6 +19,7 @@ const initialState = Immutable({
   showingInfoMessage: false,
   shouldShowITSMessages: true,
   userDrakeHidden: true,
+  transientStates: [],
   routing: {},
   authoring: window.GV2Authoring
 });
@@ -65,6 +66,14 @@ export default function reducer(state, action) {
     case actionTypes.GAMETE_CHROMOSOME_ADDED: {
       let path = ["gametes", action.index, action.name];
       return state.setIn(path, action.side);
+    }
+
+    case actionTypes.ADD_TRANSIENT_STATE: {
+      return state.set("transientStates", state.transientStates.concat(action.transientState));
+    }
+
+    case actionTypes.REMOVE_TRANSIENT_STATE: {
+      return state.set("transientStates", state.transientStates.filter((s) => s !== action.transientState));
     }
 
     case actionTypes.FERTILIZED: {

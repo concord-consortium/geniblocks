@@ -7,15 +7,20 @@ export const actionTypes = {
   SEX_CHANGED: "Sex changed",
   GAMETE_CHROMOSOME_ADDED: "Gamete chromosome added",
   FERTILIZED: "Fertilized",
-  FERTILIZING: "Fertilizing",
   DRAKE_SUBMITTED: "Drake submitted",
   NAVIGATED_NEXT_CHALLENGE: "Navigated to next challenge",
   MODAL_DIALOG_DISMISSED: "Modal dialog dismissed",
   ADVANCED_TRIAL: "Advanced to next trial",
   ADVANCED_CHALLENGE: "Advanced to next challenge",
+  ADD_TRANSIENT_STATE: "Add transient state",
+  REMOVE_TRANSIENT_STATE: "Remove transient state",
   SOCKET_CONNECTED: "Socket connected",
   SOCKET_RECEIVED: "Socket received",
   SOCKET_ERRORED: "Socket errored"
+};
+
+export const transientStateTypes = {
+  FERTILIZING: "Fertilizing"
 };
 
 export function startSession(uuid) {
@@ -147,9 +152,16 @@ export function fertilize(gamete1, gamete2) {
 export function initiateDelayedFertilization(delay, gamete1, gamete2) {
   return (dispatch) => {
     dispatch({
-      type: actionTypes.FERTILIZING
+      type: actionTypes.ADD_TRANSIENT_STATE,
+      transientState: transientStateTypes.FERTILIZING
     });
-    setTimeout( function() {dispatch(fertilize(gamete1, gamete2));}, delay);
+    setTimeout( () => {
+      dispatch({
+        type: actionTypes.REMOVE_TRANSIENT_STATE,
+        transientState: transientStateTypes.FERTILIZING
+      });
+      dispatch(fertilize(gamete1, gamete2));
+    }, delay);
   };
 }
 
