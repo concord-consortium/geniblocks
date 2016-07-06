@@ -21,10 +21,11 @@
           React.createElement(GeniBlocks.GenomeView, {
             org: dragon,
             onAlleleChange: function(chrom, side, prevAllele, newAllele) {
-            dragon.genetics.genotype.replaceAlleleChromName(chrom, side, prevAllele, newAllele);
-            dragon = new BioLogica.Organism(BioLogica.Species.Drake, dragon.getAlleleString(), 1);
-            render();
-          }}),
+              dragon.genetics.genotype.replaceAlleleChromName(chrom, side, prevAllele, newAllele);
+              dragon = new BioLogica.Organism(BioLogica.Species.Drake, dragon.getAlleleString(), 1);
+              render();
+            }
+          }),
           document.getElementById('genome')
         );
       }

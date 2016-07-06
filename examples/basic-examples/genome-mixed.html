@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <script src="../js/lib/react/react.js"></script>
+    <script src="../js/lib/react/react-dom.js"></script>
+    <script src="../js/lib/biologica.js/dist/biologica.js"></script>
+    <link rel="stylesheet" href="../css/geniblocks.css">
+  </head>
+  <body>
+    <div>
+      This is a fairly odd example, where a single genome view is composed of chromosomes
+      from two different organisms. An example where this may be useful is if a student
+      is defining th genotype of an organism one chromosome at a time, by dragging in
+      chromosomes from parents.
+    </div>
+    <div>
+      In this demo, the left chromosomes all belong to the female drake on the left,
+      and vice-versa. The right sex chromosome is left empty here.
+    </div>
+    <div style="display: flex">
+      <span id="female"></span>
+      <span id="male"></span>
+    </div>
+    <div id="genome"></div>
+    <script src="../js/geniblocks.js"></script>
+    <script>
+      var femaleDrake, maleDrake, chromosomes;
+
+      function render() {
+        ReactDOM.render(
+          React.createElement(GeniBlocks.OrganismView, {org: femaleDrake}),
+          document.getElementById('female')
+        );
+        ReactDOM.render(
+          React.createElement(GeniBlocks.OrganismView, {org: maleDrake}),
+          document.getElementById('male')
+        );
+        ReactDOM.render(
+          React.createElement(GeniBlocks.GenomeView, {
+            chromosomes: chromosomes,
+            species: BioLogica.Species.Drake,
+            onAlleleChange: function(chrom, side, prevAllele, newAllele) {
+              if (side == "a" || side == "x1") {
+                femaleDrake.genetics.genotype.replaceAlleleChromName(chrom, side, prevAllele, newAllele);
+                femaleDrake = new BioLogica.Organism(BioLogica.Species.Drake, femaleDrake.getAlleleString(), 1);
+              } else {
+                maleDrake.genetics.genotype.replaceAlleleChromName(chrom, side, prevAllele, newAllele);
+                maleDrake = new BioLogica.Organism(BioLogica.Species.Drake, maleDrake.getAlleleString(), 1);
+              }
+              render();
+            }
+          }),
+          document.getElementById('genome')
+        );
+      }
+
+      femaleDrake = new BioLogica.Organism(BioLogica.Species.Drake, "", 1);
+      maleDrake = new BioLogica.Organism(BioLogica.Species.Drake, "", 0);
+      chromosomes = {
+        "1": {
+          "a": femaleDrake.getGenotype().chromosomes[1]["a"],
+          "b": maleDrake.getGenotype().chromosomes[1]["a"]
+        },
+        "2": {
+          "a": femaleDrake.getGenotype().chromosomes[2]["a"],
+          "b": maleDrake.getGenotype().chromosomes[2]["a"]
+        },
+        "XY": {
+          "x1": femaleDrake.getGenotype().chromosomes["XY"]["x1"],
+          "y": null
+        }
+      };
+      render();
+    </script>
+  </body>
+</html>

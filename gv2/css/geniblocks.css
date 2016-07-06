@@ -162,12 +162,11 @@
   display: block;
   position: relative;
 }
-.challenge-award img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0px;
-  left: 0px;
+.alert-button {
+  border-radius: 4px;
+  font-size: 0.9em;
+  background-color: rgba(250,250,190,0.3);
+  border: 2px solid #a84;
 }
 .hiddenDrake:before {
   content: "?";
@@ -195,12 +194,63 @@
 }
 .egg {
   position: relative;
-  top: 200px;
   display: flex;
-  height: 160px;
+  width: 420px;
 }
-.egg img {
-  width: 100px;
+.egg .top {
+  height: 218px;
+}
+.egg .gametes {
+  display: flex;
+  justify-content: space-between;
+}
+.egg .gametes >div {
+  width: 170px;
+  padding: 0 0 0 0;
+  transition: padding 2s;
+}
+.egg .gametes >div.half-genome-left .chromosome-pair {
+  justify-content: flex-end;
+}
+.egg .gametes.unfertilized >div.half-genome-left {
+  padding: 0 65px 0 0;
+}
+.egg .gametes.unfertilized >div.half-genome-right {
+  padding: 0 0 0 65px;
+}
+.egg .gametes .half-genome {
+  position: relative;
+}
+.egg .gametes .ovum {
+  position: absolute;
+  transition: left 2s;
+  top: -135px;
+  left: 110px;
+}
+.egg .gametes .sperm {
+  position: absolute;
+  transition: left 2s;
+  top: -117px;
+  left: -12px;
+}
+.egg .gametes.unfertilized .ovum {
+  left: 75px;
+}
+.egg .gametes.unfertilized .sperm {
+  left: 65px;
+}
+.egg .fertilize-button {
+  margin-top: 45px;
+}
+.egg .fertilize-button.disabled {
+  color: #808080;
+}
+.egg .egg-image {
+  width: 103px;
+  padding: 34px;
+}
+.egg .organism {
+  padding-top: 40px;
 }
 .egg-alleles {
   position: relative;
@@ -265,6 +315,394 @@
   align-items: flex-end;
 }
 
+.coin {
+  position: absolute;
+  height: 256px;
+  width: 256px;
+}
+.coin.background {
+  background-image: url("../resources/images/coin-background.png");
+}
+.coin.piece {
+  z-index: 2;
+}
+.coin.piece.pieces2 {
+  background-image: url("../resources/images/coin-pieces-2.png");
+}
+.coin.piece.pieces2.piece1.single {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+.coin.piece.pieces2.piece1.single.bronze {
+  background-position: -512px 0px;
+}
+.coin.piece.pieces2.piece1.single.silver {
+  background-position: -512px -256px;
+}
+.coin.piece.pieces2.piece1.single.gold {
+  background-position: -512px -512px;
+}
+.coin.piece.pieces2.piece1.whole.bronze {
+  background-position: -1024px 0px;
+}
+.coin.piece.pieces2.piece1.whole.silver {
+  background-position: -1024px -256px;
+}
+.coin.piece.pieces2.piece1.whole.gold {
+  background-position: -1024px -512px;
+}
+.coin.piece.pieces2.piece2.single {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+.coin.piece.pieces2.piece2.single.bronze {
+  background-position: -256px 0px;
+}
+.coin.piece.pieces2.piece2.single.silver {
+  background-position: -256px -256px;
+}
+.coin.piece.pieces2.piece2.single.gold {
+  background-position: -256px -512px;
+}
+.coin.piece.pieces2.piece2.whole.bronze {
+  background-position: -768px 0px;
+}
+.coin.piece.pieces2.piece2.whole.silver {
+  background-position: -768px -256px;
+}
+.coin.piece.pieces2.piece2.whole.gold {
+  background-position: -768px -512px;
+}
+.coin.piece.pieces3 {
+  background-image: url("../resources/images/coin-pieces-3.png");
+}
+.coin.piece.pieces3.piece1.single {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+.coin.piece.pieces3.piece1.single.bronze {
+  background-position: -768px 0px;
+}
+.coin.piece.pieces3.piece1.single.silver {
+  background-position: -768px -256px;
+}
+.coin.piece.pieces3.piece1.single.gold {
+  background-position: -768px -512px;
+}
+.coin.piece.pieces3.piece1.whole.bronze {
+  background-position: -1536px 0px;
+}
+.coin.piece.pieces3.piece1.whole.silver {
+  background-position: -1536px -256px;
+}
+.coin.piece.pieces3.piece1.whole.gold {
+  background-position: -1536px -512px;
+}
+.coin.piece.pieces3.piece2.single {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+.coin.piece.pieces3.piece2.single.bronze {
+  background-position: -512px 0px;
+}
+.coin.piece.pieces3.piece2.single.silver {
+  background-position: -512px -256px;
+}
+.coin.piece.pieces3.piece2.single.gold {
+  background-position: -512px -512px;
+}
+.coin.piece.pieces3.piece2.whole.bronze {
+  background-position: -1280px 0px;
+}
+.coin.piece.pieces3.piece2.whole.silver {
+  background-position: -1280px -256px;
+}
+.coin.piece.pieces3.piece2.whole.gold {
+  background-position: -1280px -512px;
+}
+.coin.piece.pieces3.piece3.single {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+.coin.piece.pieces3.piece3.single.bronze {
+  background-position: -256px 0px;
+}
+.coin.piece.pieces3.piece3.single.silver {
+  background-position: -256px -256px;
+}
+.coin.piece.pieces3.piece3.single.gold {
+  background-position: -256px -512px;
+}
+.coin.piece.pieces3.piece3.whole.bronze {
+  background-position: -1024px 0px;
+}
+.coin.piece.pieces3.piece3.whole.silver {
+  background-position: -1024px -256px;
+}
+.coin.piece.pieces3.piece3.whole.gold {
+  background-position: -1024px -512px;
+}
+.coin.piece.pieces4 {
+  background-image: url("../resources/images/coin-pieces-4.png");
+}
+.coin.piece.pieces4.piece1.single {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+.coin.piece.pieces4.piece1.single.bronze {
+  background-position: -1024px 0px;
+}
+.coin.piece.pieces4.piece1.single.silver {
+  background-position: -1024px -256px;
+}
+.coin.piece.pieces4.piece1.single.gold {
+  background-position: -1024px -512px;
+}
+.coin.piece.pieces4.piece1.whole.bronze {
+  background-position: -2048px 0px;
+}
+.coin.piece.pieces4.piece1.whole.silver {
+  background-position: -2048px -256px;
+}
+.coin.piece.pieces4.piece1.whole.gold {
+  background-position: -2048px -512px;
+}
+.coin.piece.pieces4.piece2.single {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+.coin.piece.pieces4.piece2.single.bronze {
+  background-position: -768px 0px;
+}
+.coin.piece.pieces4.piece2.single.silver {
+  background-position: -768px -256px;
+}
+.coin.piece.pieces4.piece2.single.gold {
+  background-position: -768px -512px;
+}
+.coin.piece.pieces4.piece2.whole.bronze {
+  background-position: -1792px 0px;
+}
+.coin.piece.pieces4.piece2.whole.silver {
+  background-position: -1792px -256px;
+}
+.coin.piece.pieces4.piece2.whole.gold {
+  background-position: -1792px -512px;
+}
+.coin.piece.pieces4.piece3.single {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+.coin.piece.pieces4.piece3.single.bronze {
+  background-position: -512px 0px;
+}
+.coin.piece.pieces4.piece3.single.silver {
+  background-position: -512px -256px;
+}
+.coin.piece.pieces4.piece3.single.gold {
+  background-position: -512px -512px;
+}
+.coin.piece.pieces4.piece3.whole.bronze {
+  background-position: -1536px 0px;
+}
+.coin.piece.pieces4.piece3.whole.silver {
+  background-position: -1536px -256px;
+}
+.coin.piece.pieces4.piece3.whole.gold {
+  background-position: -1536px -512px;
+}
+.coin.piece.pieces4.piece4.single {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+.coin.piece.pieces4.piece4.single.bronze {
+  background-position: -256px 0px;
+}
+.coin.piece.pieces4.piece4.single.silver {
+  background-position: -256px -256px;
+}
+.coin.piece.pieces4.piece4.single.gold {
+  background-position: -256px -512px;
+}
+.coin.piece.pieces4.piece4.whole.bronze {
+  background-position: -1280px 0px;
+}
+.coin.piece.pieces4.piece4.whole.silver {
+  background-position: -1280px -256px;
+}
+.coin.piece.pieces4.piece4.whole.gold {
+  background-position: -1280px -512px;
+}
+.coin.piece.pieces5 {
+  background-image: url("../resources/images/coin-pieces-5.png");
+}
+.coin.piece.pieces5.piece1.single {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+.coin.piece.pieces5.piece1.single.bronze {
+  background-position: -1280px 0px;
+}
+.coin.piece.pieces5.piece1.single.silver {
+  background-position: -1280px -256px;
+}
+.coin.piece.pieces5.piece1.single.gold {
+  background-position: -1280px -512px;
+}
+.coin.piece.pieces5.piece1.whole.bronze {
+  background-position: -2560px 0px;
+}
+.coin.piece.pieces5.piece1.whole.silver {
+  background-position: -2560px -256px;
+}
+.coin.piece.pieces5.piece1.whole.gold {
+  background-position: -2560px -512px;
+}
+.coin.piece.pieces5.piece2.single {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+.coin.piece.pieces5.piece2.single.bronze {
+  background-position: -1024px 0px;
+}
+.coin.piece.pieces5.piece2.single.silver {
+  background-position: -1024px -256px;
+}
+.coin.piece.pieces5.piece2.single.gold {
+  background-position: -1024px -512px;
+}
+.coin.piece.pieces5.piece2.whole.bronze {
+  background-position: -2304px 0px;
+}
+.coin.piece.pieces5.piece2.whole.silver {
+  background-position: -2304px -256px;
+}
+.coin.piece.pieces5.piece2.whole.gold {
+  background-position: -2304px -512px;
+}
+.coin.piece.pieces5.piece3.single {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+.coin.piece.pieces5.piece3.single.bronze {
+  background-position: -768px 0px;
+}
+.coin.piece.pieces5.piece3.single.silver {
+  background-position: -768px -256px;
+}
+.coin.piece.pieces5.piece3.single.gold {
+  background-position: -768px -512px;
+}
+.coin.piece.pieces5.piece3.whole.bronze {
+  background-position: -2048px 0px;
+}
+.coin.piece.pieces5.piece3.whole.silver {
+  background-position: -2048px -256px;
+}
+.coin.piece.pieces5.piece3.whole.gold {
+  background-position: -2048px -512px;
+}
+.coin.piece.pieces5.piece4.single {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+.coin.piece.pieces5.piece4.single.bronze {
+  background-position: -512px 0px;
+}
+.coin.piece.pieces5.piece4.single.silver {
+  background-position: -512px -256px;
+}
+.coin.piece.pieces5.piece4.single.gold {
+  background-position: -512px -512px;
+}
+.coin.piece.pieces5.piece4.whole.bronze {
+  background-position: -1792px 0px;
+}
+.coin.piece.pieces5.piece4.whole.silver {
+  background-position: -1792px -256px;
+}
+.coin.piece.pieces5.piece4.whole.gold {
+  background-position: -1792px -512px;
+}
+.coin.piece.pieces5.piece5.single {
+  opacity: 0;
+  -webkit-transition: opacity 2s ease-in;
+  -moz-transition: opacity 2s ease-in;
+  -o-transition: opacity 2s ease-in;
+  -ms-transition: opacity 2s ease-in;
+  transition: opacity 2s ease-in;
+}
+.coin.piece.pieces5.piece5.single.bronze {
+  background-position: -256px 0px;
+}
+.coin.piece.pieces5.piece5.single.silver {
+  background-position: -256px -256px;
+}
+.coin.piece.pieces5.piece5.single.gold {
+  background-position: -256px -512px;
+}
+.coin.piece.pieces5.piece5.whole.bronze {
+  background-position: -1536px 0px;
+}
+.coin.piece.pieces5.piece5.whole.silver {
+  background-position: -1536px -256px;
+}
+.coin.piece.pieces5.piece5.whole.gold {
+  background-position: -1536px -512px;
+}
+
 .geniblocks.feedback-view {
   width: 100%;
   background-color: #877871;
@@ -274,11 +712,6 @@
   text-align: center;
   font-size: 11pt;
   font-weight: bold;
-}
-
-.geniblocks.gamete-genome {
-  display: flex;
-  justify-content: space-around;
 }
 
 .geniblocks.gamete-pool {
@@ -334,6 +767,9 @@
   padding: 5px;
 }
 
+.geniblocks.organism.flipped {
+  transform: scaleX(-1);
+}
 .geniblocks.organism .unknown-organism {
   font-size: 14em;
   font-family: Palatino;
