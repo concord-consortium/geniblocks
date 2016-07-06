@@ -2,10 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import OrganismView from '../components/organism';
 import GenomeView from '../components/genome';
 import ButtonView from '../components/button';
+import { transientStateTypes } from '../actions';
 
 export default class EggGame extends Component {
     render() {
-      const { drakes, gametes, onChromosomeAlleleChange, onGameteChromosomeAdded, onFertilize, hiddenAlleles } = this.props,
+      const { drakes, gametes, onChromosomeAlleleChange, onGameteChromosomeAdded, onFertilize, hiddenAlleles, transientStates } = this.props,
           mother = new BioLogica.Organism(BioLogica.Species.Drake, drakes[0].alleleString, drakes[0].sex),
           father = new BioLogica.Organism(BioLogica.Species.Drake, drakes[1].alleleString, drakes[1].sex);
 
@@ -39,7 +40,7 @@ export default class EggGame extends Component {
       };
 
       let gametesClass = "gametes";
-      if (Object.keys(gametes[0]).length !== 3 || Object.keys(gametes[1]).length !== 3) {
+      if (transientStates.indexOf(transientStateTypes.FERTILIZING) === -1 && !drakes[2]) {
         gametesClass += " unfertilized";
       }
 

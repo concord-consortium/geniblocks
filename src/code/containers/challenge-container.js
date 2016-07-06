@@ -48,7 +48,8 @@ function mapStateToProps (state) {
       challenge: state.challenge,
       moves: state.moves,
       goalMoves: state.goalMoves,
-      userDrakeHidden: state.userDrakeHidden
+      userDrakeHidden: state.userDrakeHidden,
+      transientStates: state.transientStates
     };
   }
 
