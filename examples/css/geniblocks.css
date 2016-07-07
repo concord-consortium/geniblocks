@@ -199,6 +199,9 @@
   position: relative;
   top: -33px;
 }
+#egg-game .geniblocks.organism {
+  height: 202px;
+}
 .egg {
   position: relative;
   display: flex;
@@ -211,6 +214,7 @@
 }
 .egg .top .organism {
   padding-left: 25px;
+  height: 170px;
 }
 .egg .top .offspring-buttons {
   display: flex;
