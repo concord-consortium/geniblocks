@@ -81,7 +81,7 @@ export default class EggGame extends Component {
         <div className='column'>
           <div>Mother</div>
             <OrganismView org={ mother } flipped={ true }/>
-            <GenomeView org={ mother } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } selectedChromosomes={ gametes[1] } />
+            <GenomeView org={ mother } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } small={ true } selectedChromosomes={ gametes[1] } />
         </div>
         <div className='egg column'>
           <div className='top'>
@@ -90,11 +90,11 @@ export default class EggGame extends Component {
           <div className={ gametesClass }>
             <div className='half-genome half-genome-left'>
               { ovumView }
-              <GenomeView chromosomes={ femaleGameteChromosomeMap } species={ mother.species } editable={false} hiddenAlleles= { hiddenAlleles } />
+              <GenomeView chromosomes={ femaleGameteChromosomeMap } species={ mother.species } editable={false} hiddenAlleles= { hiddenAlleles } small={ true } />
             </div>
             <div className='half-genome half-genome-right'>
               { spermView }
-              <GenomeView chromosomes={ maleGameteChromosomeMap }   species={ mother.species } editable={false} hiddenAlleles= { hiddenAlleles } />
+              <GenomeView chromosomes={ maleGameteChromosomeMap }   species={ mother.species } editable={false} hiddenAlleles= { hiddenAlleles } small={ true } />
             </div>
           </div>
           <div>
@@ -104,7 +104,7 @@ export default class EggGame extends Component {
         <div className='column'>
           <div>Father</div>
             <OrganismView org={ father } />
-            <GenomeView org={ father } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } selectedChromosomes={ gametes[0] } />
+            <GenomeView org={ father } onAlleleChange={ handleAlleleChange } onChromosomeSelected={handleChromosomeSelected} editable={false} hiddenAlleles= { hiddenAlleles } small={ true } selectedChromosomes={ gametes[0] } />
         </div>
       </div>
     );

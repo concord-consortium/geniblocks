@@ -1,8 +1,24 @@
 import React, {PropTypes} from 'react';
 
-const ChromosomeImageView = ({width=23, height=126, color='#FF9999', bold=false, empty=false}) => {
-  const split=45,
-        radius = width/2,
+const defaults = {
+  normal: {
+    width: 23,
+    height: 120,
+    split: 45
+  },
+  small: {
+    width: 19,
+    height: 90,
+    split: 34
+  }
+};
+
+const ChromosomeImageView = ({width, height, split, color='#FF9999', small=false, bold=false, empty=false}) => {
+  if (!width || !height || !split) {
+    ({width, height, split} = small ? defaults.small : defaults.normal);
+  }
+
+  const radius = width/2,
         imageWidth = width+4,
         halfImageWidth = imageWidth/2,
         imageHeight = height+4;

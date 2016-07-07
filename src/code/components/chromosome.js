@@ -10,7 +10,7 @@ import GeneticsUtils from '../utilities/genetics-utils';
  * Defined EITHER using a Biologica Chromosome object, OR with a Biologica organism,
  * chromosome name and side.
  */
-const ChromosomeView = ({chromosome, org, chromosomeName, side, hiddenAlleles=[], editable=true, selected=false, onAlleleChange, onChromosomeSelected, showLabels=true, showAlleles=false, labelsOnRight=true}) => {
+const ChromosomeView = ({chromosome, org, chromosomeName, side, hiddenAlleles=[], small=false, editable=true, selected=false, onAlleleChange, onChromosomeSelected, showLabels=true, showAlleles=false, labelsOnRight=true}) => {
   var containerClass = "items",
       empty = false,
       labelsContainer, allelesContainer;
@@ -71,7 +71,7 @@ const ChromosomeView = ({chromosome, org, chromosomeName, side, hiddenAlleles=[]
     <div className="geniblocks chromosome-container" onClick={ handleSelect } >
       <div className={ containerClass }>
         <div className="chromosome-allele-container">
-          <ChromosomeImageView empty={empty} bold={selected} />
+          <ChromosomeImageView small={small} empty={empty} bold={selected} />
           { allelesContainer }
         </div>
         { labelsContainer }
