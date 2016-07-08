@@ -3,17 +3,17 @@ import ChromosomeImageView from './chromosome-image';
 import GeneLabelView from './gene-label';
 import AlleleView from './allele';
 import GeneticsUtils from '../utilities/genetics-utils';
-
+import AnimatedChromosomeView from './animated-chromosome';
 /**
  * View of a single chromosome, with optional labels, pulldowns, and embedded alleles.
  *
  * Defined EITHER using a Biologica Chromosome object, OR with a Biologica organism,
  * chromosome name and side.
  */
-const ChromosomeView = ({chromosome, org, chromosomeName, side, hiddenAlleles=[], small=false, editable=true, selected=false, onAlleleChange, onChromosomeSelected, showLabels=true, showAlleles=false, labelsOnRight=true}) => {
+const ChromosomeView = ({chromosome, org, chromosomeName, side, hiddenAlleles=[], small=false, editable=true, selected=false, onAlleleChange, onChromosomeSelected, showLabels=true, showAlleles=false, labelsOnRight=true, orgName}) => {
   var containerClass = "items",
       empty = false,
-      labelsContainer, allelesContainer;
+      labelsContainer, allelesContainer, chromId;
 
   if (org && chromosomeName && side) {
     chromosome = org.getGenotype().chromosomes[chromosomeName][side];
@@ -57,24 +57,34 @@ const ChromosomeView = ({chromosome, org, chromosomeName, side, hiddenAlleles=[]
         </div>
       );
     }
+    chromId = orgName + chromosome.chromosome + chromosome.side;
   } else {
+    chromId = orgName;
     empty = true;
   }
-
   const handleSelect = function() {
     if (onChromosomeSelected) {
       onChromosomeSelected();
     }
   };
+  let animatedChromosome;
+  const onRest = function(){
+    console.log("on rest");
+  };
+
+
+  animatedChromosome = <AnimatedChromosomeView org={org} id={chromosomeName} hiddenAlleles={hiddenAlleles}
+                          onRest={onRest} selected={selected} small={small} startPositionId={chromId} targetPositionId={orgName}/>;
 
   return (
     <div className="geniblocks chromosome-container" onClick={ handleSelect } >
       <div className={ containerClass }>
-        <div className="chromosome-allele-container">
+        <div className="chromosome-allele-container" id={chromId}>
           <ChromosomeImageView small={small} empty={empty} bold={selected} />
           { allelesContainer }
         </div>
         { labelsContainer }
+        { animatedChromosome }
       </div>
     </div>
   );
