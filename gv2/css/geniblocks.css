@@ -250,6 +250,13 @@
 .egg .gametes .half-genome {
   position: relative;
 }
+.egg .gametes .half-genome .chromosome-image {
+  opacity: 0;
+  transition: opacity 1s;
+}
+.egg .gametes .half-genome .chromosome-image.show {
+  opacity: 1;
+}
 .egg .gametes .ovum {
   position: absolute;
   transition: left 2s;
@@ -291,6 +298,9 @@
   height: 129px;
   background-color: #fff;
   border: 1px solid #000;
+}
+.animated-component-container {
+  position: fixed;
 }
 
 .geniblocks.change-sex-buttons {
@@ -360,6 +370,18 @@
 }
 .coin.piece {
   z-index: 2;
+}
+.coin.piece.pieces1 {
+  background-image: url("../resources/images/coin-pieces-2.png");
+}
+.coin.piece.pieces1.bronze {
+  background-position: 0 0px;
+}
+.coin.piece.pieces1.silver {
+  background-position: 0 -256px;
+}
+.coin.piece.pieces1.gold {
+  background-position: 0 -512px;
 }
 .coin.piece.pieces2 {
   background-image: url("../resources/images/coin-pieces-2.png");
