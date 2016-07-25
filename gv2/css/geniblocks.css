@@ -249,12 +249,6 @@
 .egg .gametes .half-genome {
   position: relative;
 }
-.egg .gametes .half-genome .chromosome-image {
-  opacity: 0;
-}
-.egg .gametes .half-genome .chromosome-image.show {
-  opacity: 1;
-}
 .egg .gametes .ovum {
   position: absolute;
   transition: left 2s;
