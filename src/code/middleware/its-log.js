@@ -26,33 +26,19 @@ export default (socket) => store => next => action => {
       break;
     }
     case actionTypes.SOCKET_RECEIVED: {
-      console.log("Message received!", action.state.data);
+      console.log("Message received!", action);
       break;
     }
     default: {
       // other action types - send to ITS
       if (action.meta && action.meta.itsLog){
-
         let message = createLogEntry(action, nextState);
-
-        switch (socket.readyState) {
-          case WebSocket.CONNECTING:
-            queue.push(message);
-            break;
-          case WebSocket.OPEN:
-            flushQueue(socket);
-            sendMessage(message, socket);
-            break;
-          case WebSocket.CLOSING:
-            // TODO: Are we going to forcibly close the socket at any point?
-            console.log("Data not sent - socket state: CLOSING");
-            break;
-          case WebSocket.CLOSED:
-            // TODO: Control reconnection logic / may change if we go socket.io
-            console.log("Data not sent - socket state: CLOSED");
-            break;
+        if (socket.connected) {
+          flushQueue(socket);
+          sendMessage(message, socket);
+        } else {
+          queue.push(message);
         }
-
         sequence++;
       }
     }
@@ -68,7 +54,7 @@ function flushQueue(socket) {
 }
 
 function sendMessage(message, socket) {
-  socket.emit("event", message);
+  socket.emit("event", JSON.stringify(message));
 }
 
 function getValue(obj, path) {

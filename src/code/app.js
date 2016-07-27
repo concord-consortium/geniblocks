@@ -29,16 +29,24 @@ const loggingMetadata = {
   applicationName: "GeniStarDev"
 };
 
-const socketEndpoint = "wss://guide.intellimedia.ncsu.edu";
+const guideServer = "wss://guide.intellimedia.ncsu.edu";
+const guideProtocol = "guide-protocol-v2";
 
-const socket = io(socketEndpoint, {reconnection: false});
-socket.on('connection', state =>
+const socket = io(guideServer + "/" + guideProtocol, { reconnection: true });
+
+socket.on('connect', state =>
   store.dispatch({type: actionTypes.SOCKET_CONNECTED, state})
 );
-socket.on('message', state =>
-  store.dispatch({type: actionTypes.SOCKET_RECEIVED, state})
+// socket.on('message', state =>
+//   store.dispatch({ type: actionTypes.SOCKET_RECEIVED, state });
+// );
+socket.on('tutorAction', receivedData => {
+    let state = JSON.parse(receivedData).tutorAction;
+    store.dispatch({ type: actionTypes.SOCKET_RECEIVED, state });
+  }
 );
-socket.on('error', state=>
+
+socket.on('connect_error', state=>
   store.dispatch({type: actionTypes.SOCKET_ERRORED, state})
 );
 
