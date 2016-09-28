@@ -45,6 +45,8 @@ window.GV2Authoring = [
   [
     {
       "template": "EggGame",
+      "challengeType": "create-unique",
+      "showUserDrake": false,
       "mother":{
         "alleles": "a:w,b:W,a:M,b:m,a:fl,a:hl,a:T,b:T,a:h,b:h,a:C,b:C,a:A1,b:A1,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
         "sex": 1
@@ -53,6 +55,36 @@ window.GV2Authoring = [
         "alleles": "a:w,b:W,a:m,b:m,a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
         "sex": 0
       },
+      "hiddenAlleles": "t,tk,h,c,a,b,d,bog,rh"
+    },
+    {
+      "template": "EggGame",
+      "challengeType": "match-target",
+      "showUserDrake": true,
+      "mother":{
+        "alleles": "a:w,b:W,a:M,b:m,a:fl,a:hl,a:T,b:T,a:h,b:h,a:C,b:C,a:A1,b:A1,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex": 1
+      },
+      "father": {
+        "alleles": "a:w,b:W,a:m,b:m,a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex": 0
+      },
+      "targetDrakes": [{},{},{}],
+      "hiddenAlleles": "t,tk,h,c,a,b,d,bog,rh"
+    },
+    {
+      "template": "EggGame",
+      "challengeType": "match-target",
+      "showUserDrake": false,
+      "mother":{
+        "alleles": "a:w,b:W,a:M,b:m,a:fl,a:hl,a:T,b:T,a:h,b:h,a:C,b:C,a:A1,b:A1,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex": 1
+      },
+      "father": {
+        "alleles": "a:w,b:W,a:m,b:m,a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex": 0
+      },
+      "targetDrakes": [{},{},{}],
       "hiddenAlleles": "t,tk,h,c,a,b,d,bog,rh"
     },
     {
