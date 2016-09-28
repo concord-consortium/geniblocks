@@ -198,46 +198,30 @@
   position: relative;
   top: -33px;
 }
-#egg-game .geniblocks.genome.matching {
-  top: -60px;
-}
-#egg-game .geniblocks.genome.matching.parent {
-  top: 50px;
-}
 #egg-game .geniblocks.organism {
   height: 202px;
-}
-#egg-game .geniblocks.organism.target {
-  height: 102px;
 }
 .egg {
   position: relative;
   display: flex;
   width: 420px;
 }
-.egg .fertilization {
+.egg .top {
   display: flex;
   align-items: flex-start;
   height: 218px;
 }
-.egg .fertilization .organism {
+.egg .top .organism {
   padding-left: 25px;
-  padding-right: 10px;
   height: 170px;
 }
-.egg .fertilization .organism.matching {
-  margin-top: 10px;
-  padding-left: 10px;
-  padding-right: 20px;
-  height: 140px;
-}
-.egg .fertilization .offspring-buttons {
+.egg .top .offspring-buttons {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
 }
-.egg .fertilization .offspring-buttons button {
+.egg .top .offspring-buttons button {
   margin: 3px;
   padding: 4px;
   width: 76px;
@@ -271,17 +255,11 @@
   top: -135px;
   left: 110px;
 }
-.egg .gametes .ovum.matching {
-  top: -160px;
-}
 .egg .gametes .sperm {
   position: absolute;
   transition: left 2s;
   top: -117px;
   left: -12px;
-}
-.egg .gametes .sperm.matching {
-  top: -142px;
 }
 .egg .gametes.unfertilized .ovum {
   left: 75px;
@@ -292,9 +270,6 @@
 .egg .fertilize-button {
   margin-top: 45px;
 }
-.egg .fertilize-button.matching {
-  margin-top: 25px;
-}
 .egg .fertilize-button.disabled {
   color: #808080;
 }
@@ -302,18 +277,8 @@
   width: 103px;
   padding: 34px;
 }
-.egg .egg-image.matching {
-  margin-top: 0px;
-  width: 70px;
-}
 .egg .organism {
   padding-top: 40px;
-}
-.egg .organism.target {
-  padding-top: 10px;
-}
-.egg .organism.matching {
-  padding-top: 10px;
 }
 #egg-game .bottom {
   justify-content: center;
