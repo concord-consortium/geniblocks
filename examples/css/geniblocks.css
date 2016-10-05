@@ -215,6 +215,22 @@
   display: flex;
   width: 420px;
 }
+.egg .target-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: -40px;
+}
+.egg .target-drake {
+  margin-top: -20px;
+}
+.egg .target-counters {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+  margin-left: 30px;
+}
 .egg .fertilization {
   display: flex;
   align-items: flex-start;
@@ -737,6 +753,24 @@
 }
 .geniblocks.genome div .geniblocks.chromosome-container {
   padding: 5px;
+}
+
+.geniblocks.ordinal-organism {
+  border: 1px solid #444;
+}
+.geniblocks.ordinal-organism .ordinal {
+  font: bold 24px sans-serif;
+  text-align: center;
+  color: #555;
+  margin-top: 3px;
+}
+.geniblocks.ordinal-organism .organism {
+  padding-top: 0;
+  margin-left: -2px;
+  margin-top: -1px;
+}
+.geniblocks.ordinal-organism.complete {
+  background-color: #aaa;
 }
 
 .geniblocks.organism.flipped {

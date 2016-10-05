@@ -86,7 +86,9 @@ window.GV2Authoring = [
       },
       "targetDrakes": [{},{},{}],
       "hiddenAlleles": "t,tk,h,c,a,b,d,bog,rh"
-    },
+    }
+  ],
+  [
     {
       "template": "GenomePlayground",
       "initialDrake": {
@@ -94,6 +96,6 @@ window.GV2Authoring = [
         "sex": 1
       },
       "hiddenAlleles": "t,tk,h,c,a,b,d,bog,rh"
-    }
+    },
   ]
 ];
