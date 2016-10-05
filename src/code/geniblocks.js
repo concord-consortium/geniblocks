@@ -14,6 +14,7 @@ export { default as ChangeSexButtons } from './components/change-sex-buttons';
 export { default as ChromosomeImageView } from './components/chromosome-image';
 export { default as ChromosomeView } from './components/chromosome';
 export { default as CircularGlowView } from './components/circular-glow';
+export { default as EggClutchView } from './components/egg-clutch';
 export { default as FeedbackView } from './components/feedback';
 export { default as FertilizingGameteView } from './components/fertilizing-gamete';
 export { default as GametePoolView } from './components/gamete-pool';

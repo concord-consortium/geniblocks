@@ -90,12 +90,23 @@ window.GV2Authoring = [
   ],
   [
     {
-      "template": "GenomePlayground",
-      "initialDrake": {
-        "alleles": "a:T,b:T,a:w,b:w,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+      "template": "EggSortGame",
+      "mother":{
+        "alleles": "a:w,b:W,a:M,b:m,a:fl,a:hl,a:T,b:T,a:h,b:h,a:C,b:C,a:A1,b:A1,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
         "sex": 1
       },
-      "hiddenAlleles": "t,tk,h,c,a,b,d,bog,rh"
-    },
+      "father": {
+        "alleles": "a:w,b:W,a:m,b:m,a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex": 0
+      },
+      "hiddenAlleles": "t,m,h,c,b,fl,hl,a,d,bog,rh",
+      "baskets": [
+        { "label": "Male Drakes with Wings", "alleles": ["a:W","b:W"], "sex": 0 },
+        { "label": "Female Drakes with Wings", "alleles": ["a:W","b:W"], "sex": 1 },
+        { "label": "Male Drakes without Wings", "alleles": ["a:w,b:w"], "sex": 0 },
+        { "label": "Female Drakes without Wings", "alleles": ["a:w,b:w"], "sex": 1 }
+      ],
+      "eggCount": 16
+    }
   ]
 ];
