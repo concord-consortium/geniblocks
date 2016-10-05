@@ -16,6 +16,7 @@ export function loadStateFromAuthoring(state, authoring, progress={}) {
       template = templates[templateName],
       challengeType = authoredChallenge.challengeType,
       hiddenAlleles = extractHiddenAlleles(state, authoredChallenge),
+      baskets = authoredChallenge.baskets || state.baskets,
       showUserDrake = authoredChallenge.showUserDrake != null ? authoredChallenge.showUserDrake : false,
       trials = authoredChallenge.targetDrakes,
       authoredDrakesArray = template.authoredDrakesToDrakeArray(authoredChallenge, trial),
@@ -46,6 +47,7 @@ export function loadStateFromAuthoring(state, authoring, progress={}) {
     challengeType,
     showUserDrake,
     hiddenAlleles,
+    baskets,
     drakes,
     gametes,
     trial,
@@ -70,6 +72,7 @@ export function loadNextTrial(state, authoring, progress) {
       templateName = state.template,
       template = templates[templateName],
       hiddenAlleles = extractHiddenAlleles(state, authoredChallenge),
+      baskets = authoredChallenge.baskets || state.baskets,
       authoredDrakesArray = template.authoredDrakesToDrakeArray(authoredChallenge, trial),
 
       // turn authored alleles into completely-specified alleleStrings
@@ -90,6 +93,7 @@ export function loadNextTrial(state, authoring, progress) {
 
   return state.merge({
     hiddenAlleles,
+    baskets,
     drakes,
     trial,
     moves: 0,

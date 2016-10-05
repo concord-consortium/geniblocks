@@ -9,6 +9,7 @@ export { default as AlleleFiltersView } from './components/allele-filters';
 export { default as AlleleView } from './components/allele';
 export { default as AnimatedGameteView } from './components/animated-gamete';
 export { default as AnimatedOrganismView } from './components/animated-organism';
+export { default as BasketSetView } from './components/basket-set';
 export { default as Button } from './components/button';
 export { default as ChangeSexButtons } from './components/change-sex-buttons';
 export { default as ChromosomeImageView } from './components/chromosome-image';

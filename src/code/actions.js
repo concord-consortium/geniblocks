@@ -9,6 +9,7 @@ export const actionTypes = {
   GAMETE_CHROMOSOME_ADDED: "Gamete chromosome added",
   FERTILIZED: "Fertilized",
   HATCHED: "Hatched",
+  EGG_PLACED: "Egg placed",
   OFFSPRING_KEPT: "Offspring kept",
   DRAKE_SUBMITTED: "Drake submitted",
   GAMETES_RESET: "Gametes reset",
@@ -32,7 +33,8 @@ const ITS_ACTIONS = {
   NAVIGATED: "NAVIGATED",
   ADVANCED: "ADVANCED",
   CHANGED: "CHANGED",
-  SUBMITTED: "SUBMITTED"
+  SUBMITTED: "SUBMITTED",
+  PLACED: "PLACED"
 };
 
 const ITS_TARGETS = {
@@ -41,6 +43,7 @@ const ITS_TARGETS = {
   TRIAL: "TRIAL",
   ALLELE: "ALLELE",
   SEX: "SEX",
+  EGG: "EGG",
   DRAKE: "DRAKE"
 };
 
@@ -257,6 +260,94 @@ export function submitDrake(correctPhenotype, submittedPhenotype, correct, incor
         rightButton: {
           label: "~BUTTON.TRY_AGAIN",
           action: incorrectAction || "dismissModalDialog"
+        },
+        top: "475px"
+      };
+    }
+    dispatch(showModalDialog(dialog));
+  };
+}
+
+function _putEggInBasket(egg, basket, isCorrect) {
+  let incrementMoves = !isCorrect;
+  return{
+    type: actionTypes.EGG_PLACED,
+    egg,
+    basket,
+    isCorrect,
+    incrementMoves,
+    meta: {
+      itsLog: {
+        actor: ITS_ACTORS.USER,
+        action: ITS_ACTIONS.PLACED,
+        target: ITS_TARGETS.EGG
+      }
+    }
+  };
+}
+
+export function putEggInBasket(egg, basket, isCorrect, isChallengeComplete) {
+  return (dispatch, getState) => {
+    dispatch(_putEggInBasket(egg, basket, isCorrect));
+
+    const state = getState();
+    let caseComplete = false;
+
+    if (isChallengeComplete) {
+      if (state.authoring[state.case].length <= state.challenge+1) {
+        caseComplete = true;
+      }
+    }
+
+    let dialog = {};
+
+    if (isCorrect) {
+      if (caseComplete) {
+        dialog = {
+          message: "~ALERT.TITLE.GOOD_WORK",
+          explanation: "~ALERT.COMPLETE_COIN",
+          leftButton: {
+            label: "~BUTTON.TRY_AGAIN",
+            action: "retryCurrentChallenge"
+          },
+          rightButton: {
+            label: "~BUTTON.NEXT_CASE",
+            action: "navigateToNextChallenge"
+          },
+          showAward: true
+        };
+      } else if (isChallengeComplete) {
+        dialog = {
+          message: "~ALERT.TITLE.GOOD_WORK",
+          explanation: "~ALERT.NEW_PIECE_OF_COIN",
+          leftButton: {
+            label: "~BUTTON.TRY_AGAIN",
+            action: "retryCurrentChallenge"
+          },
+          rightButton: {
+            label: "~BUTTON.NEXT_CHALLENGE",
+            action: "navigateToNextChallenge"
+          },
+          showAward: true
+        };
+      } else {
+        dialog = {
+          message: "~ALERT.TITLE.GOOD_WORK",
+          explanation: "~ALERT.EGG_BASKET_MATCH",
+          rightButton:{
+            label: "~BUTTON.CONTINUE",
+            action: "dismissModalDialog"
+          },
+          top: "475px"
+        };
+      }
+    } else {
+      dialog = {
+        message: "~ALERT.TITLE.EGG_MISMATCH",
+        explanation: "~ALERT.EGG_BASKET_MISMATCH",
+        rightButton: {
+          label: "~BUTTON.TRY_AGAIN",
+          action: "dismissModalDialog"
         },
         top: "475px"
       };

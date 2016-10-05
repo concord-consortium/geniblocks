@@ -6,10 +6,14 @@ import React, {PropTypes} from 'react';
  * @param {number} tightenRows - If given, will shrink the vertical height of the pen by this amount
  *                        per row, crowding the org images as needed.
  */
-class EggView extends React.Component {
+class BasketView extends React.Component {
 
   static propTypes = {
-    egg: PropTypes.object,
+    basket: PropTypes.shape({
+      label: PropTypes.string,
+      alleles: PropTypes.arrayOf(PropTypes.string),
+      sex: PropTypes.number
+    }),
     id: PropTypes.string,
     index: PropTypes.number,
     width: PropTypes.number,
@@ -19,45 +23,41 @@ class EggView extends React.Component {
   };
 
   handleClick = (evt) => {
-    const { egg, id, index, onClick } = this.props;
+    const { basket, id, index, onClick } = this.props;
     if (onClick)
-      onClick(id, index, egg);
+      onClick(id, index, basket);
     evt.stopPropagation();
   }
 
   render() {
-    const { id, width, isSelected } = this.props,
-          classes = 'clutch-egg' + (isSelected ? ' selected' : '');
+    const { basket, id, width, isSelected } = this.props,
+          classes = 'basket' + (isSelected ? ' selected' : '');
     return (
-      <div className={classes} width={width} key={id} onClick={this.handleClick} />
+      <div className={classes} width={width} key={id} onClick={this.handleClick}>
+        <div className='basket-image'></div>
+        <div className='basket-label'>{basket.label}</div>
+      </div>
     );
   }
 }
 
-const EggClutchView = ({eggs, idPrefix='egg-', width=600, columns=8, rows, selectedIndex, onClick}) => {
+const BasketSetView = ({baskets, idPrefix='basket-', selectedIndex, onClick}) => {
 
-  let eggWidth = width/columns,
-      orgViews = eggs.map((egg, index) => {
+  let basketViews = baskets.map((basket, index) => {
         const id = `${idPrefix}${index}`;
-        return <EggView egg={egg} id={id} key={id} index={index} width={eggWidth}
+        return <BasketView basket={basket} id={id} key={id} index={index}
                         isSelected={index === selectedIndex} onClick={onClick} />;
       });
 
-  rows = rows || Math.ceil(orgViews.length / columns) || 1;
-
-  let height = eggWidth * rows;
-
-  let style = { width, height };
-
   return (
-    <div className="geniblocks egg-clutch" style={style}>
-      { orgViews }
+    <div className="geniblocks basket-set">
+      { basketViews }
     </div>
   );
 };
 
-EggClutchView.propTypes = {
-  eggs: PropTypes.arrayOf(PropTypes.object).isRequired,
+BasketSetView.propTypes = {
+  baskets: PropTypes.arrayOf(PropTypes.object).isRequired,
   idPrefix: PropTypes.string,
   width: PropTypes.number,
   columns: PropTypes.number,
@@ -66,4 +66,4 @@ EggClutchView.propTypes = {
   onClick: PropTypes.func
 };
 
-export default EggClutchView;
+export default BasketSetView;

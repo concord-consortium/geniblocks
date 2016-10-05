@@ -107,6 +107,23 @@ window.GV2Authoring = [
         { "label": "Female Drakes without Wings", "alleles": ["a:w,b:w"], "sex": 1 }
       ],
       "eggCount": 16
+    },
+    {
+      "template": "EggSortGame",
+      "mother":{
+        "alleles": "a:w,b:W,a:M,b:m,a:fl,a:hl,a:T,b:T,a:h,b:h,a:C,b:C,a:A1,b:A1,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex": 1
+      },
+      "father": {
+        "alleles": "a:w,b:W,a:m,b:m,a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex": 0
+      },
+      "hiddenAlleles": "t,m,w,h,c,b,a,d,bog,rh",
+      "baskets": [
+        { "label": "Drakes with Forelimbs and Hindlimbs", "alleles": ["a:Fl,a:Hl","a:Fl,b:Hl","b:Fl,a:Hl","b:Fl,a:Hl"] },
+        { "label": "Drakes without Forelimbs or Hindlimbs", "alleles": ["a:fl,b:fl,a:hl,b:hl"] }
+      ],
+      "eggCount": 16
     }
   ]
 ];

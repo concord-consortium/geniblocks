@@ -80,7 +80,7 @@ function getValue(obj, path) {
 
 function makeMutable(obj) {
   if (obj.asMutable) {
-    return obj.asMutable();
+    return obj.asMutable({deep: true});
   } else if (obj.isArray) {
     for (let item of obj) {
       item = makeMutable(item);

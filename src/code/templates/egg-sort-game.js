@@ -1,8 +1,30 @@
 import React, { Component, PropTypes } from 'react';
+import BasketSetView from '../components/basket-set';
 import EggClutchView from '../components/egg-clutch';
 import GenomeView from '../components/genome';
 
+function isEggCompatibleWithBasket(egg, basket) {
+  if (!egg || !basket) return false;
+  if ((basket.sex != null) && (egg.sex !== basket.sex))
+    return false;
+  // one of the basket's allele strings...
+  return basket.alleles.some((alleleString) => {
+    // ... must match every one of its alleles ...
+    return alleleString.split(',').every((allele) => {
+      // ... to the alleles of the egg
+      return egg.alleles.indexOf(allele) >= 0;
+    });
+  });
+}
+
 export default class EggSortGame extends Component {
+
+  static propTypes = {
+    drakes: PropTypes.array.isRequired,
+    hiddenAlleles: PropTypes.array.isRequired,
+    baskets: PropTypes.array.isRequired,
+    onEggPlaced: PropTypes.func.isRequired
+  }
 
   componentWillMount() {
     const { drakes } = this.props,
@@ -13,25 +35,40 @@ export default class EggSortGame extends Component {
     this.setState({ mother, father, eggs });
   }
 
+  handleBackgroundClick = () => {
+    this.setState({ selectedBasketIndex: null, selectedBasket: null,
+                    selectedEggIndex: null, selectedEgg: null });
+  }
+
+  handleBasketClick = (id, index, basket) => {
+    const { onEggPlaced } = this.props,
+          { selectedEgg } = this.state,
+          isCompatible = selectedEgg && isEggCompatibleWithBasket(selectedEgg, basket);
+    if (selectedEgg) {
+      onEggPlaced(selectedEgg, basket, isCompatible);
+    }
+    this.setState({ selectedBasketIndex: index, selectedBasket: basket });
+  }
+
   handleEggClick = (id, index, egg) => {
-    this.setState({ selected: { index, egg }});
+    this.setState({ selectedEggIndex: index, selectedEgg: egg });
   }
 
   render() {
-    const { hiddenAlleles } = this.props,
-          { eggs, selected } = this.state,
-          selectedIndex = selected && selected.index,
-          selectedEgg = selected && selected.egg,
+    const { hiddenAlleles, baskets } = this.props,
+          { eggs, selectedEgg, selectedEggIndex, selectedBasketIndex } = this.state,
           genomeView = selectedEgg
                         ? <GenomeView org={selectedEgg} hiddenAlleles={hiddenAlleles} editable={false} />
                         : null;
 
     return (
-      <div id="egg-sort-game">
+      <div id="egg-sort-game" onClick={this.handleBackgroundClick}>
         <div id="left-section">
-          <div id="baskets"></div>
+          <div id="baskets">
+            <BasketSetView baskets={baskets} selectedIndex={selectedBasketIndex} onClick={this.handleBasketClick} />
+          </div>
           <div id="eggs">
-            <EggClutchView eggs={eggs} selectedIndex={selectedIndex} onClick={this.handleEggClick} />
+            <EggClutchView eggs={eggs} selectedIndex={selectedEggIndex} onClick={this.handleEggClick} />
           </div>
         </div>
         <div id="right-section">
@@ -39,14 +76,6 @@ export default class EggSortGame extends Component {
         </div>
       </div>
     );
-  }
-
-  static propTypes = {
-    drakes: PropTypes.array.isRequired,
-    hiddenAlleles: PropTypes.array.isRequired,
-    onChromosomeAlleleChange: PropTypes.func.isRequired,
-    onSexChange: PropTypes.func.isRequired,
-    onCompleteChallenge: PropTypes.func.isRequired
   }
 
   static authoredDrakesToDrakeArray = function(authoredChallenge) {
