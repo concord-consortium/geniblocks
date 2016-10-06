@@ -34,23 +34,16 @@ class EggView extends React.Component {
   }
 }
 
-const EggClutchView = ({eggs, idPrefix='egg-', width=600, columns=8, rows, selectedIndex, onClick}) => {
+const EggClutchView = ({eggs, idPrefix='egg-', selectedIndex, onClick}) => {
 
-  let eggWidth = width/columns,
-      orgViews = eggs.map((egg, index) => {
+  let orgViews = eggs.map((egg, index) => {
         const id = `${idPrefix}${index}`;
-        return <EggView egg={egg} id={id} key={id} index={index} width={eggWidth}
+        return <EggView egg={egg} id={id} key={id} index={index}
                         isSelected={index === selectedIndex} onClick={onClick} />;
       });
 
-  rows = rows || Math.ceil(orgViews.length / columns) || 1;
-
-  let height = eggWidth * rows;
-
-  let style = { width, height };
-
   return (
-    <div className="geniblocks egg-clutch" style={style}>
+    <div className="geniblocks egg-clutch">
       { orgViews }
     </div>
   );
@@ -59,9 +52,6 @@ const EggClutchView = ({eggs, idPrefix='egg-', width=600, columns=8, rows, selec
 EggClutchView.propTypes = {
   eggs: PropTypes.arrayOf(PropTypes.object).isRequired,
   idPrefix: PropTypes.string,
-  width: PropTypes.number,
-  columns: PropTypes.number,
-  rows: PropTypes.number,
   selectedIndex: PropTypes.number,
   onClick: PropTypes.func
 };

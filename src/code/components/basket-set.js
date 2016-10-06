@@ -16,8 +16,6 @@ class BasketView extends React.Component {
     }),
     id: PropTypes.string,
     index: PropTypes.number,
-    width: PropTypes.number,
-    height: PropTypes.number,
     isSelected: PropTypes.bool,
     onClick: PropTypes.func
   };
@@ -30,10 +28,10 @@ class BasketView extends React.Component {
   }
 
   render() {
-    const { basket, id, width, isSelected } = this.props,
+    const { basket, id, isSelected } = this.props,
           classes = 'basket' + (isSelected ? ' selected' : '');
     return (
-      <div className={classes} width={width} key={id} onClick={this.handleClick}>
+      <div className={classes} key={id} onClick={this.handleClick}>
         <div className='basket-image'></div>
         <div className='basket-label'>{basket.label}</div>
       </div>
@@ -59,9 +57,6 @@ const BasketSetView = ({baskets, idPrefix='basket-', selectedIndex, onClick}) =>
 BasketSetView.propTypes = {
   baskets: PropTypes.arrayOf(PropTypes.object).isRequired,
   idPrefix: PropTypes.string,
-  width: PropTypes.number,
-  columns: PropTypes.number,
-  rows: PropTypes.number,
   selectedIndex: PropTypes.number,
   onClick: PropTypes.func
 };
