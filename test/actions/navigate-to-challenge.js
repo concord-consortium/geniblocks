@@ -31,8 +31,6 @@ describe('navigateToChallenge action', () => {
       let initialState = defaultState.merge({
         case: 0,
         challenge: 0,
-        challengeType: undefined,
-        showUserDrake: false,
         authoring: [
           [],
           [{}, {}, {
@@ -47,19 +45,14 @@ describe('navigateToChallenge action', () => {
 
       let nextState = reducer(initialState, navigateToChallenge(1, 2));
 
-      expect(nextState).toEqual(initialState.merge({
+      // by starting with nextState and merging in what we expect,
+      // we eliminate all other properties from consideration
+      expect(nextState).toEqual(nextState.merge({
         case: 1,
         challenge: 2,
         template: "GenomePlayground",
         challenges: 3,
-        showUserDrake: false,
         trialSuccess: false,
-
-        // punt on these, as they're not part of the test
-        challengeProgress: nextState.challengeProgress,
-        drakes: nextState.drakes,
-        trials: nextState.trials,
-        goalMoves: nextState.goalMoves
       }));
     });
   });

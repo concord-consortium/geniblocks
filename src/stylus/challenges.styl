@@ -317,6 +317,72 @@
   justify-content center
   margin-top -28px
 
+#egg-sort-game
+  position: absolute
+  top: 115px
+  left: 170px
+  width: 1000px
+  height: 600px
+  
+  #baskets
+    position: absolute
+    top: 35px
+    left: 30px
+    width: 700px
+    height: 300px
+  
+  .geniblocks.basket-set
+    display: flex
+    align-items: center
+    justify-content: space-around
+    flex-wrap: wrap
+
+    .basket
+      margin-top: 60px
+      
+      .basket-image
+        background-image: url('../resources/images/garden-basket.png')
+        background-size: contain
+        background-repeat: no-repeat
+        width: 150px
+        height: 100px
+      
+      .basket-label
+        width: 150px
+        color: white
+        font: 1.4em bold
+
+    .basket.selected
+      .basket-image
+        background-image: url('../resources/images/garden-basket-glow.png')
+
+  #eggs
+    position: absolute
+    top: 335px
+    left: 30px
+    width: 700px
+  
+  .geniblocks.egg-clutch
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-around
+
+    .clutch-egg
+      background-image: url('../resources/images/egg_brown.png')
+      background-size: contain
+      background-repeat: no-repeat
+      width: 75px
+      height: 109px
+      margin-left: 35px
+      margin-right: 35px
+
+    .clutch-egg.selected
+      background-image: url('../resources/images/egg_yellow.png')
+
+  .geniblocks.genome
+    position: absolute
+    top: 105px
+    left: 730px
 
 .egg-alleles {
     position: relative;

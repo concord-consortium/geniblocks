@@ -4,7 +4,7 @@ import templates from '../templates';
 import { changeAllele, changeSex, submitDrake, resetGametes,
         navigateToCurrentRoute, navigateToChallenge, navigateToNextChallenge,
         addGameteChromosome, keepOffspring, fertilize, hatch,
-        completeChallenge } from '../actions';
+        completeChallenge, putEggInBasket } from '../actions';
 
 class ChallengeContainer extends Component {
   componentWillMount() {
@@ -39,11 +39,11 @@ class ChallengeContainer extends Component {
   static propTypes = {
     template: PropTypes.string,
     routeParams: PropTypes.shape({
-      case: PropTypes.number,
-      challenge: PropTypes.number
+      case: PropTypes.string,
+      challenge: PropTypes.string
     }),
-    navigateToChallenge: PropTypes.function,
-    navigateToCurrentRoute: PropTypes.function
+    navigateToChallenge: PropTypes.func,
+    navigateToCurrentRoute: PropTypes.func
   }
 }
 
@@ -55,6 +55,7 @@ function mapStateToProps (state) {
       drakes: state.drakes,
       gametes: state.gametes,
       hiddenAlleles: state.hiddenAlleles.asMutable(),
+      baskets: state.baskets,
       trial: state.trial,
       trials: state.trials,
       case: state.case,
@@ -79,7 +80,8 @@ function mapDispatchToProps(dispatch) {
     onFertilize: (gamete1, gamete2) => dispatch(fertilize(gamete1, gamete2)),
     onHatch: () => dispatch(hatch()),
     onResetGametes: () => dispatch(resetGametes()),
-    onKeepOffspring: (index, success, maxDrakes) => dispatch(keepOffspring(index, success, maxDrakes))
+    onKeepOffspring: (index, success, maxDrakes) => dispatch(keepOffspring(index, success, maxDrakes)),
+    onEggPlaced: (egg, basket, correct) => dispatch(putEggInBasket(egg, basket, correct))
   };
 }
 

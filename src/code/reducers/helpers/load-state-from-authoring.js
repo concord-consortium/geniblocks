@@ -1,5 +1,12 @@
 import templates from '../../templates';
 
+function extractHiddenAlleles(state, authoredChallenge) {
+  const authoredHiddenAlleles = authoredChallenge.hiddenAlleles;
+  return authoredHiddenAlleles
+            ? authoredHiddenAlleles.split(',')
+            : state.hiddenAlleles;
+}
+
 export function loadStateFromAuthoring(state, authoring, progress={}) {
   let trial = state.trial ? state.trial : 0;
 
@@ -8,6 +15,8 @@ export function loadStateFromAuthoring(state, authoring, progress={}) {
       templateName = authoredChallenge.template,
       template = templates[templateName],
       challengeType = authoredChallenge.challengeType,
+      hiddenAlleles = extractHiddenAlleles(state, authoredChallenge),
+      baskets = authoredChallenge.baskets || state.baskets,
       showUserDrake = authoredChallenge.showUserDrake != null ? authoredChallenge.showUserDrake : false,
       trials = authoredChallenge.targetDrakes,
       authoredDrakesArray = template.authoredDrakesToDrakeArray(authoredChallenge, trial),
@@ -37,6 +46,8 @@ export function loadStateFromAuthoring(state, authoring, progress={}) {
     template: templateName,
     challengeType,
     showUserDrake,
+    hiddenAlleles,
+    baskets,
     drakes,
     gametes,
     trial,
@@ -60,6 +71,8 @@ export function loadNextTrial(state, authoring, progress) {
   let authoredChallenge = authoring[state.case][state.challenge],
       templateName = state.template,
       template = templates[templateName],
+      hiddenAlleles = extractHiddenAlleles(state, authoredChallenge),
+      baskets = authoredChallenge.baskets || state.baskets,
       authoredDrakesArray = template.authoredDrakesToDrakeArray(authoredChallenge, trial),
 
       // turn authored alleles into completely-specified alleleStrings
@@ -79,10 +92,12 @@ export function loadNextTrial(state, authoring, progress) {
   }
 
   return state.merge({
-    drakes: drakes,
+    hiddenAlleles,
+    baskets,
+    drakes,
     trial,
     moves: 0,
-    goalMoves: goalMoves,
+    goalMoves,
     userDrakeHidden: true,
     challengeProgress: progress
   });
