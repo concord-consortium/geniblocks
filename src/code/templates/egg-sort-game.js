@@ -20,6 +20,9 @@ function isEggCompatibleWithBasket(egg, basket) {
 export default class EggSortGame extends Component {
 
   static propTypes = {
+    case: PropTypes.number.isRequired,
+    challenge: PropTypes.number.isRequired,
+    trial: PropTypes.number.isRequired,
     drakes: PropTypes.array.isRequired,
     hiddenAlleles: PropTypes.array.isRequired,
     baskets: PropTypes.array.isRequired,
@@ -35,9 +38,20 @@ export default class EggSortGame extends Component {
     this.setState({ mother, father, eggs });
   }
 
-  handleBackgroundClick = () => {
+  componentWillReceiveProps(nextProps) {
+    const { case: prevCase, challenge: prevChallenge, trial: prevTrial } = this.props,
+          { case: nextCase, challenge: nextChallenge, trial: nextTrial } = nextProps;
+    if ((prevCase !== nextCase) || (prevChallenge !== nextChallenge) || (prevTrial !== nextTrial))
+      this.clearSelection();
+  }
+
+  clearSelection() {
     this.setState({ selectedBasketIndex: null, selectedBasket: null,
                     selectedEggIndex: null, selectedEgg: null });
+  }
+
+  handleBackgroundClick = () => {
+    this.clearSelection();
   }
 
   handleBasketClick = (id, index, basket) => {
