@@ -29,6 +29,13 @@ export default class EggSortGame extends Component {
     onEggPlaced: PropTypes.func.isRequired
   }
 
+  state = {
+    selectedBaskets: [],
+    clickedBasket: null,
+    selectedEggIndex: null,
+    selectedEgg: null
+  }
+
   componentWillMount() {
     const { drakes } = this.props,
           mother = new BioLogica.Organism(BioLogica.Species.Drake, drakes[0].alleles, drakes[0].sex),
@@ -46,7 +53,7 @@ export default class EggSortGame extends Component {
   }
 
   clearSelection() {
-    this.setState({ selectedBasketIndex: null, selectedBasket: null,
+    this.setState({ selectedBaskets: [], clickedBasket: null,
                     selectedEggIndex: null, selectedEgg: null });
   }
 
@@ -61,16 +68,20 @@ export default class EggSortGame extends Component {
     if (selectedEgg) {
       onEggPlaced(selectedEgg, basket, isCompatible);
     }
-    this.setState({ selectedBasketIndex: index, selectedBasket: basket });
+    this.setState({ selectedBaskets: [index], clickedBasket: basket });
   }
 
   handleEggClick = (id, index, egg) => {
-    this.setState({ selectedEggIndex: index, selectedEgg: egg });
+    const { baskets } = this.props,
+          // all baskets selected/highlighted on egg click
+          selectedBaskets = baskets.map((basket, index) => index);
+    this.setState({ selectedBaskets, clickedBasket: null,
+                    selectedEggIndex: index, selectedEgg: egg });
   }
 
   render() {
     const { hiddenAlleles, baskets } = this.props,
-          { eggs, selectedEgg, selectedEggIndex, selectedBasketIndex } = this.state,
+          { eggs, selectedEgg, selectedEggIndex, selectedBaskets } = this.state,
           genomeView = selectedEgg
                         ? <GenomeView org={selectedEgg} hiddenAlleles={hiddenAlleles} editable={false} />
                         : null;
@@ -79,7 +90,7 @@ export default class EggSortGame extends Component {
       <div id="egg-sort-game" onClick={this.handleBackgroundClick}>
         <div id="left-section">
           <div id="baskets">
-            <BasketSetView baskets={baskets} selectedIndex={selectedBasketIndex} onClick={this.handleBasketClick} />
+            <BasketSetView baskets={baskets} selectedIndices={selectedBaskets} onClick={this.handleBasketClick} />
           </div>
           <div id="eggs">
             <EggClutchView eggs={eggs} selectedIndex={selectedEggIndex} onClick={this.handleEggClick} />

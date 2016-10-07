@@ -39,12 +39,13 @@ class BasketView extends React.Component {
   }
 }
 
-const BasketSetView = ({baskets, idPrefix='basket-', selectedIndex, onClick}) => {
+const BasketSetView = ({baskets, idPrefix='basket-', selectedIndices=[], onClick}) => {
 
   let basketViews = baskets.map((basket, index) => {
-        const id = `${idPrefix}${index}`;
+        const id = `${idPrefix}${index}`,
+              isSelected = selectedIndices.indexOf(index) >= 0;
         return <BasketView basket={basket} id={id} key={id} index={index}
-                        isSelected={index === selectedIndex} onClick={onClick} />;
+                        isSelected={isSelected} onClick={onClick} />;
       });
 
   return (
@@ -57,7 +58,7 @@ const BasketSetView = ({baskets, idPrefix='basket-', selectedIndex, onClick}) =>
 BasketSetView.propTypes = {
   baskets: PropTypes.arrayOf(PropTypes.object).isRequired,
   idPrefix: PropTypes.string,
-  selectedIndex: PropTypes.number,
+  selectedIndices: PropTypes.arrayOf(PropTypes.number),
   onClick: PropTypes.func
 };
 
