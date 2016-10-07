@@ -91,7 +91,7 @@ export default class EggSortGame extends Component {
           fatherSpec = { alleles: father.getAlleleString(), sex: father.sex };
     let drakes = [motherSpec, fatherSpec, null];
     for (let i = 0; i < authoredChallenge.eggCount; ++i) {
-      const child = BioLogica.breed(mother, father, false),
+      const child = BioLogica.breed(mother, father),
             alleles = child.getAlleleString(),
             sex = child.sex;
       drakes.push({ alleles, sex });
