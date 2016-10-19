@@ -350,8 +350,7 @@
 #egg-sort-game #baskets {
   position: absolute;
   top: 35px;
-  left: 30px;
-  width: 700px;
+  width: 660px;
   height: 300px;
 }
 #egg-sort-game .geniblocks.basket-set {
@@ -376,13 +375,12 @@
   font: 1.4em bold;
 }
 #egg-sort-game .geniblocks.basket-set .basket.selected .basket-image {
-  background-image: url("../resources/images/garden-basket-glow3.png");
+  background-image: url("../resources/images/garden-basket-glow.png");
 }
 #egg-sort-game #eggs {
   position: absolute;
   top: 335px;
-  left: 30px;
-  width: 700px;
+  width: 660px;
 }
 #egg-sort-game .geniblocks.egg-clutch {
   display: flex;
@@ -397,8 +395,6 @@
   opacity: 0.4;
   width: 75px;
   height: 109px;
-  margin-left: 35px;
-  margin-right: 35px;
 }
 #egg-sort-game .geniblocks.egg-clutch .clutch-egg.selected {
   cursor: default;
@@ -410,14 +406,19 @@
 #egg-sort-game #right-section {
   position: absolute;
   top: 80px;
-  left: 715px;
+  left: 680px;
   width: 320px;
-  height: 440px;
+  height: 480px;
 }
 #egg-sort-game #right-section .section-title {
   font-size: 1.5em;
   text-align: center;
   color: #fff;
+  margin-top: 10px;
+}
+#egg-sort-game #right-section .section-title.instructions {
+  font-size: 2em;
+  color: lightGray;
 }
 #egg-sort-game #right-section #container {
   position: relative;
@@ -429,14 +430,15 @@
 #egg-sort-game #right-section #container #background {
   position: absolute;
   width: 314px;
-  height: 434px;
+  height: 474px;
   border: 3px #fff solid;
   border-radius: 7px;
   background: #fff;
   opacity: 0.2;
 }
 #egg-sort-game #right-section #container .instr-heading {
-  padding-top: 3em;
+  padding-top: 1.8em;
+  padding-bottom: 0.5em;
   font-size: 2em;
   text-align: center;
   color: lightGray;
