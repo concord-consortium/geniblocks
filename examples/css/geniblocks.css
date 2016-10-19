@@ -25,6 +25,13 @@
   padding: 10px 50px;
 }
 
+.unselectable {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .no-focus-highlight {
   outline: none;
 }
@@ -369,7 +376,7 @@
   font: 1.4em bold;
 }
 #egg-sort-game .geniblocks.basket-set .basket.selected .basket-image {
-  background-image: url("../resources/images/garden-basket-glow.png");
+  background-image: url("../resources/images/garden-basket-glow3.png");
 }
 #egg-sort-game #eggs {
   position: absolute;
@@ -386,6 +393,7 @@
   background-image: url("../resources/images/egg_yellow.png");
   background-size: contain;
   background-repeat: no-repeat;
+  cursor: url("../resources/images/magnify.cur"), zoom-in;
   opacity: 0.4;
   width: 75px;
   height: 109px;
@@ -393,15 +401,53 @@
   margin-right: 35px;
 }
 #egg-sort-game .geniblocks.egg-clutch .clutch-egg.selected {
+  cursor: default;
   opacity: 1;
 }
 #egg-sort-game .geniblocks.egg-clutch .clutch-egg.hidden {
   visibility: hidden;
 }
-#egg-sort-game .geniblocks.genome {
+#egg-sort-game #right-section {
   position: absolute;
-  top: 105px;
-  left: 730px;
+  top: 80px;
+  left: 715px;
+  width: 320px;
+  height: 440px;
+}
+#egg-sort-game #right-section .section-title {
+  font-size: 1.5em;
+  text-align: center;
+  color: #fff;
+}
+#egg-sort-game #right-section #container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 3px #888 solid;
+  border-radius: 10px;
+}
+#egg-sort-game #right-section #container #background {
+  position: absolute;
+  width: 314px;
+  height: 434px;
+  border: 3px #fff solid;
+  border-radius: 7px;
+  background: #fff;
+  opacity: 0.2;
+}
+#egg-sort-game #right-section #container .instr-heading {
+  padding-top: 3em;
+  font-size: 2em;
+  text-align: center;
+  color: lightGray;
+}
+#egg-sort-game #right-section #container .instr-item {
+  font-size: 1.5em;
+  color: lightGray;
+}
+#egg-sort-game #right-section #container .geniblocks.genome {
+  position: absolute;
+  margin: 20px 0;
 }
 #egg-sort-game .clutch-egg {
   background-image: url("../resources/images/egg_yellow.png");
