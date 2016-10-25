@@ -96,7 +96,7 @@ window.GV2Authoring = [
       "template": "EggSortGame",
       "trialGenerator": {
         "type": "randomize-order",
-        "baseDrake": "a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "baseDrake": "a:T,b:T,a:a,b:a,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
         "drakes": [
           { alleles: "a:W,b:W", sex: 0 },
           { alleles: "a:W,b:w", sex: 0 },
@@ -123,7 +123,7 @@ window.GV2Authoring = [
       "template": "EggSortGame",
       "trialGenerator": {
         "type": "randomize-order",
-        "baseDrake": "a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "baseDrake": "a:T,b:T,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
         "drakes": [
           { alleles: "a:Fl,b:fl,a:Hl,b:hl" },
           { alleles: "a:fl,b:fl,a:Hl,b:hl" },
@@ -151,7 +151,7 @@ window.GV2Authoring = [
       "template": "EggSortGame",
       "trialGenerator": {
         "type": "randomize-order",
-        "baseDrake": "a:T,b:T,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "baseDrake": "a:T,b:T,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
         "drakes": [
           { alleles: "a:H,b:H", sex: 0 },
           { alleles: "a:H,b:h", sex: 0 },
@@ -178,7 +178,7 @@ window.GV2Authoring = [
       "template": "EggSortGame",
       "trialGenerator": {
         "type": "randomize-order",
-        "baseDrake": "a:T,b:T,a:h,b:h,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "baseDrake": "a:T,b:T,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
         "drakes": [
           { alleles: "a:A1,b:A1", sex: 0 },
           { alleles: "a:A1,b:a", sex: 0 },
@@ -204,7 +204,7 @@ window.GV2Authoring = [
       "template": "EggSortGame",
       "trialGenerator": {
         "type": "randomize-order",
-        "baseDrake": "a:T,b:T,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "baseDrake": "a:T,b:T,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
         "drakes": [
           { alleles: "a:h,b:h,a:w,b:w,a:a,b:a" },
           { alleles: "a:h,b:h,a:w,b:w,a:a,b:a" },

@@ -360,7 +360,7 @@
   flex-wrap: wrap;
 }
 #egg-sort-game .geniblocks.basket-set .basket {
-  margin-top: 60px;
+  margin-top: 100px;
 }
 #egg-sort-game .geniblocks.basket-set .basket .basket-image {
   background-image: url("../resources/images/garden-basket.png");
@@ -379,7 +379,7 @@
 }
 #egg-sort-game #eggs {
   position: absolute;
-  top: 335px;
+  top: 350px;
   width: 660px;
 }
 #egg-sort-game .geniblocks.egg-clutch {
