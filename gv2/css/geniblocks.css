@@ -93,6 +93,9 @@
 #challenges #case-wrapper #drake-image {
   margin: 100px 25px 0;
 }
+#challenges #genome-challenge .instructions-banner {
+  margin-left: 25px;
+}
 #challenges .geniblocks.question-glow.question-mark {
   background: url("./resources/images/question_mark.png");
 }
@@ -200,6 +203,22 @@
 }
 .fade-in-on-render.show {
   opacity: 1;
+}
+.instructions-banner {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 800px;
+  height: 80px;
+  margin-left: 135px;
+  margin-top: -80px;
+  color: #eee;
+  background-color: rgba(255,255,255,0.4);
+}
+.instructions-banner .instructions-text {
+  font-size: 2em;
+  text-align: center;
 }
 #egg-game .geniblocks.genome {
   position: relative;
