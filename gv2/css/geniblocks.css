@@ -32,6 +32,43 @@
   user-select: none;
 }
 
+#upload-button-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#upload-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#upload-button-container .upload-button-wrapper {
+  margin-top: 200px;
+  width: 400px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0ff;
+  border: 3px solid #808080;
+  border-radius: 10px;
+}
+#upload-button-container .upload-button-wrapper #upload-button-label {
+  margin-top: 12px;
+  width: 350px;
+  height: 80px;
+  cursor: pointer;
+}
+#upload-button-container .upload-button-wrapper .upload-button-text {
+  margin-top: 12px;
+  font-size: 2em;
+  text-align: center;
+}
+#upload-button-container #upload-message-wrapper {
+  margin-top: 30px;
+  background-color: #fbb;
+}
+
 .no-focus-highlight {
   outline: none;
 }
