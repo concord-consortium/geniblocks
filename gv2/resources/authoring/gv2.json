@@ -4,7 +4,7 @@
       "comment": "*** Case 1: Challenge 1 - Playground ***",
       "template": "GenomePlayground",
       "initialDrake": {
-        "alleles": "a:T,b:T,a:w,b:w,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "alleles": "T-T, w-w, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 1
       },
       "hiddenAlleles": "t,tk,h,c,a,b,d,bog,rh"
@@ -15,11 +15,11 @@
       "instructions": "Match the target drake!",
       "showUserDrake": true,
       "initialDrake": {
-        "alleles": "a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "alleles": "T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 1
       },
       "targetDrakes": [{
-        "alleles": "a:w,a:m,b:m,a:fl,a:hl,a:T,b:T,a:h,b:h,a:C,b:C,a:A1,b:A1,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "alleles": "w-, m-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 1
       }],
       "hiddenAlleles": "t,tk,h,c,a,b,d,bog,rh"
@@ -30,11 +30,11 @@
       "instructions": "Match the target drake!",
       "showUserDrake": false,
       "initialDrake": {
-        "alleles": "a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "alleles": "T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 1
       },
       "targetDrakes": [{
-        "alleles": "a:w,a:m,b:m,a:fl,a:hl,a:T,b:T,a:h,b:h,a:C,b:C,a:A1,b:A1,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "alleles": "w-, m-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 1
       }],
       "hiddenAlleles": "t,tk,h,c,a,b,d,bog,rh"
@@ -45,18 +45,18 @@
       "instructions": "Match 3 drakes!",
       "trialGenerator": {
         "type": "all-combinations",
-        "baseDrake": "a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "baseDrake": "T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
         "initialDrakeCombos": [
-          ["a:M,b:M",   "a:M,b:m",   "a:m,b:M",   "a:m,b:m"],
-          ["a:W,b:W",   "a:W,b:w",   "a:w,b:W",   "a:w,b:w"],
-          ["a:Fl,b:Fl", "a:Fl,b:fl", "a:fl,b:Fl", "a:fl,b:fl"],
-          ["a:Hl,b:Hl", "a:Hl,b:hl", "a:hl,b:Hl", "a:hl,b:hl"]
+          ["M-M",   "M-m",   "m-M",   "m-m"],
+          ["W-W",   "W-w",   "w-W",   "w-w"],
+          ["Fl-Fl", "Fl-fl", "fl-Fl", "fl-fl"],
+          ["Hl-Hl", "Hl-hl", "hl-Hl", "hl-hl"]
         ],
         "targetDrakeCombos": [
-          ["a:M,b:M",   "a:m,b:m"],
-          ["a:W,b:W",   "a:w,b:w"],
-          ["a:Fl,b:Fl", "a:fl,b:fl"],
-          ["a:Hl,b:Hl", "a:hl,b:hl"]
+          ["M-M",   "m-m"],
+          ["W-W",   "w-w"],
+          ["Fl-Fl", "fl-fl"],
+          ["Hl-Hl", "hl-hl"]
         ]
       },
       "targetDrakes": [{},{},{}],
@@ -162,9 +162,9 @@
       },
       "hiddenAlleles": "t,m,w,h,c,b,a,d,bog,rh",
       "baskets": [
-        { "label": "Drakes with only forelimbs", "alleles": ["Fl-,hl-hl", "-Fl,hl-hl"] },
-        { "label": "Drakes with only hindlimbs", "alleles": ["fl-fl,Hl-", "fl-fl,-Hl"] },
-        { "label": "Drakes with forelimbs and hindlimbs", "alleles": ["Fl-,Hl-","Fl-,-Hl","-Fl,Hl-","-Fl,-Hl"] }
+        { "label": "Drakes with only forelimbs", "alleles": ["Fl-, hl-hl", "-Fl, hl-hl"] },
+        { "label": "Drakes with only hindlimbs", "alleles": ["fl-fl, Hl-", "fl-fl, -Hl"] },
+        { "label": "Drakes with forelimbs and hindlimbs", "alleles": ["Fl-, Hl-","Fl-, -Hl","-Fl, Hl-","-Fl, -Hl"] }
       ]
     }
   ],
