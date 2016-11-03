@@ -68,7 +68,7 @@
       "comment": "*** Case 2: Challenge 1 - Egg Game I (create five unique drakes) ***",
       "template": "EggGame",
       "challengeType": "create-unique",
-      "instructions": "Create 5 different baby drakes!",
+      "instructions": "Kirk's REALLY Awesome Challenge!",
       "showUserDrake": true,
       "mother":{
         "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
