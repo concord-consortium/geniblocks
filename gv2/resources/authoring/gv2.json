@@ -45,22 +45,18 @@
       "instructions": "Match 3 drakes!",
       "trialGenerator": {
         "type": "all-combinations",
-        "baseDrake": "T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+        "baseDrake": "T-T, C-C, B-B, D-D, rh-rh, Bog-Bog, Hl-Hl, Fl-Fl, W-W, M-M",
         "initialDrakeCombos": [
-          ["M-M",   "M-m",   "m-M",   "m-m"],
-          ["W-W",   "W-w",   "w-W",   "w-w"],
-          ["Fl-Fl", "Fl-fl", "fl-Fl", "fl-fl"],
-          ["Hl-Hl", "Hl-hl", "hl-Hl", "hl-hl"]
+          ["A1-A1",   "A1-a",  "a-a"],
+          ["H-H",   "H-h",  "h-h"]
         ],
         "targetDrakeCombos": [
-          ["M-M",   "m-m"],
-          ["W-W",   "w-w"],
-          ["Fl-Fl", "fl-fl"],
-          ["Hl-Hl", "hl-hl"]
+          ["A1-A1", "A1-a",  "a-a"],
+          ["H-H",  "H-h", "h-h"]
         ]
       },
       "targetDrakes": [{},{},{}],
-      "hiddenAlleles": "t,tk,h,c,a,b,d,bog,rh"
+      "hiddenAlleles": "t,tk,c,b,d,bog,rh,hl,fl,w,m"
     }
   ],
   [
