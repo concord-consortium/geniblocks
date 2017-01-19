@@ -7,45 +7,6 @@
     hasProp = {}.hasOwnProperty,
     indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  Array.prototype.remove = function(from, to) {
-    var rest;
-    rest = this.slice((to || from) + 1 || this.length);
-    this.length = from < 0 ? this.length + from : from;
-    return this.push.apply(this, rest);
-  };
-
-  Array.prototype.removeObj = function(obj) {
-    var i;
-    i = this.indexOf(obj);
-    if (~i) {
-      this.remove(i);
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  Array.prototype.replaceFirst = function(obj, replacement) {
-    return this[this.indexOf(obj)] = replacement;
-  };
-
-  Array.prototype.shuffle = function() {
-    var current, tmp, top;
-    top = this.length;
-    if (top) {
-      while (--top) {
-        current = Math.floor(Math.random() * (top + 1));
-        tmp = this[current];
-        this[current] = this[top];
-        this[top] = tmp;
-      }
-    }
-    return this;
-  };
-
-
-  /* jslint debug: true */
-
   arrayRemoveObject = function(array, obj) {
     var i;
     i = array.indexOf(obj);
@@ -1193,13 +1154,13 @@
 
   BioLogica.Species = BioLogica.Species || {};
 
-  BioLogica.Species.Dragon = {
-    name: 'Dragon',
+  BioLogica.Species.GGDrake = {
+    name: 'GGDrake',
     chromosomeNames: ['1', '2', 'XY'],
     chromosomeGeneMap: {
-      '1': ['h', 's'],
-      '2': ['w', 'l', 't'],
-      'XY': ['p', 'f', 'a', 'b']
+      '1': ['T3', 'M2', 'W2', 'A2'],
+      '2': ['H2', 'C2', 'G2', 'S2'],
+      'XY': ['D2', 'F2']
     },
     chromosomesLength: {
       '1': 100000000,
@@ -1207,161 +1168,131 @@
       'XY': 70000000
     },
     geneList: {
-      horns: {
-        alleles: ['H', 'h', 'HU'],
-        start: 5000000,
-        length: 5333
+      tail: {
+        alleles: ['T1', 'T2', 'T3'],
+        start: 10000000,
+        length: 10584
       },
-      scales: {
-        alleles: ['S', 's'],
-        start: 7500000,
-        length: 7667
+      metallic: {
+        alleles: ['M1', 'M2'],
+        start: 20000000,
+        length: 259610
       },
       wings: {
-        alleles: ['W', 'w', 'wd'],
-        start: 2769231,
-        length: 25128
+        alleles: ['W1', 'W2'],
+        start: 70000000,
+        length: 9094
       },
-      legs: {
-        alleles: ['L', 'l'],
-        start: 4615385,
-        length: 19230
+      armor: {
+        alleles: ['A1', 'A2'],
+        start: 80000000,
+        length: 122234
       },
-      tail: {
-        alleles: ['T', 't', 'ta'],
-        start: 6153846,
-        length: 10256
+      horns: {
+        alleles: ['H1', 'H2'],
+        start: 15000000,
+        length: 19421
       },
-      plates: {
-        alleles: ['P', 'p'],
-        start: 2333333,
-        length: 6000
+      color: {
+        alleles: ['C1', 'C2'],
+        start: 45000000,
+        length: 64572
       },
-      fire: {
-        alleles: ['F', 'f', 'fb'],
-        start: 3033333,
-        length: 26600
+      green: {
+        alleles: ['G1', 'G2'],
+        start: 55000000,
+        length: 17596
       },
-      color1: {
-        alleles: ['A', 'a', 'aw'],
-        start: 4200000,
-        length: 26133
+      spikes: {
+        alleles: ['S1', 'S2'],
+        start: 90000000,
+        length: 6371
       },
-      color2: {
-        alleles: ['B', 'b'],
-        start: 6020000,
-        length: 32200
+      dilute: {
+        alleles: ['D1', 'D2'],
+        start: 20000000,
+        length: 152673
+      },
+      firebreathing: {
+        alleles: ['F1', 'F2'],
+        start: 60000000,
+        length: 1000
       }
     },
     alleleLabelMap: {
-      'H': 'Horns',
-      'h': 'No horns',
-      'HU': 'Unicorn',
-      'S': 'No scales',
-      's': 'Scales',
-      'W': 'No wings',
-      'w': 'Wings',
-      'wd': 'Double wings',
-      'L': 'Legs',
-      'l': 'No legs',
-      'T': 'Fancy tail',
-      't': 'Plain tail',
-      'ta': 'Arrow tail',
-      'P': 'Plates',
-      'p': 'No plates',
-      'F': 'No fire',
-      'f': 'Fire',
-      'fb': 'Blue fire',
-      'A': 'Color A',
-      'a': 'Color a',
-      'aw': 'Color aw',
-      'B': 'Color B',
-      'b': 'Color b',
+      'T1': 'Long tail',
+      'T2': 'Kinked tail',
+      'T3': 'Short tail',
+      'M1': 'Metallic',
+      'M2': 'Nonmetallic',
+      'W1': 'Wings',
+      'W2': 'No wings',
+      'H1': 'No horns',
+      'H2': 'Horns',
+      'C1': 'Colored',
+      'C2': 'Colorless',
+      'A1': 'No armor',
+      'A2': 'Armor',
+      'S1': 'Spikes wide',
+      'S2': 'Spikes narrow',
+      'G1': 'Green',
+      'G2': 'Purple',
+      'D1': 'Full color',
+      'D2': 'Dilute color',
+      'F1': 'No fire breathing',
+      'F2': 'Fire breathing',
       'Y': 'Y',
       '': ''
     },
     traitRules: {
-      'horns': {
-        'Horns': [['H', 'H'], ['H', 'h']],
-        'No Horns': [['h', 'h']],
-        'Unicorn': [['HU', 'H'], ['HU', 'h'], ['HU', 'HU']]
-      },
-      'scales': {
-        'Scales': [['s', 's']],
-        'No Scales': [['S', 'S'], ['S', 's']]
+      'tail': {
+        'Long tail': [['T1', 'T1'], ['T1', 'T2'], ['T1', 'T3']],
+        'Kinked tail': [['T2', 'T2'], ['T2', 'T3']],
+        'Short tail': [['T3', 'T3']]
       },
       'wings': {
-        'Double Wings': [['wd', 'wd'], ['wd', 'w']],
-        'Wings': [['w', 'w'], ['W', 'wd']],
-        'No Wings': [['W', 'W'], ['W', 'w']]
+        'Wings': [['W1', 'W1'], ['W1', 'W2']],
+        'No wings': [['W2', 'W2']]
       },
-      'legs': {
-        'Four Legs': [['L', 'L']],
-        'Two Legs': [['L', 'l']],
-        'No Legs': [['l', 'l']]
+      'horns': {
+        'Reverse horns': [['H1', 'H1'], ['H1', 'H2']],
+        'Forward horns': [['H2', 'H2']]
       },
-      'tail': {
-        'Fancy Tail': [['T', 'T'], ['T', 't'], ['T', 'ta']],
-        'Plain Tail': [['t', 't'], ['t', 'ta']],
-        'Arrow Tail': [['ta', 'ta']]
+      'armor': {
+        'No armor': [['A1', 'A1'], ['A1', 'A2']],
+        'Armor': [['A2', 'A2']]
       },
-      'fire': {
-        'No Fire': [['F', 'F'], ['F', 'f'], ['F', 'fb'], ['F', 'Y']],
-        'Fire': [['f', 'f'], ['f', 'fb'], ['f', 'Y']],
-        'Blue Fire': [['fb', 'fb'], ['fb', 'Y']]
+      'spikes': {
+        'Wide spikes': [['S1', 'S1']],
+        'Medium spikes': [['S1', 'S2']],
+        'Narrow spikes': [['S2', 'S2']]
+      },
+      'fire breathing': {
+        'No fire breathing': [['F1']],
+        'Fire breathing': [['F2', 'F2'], ['F2', 'Y']]
       },
       'color': {
-        'Green': [['A', 'B', 'Y'], ['A', 'b', 'Y']],
-        'Yellow': [['a', 'B', 'Y'], ['a', 'b', 'Y']],
-        'Red': [['A', 'A', 'B', 'B'], ['A', 'a', 'B', 'B']],
-        'Purple': [['a', 'a', 'B', 'B']],
-        'Brown': [['A', 'A', 'B', 'b'], ['A', 'A', 'b', 'b'], ['A', 'a', 'B', 'b'], ['A', 'a', 'b', 'b']],
-        'Blue': [['a', 'a', 'B', 'b'], ['a', 'a', 'b', 'b']],
-        'Albino': BioLogica.combinations([['aw'], ['A', 'a', 'aw'], ['B', 'b'], ['B', 'b']]).concat(BioLogica.combinations([['aw'], ['B', 'b'], ['Y']]))
+        'Green': [['C1', 'G1', 'D1']],
+        'Blue': [['C1', 'G1', 'D2', 'D2'], ['C1', 'G1', 'D2', 'Y']],
+        'Purple': [['C1', 'G2', 'G2', 'D1']],
+        'Red': [['C1', 'G2', 'G2', 'D2', 'D2'], ['C1', 'G2', 'G2', 'D2', 'Y']],
+        'Albino': [['C2', 'C2']]
       },
-      'plates': {
-        'Big Plates': [['P', 'P']],
-        'Little Plates': [['P', 'p'], ['P', 'Y']],
-        'No Plates': [['p', 'p'], ['p', 'Y']]
-      },
-      'liveliness': {
-        'Alive': [['B', 'B'], ['B', 'b'], ['B', 'Y']],
-        'Dead': [['b', 'b'], ['b', 'Y']]
+      'metallic': {
+        'Metallic': [['M1']],
+        'Nonmetallic': [['M2', 'M2']]
       }
     },
 
     /*
-      Uses an external engine's sprite sheets to generate the images.
+      GGDrakes are pieced together by sprites
      */
-    getImageName: function(org) {
-      return void 0;
-    },
+    getImageName: function(org) {},
 
     /*
-      Makes sure the organism has at least one big B
+      GGDrakes have no lethal characteristics
      */
-    makeAlive: function(org) {
-      var chromosome, chromosome1, chromosome2;
-      if (org.getCharacteristic('liveliness') === 'Dead') {
-        if (org.sex === BioLogica.MALE) {
-          chromosome = org.getGenotype().chromosomes['XY']['x'];
-        } else {
-          chromosome1 = org.getGenotype().chromosomes['XY']['x1'];
-          chromosome2 = org.getGenotype().chromosomes['XY']['x2'];
-          if (indexOf.call(chromosome1.alleles, 'b') >= 0) {
-            if (indexOf.call(chromosome2.alleles, 'b') >= 0) {
-              chromosome = ExtMath.flip() ? chromosome1 : chromosome2;
-            } else {
-              chromosome = chromosome1;
-            }
-          } else {
-            chromosome = chromosome2;
-          }
-        }
-        org.getGenotype().replaceAllele(chromosome, 'b', 'B');
-        return org.resetPhenotype();
-      }
-    }
+    makeAlive: function(org) {}
   };
 
   BioLogica.Species = BioLogica.Species || {};
@@ -1602,13 +1533,13 @@
 
   BioLogica.Species = BioLogica.Species || {};
 
-  BioLogica.Species.GGDrake = {
-    name: 'GGDrake',
+  BioLogica.Species.Dragon = {
+    name: 'Dragon',
     chromosomeNames: ['1', '2', 'XY'],
     chromosomeGeneMap: {
-      '1': ['T3', 'M2', 'W2', 'A2'],
-      '2': ['H2', 'C2', 'G2', 'S2'],
-      'XY': ['D2', 'F2']
+      '1': ['h', 's'],
+      '2': ['w', 'l', 't'],
+      'XY': ['p', 'f', 'a', 'b']
     },
     chromosomesLength: {
       '1': 100000000,
@@ -1616,131 +1547,161 @@
       'XY': 70000000
     },
     geneList: {
-      tail: {
-        alleles: ['T1', 'T2', 'T3'],
-        start: 10000000,
-        length: 10584
+      horns: {
+        alleles: ['H', 'h', 'HU'],
+        start: 5000000,
+        length: 5333
       },
-      metallic: {
-        alleles: ['M1', 'M2'],
-        start: 20000000,
-        length: 259610
+      scales: {
+        alleles: ['S', 's'],
+        start: 7500000,
+        length: 7667
       },
       wings: {
-        alleles: ['W1', 'W2'],
-        start: 70000000,
-        length: 9094
+        alleles: ['W', 'w', 'wd'],
+        start: 2769231,
+        length: 25128
       },
-      armor: {
-        alleles: ['A1', 'A2'],
-        start: 80000000,
-        length: 122234
+      legs: {
+        alleles: ['L', 'l'],
+        start: 4615385,
+        length: 19230
       },
-      horns: {
-        alleles: ['H1', 'H2'],
-        start: 15000000,
-        length: 19421
+      tail: {
+        alleles: ['T', 't', 'ta'],
+        start: 6153846,
+        length: 10256
       },
-      color: {
-        alleles: ['C1', 'C2'],
-        start: 45000000,
-        length: 64572
+      plates: {
+        alleles: ['P', 'p'],
+        start: 2333333,
+        length: 6000
       },
-      green: {
-        alleles: ['G1', 'G2'],
-        start: 55000000,
-        length: 17596
+      fire: {
+        alleles: ['F', 'f', 'fb'],
+        start: 3033333,
+        length: 26600
       },
-      spikes: {
-        alleles: ['S1', 'S2'],
-        start: 90000000,
-        length: 6371
+      color1: {
+        alleles: ['A', 'a', 'aw'],
+        start: 4200000,
+        length: 26133
       },
-      dilute: {
-        alleles: ['D1', 'D2'],
-        start: 20000000,
-        length: 152673
-      },
-      firebreathing: {
-        alleles: ['F1', 'F2'],
-        start: 60000000,
-        length: 1000
+      color2: {
+        alleles: ['B', 'b'],
+        start: 6020000,
+        length: 32200
       }
     },
     alleleLabelMap: {
-      'T1': 'Long tail',
-      'T2': 'Kinked tail',
-      'T3': 'Short tail',
-      'M1': 'Metallic',
-      'M2': 'Nonmetallic',
-      'W1': 'Wings',
-      'W2': 'No wings',
-      'H1': 'No horns',
-      'H2': 'Horns',
-      'C1': 'Colored',
-      'C2': 'Colorless',
-      'A1': 'No armor',
-      'A2': 'Armor',
-      'S1': 'Spikes wide',
-      'S2': 'Spikes narrow',
-      'G1': 'Green',
-      'G2': 'Purple',
-      'D1': 'Full color',
-      'D2': 'Dilute color',
-      'F1': 'No fire breathing',
-      'F2': 'Fire breathing',
+      'H': 'Horns',
+      'h': 'No horns',
+      'HU': 'Unicorn',
+      'S': 'No scales',
+      's': 'Scales',
+      'W': 'No wings',
+      'w': 'Wings',
+      'wd': 'Double wings',
+      'L': 'Legs',
+      'l': 'No legs',
+      'T': 'Fancy tail',
+      't': 'Plain tail',
+      'ta': 'Arrow tail',
+      'P': 'Plates',
+      'p': 'No plates',
+      'F': 'No fire',
+      'f': 'Fire',
+      'fb': 'Blue fire',
+      'A': 'Color A',
+      'a': 'Color a',
+      'aw': 'Color aw',
+      'B': 'Color B',
+      'b': 'Color b',
       'Y': 'Y',
       '': ''
     },
     traitRules: {
-      'tail': {
-        'Long tail': [['T1', 'T1'], ['T1', 'T2'], ['T1', 'T3']],
-        'Kinked tail': [['T2', 'T2'], ['T2', 'T3']],
-        'Short tail': [['T3', 'T3']]
+      'horns': {
+        'Horns': [['H', 'H'], ['H', 'h']],
+        'No Horns': [['h', 'h']],
+        'Unicorn': [['HU', 'H'], ['HU', 'h'], ['HU', 'HU']]
+      },
+      'scales': {
+        'Scales': [['s', 's']],
+        'No Scales': [['S', 'S'], ['S', 's']]
       },
       'wings': {
-        'Wings': [['W1', 'W1'], ['W1', 'W2']],
-        'No wings': [['W2', 'W2']]
+        'Double Wings': [['wd', 'wd'], ['wd', 'w']],
+        'Wings': [['w', 'w'], ['W', 'wd']],
+        'No Wings': [['W', 'W'], ['W', 'w']]
       },
-      'horns': {
-        'Reverse horns': [['H1', 'H1'], ['H1', 'H2']],
-        'Forward horns': [['H2', 'H2']]
+      'legs': {
+        'Four Legs': [['L', 'L']],
+        'Two Legs': [['L', 'l']],
+        'No Legs': [['l', 'l']]
       },
-      'armor': {
-        'No armor': [['A1', 'A1'], ['A1', 'A2']],
-        'Armor': [['A2', 'A2']]
+      'tail': {
+        'Fancy Tail': [['T', 'T'], ['T', 't'], ['T', 'ta']],
+        'Plain Tail': [['t', 't'], ['t', 'ta']],
+        'Arrow Tail': [['ta', 'ta']]
       },
-      'spikes': {
-        'Wide spikes': [['S1', 'S1']],
-        'Medium spikes': [['S1', 'S2']],
-        'Narrow spikes': [['S2', 'S2']]
-      },
-      'fire breathing': {
-        'No fire breathing': [['F1']],
-        'Fire breathing': [['F2', 'F2'], ['F2', 'Y']]
+      'fire': {
+        'No Fire': [['F', 'F'], ['F', 'f'], ['F', 'fb'], ['F', 'Y']],
+        'Fire': [['f', 'f'], ['f', 'fb'], ['f', 'Y']],
+        'Blue Fire': [['fb', 'fb'], ['fb', 'Y']]
       },
       'color': {
-        'Green': [['C1', 'G1', 'D1']],
-        'Blue': [['C1', 'G1', 'D2', 'D2'], ['C1', 'G1', 'D2', 'Y']],
-        'Purple': [['C1', 'G2', 'G2', 'D1']],
-        'Red': [['C1', 'G2', 'G2', 'D2', 'D2'], ['C1', 'G2', 'G2', 'D2', 'Y']],
-        'Albino': [['C2', 'C2']]
+        'Green': [['A', 'B', 'Y'], ['A', 'b', 'Y']],
+        'Yellow': [['a', 'B', 'Y'], ['a', 'b', 'Y']],
+        'Red': [['A', 'A', 'B', 'B'], ['A', 'a', 'B', 'B']],
+        'Purple': [['a', 'a', 'B', 'B']],
+        'Brown': [['A', 'A', 'B', 'b'], ['A', 'A', 'b', 'b'], ['A', 'a', 'B', 'b'], ['A', 'a', 'b', 'b']],
+        'Blue': [['a', 'a', 'B', 'b'], ['a', 'a', 'b', 'b']],
+        'Albino': BioLogica.combinations([['aw'], ['A', 'a', 'aw'], ['B', 'b'], ['B', 'b']]).concat(BioLogica.combinations([['aw'], ['B', 'b'], ['Y']]))
       },
-      'metallic': {
-        'Metallic': [['M1']],
-        'Nonmetallic': [['M2', 'M2']]
+      'plates': {
+        'Big Plates': [['P', 'P']],
+        'Little Plates': [['P', 'p'], ['P', 'Y']],
+        'No Plates': [['p', 'p'], ['p', 'Y']]
+      },
+      'liveliness': {
+        'Alive': [['B', 'B'], ['B', 'b'], ['B', 'Y']],
+        'Dead': [['b', 'b'], ['b', 'Y']]
       }
     },
 
     /*
-      GGDrakes are pieced together by sprites
+      Uses an external engine's sprite sheets to generate the images.
      */
-    getImageName: function(org) {},
+    getImageName: function(org) {
+      return void 0;
+    },
 
     /*
-      GGDrakes have no lethal characteristics
+      Makes sure the organism has at least one big B
      */
-    makeAlive: function(org) {}
+    makeAlive: function(org) {
+      var chromosome, chromosome1, chromosome2;
+      if (org.getCharacteristic('liveliness') === 'Dead') {
+        if (org.sex === BioLogica.MALE) {
+          chromosome = org.getGenotype().chromosomes['XY']['x'];
+        } else {
+          chromosome1 = org.getGenotype().chromosomes['XY']['x1'];
+          chromosome2 = org.getGenotype().chromosomes['XY']['x2'];
+          if (indexOf.call(chromosome1.alleles, 'b') >= 0) {
+            if (indexOf.call(chromosome2.alleles, 'b') >= 0) {
+              chromosome = ExtMath.flip() ? chromosome1 : chromosome2;
+            } else {
+              chromosome = chromosome1;
+            }
+          } else {
+            chromosome = chromosome2;
+          }
+        }
+        org.getGenotype().replaceAllele(chromosome, 'b', 'B');
+        return org.resetPhenotype();
+      }
+    }
   };
 
   BioLogica.Species = BioLogica.Species || {};

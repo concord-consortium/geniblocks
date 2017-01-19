@@ -45,25 +45,47 @@
       "instructions": "Match 3 drakes!",
       "trialGenerator": {
         "type": "all-combinations",
-        "baseDrake": "T-T, C-C, B-B, D-D, rh-rh, Bog-Bog, Hl-Hl, Fl-Fl, W-W, M-M",
+        "baseDrake": "T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
         "initialDrakeCombos": [
-          ["A1-A1",   "A1-a",  "a-a"],
-          ["H-H",   "H-h",  "h-h"]
+          ["M-M",   "M-m",   "m-M",   "m-m"],
+          ["W-W",   "W-w",   "w-W",   "w-w"],
+          ["Fl-Fl", "Fl-fl", "fl-Fl", "fl-fl"],
+          ["Hl-Hl", "Hl-hl", "hl-Hl", "hl-hl"]
         ],
         "targetDrakeCombos": [
-          ["A1-A1", "A1-a",  "a-a"],
-          ["H-H",  "H-h", "h-h"]
+          ["M-M",   "m-m"],
+          ["W-W",   "w-w"],
+          ["Fl-Fl", "fl-fl"],
+          ["Hl-Hl", "hl-hl"]
         ]
       },
       "targetDrakes": [{},{},{}],
-      "hiddenAlleles": "t,tk,c,b,d,bog,rh,hl,fl,w,m"
+      "hiddenAlleles": "t,tk,h,c,a,b,d,bog,rh"
     }
   ],
   [
     {
-      "comment": "*** Case 2: Challenge 1 - Egg Game I (create five unique drakes) ***",
+      "comment": "*** Case 2: Challenge 1 - Egg Game I(c) (select chromosomes to create five unique drakes) ***",
       "template": "EggGame",
       "challengeType": "create-unique",
+      "interactionType": "select-chromosomes",
+      "instructions": "Create 5 different baby drakes!",
+      "showUserDrake": true,
+      "mother":{
+        "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
+        "sex": 1
+      },
+      "father": {
+        "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+        "sex": 0
+      },
+      "hiddenAlleles": "t,tk,h,c,a,b,d,bog,rh"
+    },
+    {
+      "comment": "*** Case 2: Challenge 2 - Egg Game I(g) (select gametes to create five unique drakes) ***",
+      "template": "EggGame",
+      "challengeType": "create-unique",
+      "interactionType": "select-gametes",
       "instructions": "Create 5 different baby drakes!",
       "showUserDrake": true,
       "mother":{
