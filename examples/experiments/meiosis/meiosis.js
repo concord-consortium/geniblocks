@@ -1,6 +1,6 @@
 var mother = new BioLogica.Organism(BioLogica.Species.Drake, "a:m,b:M,a:h,b:h,a:C,b:C,a:a,b:a,a:B,b:B,a:D,b:D,a:w,b:W,a:Fl,b:Fl,a:Hl,b:hl,a:T,b:t,a:rh,b:rh,a:Bog,b:Bog", 1),
     father = new BioLogica.Organism(BioLogica.Species.Drake, "a:M,a:h,b:h,a:C,b:C,a:a,b:a,a:B,a:D,a:W,a:fl,b:fl,a:Hl,a:t,b:T,a:rh,a:Bog,b:Bog", 0),
-    hiddenAlleles = ['h','c','a','b','d','bog','rh'],
+    visibleGenes = ['tail', 'wings', 'forelimbs', 'hindlimbs'],
     motherDisabledAlleles = [],
     fatherDisabledAlleles = [],
     showFilters = false,
@@ -92,7 +92,7 @@ function render() {
     ReactDOM.render(
       React.createElement(GeniBlocks.AlleleFiltersView, {
         species: mother.species,
-        hiddenAlleles: hiddenAlleles,
+        visibleGenes: visibleGenes,
         disabledAlleles: motherDisabledAlleles,
         onFilterChange: function(evt, allele, isChecked) {
           evt;
@@ -125,7 +125,7 @@ function render() {
     ReactDOM.render(
       React.createElement(GeniBlocks.AlleleFiltersView, {
         species: father.species,
-        hiddenAlleles: hiddenAlleles,
+        visibleGenes: visibleGenes,
         disabledAlleles: fatherDisabledAlleles,
         onFilterChange: function(evt, allele, isChecked) {
           evt;
@@ -157,7 +157,7 @@ function render() {
   ReactDOM.render(
     React.createElement(GeniBlocks.GametePoolView, {
       gametes: motherGametes,
-      hiddenAlleles: hiddenAlleles,
+      visibleGenes: visibleGenes,
       width: gametePoolWidth,
       height: gametePoolHeight,
       animStiffness: animStiffness,
@@ -181,7 +181,7 @@ function render() {
   ReactDOM.render(
     React.createElement(GeniBlocks.GametePoolView, {
       gametes: fatherGametes,
-      hiddenAlleles: hiddenAlleles,
+      visibleGenes: visibleGenes,
       width: gametePoolWidth,
       height: gametePoolHeight,
       animStiffness: animStiffness,
@@ -207,7 +207,7 @@ function render() {
     if (offspring) {
       ReactDOM.render(
         React.createElement(GeniBlocks.AnimatedOrganismView, {
-            org: offspring, 
+            org: offspring,
             initialOpacity: 0.0,
             opacity: offspringOpacity,
             onRest: function() {
@@ -238,8 +238,8 @@ function render() {
         React.createElement(GeniBlocks.FertilizingGameteView, {
           type: 'mother',
           gamete: selectedMotherGamete, id: selectedMotherGameteId,
-          fertilizationState: fertilizationState, 
-          hiddenAlleles: hiddenAlleles,
+          fertilizationState: fertilizationState,
+          visibleGenes: visibleGenes,
           srcRect: selectedMotherGameteSrcRect,
           dstRect: motherSelectedGameteViewportRect,
           animStiffness: animStiffness,
@@ -274,8 +274,8 @@ function render() {
         React.createElement(GeniBlocks.FertilizingGameteView, {
           type: 'father',
           gamete: selectedFatherGamete, id: selectedFatherGameteId,
-          fertilizationState: fertilizationState, 
-          hiddenAlleles: hiddenAlleles,
+          fertilizationState: fertilizationState,
+          visibleGenes: visibleGenes,
           srcRect: selectedFatherGameteSrcRect,
           dstRect: fatherSelectedGameteViewportRect,
           animStiffness: animStiffness

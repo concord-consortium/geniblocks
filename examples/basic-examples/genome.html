@@ -20,6 +20,8 @@
         ReactDOM.render(
           React.createElement(GeniBlocks.GenomeView, {
             org: dragon,
+            userChangeableGenes: ['forelimbs', 'hindlimbs', 'color', 'black', 'dilute'],
+            visibleGenes: ['wings', 'tail', 'bogbreath'],
             onAlleleChange: function(chrom, side, prevAllele, newAllele) {
               dragon.genetics.genotype.replaceAlleleChromName(chrom, side, prevAllele, newAllele);
               dragon = new BioLogica.Organism(BioLogica.Species.Drake, dragon.getAlleleString(), 1);
