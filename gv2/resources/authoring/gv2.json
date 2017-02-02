@@ -7,7 +7,7 @@
         "alleles": "T-T, w-w, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 1
       },
-      "userChangeableGenes": "metallic, wings, forelimbs, hindlimbs",
+      "userChangeableGenes": "metallic, wings, forelimbs, hindlimbs"
     }
   ],
   [
@@ -55,7 +55,7 @@
         ]
       },
       "targetDrakes": [{},{}],
-      "userChangeableGenes": "metallic, wings, forelimbs, hindlimbs",
+      "userChangeableGenes": "metallic, wings, forelimbs, hindlimbs"
     }
   ],
   [
@@ -318,7 +318,7 @@
         "sex": 0
       },
       "targetDrakes": [{},{},{}],
-      "visibleGenes": "metallic, wings, forelimbs, hindlimbs",
+      "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
     },
     {
       "comment": "*** Demo: Egg Game I(g) (select gametes to create five unique drakes) ***",
