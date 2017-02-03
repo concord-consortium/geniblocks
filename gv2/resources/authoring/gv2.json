@@ -16,13 +16,14 @@
       "template": "GenomeChallenge",
       "instructions": "Match the target drake!",
       "showUserDrake": true,
+      "randomizeTrials": true,
       "initialDrake": {
-        "alleles": "Bog-, D-, rh-",
+        "alleles": "Bog-, D-, rh-rh",
         "sex": 1
       },
       "targetDrakes": [{
         "alleles": "",
-        "sex": 1
+        "sex": 0
       },
       {
         "alleles": "",
@@ -118,15 +119,15 @@
       "showUserDrake": true,
       "initialDrake": [
         {
-          "alleles": "a-a, H-H, Bog-, D-, rh-",
+          "alleles": "a-a, H-H, Bog-, D-, rh-rh",
           "sex": 1
         },
         {
-          "alleles": "A1-a, H-h, Bog-, D-, rh-",
-          "sex": 1
+          "alleles": "A1-a, H-h, Bog-, D-, rh-rh",
+          "sex": 0
         },
         {
-          "alleles": "a-A1, h-h, Bog-, D-, rh-",
+          "alleles": "a-A1, h-h, Bog-, D-, rh-rh",
           "sex": 1
         }
       ],
@@ -141,7 +142,7 @@
         },
         {
           "alleles": "a-a, H-h",
-          "sex": 1
+          "sex": 0
         }
       ],
       "userChangeableGenes": "armor, horns",
@@ -159,26 +160,26 @@
       "showUserDrake": false,
       "initialDrake": [
         {
-          "alleles": "A1-A1, H-H, Bog-, D-, rh-",
+          "alleles": "A1-A1, H-H, Bog-, D-, rh-rh",
           "sex": 1
         },
         {
-          "alleles": "a-a, h-h, Bog-, D-, rh-",
-          "sex": 1
+          "alleles": "a-a, h-h, Bog-, D-, rh-rh",
+          "sex": 0
         },
         {
-          "alleles": "a-A1, H-h, Bog-, D-, rh-",
+          "alleles": "a-A1, H-h, Bog-, D-, rh-rh",
           "sex": 1
         }
       ],
       "targetDrakes": [
         {
           "alleles": "a-a, h-h",
-          "sex": 1
+          "sex": 0
         },
         {
           "alleles": "A1-a, H-H",
-          "sex": 1
+          "sex": 0
         },
         {
           "alleles": "A1-A1, H-H",
@@ -282,6 +283,43 @@
         "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 0
       },
+      "gametes": [[{}, {}, {}, {}, {}, {}, {}, {}], [{}, {}, {}, {}, {}, {}, {}, {}]],
+      "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
+    },
+    {
+      "comment": "*** Dragon 3.1: Draco (piece 2): #5/2 - Egg Game I(g) (select gametes to create five unique drakes) ***",
+      "template": "EggGame",
+      "challengeType": "create-unique",
+      "interactionType": "select-gametes",
+      "instructions": "Create 5 different baby drakes!",
+      "showUserDrake": true,
+      "mother":{
+        "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
+        "sex": 1
+      },
+      "father": {
+        "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+        "sex": 0
+      },
+      "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
+    },
+    {
+      "comment": "*** Dragon 3.1: Draco (piece 3): #5/3 - Egg Game II(g) (select gametes for breeding to match drakes) ***",
+      "template": "EggGame",
+      "challengeType": "match-target",
+      "interactionType": "select-gametes",
+      "instructions": "Match the target drakes!",
+      "showUserDrake": true,
+      "mother":{
+        "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
+        "sex": 1
+      },
+      "father": {
+        "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+        "sex": 0
+      },
+      "gametes": [[{}, {}, {}, {}], [{}, {}, {}, {}]],
+      "targetDrakes": [{}, {}, {}],
       "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
     }
   ],
