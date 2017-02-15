@@ -111,6 +111,9 @@
 #challenges #playground-wrapper #change-sex-buttons {
   margin: 160px 0 30px -100px;
 }
+#challenges #genome-playground {
+  display: flex;
+}
 #challenges #genome-playground #change-sex-buttons {
   margin: 60px 0 30px -100px;
 }

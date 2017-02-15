@@ -36,9 +36,9 @@
       }
     },
     {
-      "comment": "*** Dragon 1.1: Alazar (piece 2): #2/2 - Three Drakes (User Drake Hidden) ***",
+      "comment": "*** Dragon 1.1: Alazar (piece 2): #2/2 - Two Drakes (User Drake Hidden) ***",
       "template": "GenomeChallenge",
-      "instructions": "Match 3 drakes!",
+      "instructions": "Match 2 drakes!",
       "trialGenerator": {
         "type": "all-combinations",
         "baseDrake": "T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
