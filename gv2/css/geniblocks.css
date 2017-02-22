@@ -73,6 +73,21 @@
   outline: none;
 }
 
+/*
+ * These constants must be synchronized with their usage in JavaScript,
+ * e.g. fv-challenge-container.js. Should consider something like Rosetta
+ * (https://www.npmjs.com/package/rosetta) which would allow single-sourcing
+ * shared constants such as these.
+ */
+/* no scroll bars if we have our minimum requirements */
+@media (min-width: 1200px) and (min-height: 700px) {
+  body {
+    overflow: hidden;
+  }
+}
+body {
+  margin: 0;
+}
 #challenges #playground-wrapper {
   display: flex;
   flex-direction: row;
@@ -200,6 +215,39 @@
   background: url("../resources/images/lab_background.jpg") top center no-repeat;
   display: flex;
   justify-content: center;
+}
+.fv-layout #case-wrapper {
+  margin-top: -50px;
+  flex-grow: 1;
+}
+.case-backdrop.fv-layout-c {
+  background-image: url("../resources/fablevision/layout-c/background.png");
+  background-size: contain;
+  flex-direction: column;
+  min-width: 1200px;
+  min-height: 700px;
+}
+.fv-hud {
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  flex-grow: 0;
+  align-items: center;
+  justify-content: center;
+  color: #eee;
+  background-repeat: no-repeat;
+  min-width: 1200px;
+}
+#fv-top-hud {
+  top: 0;
+  background-image: url("../resources/fablevision/huds/HUD_top.png");
+  background-position: 50% 0;
+}
+#fv-bottom-hud {
+  bottom: 0;
+  background-image: url("../resources/fablevision/huds/HUD_bottom.png");
+  background-position: 50% 100%;
 }
 #case-wrapper {
   width: 1080px;

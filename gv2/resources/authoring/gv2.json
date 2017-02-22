@@ -325,6 +325,24 @@
   ],
   [
     {
+      "comment": "*** Dragon 3.1: Draco (piece 1): #6/1 - Egg Game I(c) (select chromosomes to create five unique drakes) ***",
+      "container": "FVContainer",
+      "template": "FVEggGame",
+      "challengeType": "create-unique",
+      "interactionType": "select-chromosomes",
+      "instructions": "Create 5 different baby drakes!",
+      "showUserDrake": true,
+      "mother":{
+        "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
+        "sex": 1
+      },
+      "father": {
+        "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+        "sex": 0
+      },
+      "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
+    },
+    {
       "comment": "*** Demo: Egg Game II (match three drakes, user drake visible) ***",
       "template": "EggGame",
       "challengeType": "match-target",
