@@ -69,7 +69,9 @@ describe('authoredDrakesToDrakeArray()', () => {
 
 describe('loading authored state into template', () => {
   describe('in the EggGame II template', () => {
-    let authoring = GeneticsUtils.convertDashAllelesObjectToABAlleles([
+    let authoring = GeneticsUtils.convertDashAllelesObjectToABAlleles(
+      [
+        [
           [
             {},
             {
@@ -86,16 +88,18 @@ describe('loading authored state into template', () => {
               "targetDrakes": [{},{},{}]
             }
           ]
-        ], ["alleles"]);
+        ]
+      ], ["alleles"]);
 
     let defaultState = reducer(undefined, {});
     let initialState = defaultState.merge({
+      level: 0,
       case: 0,
       challenge: 0,
       authoring: authoring
     });
 
-    let nextState = reducer(initialState, navigateToChallenge(0, 1));
+    let nextState = reducer(initialState, navigateToChallenge(0, 0, 1));
 
     it('should create the correct drake and trial state on initial load', () => {
 
