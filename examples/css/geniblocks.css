@@ -25,6 +25,10 @@
   padding: 10px 50px;
 }
 
+@font-face {
+  font-family: 'Yanone Kaffeesatz';
+  src: url("../resources/fonts/YanoneKaffeesatz-Regular.woff") format('woff'), url("../resources/fonts/YanoneKaffeesatz-Regular.ttf") format('truetype'); /* Safari, Android, iOS */
+}
 .unselectable {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -329,6 +333,9 @@ body {
   margin-top: -15px;
   width: 80%;
 }
+.fv-layout-c #egg-game .geniblocks.genome {
+  top: 0px;
+}
 .egg {
   position: relative;
   display: flex;
@@ -453,6 +460,9 @@ body {
 #egg-game .bottom {
   justify-content: center;
   margin-top: -28px;
+}
+.fv-layout-c #egg-game .bottom {
+  margin-top: 0px;
 }
 #egg-sort-game {
   position: relative;
@@ -1058,4 +1068,32 @@ body {
   margin: 3px;
   padding: 2px;
   height: 320px;
+}
+
+.geniblocks.parentDrake {
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 475px;
+  height: 187px;
+  font-size: 54px;
+  font-family: 'Yanone Kaffeesatz';
+}
+.geniblocks.parentDrake.mother {
+  background: url("../resources/fablevision/layout-c/female_drake_overlay.png");
+  justify-content: flex-end;
+}
+.geniblocks.parentDrake.mother .organism {
+  margin-right: 20px;
+}
+.geniblocks.parentDrake.father {
+  background: url("../resources/fablevision/layout-c/male_drake_overlay.png");
+  justify-content: flex-start;
+}
+.geniblocks.parentDrake.father .organism {
+  margin-left: 20px;
+}
+.geniblocks.parentDrake .parentTitle {
+  margin-top: 10px;
 }
