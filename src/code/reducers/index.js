@@ -21,6 +21,7 @@ function initialState() {
             visibleGenes: [],
             hiddenAlleles: [],
             trial: 0,
+            level: 0,
             case: 0,
             challenge: 0,
             challenges: 1,
@@ -126,6 +127,7 @@ export default function reducer(state, action) {
     }
     case actionTypes.NAVIGATED: {
       state = state.merge({
+        level: action.level,
         case: action.case,
         challenge: action.challenge,
         trial: 0

@@ -4,16 +4,18 @@ import { navigateToChallenge, actionTypes as types } from '../../src/code/action
 
 describe('navigateToChallenge action', () => {
   it('should create the correct action when we navigate to a challenge', () => {
-    const _case = 2,
+    const level = 4,
+          _case = 2,
           challenge = 3;
 
-    let actionObject = navigateToChallenge(_case, challenge);
+    let actionObject = navigateToChallenge(level, _case, challenge);
 
     expect(actionObject).toEqual({
       type: types.NAVIGATED,
       case: _case,
+      level: level,
       challenge,
-      route: "/3/4",
+      route: "/5/3/4",
       meta: {
         "itsLog": {
           "actor": "USER",
@@ -29,21 +31,25 @@ describe('navigateToChallenge action', () => {
     it('should update the state to match the authored state when we navigate', () => {
       let defaultState = reducer(undefined, {});
       let initialState = defaultState.merge({
+        level: 0,
         case: 0,
         challenge: 0,
-        authoring: [
-          [],
-          [{}, {}, {
-            template: "GenomePlayground",
-            "initialDrake": {
-              "alleles": "a:T,b:T",
-              "sex": 1
-            }
-          }]
+        authoring: 
+        [
+          [
+            [],
+            [{}, {}, {
+              template: "GenomePlayground",
+              "initialDrake": {
+                "alleles": "a:T,b:T",
+                "sex": 1
+              }
+            }]
+          ]
         ]
       });
 
-      let nextState = reducer(initialState, navigateToChallenge(1, 2));
+      let nextState = reducer(initialState, navigateToChallenge(0, 1, 2));
 
       // By starting with nextState and merging in what we expect, we eliminate
       // all other properties from consideration. This is particularly an issue
@@ -56,6 +62,7 @@ describe('navigateToChallenge action', () => {
       // wanted to unit test the loadStateFromAuthoring() changes, it could be
       // done with a unit test of that function directly.
       expect(nextState).toEqual(nextState.merge({
+        level: 0,
         case: 1,
         challenge: 2,
         template: "GenomePlayground",

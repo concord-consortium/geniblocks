@@ -1,397 +1,424 @@
 [
   [
-    {
-      "comment": "*** Case 0: Playground ***",
-      "template": "GenomePlayground",
-      "initialDrake": {
-        "alleles": "T-T, w-w, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 1
-      },
-      "userChangeableGenes": "metallic, wings, forelimbs, hindlimbs"
-    }
+    [
+      {
+        "comment": "*** Case 0: Playground ***",
+        "template": "GenomePlayground",
+        "initialDrake": {
+          "alleles": "T-T, w-w, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+          "sex": 1
+        },
+        "userChangeableGenes": "metallic, wings, forelimbs, hindlimbs"
+      }
+    ],
   ],
   [
-    {
-      "comment": "*** Dragon 1.1: Alazar (piece 1): #2/1 - Single Drake (User Drake Visible) ***",
-      "template": "GenomeChallenge",
-      "instructions": "Match the target drake!",
-      "showUserDrake": true,
-      "randomizeTrials": true,
-      "initialDrake": {
-        "alleles": "Bog-, D-, rh-rh",
-        "sex": 1
-      },
-      "targetDrakes": [{
-        "alleles": "",
-        "sex": 0
+    [
+      {
+        "comment": "*** Dragon 1.1: Alazar (piece 1): #2/1 - Single Drake (User Drake Visible) ***",
+        "template": "GenomeChallenge",
+        "instructions": "Match the target drake!",
+        "showUserDrake": true,
+        "randomizeTrials": true,
+        "initialDrake": {
+          "alleles": "Bog-, D-, rh-rh",
+          "sex": 1
+        },
+        "targetDrakes": [{
+          "alleles": "",
+          "sex": 0
+        },
+        {
+          "alleles": "",
+          "sex": 1
+        }],
+        "userChangeableGenes": "metallic, wings, forelimbs, hindlimbs",
+        "linkedGenes": {
+          "drakes": [0, 1],
+          "genes": "tail, horns, color, black, dilute, armor, nose, bogbreath"
+        }
       },
       {
-        "alleles": "",
-        "sex": 1
-      }],
-      "userChangeableGenes": "metallic, wings, forelimbs, hindlimbs",
-      "linkedGenes": {
-        "drakes": [0, 1],
-        "genes": "tail, horns, color, black, dilute, armor, nose, bogbreath"
+        "comment": "*** Dragon 1.1: Alazar (piece 2): #2/2 - Two Drakes (User Drake Hidden) ***",
+        "template": "GenomeChallenge",
+        "instructions": "Match 2 drakes!",
+        "trialGenerator": {
+          "type": "all-combinations",
+          "baseDrake": "T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+          "initialDrakeCombos": [
+            ["M-M",   "M-m",   "m-M",   "m-m"],
+            ["W-W",   "W-w",   "w-W",   "w-w"],
+            ["Fl-Fl", "Fl-fl", "fl-Fl", "fl-fl"],
+            ["Hl-Hl", "Hl-hl", "hl-Hl", "hl-hl"]
+          ],
+          "targetDrakeCombos": [
+            ["M-M",   "m-m"],
+            ["W-W",   "w-w"],
+            ["Fl-Fl", "fl-fl"],
+            ["Hl-Hl", "hl-hl"]
+          ]
+        },
+        "targetDrakes": [{},{}],
+        "userChangeableGenes": "metallic, wings, forelimbs, hindlimbs"
       }
-    },
-    {
-      "comment": "*** Dragon 1.1: Alazar (piece 2): #2/2 - Two Drakes (User Drake Hidden) ***",
-      "template": "GenomeChallenge",
-      "instructions": "Match 2 drakes!",
-      "trialGenerator": {
-        "type": "all-combinations",
-        "baseDrake": "T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
-        "initialDrakeCombos": [
-          ["M-M",   "M-m",   "m-M",   "m-m"],
-          ["W-W",   "W-w",   "w-W",   "w-w"],
-          ["Fl-Fl", "Fl-fl", "fl-Fl", "fl-fl"],
-          ["Hl-Hl", "Hl-hl", "hl-Hl", "hl-hl"]
+    ],
+    [
+      {
+        "comment": "*** Dragon 1.2: Beezel (piece 1): #3/1 - Egg Game III (wings) ***",
+        "template": "EggSortGame",
+        "trialGenerator": {
+          "type": "randomize-order",
+          "baseDrake": "T-T, a-a, C-C, rh-rh, Bog-Bog",
+          "drakes": [
+            { "alleles": "W-W", "sex": 0 },
+            { "alleles": "W-w", "sex": 0 },
+            { "alleles": "w-W", "sex": 0 },
+            { "alleles": "w-w", "sex": 0 },
+            { "alleles": "W-W", "sex": 1 },
+            { "alleles": "W-w", "sex": 1 },
+            { "alleles": "w-W", "sex": 1 },
+            { "alleles": "w-w", "sex": 1 }
+          ]
+        },
+        "visibleGenes": "wings",
+        "baskets": [
+          { "label": "Males with wings", "alleles": ["W-","-W"], "sex": 0 },
+          { "label": "Males without wings", "alleles": ["w-w"], "sex": 0 },
+          { "label": "Females with wings", "alleles": ["W-","-W"], "sex": 1 },
+          { "label": "Females without wings", "alleles": ["w-w"], "sex": 1 }
+        ]
+      },
+      {
+        "comment": "*** Dragon 1.2: Beezel (piece 2): #3/2 - Egg Game III (forelimbs/hindlimbs) ***",
+        "template": "EggSortGame",
+        "trialGenerator": {
+          "type": "randomize-order",
+          "baseDrake": "T-T, C-C, rh-rh, Bog-Bog",
+          "drakes": [
+            { "alleles": "Fl-fl, Hl-hl" },
+            { "alleles": "fl-fl, Hl-hl" },
+            { "alleles": "Fl-fl, hl-hl" },
+            { "alleles": "fl-Fl, Hl-Hl" },
+            { "alleles": "fl-fl, Hl-Hl" },
+            { "alleles": "fl-Fl, hl-hl" },
+            { "alleles": "Fl-Fl, hl-hl" },
+            { "alleles": "Fl-Fl, Hl-Hl" }
+          ]
+        },
+        "visibleGenes": "forelimbs, hindlimbs",
+        "baskets": [
+          { "label": "Drakes with only forelimbs", "alleles": ["Fl-, hl-hl", "-Fl, hl-hl"] },
+          { "label": "Drakes with only hindlimbs", "alleles": ["fl-fl, Hl-", "fl-fl, -Hl"] },
+          { "label": "Drakes with forelimbs and hindlimbs", "alleles": ["Fl-, Hl-","Fl-, -Hl","-Fl, Hl-","-Fl, -Hl"] }
+        ]
+      }
+    ],
+    [
+      {
+        "comment": "*** Dragon 1.3: Cezar (piece 1): #4/1 - Single Drake (User Drake Visible) ***",
+        "template": "GenomeChallenge",
+        "randomizeTrials": true,
+        "instructions": "Match the target drake!",
+        "showUserDrake": true,
+        "initialDrake": [
+          {
+            "alleles": "a-a, H-H, Bog-, D-, rh-rh",
+            "sex": 1
+          },
+          {
+            "alleles": "A1-a, H-h, Bog-, D-, rh-rh",
+            "sex": 0
+          },
+          {
+            "alleles": "a-A1, h-h, Bog-, D-, rh-rh",
+            "sex": 1
+          }
         ],
-        "targetDrakeCombos": [
-          ["M-M",   "m-m"],
-          ["W-W",   "w-w"],
-          ["Fl-Fl", "fl-fl"],
-          ["Hl-Hl", "hl-hl"]
-        ]
-      },
-      "targetDrakes": [{},{}],
-      "userChangeableGenes": "metallic, wings, forelimbs, hindlimbs"
-    }
-  ],
-  [
-    {
-      "comment": "*** Dragon 1.2: Beezel (piece 1): #3/1 - Egg Game III (wings) ***",
-      "template": "EggSortGame",
-      "trialGenerator": {
-        "type": "randomize-order",
-        "baseDrake": "T-T, a-a, C-C, rh-rh, Bog-Bog",
-        "drakes": [
-          { "alleles": "W-W", "sex": 0 },
-          { "alleles": "W-w", "sex": 0 },
-          { "alleles": "w-W", "sex": 0 },
-          { "alleles": "w-w", "sex": 0 },
-          { "alleles": "W-W", "sex": 1 },
-          { "alleles": "W-w", "sex": 1 },
-          { "alleles": "w-W", "sex": 1 },
-          { "alleles": "w-w", "sex": 1 }
-        ]
-      },
-      "visibleGenes": "wings",
-      "baskets": [
-        { "label": "Males with wings", "alleles": ["W-","-W"], "sex": 0 },
-        { "label": "Males without wings", "alleles": ["w-w"], "sex": 0 },
-        { "label": "Females with wings", "alleles": ["W-","-W"], "sex": 1 },
-        { "label": "Females without wings", "alleles": ["w-w"], "sex": 1 }
-      ]
-    },
-    {
-      "comment": "*** Dragon 1.2: Beezel (piece 2): #3/2 - Egg Game III (forelimbs/hindlimbs) ***",
-      "template": "EggSortGame",
-      "trialGenerator": {
-        "type": "randomize-order",
-        "baseDrake": "T-T, C-C, rh-rh, Bog-Bog",
-        "drakes": [
-          { "alleles": "Fl-fl, Hl-hl" },
-          { "alleles": "fl-fl, Hl-hl" },
-          { "alleles": "Fl-fl, hl-hl" },
-          { "alleles": "fl-Fl, Hl-Hl" },
-          { "alleles": "fl-fl, Hl-Hl" },
-          { "alleles": "fl-Fl, hl-hl" },
-          { "alleles": "Fl-Fl, hl-hl" },
-          { "alleles": "Fl-Fl, Hl-Hl" }
-        ]
-      },
-      "visibleGenes": "forelimbs, hindlimbs",
-      "baskets": [
-        { "label": "Drakes with only forelimbs", "alleles": ["Fl-, hl-hl", "-Fl, hl-hl"] },
-        { "label": "Drakes with only hindlimbs", "alleles": ["fl-fl, Hl-", "fl-fl, -Hl"] },
-        { "label": "Drakes with forelimbs and hindlimbs", "alleles": ["Fl-, Hl-","Fl-, -Hl","-Fl, Hl-","-Fl, -Hl"] }
-      ]
-    }
-  ],
-  [
-    {
-      "comment": "*** Dragon 1.3: Cezar (piece 1): #4/1 - Single Drake (User Drake Visible) ***",
-      "template": "GenomeChallenge",
-      "randomizeTrials": true,
-      "instructions": "Match the target drake!",
-      "showUserDrake": true,
-      "initialDrake": [
-        {
-          "alleles": "a-a, H-H, Bog-, D-, rh-rh",
-          "sex": 1
-        },
-        {
-          "alleles": "A1-a, H-h, Bog-, D-, rh-rh",
-          "sex": 0
-        },
-        {
-          "alleles": "a-A1, h-h, Bog-, D-, rh-rh",
-          "sex": 1
+        "targetDrakes": [
+          {
+            "alleles": "A1-A1, h-h",
+            "sex": 1
+          },
+          {
+            "alleles": "A1-A1, h-h",
+            "sex": 1
+          },
+          {
+            "alleles": "a-a, H-h",
+            "sex": 0
+          }
+        ],
+        "userChangeableGenes": "armor, horns",
+        "hiddenAlleles": "A2",
+        "linkedGenes": {
+          "drakes": [0, 1],
+          "genes": "metallic, wings, forelimbs, hindlimbs, tail, color, black, dilute, nose, bogbreath"
         }
-      ],
-      "targetDrakes": [
-        {
-          "alleles": "A1-A1, h-h",
-          "sex": 1
-        },
-        {
-          "alleles": "A1-A1, h-h",
-          "sex": 1
-        },
-        {
-          "alleles": "a-a, H-h",
-          "sex": 0
+      },
+      {
+        "comment": "*** Dragon 1.3: Cezar (piece 2): #4/2 - Single Drake (User Drake Hidden) ***",
+        "template": "GenomeChallenge",
+        "randomizeTrials": true,
+        "instructions": "Match the target drake!",
+        "showUserDrake": false,
+        "initialDrake": [
+          {
+            "alleles": "A1-A1, H-H, Bog-, D-, rh-rh",
+            "sex": 1
+          },
+          {
+            "alleles": "a-a, h-h, Bog-, D-, rh-rh",
+            "sex": 0
+          },
+          {
+            "alleles": "a-A1, H-h, Bog-, D-, rh-rh",
+            "sex": 1
+          }
+        ],
+        "targetDrakes": [
+          {
+            "alleles": "a-a, h-h",
+            "sex": 0
+          },
+          {
+            "alleles": "A1-a, H-H",
+            "sex": 0
+          },
+          {
+            "alleles": "A1-A1, H-H",
+            "sex": 1
+          }
+        ],
+        "userChangeableGenes": "armor, horns",
+        "hiddenAlleles": "A2",
+        "linkedGenes": {
+          "drakes": [0, 1],
+          "genes": "metallic, wings, forelimbs, hindlimbs, tail, color, black, dilute, nose, bogbreath"
         }
-      ],
-      "userChangeableGenes": "armor, horns",
-      "hiddenAlleles": "A2",
-      "linkedGenes": {
-        "drakes": [0, 1],
-        "genes": "metallic, wings, forelimbs, hindlimbs, tail, color, black, dilute, nose, bogbreath"
+      },
+      {
+        "comment": "*** Dragon 1.3: Cezar (piece 3): #4/3 - Egg Game III (horns) ***",
+        "template": "EggSortGame",
+        "trialGenerator": {
+          "type": "randomize-order",
+          "baseDrake": "T-T, C-C, rh-rh, Bog-Bog",
+          "drakes": [
+            { "alleles": "H-H", "sex": 0 },
+            { "alleles": "H-h", "sex": 0 },
+            { "alleles": "h-H", "sex": 0 },
+            { "alleles": "h-h", "sex": 0 },
+            { "alleles": "H-H", "sex": 1 },
+            { "alleles": "H-h", "sex": 1 },
+            { "alleles": "h-H", "sex": 1 },
+            { "alleles": "h-h", "sex": 1 }
+          ]
+        },
+        "visibleGenes": "horns",
+        "baskets": [
+          { "label": "Males with horns", "alleles": ["h-h"], "sex": 0 },
+          { "label": "Males without horns", "alleles": ["H-","-H"], "sex": 0 },
+          { "label": "Females with horns", "alleles": ["h-h"], "sex": 1 },
+          { "label": "Females without horns", "alleles": ["H-","-H"], "sex": 1 }
+        ]
+      },
+      {
+        "comment": "*** Dragon 1.3: Cezar (piece 4): #4/4 - Egg Game III (armor) ***",
+        "template": "EggSortGame",
+        "trialGenerator": {
+          "type": "randomize-order",
+          "baseDrake": "T-T, C-C, rh-rh, Bog-Bog",
+          "drakes": [
+            { "alleles": "A1-A1", "sex": 0 },
+            { "alleles": "A1-a", "sex": 0 },
+            { "alleles": "a-A1", "sex": 0 },
+            { "alleles": "a-a", "sex": 0 },
+            { "alleles": "A1-A1", "sex": 1 },
+            { "alleles": "A1-a", "sex": 1 },
+            { "alleles": "a-A1", "sex": 1 },
+            { "alleles": "a-a", "sex": 1 }
+          ]
+        },
+        "visibleGenes": "armor",
+        "baskets": [
+          { "label": "Drakes with no armor plates", "alleles": ["a-a"] },
+          { "label": "Drakes with three armor plates", "alleles": ["A1-a", "a-A1"] },
+          { "label": "Drakes with five armor plates", "alleles": ["A1-A1"] }
+        ]
+      },
+      {
+        "comment": "*** Dragon 1.3: Cezar (piece 5): #4/5 - Egg Game III (horns,wings,armor) ***",
+        "template": "EggSortGame",
+        "trialGenerator": {
+          "type": "randomize-order",
+          "baseDrake": "T-T, C-C, rh-rh, Bog-Bog",
+          "drakes": [
+            { "alleles": "h-h, w-w, a-a" },
+            { "alleles": "h-h, w-w, a-a" },
+            { "alleles": "H-h, W-w, a-a" },
+            { "alleles": "H-H, w-w, A1-a" },
+            { "alleles": "H-h, w-w, A1-A1" },
+            { "alleles": "H-H, W-W, a-a" },
+            { "alleles": "h-H, w-w, A1-A1" },
+            { "alleles": "H-H, w-W, a-a" }
+          ]
+        },
+        "visibleGenes": "horns, wings, armor",
+        "baskets": [
+          { "label": "Drakes with horns", "alleles": ["h-h"] },
+          { "label": "Drakes with wings", "alleles": ["W-", "-W"] },
+          { "label": "Drakes with armor", "alleles": ["A1-","-A1"] }
+        ]
       }
-    },
-    {
-      "comment": "*** Dragon 1.3: Cezar (piece 2): #4/2 - Single Drake (User Drake Hidden) ***",
-      "template": "GenomeChallenge",
-      "randomizeTrials": true,
-      "instructions": "Match the target drake!",
-      "showUserDrake": false,
-      "initialDrake": [
-        {
-          "alleles": "A1-A1, H-H, Bog-, D-, rh-rh",
+    ],
+    [
+      {
+        "comment": "*** Dragon 3.1: Draco (piece 1): #5/1 - Egg Game I(c) (select chromosomes to create five unique drakes) ***",
+        "template": "EggGame",
+        "challengeType": "create-unique",
+        "interactionType": "select-chromosomes",
+        "instructions": "Create 5 different baby drakes!",
+        "showUserDrake": true,
+        "mother":{
+          "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
           "sex": 1
         },
-        {
-          "alleles": "a-a, h-h, Bog-, D-, rh-rh",
+        "father": {
+          "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
           "sex": 0
         },
-        {
-          "alleles": "a-A1, H-h, Bog-, D-, rh-rh",
+        "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
+      },
+      {
+        "comment": "*** Dragon 3.1: Draco (piece 2): #5/2 - Egg Game I(g) (select gametes to create five unique drakes) ***",
+        "template": "EggGame",
+        "challengeType": "create-unique",
+        "interactionType": "select-gametes",
+        "instructions": "Create 5 different baby drakes!",
+        "showUserDrake": true,
+        "mother":{
+          "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
           "sex": 1
-        }
-      ],
-      "targetDrakes": [
-        {
-          "alleles": "a-a, h-h",
+        },
+        "father": {
+          "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
           "sex": 0
         },
-        {
-          "alleles": "A1-a, H-H",
-          "sex": 0
-        },
-        {
-          "alleles": "A1-A1, H-H",
+        "gameteCounts": [8, 8],
+        "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
+      },
+      {
+        "comment": "*** Dragon 3.1: Draco (piece 3): #5/3 - Egg Game II(g) (select gametes for breeding to match drakes) ***",
+        "template": "EggGame",
+        "challengeType": "match-target",
+        "interactionType": "select-gametes",
+        "instructions": "Match the target drakes!",
+        "showUserDrake": true,
+        "mother":{
+          "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
           "sex": 1
-        }
-      ],
-      "userChangeableGenes": "armor, horns",
-      "hiddenAlleles": "A2",
-      "linkedGenes": {
-        "drakes": [0, 1],
-        "genes": "metallic, wings, forelimbs, hindlimbs, tail, color, black, dilute, nose, bogbreath"
+        },
+        "father": {
+          "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+          "sex": 0
+        },
+        "gameteCounts": [[2, 1], [1, 3], [4, 4]],
+        "targetDrakes": [{}, {}, {}],
+        "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
       }
-    },
-    {
-      "comment": "*** Dragon 1.3: Cezar (piece 3): #4/3 - Egg Game III (horns) ***",
-      "template": "EggSortGame",
-      "trialGenerator": {
-        "type": "randomize-order",
-        "baseDrake": "T-T, C-C, rh-rh, Bog-Bog",
-        "drakes": [
-          { "alleles": "H-H", "sex": 0 },
-          { "alleles": "H-h", "sex": 0 },
-          { "alleles": "h-H", "sex": 0 },
-          { "alleles": "h-h", "sex": 0 },
-          { "alleles": "H-H", "sex": 1 },
-          { "alleles": "H-h", "sex": 1 },
-          { "alleles": "h-H", "sex": 1 },
-          { "alleles": "h-h", "sex": 1 }
-        ]
-      },
-      "visibleGenes": "horns",
-      "baskets": [
-        { "label": "Males with horns", "alleles": ["h-h"], "sex": 0 },
-        { "label": "Males without horns", "alleles": ["H-","-H"], "sex": 0 },
-        { "label": "Females with horns", "alleles": ["h-h"], "sex": 1 },
-        { "label": "Females without horns", "alleles": ["H-","-H"], "sex": 1 }
-      ]
-    },
-    {
-      "comment": "*** Dragon 1.3: Cezar (piece 4): #4/4 - Egg Game III (armor) ***",
-      "template": "EggSortGame",
-      "trialGenerator": {
-        "type": "randomize-order",
-        "baseDrake": "T-T, C-C, rh-rh, Bog-Bog",
-        "drakes": [
-          { "alleles": "A1-A1", "sex": 0 },
-          { "alleles": "A1-a", "sex": 0 },
-          { "alleles": "a-A1", "sex": 0 },
-          { "alleles": "a-a", "sex": 0 },
-          { "alleles": "A1-A1", "sex": 1 },
-          { "alleles": "A1-a", "sex": 1 },
-          { "alleles": "a-A1", "sex": 1 },
-          { "alleles": "a-a", "sex": 1 }
-        ]
-      },
-      "visibleGenes": "armor",
-      "baskets": [
-        { "label": "Drakes with no armor plates", "alleles": ["a-a"] },
-        { "label": "Drakes with three armor plates", "alleles": ["A1-a", "a-A1"] },
-        { "label": "Drakes with five armor plates", "alleles": ["A1-A1"] }
-      ]
-    },
-    {
-      "comment": "*** Dragon 1.3: Cezar (piece 5): #4/5 - Egg Game III (horns,wings,armor) ***",
-      "template": "EggSortGame",
-      "trialGenerator": {
-        "type": "randomize-order",
-        "baseDrake": "T-T, C-C, rh-rh, Bog-Bog",
-        "drakes": [
-          { "alleles": "h-h, w-w, a-a" },
-          { "alleles": "h-h, w-w, a-a" },
-          { "alleles": "H-h, W-w, a-a" },
-          { "alleles": "H-H, w-w, A1-a" },
-          { "alleles": "H-h, w-w, A1-A1" },
-          { "alleles": "H-H, W-W, a-a" },
-          { "alleles": "h-H, w-w, A1-A1" },
-          { "alleles": "H-H, w-W, a-a" }
-        ]
-      },
-      "visibleGenes": "horns, wings, armor",
-      "baskets": [
-        { "label": "Drakes with horns", "alleles": ["h-h"] },
-        { "label": "Drakes with wings", "alleles": ["W-", "-W"] },
-        { "label": "Drakes with armor", "alleles": ["A1-","-A1"] }
-      ]
-    }
+    ]
   ],
   [
-    {
-      "comment": "*** Dragon 3.1: Draco (piece 1): #5/1 - Egg Game I(c) (select chromosomes to create five unique drakes) ***",
-      "template": "EggGame",
-      "challengeType": "create-unique",
-      "interactionType": "select-chromosomes",
-      "instructions": "Create 5 different baby drakes!",
-      "showUserDrake": true,
-      "mother":{
-        "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 1
-      },
-      "father": {
-        "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 0
-      },
-      "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
-    },
-    {
-      "comment": "*** Dragon 3.1: Draco (piece 2): #5/2 - Egg Game I(g) (select gametes to create five unique drakes) ***",
-      "template": "EggGame",
-      "challengeType": "create-unique",
-      "interactionType": "select-gametes",
-      "instructions": "Create 5 different baby drakes!",
-      "showUserDrake": true,
-      "mother":{
-        "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 1
-      },
-      "father": {
-        "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 0
-      },
-      "gameteCounts": [8, 8],
-      "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
-    },
-    {
-      "comment": "*** Dragon 3.1: Draco (piece 3): #5/3 - Egg Game II(g) (select gametes for breeding to match drakes) ***",
-      "template": "EggGame",
-      "challengeType": "match-target",
-      "interactionType": "select-gametes",
-      "instructions": "Match the target drakes!",
-      "showUserDrake": true,
-      "mother":{
-        "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 1
-      },
-      "father": {
-        "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 0
-      },
-      "gameteCounts": [[2, 1], [1, 3], [4, 4]],
-      "targetDrakes": [{}, {}, {}],
-      "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
-    }
+    [
+      {
+        "comment": "*** LEVEL STAND IN ***",
+        "template": "GenomeChallenge",
+        "instructions": "THIS LEVEL NOT YET COMPLETE",
+        "trialGenerator": {
+          "type": "all-combinations",
+          "baseDrake": "dl-dl",
+          "initialDrakeCombos": [["M-M"]],
+          "targetDrakeCombos": [["M-M"]]
+        },
+        "targetDrakes": [{}],
+        "userChangeableGenes": "metallic"
+      }
+    ]
   ],
   [
-    {
-      "comment": "*** Dragon 3.1: Draco (piece 1): #6/1 - Egg Game I(c) (select chromosomes to create five unique drakes) ***",
-      "container": "FVContainer",
-      "template": "FVEggGame",
-      "challengeType": "create-unique",
-      "interactionType": "select-chromosomes",
-      "instructions": "Create 5 different baby drakes!",
-      "showUserDrake": true,
-      "mother":{
-        "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 1
+    [
+      {
+        "comment": "*** Demo: Egg Game II (match three drakes, user drake visible) ***",
+        "template": "EggGame",
+        "challengeType": "match-target",
+        "instructions": "Match 3 drakes!",
+        "showUserDrake": true,
+        "mother":{
+          "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
+          "sex": 1
+        },
+        "father": {
+          "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+          "sex": 0
+        },
+        "targetDrakes": [{},{},{}],
+        "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
       },
-      "father": {
-        "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 0
+      {
+        "comment": "*** Demo: Egg Game II (match three drakes, user drake hidden) ***",
+        "template": "EggGame",
+        "challengeType": "match-target",
+        "instructions": "Match 3 drakes!",
+        "showUserDrake": false,
+        "mother":{
+          "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
+          "sex": 1
+        },
+        "father": {
+          "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+          "sex": 0
+        },
+        "targetDrakes": [{},{},{}],
+        "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
       },
-      "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
-    },
-    {
-      "comment": "*** Demo: Egg Game II (match three drakes, user drake visible) ***",
-      "template": "EggGame",
-      "challengeType": "match-target",
-      "instructions": "Match 3 drakes!",
-      "showUserDrake": true,
-      "mother":{
-        "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 1
-      },
-      "father": {
-        "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 0
-      },
-      "targetDrakes": [{},{},{}],
-      "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
-    },
-    {
-      "comment": "*** Demo: Egg Game II (match three drakes, user drake hidden) ***",
-      "template": "EggGame",
-      "challengeType": "match-target",
-      "instructions": "Match 3 drakes!",
-      "showUserDrake": false,
-      "mother":{
-        "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 1
-      },
-      "father": {
-        "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 0
-      },
-      "targetDrakes": [{},{},{}],
-      "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
-    },
-    {
-      "comment": "*** Demo: Egg Game I(g) (select gametes to create five unique drakes) ***",
-      "template": "EggGame",
-      "challengeType": "create-unique",
-      "interactionType": "select-gametes",
-      "instructions": "Create 5 different baby drakes!",
-      "showUserDrake": true,
-      "mother":{
-        "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 1
-      },
-      "father": {
-        "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 0
-      },
-      "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
-    }
+      {
+        "comment": "*** Demo: Egg Game I(g) (select gametes to create five unique drakes) ***",
+        "template": "EggGame",
+        "challengeType": "create-unique",
+        "interactionType": "select-gametes",
+        "instructions": "Create 5 different baby drakes!",
+        "showUserDrake": true,
+        "mother":{
+          "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
+          "sex": 1
+        },
+        "father": {
+          "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+          "sex": 0
+        },
+        "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "comment": "*** FV Test Level ***",
+        "container": "FVContainer",
+        "template": "FVEggGame",
+        "challengeType": "create-unique",
+        "interactionType": "select-chromosomes",
+        "instructions": "Create 5 different baby drakes!",
+        "showUserDrake": true,
+        "mother":{
+          "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
+          "sex": 1
+        },
+        "father": {
+          "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+          "sex": 0
+        },
+        "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
+      }
+    ]
   ]
 ]

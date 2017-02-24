@@ -3,10 +3,11 @@ import reducer from '../../src/code/reducers/';
 import { navigateToCurrentRoute, actionTypes as types } from '../../src/code/actions';
 
 describe('navigateToCurrentRoute action', () => {
-  const validCase = 1, validChallenge = 2,
-        invalidCase = 3, invalidChallenge = 3,
+  const validLevel = 0, validCase = 1, validChallenge = 2,
+        invalidLevel = 3, invalidCase = 3, invalidChallenge = 3,
         currentRouteAction = {
           type: types.NAVIGATED,
+          level: validLevel,
           case: validCase,
           challenge: validChallenge,
           skipRouteChange: true,
@@ -22,9 +23,10 @@ describe('navigateToCurrentRoute action', () => {
         },
         challengeAction = {
           type: types.NAVIGATED,
+          level: validLevel,
           case: validCase,
           challenge: validChallenge,
-          route: "/2/3",
+          route: "/1/2/3",
           meta: {
             "itsLog": {
               "actor": "USER",
@@ -36,16 +38,16 @@ describe('navigateToCurrentRoute action', () => {
         };
 
   const dispatch = expect.createSpy();
-  const getState = () => ({case: 0, challenge: 0, authoring: [[{}],[{},{},{}]] });
+  const getState = () => ({level: 0, case: 0, challenge: 0, authoring: [[[{}],[{},{},{}]]] });
 
   it("should dispatch a navigateToCurrentRoute action when a valid challenge is specified", () => {
-    navigateToCurrentRoute(validCase, validChallenge)(dispatch, getState);
+    navigateToCurrentRoute(validLevel, validCase, validChallenge)(dispatch, getState);
     expect(dispatch.calls[0].arguments).toEqual([currentRouteAction]);
   });
 
   it("should dispatch a navigateToChallenge action to the nearest valid challenge" +
       " when an invalid challenge is specified", () => {
-    navigateToCurrentRoute(invalidCase, invalidChallenge)(dispatch, getState);
+    navigateToCurrentRoute(invalidLevel, invalidCase, invalidChallenge)(dispatch, getState);
     expect(dispatch.calls[1].arguments).toEqual([challengeAction]);
   });
 
@@ -55,15 +57,18 @@ describe('navigateToCurrentRoute action', () => {
       let initialState = defaultState.merge({
         case: 0,
         challenge: 0,
-        authoring: [
-          [],
-          [{}, {}, {
-            template: "GenomePlayground",
-            "initialDrake": {
-              "alleles": "a:T,b:T",
-              "sex": 1
-            }
-          }]
+        authoring: 
+        [
+          [
+            [],
+            [{}, {}, {
+              template: "GenomePlayground",
+              "initialDrake": {
+                "alleles": "a:T,b:T",
+                "sex": 1
+              }
+            }]
+          ]
         ]
       });
 
