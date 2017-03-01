@@ -101,7 +101,7 @@ function renderApp() {
                                         onCompleteUpload={handleCompleteUpload} />
                     : <div>
                         <Router history={history}>
-                          <Route path="/(:case/:challenge)" component={ChallengeContainerSelector} />
+                          <Route path="/(:level/:case/:challenge)" component={ChallengeContainerSelector} />
                         </Router>
                         <ModalMessageContainer />
                         <NotificationContainer />

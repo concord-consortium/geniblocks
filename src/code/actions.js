@@ -32,12 +32,13 @@ export function changeAuthoring(authoring) {
   };
 }
 
-export function navigateToChallenge(_case, challenge) {
+export function navigateToChallenge(level, _case, challenge) {
   return {
     type: actionTypes.NAVIGATED,
+    level,
     case: _case,
     challenge,
-    route: `/${_case+1}/${challenge+1}`,
+    route: `/${level+1}/${_case+1}/${challenge+1}`,
     meta: {
       logTemplateState: true,
       itsLog: {
@@ -51,8 +52,8 @@ export function navigateToChallenge(_case, challenge) {
 
 export function retryCurrentChallenge() {
   return (dispatch, getState) => {
-    const { case: currentCase, challenge: currentChallenge } = getState();
-    dispatch(navigateToChallenge(currentCase, currentChallenge));
+    const { level: currentLevel, case: currentCase, challenge: currentChallenge } = getState();
+    dispatch(navigateToChallenge(currentLevel, currentCase, currentChallenge));
   };
 }
 
@@ -73,18 +74,26 @@ function navigateToStartPage(url) {
 
 export function navigateToNextChallenge() {
   return (dispatch, getState) => {
-    const { case: currentCase, challenge: currentChallenge,
+    const { level: currentLevel, case: currentCase, challenge: currentChallenge,
             authoring, endCaseUrl } = getState();
-    let nextCase = currentCase,
+    let nextLevel = currentLevel,
+        nextCase = currentCase,
         nextChallenge = currentChallenge+1,
-        challengeCountInCase = authoring[currentCase].length;
+        challengeCountInCase = authoring[currentLevel][currentCase].length;
     if (challengeCountInCase <= nextChallenge) {
-      // if the next case exists, navigate to it
-      if (authoring[currentCase+1])
+      // there are not enough challenges...if the next case exists, navigate to it
+      if (authoring[currentLevel][currentCase+1]) {
         nextCase++;
-      // otherwise, circle back to the beginning
-      else
+      } else {   
+        // otherwise, check if the next level exists
+        if (authoring[currentLevel+1]) {
+          nextLevel++;
+        } else {
+          // if no next level exists, loop around
+          nextLevel = 0;
+        }
         nextCase = 0;
+      }
       nextChallenge = 0;
 
       if (endCaseUrl) {
@@ -92,7 +101,7 @@ export function navigateToNextChallenge() {
         return;
       }
     }
-    dispatch(navigateToChallenge(nextCase, nextChallenge));
+    dispatch(navigateToChallenge(nextLevel, nextCase, nextChallenge));
   };
 }
 
@@ -102,9 +111,10 @@ export function navigateToNextChallenge() {
  * Skips the route change, so just updates current case and challenge and
  * triggers `loadStateFromAuthoring` in router
  */
-export function _navigateToCurrentRoute(_case, challenge) {
+export function _navigateToCurrentRoute(level, _case, challenge) {
   return {
     type: actionTypes.NAVIGATED,
+    level,
     case: _case,
     challenge,
     skipRouteChange: true,
@@ -124,19 +134,21 @@ function restrictToIntegerRange(value, minValue, maxValue) {
   return Math.max(minValue, Math.min(maxValue, Math.trunc(value)));
 }
 
-export function navigateToCurrentRoute(_case, challenge) {
+export function navigateToCurrentRoute(level, _case, challenge) {
   return (dispatch, getState) => {
-    const { authoring: cases } = getState(),
-          caseCount = cases.length,
+    const { authoring: levels } = getState(),
+          levelCount = levels.length,
+          nextLevel = restrictToIntegerRange(level, 0, levelCount - 1),
+          caseCount = levels[nextLevel].length,
           nextCase = restrictToIntegerRange(_case, 0, caseCount - 1),
-          challengeCount = cases[nextCase].length,
+          challengeCount = levels[nextLevel][nextCase].length,
           nextChallenge = restrictToIntegerRange(challenge, 0, challengeCount - 1),
-          routeChangeRequired = (_case !== nextCase) || (challenge !== nextChallenge);
+          routeChangeRequired = (level !== nextLevel) || (_case !== nextCase) || (challenge !== nextChallenge);
     if (routeChangeRequired) {
-      dispatch(navigateToChallenge(nextCase, nextChallenge));
+      dispatch(navigateToChallenge(nextLevel, nextCase, nextChallenge));
     }
     else {
-      dispatch(_navigateToCurrentRoute(nextCase, nextChallenge));
+      dispatch(_navigateToCurrentRoute(nextLevel, nextCase, nextChallenge));
     }
   };
 }
