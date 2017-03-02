@@ -2,7 +2,7 @@
   [
     [
       {
-        "comment": "*** Case 0: Playground ***",
+        "comment": "*** Level 1, Mission 1.1: Playground ***",
         "template": "GenomePlayground",
         "initialDrake": {
           "alleles": "T-T, w-w, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
@@ -15,7 +15,7 @@
   [
     [
       {
-        "comment": "*** Dragon 1.1: Alazar (piece 1): #2/1 - Single Drake (User Drake Visible) ***",
+        "comment": "*** Level 2, Mission 1.1: Genome Challenge (basics intro, user drake visible) ***",
         "template": "GenomeChallenge",
         "instructions": "Match the target drake!",
         "showUserDrake": true,
@@ -39,7 +39,7 @@
         }
       },
       {
-        "comment": "*** Dragon 1.1: Alazar (piece 2): #2/2 - Two Drakes (User Drake Hidden) ***",
+        "comment": "*** Level 2, Mission 1.2: Genome Challenge (basics intro, user drake hidden) ***",
         "template": "GenomeChallenge",
         "instructions": "Match 2 drakes!",
         "trialGenerator": {
@@ -64,7 +64,7 @@
     ],
     [
       {
-        "comment": "*** Dragon 1.2: Beezel (piece 1): #3/1 - Egg Game III (wings) ***",
+        "comment": "*** Level 2, Mission 2.1: Egg Sorting Game (wings) ***",
         "template": "EggSortGame",
         "trialGenerator": {
           "type": "randomize-order",
@@ -89,7 +89,7 @@
         ]
       },
       {
-        "comment": "*** Dragon 1.2: Beezel (piece 2): #3/2 - Egg Game III (forelimbs/hindlimbs) ***",
+        "comment": "*** Level 2, Mission 2.2: Egg Sorting Game (forelimbs/hindlimbs) ***",
         "template": "EggSortGame",
         "trialGenerator": {
           "type": "randomize-order",
@@ -115,7 +115,7 @@
     ],
     [
       {
-        "comment": "*** Dragon 1.3: Cezar (piece 1): #4/1 - Single Drake (User Drake Visible) ***",
+        "comment": "*** Level 2, Mission 3.1: Genome Challenge (armor intro, user drake visible) ***",
         "template": "GenomeChallenge",
         "randomizeTrials": true,
         "instructions": "Match the target drake!",
@@ -156,7 +156,7 @@
         }
       },
       {
-        "comment": "*** Dragon 1.3: Cezar (piece 2): #4/2 - Single Drake (User Drake Hidden) ***",
+        "comment": "*** Level 2, Mission 3.2: Genome Challenge (armor intro, user drake hidden) ***",
         "template": "GenomeChallenge",
         "randomizeTrials": true,
         "instructions": "Match the target drake!",
@@ -197,7 +197,7 @@
         }
       },
       {
-        "comment": "*** Dragon 1.3: Cezar (piece 3): #4/3 - Egg Game III (horns) ***",
+        "comment": "*** Level 2, Mission 3.3: Egg Sorting Game (horns) ***",
         "template": "EggSortGame",
         "trialGenerator": {
           "type": "randomize-order",
@@ -222,7 +222,7 @@
         ]
       },
       {
-        "comment": "*** Dragon 1.3: Cezar (piece 4): #4/4 - Egg Game III (armor) ***",
+        "comment": "*** Level 2, Mission 3.4: Egg Sorting Game (armor) ***",
         "template": "EggSortGame",
         "trialGenerator": {
           "type": "randomize-order",
@@ -246,7 +246,7 @@
         ]
       },
       {
-        "comment": "*** Dragon 1.3: Cezar (piece 5): #4/5 - Egg Game III (horns,wings,armor) ***",
+        "comment": "*** Level 2, Mission 3.5: Egg Sorting Game (horns/wings/armor) ***",
         "template": "EggSortGame",
         "trialGenerator": {
           "type": "randomize-order",
@@ -269,10 +269,29 @@
           { "label": "Drakes with armor", "alleles": ["A1-","-A1"] }
         ]
       }
-    ],
+    ]
+  ],
+  [
     [
       {
-        "comment": "*** Dragon 3.1: Draco (piece 1): #5/1 - Egg Game I(c) (select chromosomes to create five unique drakes) ***",
+        "comment": "*** Level 3 Stand In ***",
+        "template": "GenomeChallenge",
+        "instructions": "THIS LEVEL NOT YET COMPLETE",
+        "trialGenerator": {
+          "type": "all-combinations",
+          "baseDrake": "dl-dl",
+          "initialDrakeCombos": [["M-M"]],
+          "targetDrakeCombos": [["M-M"]]
+        },
+        "targetDrakes": [{}],
+        "userChangeableGenes": "metallic"
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "comment": "*** Level 4, Mission 1.1: Egg Breeding (select chromosome to create 5 unique drakes) ***",
         "template": "EggGame",
         "challengeType": "create-unique",
         "interactionType": "select-chromosomes",
@@ -289,7 +308,7 @@
         "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
       },
       {
-        "comment": "*** Dragon 3.1: Draco (piece 2): #5/2 - Egg Game I(g) (select gametes to create five unique drakes) ***",
+        "comment": "*** Level 4, Mission 1.2: Egg Breeding (select gametes to create 5 unique drakes) ***",
         "template": "EggGame",
         "challengeType": "create-unique",
         "interactionType": "select-gametes",
@@ -307,7 +326,7 @@
         "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
       },
       {
-        "comment": "*** Dragon 3.1: Draco (piece 3): #5/3 - Egg Game II(g) (select gametes for breeding to match drakes) ***",
+        "comment": "*** Level 4, Mission 1.3: Egg Breeding (select gametes to match drakes) ***",
         "template": "EggGame",
         "challengeType": "match-target",
         "interactionType": "select-gametes",
@@ -330,24 +349,7 @@
   [
     [
       {
-        "comment": "*** LEVEL STAND IN ***",
-        "template": "GenomeChallenge",
-        "instructions": "THIS LEVEL NOT YET COMPLETE",
-        "trialGenerator": {
-          "type": "all-combinations",
-          "baseDrake": "dl-dl",
-          "initialDrakeCombos": [["M-M"]],
-          "targetDrakeCombos": [["M-M"]]
-        },
-        "targetDrakes": [{}],
-        "userChangeableGenes": "metallic"
-      }
-    ]
-  ],
-  [
-    [
-      {
-        "comment": "*** Demo: Egg Game II (match three drakes, user drake visible) ***",
+        "comment": "*** Demo: Egg Breeding (match three drakes, user drake visible) ***",
         "template": "EggGame",
         "challengeType": "match-target",
         "instructions": "Match 3 drakes!",
@@ -364,7 +366,7 @@
         "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
       },
       {
-        "comment": "*** Demo: Egg Game II (match three drakes, user drake hidden) ***",
+        "comment": "*** Demo: Egg Breeding (match three drakes, user drake hidden) ***",
         "template": "EggGame",
         "challengeType": "match-target",
         "instructions": "Match 3 drakes!",
@@ -378,23 +380,6 @@
           "sex": 0
         },
         "targetDrakes": [{},{},{}],
-        "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
-      },
-      {
-        "comment": "*** Demo: Egg Game I(g) (select gametes to create five unique drakes) ***",
-        "template": "EggGame",
-        "challengeType": "create-unique",
-        "interactionType": "select-gametes",
-        "instructions": "Create 5 different baby drakes!",
-        "showUserDrake": true,
-        "mother":{
-          "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
-          "sex": 1
-        },
-        "father": {
-          "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
-          "sex": 0
-        },
         "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
       }
     ]

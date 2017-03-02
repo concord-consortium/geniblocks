@@ -117,7 +117,7 @@ body {
   font-size: 14pt;
   font-weight: bold;
 }
-#challenges #case-wrapper .column-label {
+#challenges #mission-wrapper .column-label {
   margin-top: 25px;
   margin-bottom: 25px;
   color: #fff;
@@ -149,7 +149,7 @@ body {
 #challenges #playground-wrapper #drake-image {
   margin: 200px 25px 0;
 }
-#challenges #case-wrapper #drake-image {
+#challenges #mission-wrapper #drake-image {
   margin: 100px 25px 0;
 }
 #challenges #genome-challenge .instructions-banner {
@@ -163,7 +163,7 @@ body {
   margin: 180px 0 10px 0;
   padding: 2px 19px 3px 19px;
 }
-#challenges #case-wrapper #advance-button {
+#challenges #mission-wrapper #advance-button {
   background-color: #fff;
   margin: 80px 0 10px 0;
   padding: 2px 19px 3px 19px;
@@ -215,16 +215,19 @@ body {
   float: right;
   width: 90px;
 }
-.case-backdrop {
+.mission-backdrop {
   background: url("../resources/images/lab_background.jpg") top center no-repeat;
   display: flex;
   justify-content: center;
 }
-.fv-layout #case-wrapper {
+.mission-backdrop .button-label {
+  font-family: 'Yanone Kaffeesatz';
+}
+.fv-layout #mission-wrapper {
   margin-top: -50px;
   flex-grow: 1;
 }
-.case-backdrop.fv-layout-c {
+.mission-backdrop.fv-layout-c {
   background-image: url("../resources/fablevision/layout-c/background.png");
   background-size: contain;
   flex-direction: column;
@@ -253,7 +256,7 @@ body {
   background-image: url("../resources/fablevision/huds/HUD_bottom.png");
   background-position: 50% 100%;
 }
-#case-wrapper {
+#mission-wrapper {
   width: 1080px;
   margin: 90px auto;
   height: 880px;
@@ -327,6 +330,9 @@ body {
 }
 #egg-game .geniblocks.organism.target {
   height: 102px;
+}
+#egg-game .geniblocks.breed-button-surround {
+  margin-top: -50px;
 }
 #egg-game .gamete-pen-wrapper {
   margin-left: -15px;
@@ -1068,6 +1074,33 @@ body {
   margin: 3px;
   padding: 2px;
   height: 320px;
+}
+
+.geniblocks.breed-button-surround {
+  background: url("../resources/fablevision/layout-c/breed_surround.png");
+  width: 370px;
+  height: 369px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.geniblocks.breed-button-surround .breed-button {
+  width: 139px;
+  height: 138px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../resources/fablevision/layout-c/breed_button_UNCLICKED.png");
+  cursor: pointer;
+}
+.geniblocks.breed-button-surround .breed-button:active,
+.geniblocks.breed-button-surround .breed-button.disabled {
+  cursor: default;
+  background: url("../resources/fablevision/layout-c/breed_button_CLICKED.png");
+}
+.geniblocks.breed-button-surround .breed-button .breed-button-label {
+  font-size: 54px;
+  color: #fff;
 }
 
 .geniblocks.parentDrake {
