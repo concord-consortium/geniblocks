@@ -5,10 +5,10 @@
         "comment": "*** Level 1, Mission 1.1: Playground ***",
         "template": "GenomePlayground",
         "initialDrake": {
-          "alleles": "T-T, w-w, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+          "alleles": "M-M, T-T, w-w, C-C, B-B, D-D, rh-rh, Bog-Bog",
           "sex": 1
         },
-        "userChangeableGenes": "metallic, wings, forelimbs, hindlimbs"
+        "userChangeableGenes": "wings, forelimbs, hindlimbs, armor, horns"
       }
     ],
   ],
@@ -32,10 +32,10 @@
           "alleles": "",
           "sex": 1
         }],
-        "userChangeableGenes": "metallic, wings, forelimbs, hindlimbs",
+        "userChangeableGenes": "wings, forelimbs, hindlimbs",
         "linkedGenes": {
           "drakes": [0, 1],
-          "genes": "tail, horns, color, black, dilute, armor, nose, bogbreath"
+          "genes": "metallic, tail, horns, color, black, dilute, armor, nose, bogbreath"
         }
       },
       {
@@ -44,22 +44,20 @@
         "instructions": "Match 2 drakes!",
         "trialGenerator": {
           "type": "all-combinations",
-          "baseDrake": "T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+          "baseDrake": "M-M, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
           "initialDrakeCombos": [
-            ["M-M",   "M-m",   "m-M",   "m-m"],
             ["W-W",   "W-w",   "w-W",   "w-w"],
             ["Fl-Fl", "Fl-fl", "fl-Fl", "fl-fl"],
             ["Hl-Hl", "Hl-hl", "hl-Hl", "hl-hl"]
           ],
           "targetDrakeCombos": [
-            ["M-M",   "m-m"],
             ["W-W",   "w-w"],
             ["Fl-Fl", "fl-fl"],
             ["Hl-Hl", "hl-hl"]
           ]
         },
         "targetDrakes": [{},{}],
-        "userChangeableGenes": "metallic, wings, forelimbs, hindlimbs"
+        "userChangeableGenes": "wings, forelimbs, hindlimbs"
       }
     ],
     [
@@ -126,7 +124,7 @@
             "sex": 1
           },
           {
-            "alleles": "A1-a, H-h, Bog-, D-, rh-rh",
+            "alleles": "A1-A1, H-h, Bog-, D-, rh-rh",
             "sex": 0
           },
           {
@@ -140,7 +138,7 @@
             "sex": 1
           },
           {
-            "alleles": "A1-A1, h-h",
+            "alleles": "A1-a, h-h",
             "sex": 1
           },
           {
@@ -149,6 +147,7 @@
           }
         ],
         "userChangeableGenes": "armor, horns",
+        "visibleGenes": "forelimbs, hindlimbs, wings",
         "hiddenAlleles": "A2",
         "linkedGenes": {
           "drakes": [0, 1],
@@ -189,6 +188,7 @@
             "sex": 1
           }
         ],
+        "visibleGenes": "forelimbs, hindlimbs, wings",
         "userChangeableGenes": "armor, horns",
         "hiddenAlleles": "A2",
         "linkedGenes": {

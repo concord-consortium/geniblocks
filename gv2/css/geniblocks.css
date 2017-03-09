@@ -228,8 +228,9 @@ body {
   flex-grow: 1;
 }
 .mission-backdrop.fv-layout-c {
-  background-image: url("../resources/fablevision/layout-c/background.png");
-  background-size: contain;
+  background-image: url("../resources/fablevision/layout-c/screen_bottom_lines.png"), url("../resources/fablevision/layout-c/screen_top_lines.png"), url("../resources/fablevision/layout-c/background.png");
+  background-size: auto auto, auto auto, contain;
+  background-position: 50% 91.5%, 50% 5.5%, 50% 50%;
   flex-direction: column;
   min-width: 1200px;
   min-height: 700px;
