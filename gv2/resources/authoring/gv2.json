@@ -350,6 +350,7 @@
     [
       {
         "comment": "*** Demo: Egg Breeding (match three drakes, user drake visible) ***",
+        "challengeId": "egg-breeding-basic-match-visible",
         "template": "EggGame",
         "challengeType": "match-target",
         "instructions": "Match 3 drakes!",
@@ -367,6 +368,7 @@
       },
       {
         "comment": "*** Demo: Egg Breeding (match three drakes, user drake hidden) ***",
+        "challengeId": "egg-breeding-basic-match-hidden",
         "template": "EggGame",
         "challengeType": "match-target",
         "instructions": "Match 3 drakes!",
