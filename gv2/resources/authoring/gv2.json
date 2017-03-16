@@ -4,7 +4,6 @@
       {
         "comment": "*** Level 1, Mission 1.1: Playground ***",
         "template": "GenomePlayground",
-        "challengeId": "gamete-1target-simple",
         "initialDrake": {
           "alleles": "M-M, T-T, w-w, C-C, B-B, D-D, rh-rh, Bog-Bog",
           "sex": 1
@@ -391,7 +390,6 @@
     [
       {
         "comment": "*** FV Test Level ***",
-        "challengeId": "gamete-5drakes-simple",
         "container": "FVContainer",
         "template": "FVEggGame",
         "challengeType": "create-unique",
@@ -410,7 +408,7 @@
       },
       {
         "comment": "*** FV Test Level 2 ***",
-        "challengeId": "gamete-1target-simple",
+        "challengeId": "egg-breeding-basic-match-visible",
         "container": "FVContainer",
         "template": "FVEggGame",
         "challengeType": "match-target",
