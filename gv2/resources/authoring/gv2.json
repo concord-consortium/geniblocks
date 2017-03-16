@@ -4,6 +4,7 @@
       {
         "comment": "*** Level 1, Mission 1.1: Playground ***",
         "template": "GenomePlayground",
+        "challengeId": "gamete-1target-simple",
         "initialDrake": {
           "alleles": "M-M, T-T, w-w, C-C, B-B, D-D, rh-rh, Bog-Bog",
           "sex": 1
