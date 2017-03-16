@@ -1148,7 +1148,7 @@ body {
 }
 .geniblocks.breed-button-surround .breed-button:active {
   cursor: default;
-  background: url("../resources/fablevision/layout-c/breed_button_clicked.png");
+  background: url("../resources/fablevision/layout-c/breed_button_CLICKED.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
