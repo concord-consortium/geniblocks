@@ -83,6 +83,10 @@
  * (https://www.npmjs.com/package/rosetta) which would allow single-sourcing
  * shared constants such as these.
  */
+html {
+/* base size for rem units */
+  font-size: 18px;
+}
 /* no scroll bars if we have our minimum requirements */
 @media (min-width: 1200px) and (min-height: 700px) {
   body {
@@ -108,7 +112,6 @@ body {
   align-items: center;
   flex-direction: column;
   float: left;
-  margin-top: 25px;
 }
 #challenges .column-label {
   margin-top: 125px;
@@ -224,16 +227,24 @@ body {
   font-family: 'Yanone Kaffeesatz';
 }
 .fv-layout #mission-wrapper {
-  margin-top: -50px;
   flex-grow: 1;
 }
 .mission-backdrop.fv-layout-c {
-  background-image: url("../resources/fablevision/layout-c/screen_bottom_lines.png"), url("../resources/fablevision/layout-c/screen_top_lines.png"), url("../resources/fablevision/layout-c/background.png");
-  background-size: auto auto, auto auto, contain;
-  background-position: 50% 91.5%, 50% 5.5%, 50% 50%;
+  width: 1920px;
+  height: 1080px;
+  transform: scale(0.75);
+  transform-origin: 0 0;
   flex-direction: column;
   min-width: 1200px;
   min-height: 700px;
+}
+.mission-backdrop.fv-layout-c.create-unique {
+  background-image: url("../resources/fablevision/layout-c/screen_top_lines.png"), url("../resources/fablevision/layout-c/background.png");
+  background-position: 50% 5.5%, 50% 50%;
+}
+.mission-backdrop.fv-layout-c.match-target {
+  background-image: url("../resources/fablevision/layout-c/screen_bottom_lines.png"), url("../resources/fablevision/layout-c/screen_top_lines.png"), url("../resources/fablevision/layout-c/background.png");
+  background-position: 50% 91.5%, 50% 5.5%, 50% 50%;
 }
 .fv-hud {
   left: 0;
@@ -249,20 +260,27 @@ body {
 }
 #fv-top-hud {
   top: 0;
+  height: 152px;
+  margin-bottom: -60px;
   background-image: url("../resources/fablevision/huds/HUD_top.png");
   background-position: 50% 0;
 }
 #fv-bottom-hud {
   bottom: 0;
+  height: 145px;
+  margin-top: -30px;
   background-image: url("../resources/fablevision/huds/HUD_bottom.png");
   background-position: 50% 100%;
 }
 #mission-wrapper {
-  width: 1080px;
+  width: 1400px;
   margin: 90px auto;
-  height: 880px;
+  height: 900px;
   display: flex;
   justify-content: center;
+}
+.fv-layout-c #mission-wrapper {
+  margin: auto;
 }
 .challenge-award {
   display: block;
@@ -293,6 +311,10 @@ body {
 }
 .columns {
   display: flex;
+}
+.columns.centered {
+  flex-direction: row;
+  justify-content: space-around;
 }
 .fade-in-on-render {
   opacity: 0;
@@ -333,15 +355,19 @@ body {
   height: 102px;
 }
 #egg-game .geniblocks.breed-button-surround {
-  margin-top: -50px;
+  margin-top: -65px;
 }
 #egg-game .gamete-pen-wrapper {
   margin-left: -15px;
   margin-top: -15px;
   width: 80%;
 }
+.fv-layout-c #egg-game {
+  display: flex;
+  flex-direction: column;
+}
 .fv-layout-c #egg-game .geniblocks.genome {
-  top: 0px;
+  top: 50px;
 }
 .egg {
   position: relative;
@@ -366,6 +392,7 @@ body {
 }
 .egg .fertilization {
   display: flex;
+  flex-direction: row;
   align-items: flex-start;
   height: 218px;
 }
@@ -392,6 +419,7 @@ body {
   width: 76px;
 }
 .egg .gametes {
+  margin-top: -35px;
   display: flex;
   justify-content: space-between;
 }
@@ -417,7 +445,7 @@ body {
 .egg .gametes .ovum {
   position: absolute;
   transition: left 2s;
-  top: -135px;
+  top: -140px;
   left: 110px;
 }
 .egg .gametes .ovum.matching {
@@ -426,17 +454,17 @@ body {
 .egg .gametes .sperm {
   position: absolute;
   transition: left 2s;
-  top: -117px;
+  top: -141px;
   left: -12px;
 }
 .egg .gametes .sperm.matching {
   top: -142px;
 }
 .egg .gametes.unfertilized .ovum {
-  left: 75px;
+  left: 20px;
 }
 .egg .gametes.unfertilized .sperm {
-  left: 65px;
+  left: 110px;
 }
 .egg .fertilize-button {
   margin-top: 45px;
@@ -468,8 +496,26 @@ body {
   justify-content: center;
   margin-top: -28px;
 }
+.fv-layout-c #mission-wrapper {
+  width: 100%;
+}
+.fv-layout-c #egg-game {
+  width: 100%;
+}
 .fv-layout-c #egg-game .bottom {
-  margin-top: 0px;
+  margin-top: auto;
+}
+.fv-layout-c #egg-game .column {
+  margin-top: 40px;
+}
+.fv-layout-c #egg-game .column .egg .gametes {
+  margin-top: 20px;
+}
+.fv-layout-c #egg-game .ovum.matching {
+  top: -140px;
+}
+.fv-layout-c #egg-game .geniblocks.child.matching {
+  top: -5px;
 }
 #egg-sort-game {
   position: relative;
@@ -1079,11 +1125,15 @@ body {
 
 .geniblocks.breed-button-surround {
   background: url("../resources/fablevision/layout-c/breed_surround.png");
-  width: 370px;
+  width: 315px;
   height: 369px;
   display: flex;
   justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
   align-items: center;
+  margin-left: -100px;
+  margin-right: -100px;
 }
 .geniblocks.breed-button-surround .breed-button {
   width: 139px;
@@ -1091,17 +1141,94 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("../resources/fablevision/layout-c/breed_button_UNCLICKED.png");
+  margin-top: -55px;
+  margin-right: -8px;
+  background: url("../resources/fablevision/layout-c/breed_button_unclicked.png");
   cursor: pointer;
 }
-.geniblocks.breed-button-surround .breed-button:active,
+.geniblocks.breed-button-surround .breed-button:active {
+  cursor: default;
+  background: url("../resources/fablevision/layout-c/breed_button_clicked.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .geniblocks.breed-button-surround .breed-button.disabled {
   cursor: default;
-  background: url("../resources/fablevision/layout-c/breed_button_CLICKED.png");
+  background: url("../resources/fablevision/layout-c/breed_button_inactive.png");
 }
 .geniblocks.breed-button-surround .breed-button .breed-button-label {
-  font-size: 54px;
+  font-size: 3rem;
   color: #fff;
+}
+
+.fv-chromosome-image {
+  height: 25px;
+  width: 5px;
+  background: url("../resources/fablevision/layout-c/chromosome_lite.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.fv-chromosome-image.small {
+  height: 122px;
+  width: 20px;
+}
+.fv-chromosome-image.empty,
+.parent .fv-chromosome-image.bold {
+  background: url("../resources/fablevision/layout-c/chromosome_dark.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.ovum .gamete-container {
+  background: url("../resources/fablevision/layout-c/egg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 178px;
+  height: 151px;
+  display: flex;
+  align-items: center;
+}
+.sperm .gamete-container {
+  background: url("../resources/fablevision/layout-c/sperm_head.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 148px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+}
+
+.geniblocks.fv-stable {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -60px;
+  padding: 2px;
+  height: 226px;
+  width: 1400px;
+  background: url("../resources/fablevision/layout-c/stable.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.geniblocks.fv-stable .stable-counter {
+  font-family: 'Yanone Kaffeesatz';
+  font-size: 1.25rem;
+  color: #fff;
+  margin-top: 2px;
+  display: flex;
+  flex-direction: row;
+}
+.geniblocks.fv-stable .stable-counter .stable-count {
+  margin-left: 68px;
+}
+.geniblocks.fv-stable .stable-drakes {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-right: 30px;
+  align-self: flex-end;
 }
 
 .geniblocks.parentDrake {
@@ -1109,14 +1236,19 @@ body {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  width: 475px;
-  height: 187px;
-  font-size: 54px;
   font-family: 'Yanone Kaffeesatz';
+  font-size: 3rem;
 }
 .geniblocks.parentDrake.mother {
   background: url("../resources/fablevision/layout-c/female_drake_overlay.png");
   justify-content: flex-end;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 187px;
+  width: 475px;
+}
+.geniblocks.parentDrake.mother .parentTitle {
+  margin-right: 20px;
 }
 .geniblocks.parentDrake.mother .organism {
   margin-right: 20px;
@@ -1124,10 +1256,64 @@ body {
 .geniblocks.parentDrake.father {
   background: url("../resources/fablevision/layout-c/male_drake_overlay.png");
   justify-content: flex-start;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 187px;
+  width: 475px;
+}
+.geniblocks.parentDrake.father .parentTitle {
+  margin-left: 20px;
 }
 .geniblocks.parentDrake.father .organism {
   margin-left: 20px;
 }
 .geniblocks.parentDrake .parentTitle {
+  margin-top: 10px;
+}
+.geniblocks.parentDrake .organism {
+  margin-top: -8px;
+}
+
+.geniblocks .stable-drakes {
+  margin-right: 10px;
+}
+.geniblocks .stable-drake-overlay {
+  background: url("../resources/fablevision/layout-c/stable_drake_background.png");
+  display: flex;
+  justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 85px;
+  margin-top: 10px;
+  margin-right: 15px;
+}
+.geniblocks .stable-drake-overlay .organism {
+  margin-top: -23px;
+  margin-left: -20px;
+}
+
+.geniblocks.target-drake-container {
+  display: flex;
+  flex-direction: row;
+  height: 588px;
+  width: 520px;
+  background: url("../resources/fablevision/layout-c/target_drake_gizmo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  justify-content: center;
+  align-self: center;
+  margin-bottom: -400px;
+  margin-top: auto;
+  margin-left: 60px;
+  z-index: 2;
+}
+.geniblocks.target-drake-container .target-drake-text {
+  font-family: 'Yanone Kaffeesatz';
+  font-size: 30px;
+  color: #fff;
+  margin-top: 70px;
+  margin-left: -40px;
+}
+.geniblocks.target-drake-container .organism {
   margin-top: 10px;
 }

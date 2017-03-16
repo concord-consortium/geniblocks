@@ -390,12 +390,33 @@
     [
       {
         "comment": "*** FV Test Level ***",
+        "challengeId": "gamete-5drakes-simple",
         "container": "FVContainer",
         "template": "FVEggGame",
         "challengeType": "create-unique",
         "interactionType": "select-chromosomes",
         "instructions": "Create 5 different baby drakes!",
         "showUserDrake": true,
+        "mother":{
+          "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
+          "sex": 1
+        },
+        "father": {
+          "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+          "sex": 0
+        },
+        "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
+      },
+      {
+        "comment": "*** FV Test Level 2 ***",
+        "challengeId": "gamete-1target-simple",
+        "container": "FVContainer",
+        "template": "FVEggGame",
+        "challengeType": "match-target",
+        "interactionType": "select-chromosomes",
+        "instructions": "Match the target drake!",
+        "showUserDrake": true,
+        "targetDrakes": [{},{},{}],
         "mother":{
           "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
           "sex": 1
