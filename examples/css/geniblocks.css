@@ -1145,20 +1145,22 @@ body {
   margin-right: -8px;
   background: url("../resources/fablevision/layout-c/unclicked_breed_button.png");
   cursor: pointer;
+  color: #1c3cdb;
 }
 .geniblocks.breed-button-surround .breed-button:active {
   cursor: default;
   background: url("../resources/fablevision/layout-c/clicked_breed_button.png");
   background-size: contain;
   background-repeat: no-repeat;
+  color: #add8e6;
 }
 .geniblocks.breed-button-surround .breed-button.disabled {
   cursor: default;
   background: url("../resources/fablevision/layout-c/inactive_breed_button.png");
+  color: #add8e6;
 }
 .geniblocks.breed-button-surround .breed-button .breed-button-label {
   font-size: 3rem;
-  color: #fff;
 }
 
 .fv-chromosome-image {
@@ -1172,11 +1174,20 @@ body {
   height: 122px;
   width: 20px;
 }
+.fv-chromosome-image.small.yChromosome {
+  height: 74px;
+  width: 20px;
+  background: url("../resources/fablevision/layout-c/chromosome_half_lite.png");
+}
 .fv-chromosome-image.empty,
 .parent .fv-chromosome-image.bold {
   background: url("../resources/fablevision/layout-c/chromosome_dark.png");
   background-size: contain;
   background-repeat: no-repeat;
+}
+.fv-chromosome-image.empty.yChromosome,
+.parent .fv-chromosome-image.bold.yChromosome {
+  background: url("../resources/fablevision/layout-c/chromosome_half_dark.png");
 }
 
 .ovum .gamete-container {
