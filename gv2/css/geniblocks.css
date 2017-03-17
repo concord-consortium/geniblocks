@@ -525,6 +525,36 @@ body {
   left: -50px;
   top: -195px;
 }
+.fv-layout-c .offspring-buttons {
+  margin-top: -40px;
+  display: flex;
+}
+.fv-layout-c .offspring-buttons .gb-img-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 50px;
+  margin: 0px 10px;
+  background-image: url("../resources/fablevision/layout-c/Reset_Unclicked.png");
+  background-size: 100% 100%;
+  color: #add8e6;
+  cursor: pointer;
+}
+.fv-layout-c .offspring-buttons .gb-img-button:active {
+  background-image: url("../resources/fablevision/layout-c/Reset_Clicked.png");
+}
+.fv-layout-c .offspring-buttons .gb-img-button div {
+  margin-left: -2px;
+  margin-top: -2px;
+  font-family: 'Yanone Kaffeesatz';
+  font-size: 1.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+.fv-layout-c .offspring-buttons.hidden {
+  visibility: hidden;
+}
 .fv-layout-c #egg-game .geniblocks.child.creation {
   top: 0px;
 }
@@ -1140,7 +1170,7 @@ body {
 .geniblocks.breed-button-area {
   width: 1001px;
   height: 142px;
-  margin-top: 55px;
+  margin-top: 45px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1162,10 +1192,11 @@ body {
 .geniblocks.breed-button-area .organism {
   padding-left: 25px;
   padding-right: 10px;
-  height: 170px;
+  width: 180px;
+  height: 180px;
 }
 .geniblocks.breed-button-area .organism.matching {
-  margin-top: -10px;
+  margin-top: -30px;
   padding-left: 10px;
   padding-right: 20px;
   height: 140px;
