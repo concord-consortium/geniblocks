@@ -240,11 +240,11 @@ body {
 }
 .mission-backdrop.fv-layout-c.create-unique {
   background-image: url("../resources/fablevision/layout-c/screen_top_lines.png"), url("../resources/fablevision/layout-c/background.png");
-  background-position: 50% 5.5%, 50% 50%;
+  background-position: 50% 7.25%, 50% 50%;
 }
 .mission-backdrop.fv-layout-c.match-target {
   background-image: url("../resources/fablevision/layout-c/screen_bottom_lines.png"), url("../resources/fablevision/layout-c/screen_top_lines.png"), url("../resources/fablevision/layout-c/background.png");
-  background-position: 50% 91.5%, 50% 5.5%, 50% 50%;
+  background-position: 50% 91.5%, 50% 7.25%, 50% 50%;
 }
 .fv-hud {
   left: 0;
@@ -353,9 +353,6 @@ body {
 }
 #egg-game .geniblocks.organism.target {
   height: 102px;
-}
-#egg-game .geniblocks.breed-button-surround {
-  margin-top: -65px;
 }
 #egg-game .gamete-pen-wrapper {
   margin-left: -15px;
@@ -511,8 +508,22 @@ body {
 .fv-layout-c #egg-game .column .egg .gametes {
   margin-top: 20px;
 }
-.fv-layout-c #egg-game .ovum.matching {
-  top: -140px;
+.fv-layout-c .egg .gametes {
+  margin-top: 50px;
+}
+.fv-layout-c .egg .gametes.unfertilized .ovum {
+  left: -90px;
+}
+.fv-layout-c .egg .gametes.unfertilized .sperm {
+  left: 150px;
+}
+.fv-layout-c .egg .gametes .ovum {
+  left: 50px;
+  top: -195px;
+}
+.fv-layout-c .egg .gametes .sperm {
+  left: -50px;
+  top: -195px;
 }
 .fv-layout-c #egg-game .geniblocks.child.matching {
   top: -5px;
@@ -1123,17 +1134,53 @@ body {
   height: 320px;
 }
 
+.geniblocks.breed-button-area {
+  width: 1001px;
+  height: 142px;
+  margin-top: 55px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  background-image: url("../resources/fablevision/layout-c/screen_eggsperm_box.png");
+}
+.geniblocks.breed-button-area .egg-image.matching {
+  margin-top: -10px;
+}
+.geniblocks.breed-button-area .organism {
+  padding-left: 25px;
+  padding-right: 10px;
+  height: 170px;
+}
+.geniblocks.breed-button-area .organism.matching {
+  margin-top: -10px;
+  padding-left: 10px;
+  padding-right: 20px;
+  height: 140px;
+}
+.geniblocks.breed-button-area .offspring-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.geniblocks.breed-button-area .offspring-buttons button {
+  margin: 3px;
+  padding: 4px;
+  width: 76px;
+}
+
 .geniblocks.breed-button-surround {
   background: url("../resources/fablevision/layout-c/breed_surround.png");
-  width: 315px;
-  height: 369px;
+  width: 236px;
+  height: 236px;
+  margin-top: -45px;
   display: flex;
   justify-content: center;
-  background-size: contain;
+  background-position: -69px -68px;
+  background-size: 370px 369px;
   background-repeat: no-repeat;
   align-items: center;
-  margin-left: -100px;
-  margin-right: -100px;
 }
 .geniblocks.breed-button-surround .breed-button {
   width: 139px;
@@ -1141,8 +1188,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -55px;
-  margin-right: -8px;
+  margin-top: -8px;
+  margin-left: 2px;
   background: url("../resources/fablevision/layout-c/unclicked_breed_button.png");
   cursor: pointer;
   color: #1c3cdb;
@@ -1191,7 +1238,7 @@ body {
 }
 
 .ovum .gamete-container {
-  background: url("../resources/fablevision/layout-c/egg.png");
+  background-image: url("../resources/fablevision/layout-c/egg.png");
   background-size: contain;
   background-repeat: no-repeat;
   width: 178px;
@@ -1200,10 +1247,11 @@ body {
   align-items: center;
 }
 .sperm .gamete-container {
-  background: url("../resources/fablevision/layout-c/sperm_head.png");
-  background-size: contain;
+  background-image: url("../resources/fablevision/layout-c/sperm_head.png"), url("../resources/fablevision/layout-c/sperm_tail.png");
+  background-position: 0% 50%, 100% 53%;
+  background-size: 65% auto, 36% auto;
   background-repeat: no-repeat;
-  width: 148px;
+  width: 229px;
   height: 150px;
   display: flex;
   align-items: center;
@@ -1243,6 +1291,11 @@ body {
 }
 
 .geniblocks.parentDrake {
+  height: 187px;
+  width: 475px;
+  margin-top: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
   color: #fff;
   display: flex;
   flex-direction: row;
@@ -1251,12 +1304,9 @@ body {
   font-size: 3rem;
 }
 .geniblocks.parentDrake.mother {
-  background: url("../resources/fablevision/layout-c/female_drake_overlay.png");
+  margin-right: 20px;
+  background-image: url("../resources/fablevision/layout-c/female_drake_overlay.png");
   justify-content: flex-end;
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 187px;
-  width: 475px;
 }
 .geniblocks.parentDrake.mother .parentTitle {
   margin-right: 20px;
@@ -1265,12 +1315,9 @@ body {
   margin-right: 20px;
 }
 .geniblocks.parentDrake.father {
-  background: url("../resources/fablevision/layout-c/male_drake_overlay.png");
+  margin-left: 30px;
+  background-image: url("../resources/fablevision/layout-c/male_drake_overlay.png");
   justify-content: flex-start;
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 187px;
-  width: 475px;
 }
 .geniblocks.parentDrake.father .parentTitle {
   margin-left: 20px;
