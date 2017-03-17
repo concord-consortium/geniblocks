@@ -525,6 +525,9 @@ body {
   left: -50px;
   top: -195px;
 }
+.fv-layout-c #egg-game .geniblocks.child.creation {
+  top: 0px;
+}
 .fv-layout-c #egg-game .geniblocks.child.matching {
   top: -5px;
 }
