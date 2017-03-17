@@ -1144,6 +1144,15 @@ body {
   align-items: flex-start;
   background-image: url("../resources/fablevision/layout-c/screen_eggsperm_box.png");
 }
+.geniblocks.breed-button-area .egg-image {
+  width: 115px;
+  height: 158px;
+  margin-right: 20px;
+  padding: 0;
+  background-image: url("../resources/fablevision/layout-d/egg_unclicked.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .geniblocks.breed-button-area .egg-image.matching {
   margin-top: -10px;
 }
