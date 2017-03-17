@@ -1245,6 +1245,11 @@ body {
 .parent .fv-chromosome-image.bold.yChromosome {
   background: url("../resources/fablevision/layout-c/chromosome_half_dark.png");
 }
+.geniblocks.fv-gene-label {
+  font-family: 'Yanone Kaffeesatz';
+  font-size: 1.5rem;
+  color: #fff;
+}
 
 .ovum .gamete-container {
   background-image: url("../resources/fablevision/layout-c/egg.png");
