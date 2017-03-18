@@ -1188,6 +1188,15 @@ body {
   height: 320px;
 }
 
+.fv-bottom-hud {
+  position: relative;
+}
+.fv-bottom-hud .geniblocks.trial-count {
+  position: absolute;
+  left: 1400px;
+  top: 35px;
+}
+
 .geniblocks.breed-button-area {
   width: 1001px;
   height: 142px;
@@ -1272,9 +1281,6 @@ body {
 }
 .geniblocks.breed-button-surround .breed-button .breed-button-label {
   font-size: 3rem;
-}
-.os-windows .geniblocks.breed-button-surround .breed-button .breed-button-label {
-  margin-top: 0.4rem;
 }
 
 .fv-chromosome-image {
@@ -1361,9 +1367,6 @@ body {
   margin-right: 30px;
   align-self: flex-end;
 }
-.os-windows .geniblocks.fv-stable .stable-counter {
-  margin-top: 0.4rem;
-}
 
 .geniblocks.parentDrake {
   height: 187px;
@@ -1405,9 +1408,6 @@ body {
 }
 .geniblocks.parentDrake .organism {
   margin-top: -8px;
-}
-.os-windows .geniblocks.parentDrake .parentTitle {
-  margin-top: 1rem;
 }
 
 .geniblocks .stable-drakes {
@@ -1452,4 +1452,26 @@ body {
 }
 .geniblocks.target-drake-container .organism {
   margin-top: 10px;
+}
+
+.geniblocks.trial-count {
+  width: 158px;
+  height: 107px;
+  background-image: url("../resources/fablevision/huds/Trial_screen.png");
+  background-size: 100% 100%;
+}
+.geniblocks.trial-count .text-area {
+  position: relative;
+  left: 30px;
+  top: 25px;
+  width: 108px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 1.15;
+  color: #555;
 }
