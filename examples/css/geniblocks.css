@@ -1273,6 +1273,9 @@ body {
 .geniblocks.breed-button-surround .breed-button .breed-button-label {
   font-size: 3rem;
 }
+.os-windows .geniblocks.breed-button-surround .breed-button .breed-button-label {
+  margin-top: 0.4rem;
+}
 
 .fv-chromosome-image {
   height: 25px;
@@ -1358,6 +1361,9 @@ body {
   margin-right: 30px;
   align-self: flex-end;
 }
+.os-windows .geniblocks.fv-stable .stable-counter {
+  margin-top: 0.4rem;
+}
 
 .geniblocks.parentDrake {
   height: 187px;
@@ -1399,6 +1405,9 @@ body {
 }
 .geniblocks.parentDrake .organism {
   margin-top: -8px;
+}
+.os-windows .geniblocks.parentDrake .parentTitle {
+  margin-top: 1rem;
 }
 
 .geniblocks .stable-drakes {
