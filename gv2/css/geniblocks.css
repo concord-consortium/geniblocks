@@ -1287,15 +1287,24 @@ body {
 }
 
 .fv-chromosome-image {
-  height: 25px;
-  width: 5px;
-  background: url("../resources/fablevision/layout-c/chromosome_lite.png");
+  height: 78px;
+  width: 27px;
+  background: url("../resources/fablevision/layout-c/egg_sperm_chromosome_filled.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
+.fv-chromosome-image.yChromosome {
+  height: 55px;
+  width: 27px;
+  background: url("../resources/fablevision/layout-c/egg_sperm_chromosome_half_filled.png");
+}
 .fv-chromosome-image.small {
+  background: url("../resources/fablevision/layout-c/chromosome_lite_stripes.png");
   height: 122px;
   width: 20px;
+}
+.fv-chromosome-image.small.xChromosome {
+  background: url("../resources/fablevision/layout-c/chromosome_lite.png");
 }
 .fv-chromosome-image.small.yChromosome {
   height: 74px;
@@ -1304,12 +1313,26 @@ body {
 }
 .fv-chromosome-image.empty,
 .parent .fv-chromosome-image.bold {
-  background: url("../resources/fablevision/layout-c/chromosome_dark.png");
+  background: url("../resources/fablevision/layout-c/egg_sperm_chromosome.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
 .fv-chromosome-image.empty.yChromosome,
 .parent .fv-chromosome-image.bold.yChromosome {
+  height: 55px;
+  width: 27px;
+  background: url("../resources/fablevision/layout-c/egg_sperm_chromosome_half.png");
+}
+.fv-chromosome-image.empty.small,
+.parent .fv-chromosome-image.bold.small {
+  height: 122px;
+  width: 20px;
+  background: url("../resources/fablevision/layout-c/chromosome_dark.png");
+}
+.fv-chromosome-image.empty.small.yChromosome,
+.parent .fv-chromosome-image.bold.small.yChromosome {
+  height: 74px;
+  width: 20px;
   background: url("../resources/fablevision/layout-c/chromosome_half_dark.png");
 }
 .geniblocks.fv-gene-label {
@@ -1336,6 +1359,13 @@ body {
   height: 150px;
   display: flex;
   align-items: center;
+}
+.gamete-chromosomes {
+  margin-top: -17px;
+  margin-left: -6px;
+}
+.gamete-chromosomes .fv-chromosome-image {
+  margin-left: -6px;
 }
 
 .geniblocks.fv-stable {
