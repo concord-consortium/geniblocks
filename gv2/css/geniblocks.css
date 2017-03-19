@@ -1484,3 +1484,6 @@ body {
   line-height: 1.15;
   color: #555;
 }
+.os-windows .geniblocks.trial-count .text-area {
+  margin-top: 0.1rem;
+}
