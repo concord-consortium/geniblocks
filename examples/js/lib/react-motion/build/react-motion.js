@@ -176,7 +176,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var lastIdealVelocity = _state.lastIdealVelocity;
 	
 	    for (var key in destStyle) {
-	      if (!destStyle.hasOwnProperty(key)) {
+	      if (!Object.prototype.hasOwnProperty.call(destStyle, key)) {
 	        continue;
 	      }
 	
@@ -207,7 +207,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    // TODO: when config is {a: 10} and dest is {a: 10} do we raf once and
 	    // call cb? No, otherwise accidental parent rerender causes cb trigger
-	    this.animationID = _raf2['default'](function () {
+	    this.animationID = _raf2['default'](function (timestamp) {
 	      // check if we need to animate in the first place
 	      var propsStyle = _this.props.style;
 	      if (_shouldStopAnimation2['default'](_this.state.currentStyle, propsStyle, _this.state.currentVelocity)) {
@@ -224,7 +224,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      _this.wasAnimating = true;
 	
-	      var currentTime = _performanceNow2['default']();
+	      var currentTime = timestamp || _performanceNow2['default']();
 	      var timeDelta = currentTime - _this.prevTime;
 	      _this.prevTime = currentTime;
 	      _this.accumulatedTime = _this.accumulatedTime + timeDelta;
@@ -249,7 +249,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var newCurrentVelocity = {};
 	
 	      for (var key in propsStyle) {
-	        if (!propsStyle.hasOwnProperty(key)) {
+	        if (!Object.prototype.hasOwnProperty.call(propsStyle, key)) {
 	          continue;
 	        }
 	
@@ -347,7 +347,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function mapToZero(obj) {
 	  var ret = {};
 	  for (var key in obj) {
-	    if (obj.hasOwnProperty(key)) {
+	    if (Object.prototype.hasOwnProperty.call(obj, key)) {
 	      ret[key] = 0;
 	    }
 	  }
@@ -372,7 +372,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function stripStyle(style) {
 	  var ret = {};
 	  for (var key in style) {
-	    if (!style.hasOwnProperty(key)) {
+	    if (!Object.prototype.hasOwnProperty.call(style, key)) {
 	      continue;
 	    }
 	    ret[key] = typeof style[key] === 'number' ? style[key] : style[key].val;
@@ -396,7 +396,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.__esModule = true;
 	exports["default"] = stepper;
 	
-	var reusedTuple = [];
+	var reusedTuple = [0, 0];
 	
 	function stepper(secondPerFrame, x, v, destX, k, b, precision) {
 	  // Spring stiffness, in kg / s^2
@@ -474,16 +474,100 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	// shim for using process in browser
-	
 	'use strict';
 	
 	var process = module.exports = {};
+	
+	// cached from whatever global is present so that test runners that stub it
+	// don't break things.  But we need to wrap it in a try catch in case it is
+	// wrapped in strict mode code which doesn't define any globals.  It's inside a
+	// function because try/catches deoptimize in certain engines.
+	
+	var cachedSetTimeout;
+	var cachedClearTimeout;
+	
+	function defaultSetTimout() {
+	    throw new Error('setTimeout has not been defined');
+	}
+	function defaultClearTimeout() {
+	    throw new Error('clearTimeout has not been defined');
+	}
+	(function () {
+	    try {
+	        if (typeof setTimeout === 'function') {
+	            cachedSetTimeout = setTimeout;
+	        } else {
+	            cachedSetTimeout = defaultSetTimout;
+	        }
+	    } catch (e) {
+	        cachedSetTimeout = defaultSetTimout;
+	    }
+	    try {
+	        if (typeof clearTimeout === 'function') {
+	            cachedClearTimeout = clearTimeout;
+	        } else {
+	            cachedClearTimeout = defaultClearTimeout;
+	        }
+	    } catch (e) {
+	        cachedClearTimeout = defaultClearTimeout;
+	    }
+	})();
+	function runTimeout(fun) {
+	    if (cachedSetTimeout === setTimeout) {
+	        //normal enviroments in sane situations
+	        return setTimeout(fun, 0);
+	    }
+	    // if setTimeout wasn't available but was latter defined
+	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+	        cachedSetTimeout = setTimeout;
+	        return setTimeout(fun, 0);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedSetTimeout(fun, 0);
+	    } catch (e) {
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+	            return cachedSetTimeout.call(null, fun, 0);
+	        } catch (e) {
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+	            return cachedSetTimeout.call(this, fun, 0);
+	        }
+	    }
+	}
+	function runClearTimeout(marker) {
+	    if (cachedClearTimeout === clearTimeout) {
+	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
+	    }
+	    // if clearTimeout wasn't available but was latter defined
+	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+	        cachedClearTimeout = clearTimeout;
+	        return clearTimeout(marker);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedClearTimeout(marker);
+	    } catch (e) {
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+	            return cachedClearTimeout.call(null, marker);
+	        } catch (e) {
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+	            return cachedClearTimeout.call(this, marker);
+	        }
+	    }
+	}
 	var queue = [];
 	var draining = false;
 	var currentQueue;
 	var queueIndex = -1;
 	
 	function cleanUpNextTick() {
+	    if (!draining || !currentQueue) {
+	        return;
+	    }
 	    draining = false;
 	    if (currentQueue.length) {
 	        queue = currentQueue.concat(queue);
@@ -499,7 +583,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (draining) {
 	        return;
 	    }
-	    var timeout = setTimeout(cleanUpNextTick);
+	    var timeout = runTimeout(cleanUpNextTick);
 	    draining = true;
 	
 	    var len = queue.length;
@@ -516,7 +600,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    currentQueue = null;
 	    draining = false;
-	    clearTimeout(timeout);
+	    runClearTimeout(timeout);
 	}
 	
 	process.nextTick = function (fun) {
@@ -528,7 +612,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    queue.push(new Item(fun, args));
 	    if (queue.length === 1 && !draining) {
-	        setTimeout(drainQueue, 0);
+	        runTimeout(drainQueue);
 	    }
 	};
 	
@@ -575,18 +659,18 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(global) {'use strict';
 	
 	var now = __webpack_require__(5),
-	    global = typeof window === 'undefined' ? {} : window,
+	    root = typeof window === 'undefined' ? global : window,
 	    vendors = ['moz', 'webkit'],
 	    suffix = 'AnimationFrame',
-	    raf = global['request' + suffix],
-	    caf = global['cancel' + suffix] || global['cancelRequest' + suffix];
+	    raf = root['request' + suffix],
+	    caf = root['cancel' + suffix] || root['cancelRequest' + suffix];
 	
-	for (var i = 0; i < vendors.length && !raf; i++) {
-	  raf = global[vendors[i] + 'Request' + suffix];
-	  caf = global[vendors[i] + 'Cancel' + suffix] || global[vendors[i] + 'CancelRequest' + suffix];
+	for (var i = 0; !raf && i < vendors.length; i++) {
+	  raf = root[vendors[i] + 'Request' + suffix];
+	  caf = root[vendors[i] + 'Cancel' + suffix] || root[vendors[i] + 'CancelRequest' + suffix];
 	}
 	
 	// Some versions of FF have rAF but not cAF
@@ -641,11 +725,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // Wrap in a new function to prevent
 	  // `cancel` potentially being assigned
 	  // to the native rAF function
-	  return raf.call(global, fn);
+	  return raf.call(root, fn);
 	};
 	module.exports.cancel = function () {
-	  caf.apply(global, arguments);
+	  caf.apply(root, arguments);
 	};
+	module.exports.polyfill = function () {
+	  root.requestAnimationFrame = raf;
+	  root.cancelAnimationFrame = caf;
+	};
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
 /* 8 */
@@ -662,7 +751,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function shouldStopAnimation(currentStyle, style, currentVelocity) {
 	  for (var key in style) {
-	    if (!style.hasOwnProperty(key)) {
+	    if (!Object.prototype.hasOwnProperty.call(style, key)) {
 	      continue;
 	    }
 	
@@ -792,7 +881,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var dirty = false;
 	
 	      for (var key in unreadPropStyle) {
-	        if (!unreadPropStyle.hasOwnProperty(key)) {
+	        if (!Object.prototype.hasOwnProperty.call(unreadPropStyle, key)) {
 	          continue;
 	        }
 	
@@ -824,7 +913,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    // TODO: when config is {a: 10} and dest is {a: 10} do we raf once and
 	    // call cb? No, otherwise accidental parent rerender causes cb trigger
-	    this.animationID = _raf2['default'](function () {
+	    this.animationID = _raf2['default'](function (timestamp) {
 	      var destStyles = _this.props.styles(_this.state.lastIdealStyles);
 	
 	      // check if we need to animate in the first place
@@ -835,7 +924,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return;
 	      }
 	
-	      var currentTime = _performanceNow2['default']();
+	      var currentTime = timestamp || _performanceNow2['default']();
 	      var timeDelta = currentTime - _this.prevTime;
 	      _this.prevTime = currentTime;
 	      _this.accumulatedTime = _this.accumulatedTime + timeDelta;
@@ -867,7 +956,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var newLastIdealVelocity = {};
 	
 	        for (var key in destStyle) {
-	          if (!destStyle.hasOwnProperty(key)) {
+	          if (!Object.prototype.hasOwnProperty.call(destStyle, key)) {
 	            continue;
 	          }
 	
@@ -1010,8 +1099,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	// data we need to generate them on the fly by combining mergedPropsStyles and
 	// currentStyles/lastIdealStyles
 	function rehydrateStyles(mergedPropsStyles, unreadPropStyles, plainStyles) {
-	  if (unreadPropStyles == null) {
-	    // $FlowFixMe
+	  // Copy the value to a `const` so that Flow understands that the const won't
+	  // change and will be non-nullable in the callback below.
+	  var cUnreadPropStyles = unreadPropStyles;
+	  if (cUnreadPropStyles == null) {
 	    return mergedPropsStyles.map(function (mergedPropsStyle, i) {
 	      return {
 	        key: mergedPropsStyle.key,
@@ -1021,19 +1112,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  }
 	  return mergedPropsStyles.map(function (mergedPropsStyle, i) {
-	    // $FlowFixMe
-	    for (var j = 0; j < unreadPropStyles.length; j++) {
-	      // $FlowFixMe
-	      if (unreadPropStyles[j].key === mergedPropsStyle.key) {
+	    for (var j = 0; j < cUnreadPropStyles.length; j++) {
+	      if (cUnreadPropStyles[j].key === mergedPropsStyle.key) {
 	        return {
-	          // $FlowFixMe
-	          key: unreadPropStyles[j].key,
-	          data: unreadPropStyles[j].data,
+	          key: cUnreadPropStyles[j].key,
+	          data: cUnreadPropStyles[j].data,
 	          style: plainStyles[i]
 	        };
 	      }
 	    }
-	    // $FlowFixMe
 	    return { key: mergedPropsStyle.key, data: mergedPropsStyle.data, style: plainStyles[i] };
 	  });
 	}
@@ -1076,13 +1163,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	//    certainly add c, value of c is willEnter(c)
 	// loop over merged and construct new current
 	// dest doesn't change, that's owner's
-	function mergeAndSync(willEnter, willLeave, oldMergedPropsStyles, destStyles, oldCurrentStyles, oldCurrentVelocities, oldLastIdealStyles, oldLastIdealVelocities) {
+	function mergeAndSync(willEnter, willLeave, didLeave, oldMergedPropsStyles, destStyles, oldCurrentStyles, oldCurrentVelocities, oldLastIdealStyles, oldLastIdealVelocities) {
 	  var newMergedPropsStyles = _mergeDiff2['default'](oldMergedPropsStyles, destStyles, function (oldIndex, oldMergedPropsStyle) {
 	    var leavingStyle = willLeave(oldMergedPropsStyle);
 	    if (leavingStyle == null) {
+	      didLeave({ key: oldMergedPropsStyle.key, data: oldMergedPropsStyle.data });
 	      return null;
 	    }
 	    if (_shouldStopAnimation2['default'](oldCurrentStyles[oldIndex], leavingStyle, oldCurrentVelocities[oldIndex])) {
+	      didLeave({ key: oldMergedPropsStyle.key, data: oldMergedPropsStyle.data });
 	      return null;
 	    }
 	    return { key: oldMergedPropsStyle.key, data: oldMergedPropsStyle.data, style: leavingStyle };
@@ -1107,7 +1196,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      newCurrentStyles[i] = plainStyle;
 	      newLastIdealStyles[i] = plainStyle;
 	
-	      // $FlowFixMe
 	      var velocity = _mapToZero2['default'](newMergedPropsStyleCell.style);
 	      newCurrentVelocities[i] = velocity;
 	      newLastIdealVelocities[i] = velocity;
@@ -1137,8 +1225,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      style: _react.PropTypes.objectOf(_react.PropTypes.oneOfType([_react.PropTypes.number, _react.PropTypes.object])).isRequired
 	    }))]).isRequired,
 	    children: _react.PropTypes.func.isRequired,
+	    willEnter: _react.PropTypes.func,
 	    willLeave: _react.PropTypes.func,
-	    willEnter: _react.PropTypes.func
+	    didLeave: _react.PropTypes.func
 	  },
 	
 	  getDefaultProps: function getDefaultProps() {
@@ -1150,7 +1239,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // disappear immediately
 	      willLeave: function willLeave() {
 	        return null;
-	      }
+	      },
+	      didLeave: function didLeave() {}
 	    };
 	  },
 	
@@ -1160,8 +1250,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var styles = _props.styles;
 	    var willEnter = _props.willEnter;
 	    var willLeave = _props.willLeave;
+	    var didLeave = _props.didLeave;
 	
-	    var destStyles = typeof styles === 'function' ? styles() : styles;
+	    var destStyles = typeof styles === 'function' ? styles(defaultStyles) : styles;
 	
 	    // this is special. for the first time around, we don't have a comparison
 	    // between last (no last) and current merged props. we'll compute last so:
@@ -1171,7 +1262,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (defaultStyles == null) {
 	      oldMergedPropsStyles = destStyles;
 	    } else {
-	      // $FlowFixMe
 	      oldMergedPropsStyles = defaultStyles.map(function (defaultStyleCell) {
 	        // TODO: key search code
 	        for (var i = 0; i < destStyles.length; i++) {
@@ -1194,10 +1284,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	
 	    var _mergeAndSync = mergeAndSync(
-	    // $FlowFixMe
-	    willEnter,
-	    // $FlowFixMe
-	    willLeave, oldMergedPropsStyles, destStyles, oldCurrentStyles, oldCurrentVelocities, oldCurrentStyles, // oldLastIdealStyles really
+	    // Because this is an old-style React.createClass component, Flow doesn't
+	    // understand that the willEnter and willLeave props have default values
+	    // and will always be present.
+	    willEnter, willLeave, didLeave, oldMergedPropsStyles, destStyles, oldCurrentStyles, oldCurrentVelocities, oldCurrentStyles, // oldLastIdealStyles really
 	    oldCurrentVelocities);
 	
 	    var mergedPropsStyles = _mergeAndSync[0];
@@ -1216,6 +1306,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	  },
 	
+	  unmounting: false,
 	  animationID: null,
 	  prevTime: 0,
 	  accumulatedTime: 0,
@@ -1229,11 +1320,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // non-interpolating values (those that are a number, without a spring
 	  // config)
 	  clearUnreadPropStyle: function clearUnreadPropStyle(unreadPropStyles) {
-	    var _mergeAndSync2 = mergeAndSync(
-	    // $FlowFixMe
-	    this.props.willEnter,
-	    // $FlowFixMe
-	    this.props.willLeave, this.state.mergedPropsStyles, unreadPropStyles, this.state.currentStyles, this.state.currentVelocities, this.state.lastIdealStyles, this.state.lastIdealVelocities);
+	    var _mergeAndSync2 = mergeAndSync(this.props.willEnter, this.props.willLeave, this.props.didLeave, this.state.mergedPropsStyles, unreadPropStyles, this.state.currentStyles, this.state.currentVelocities, this.state.lastIdealStyles, this.state.lastIdealVelocities);
 	
 	    var mergedPropsStyles = _mergeAndSync2[0];
 	    var currentStyles = _mergeAndSync2[1];
@@ -1246,7 +1333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var dirty = false;
 	
 	      for (var key in unreadPropStyle) {
-	        if (!unreadPropStyle.hasOwnProperty(key)) {
+	        if (!Object.prototype.hasOwnProperty.call(unreadPropStyle, key)) {
 	          continue;
 	        }
 	
@@ -1288,9 +1375,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  startAnimationIfNecessary: function startAnimationIfNecessary() {
 	    var _this = this;
 	
+	    if (this.unmounting) {
+	      return;
+	    }
 	    // TODO: when config is {a: 10} and dest is {a: 10} do we raf once and
 	    // call cb? No, otherwise accidental parent rerender causes cb trigger
-	    this.animationID = _raf2['default'](function () {
+	    this.animationID = _raf2['default'](function (timestamp) {
 	      var propStyles = _this.props.styles;
 	      var destStyles = typeof propStyles === 'function' ? propStyles(rehydrateStyles(_this.state.mergedPropsStyles, _this.unreadPropStyles, _this.state.lastIdealStyles)) : propStyles;
 	
@@ -1302,7 +1392,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return;
 	      }
 	
-	      var currentTime = _performanceNow2['default']();
+	      var currentTime = timestamp || _performanceNow2['default']();
 	      var timeDelta = currentTime - _this.prevTime;
 	      _this.prevTime = currentTime;
 	      _this.accumulatedTime = _this.accumulatedTime + timeDelta;
@@ -1321,11 +1411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var currentFrameCompletion = (_this.accumulatedTime - Math.floor(_this.accumulatedTime / msPerFrame) * msPerFrame) / msPerFrame;
 	      var framesToCatchUp = Math.floor(_this.accumulatedTime / msPerFrame);
 	
-	      var _mergeAndSync3 = mergeAndSync(
-	      // $FlowFixMe
-	      _this.props.willEnter,
-	      // $FlowFixMe
-	      _this.props.willLeave, _this.state.mergedPropsStyles, destStyles, _this.state.currentStyles, _this.state.currentVelocities, _this.state.lastIdealStyles, _this.state.lastIdealVelocities);
+	      var _mergeAndSync3 = mergeAndSync(_this.props.willEnter, _this.props.willLeave, _this.props.didLeave, _this.state.mergedPropsStyles, destStyles, _this.state.currentStyles, _this.state.currentVelocities, _this.state.lastIdealStyles, _this.state.lastIdealVelocities);
 	
 	      var newMergedPropsStyles = _mergeAndSync3[0];
 	      var newCurrentStyles = _mergeAndSync3[1];
@@ -1341,7 +1427,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var newLastIdealVelocity = {};
 	
 	        for (var key in newMergedPropsStyle) {
-	          if (!newMergedPropsStyle.hasOwnProperty(key)) {
+	          if (!Object.prototype.hasOwnProperty.call(newMergedPropsStyle, key)) {
 	            continue;
 	          }
 	
@@ -1408,11 +1494,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.clearUnreadPropStyle(this.unreadPropStyles);
 	    }
 	
-	    if (typeof props.styles === 'function') {
-	      // $FlowFixMe
-	      this.unreadPropStyles = props.styles(rehydrateStyles(this.state.mergedPropsStyles, this.unreadPropStyles, this.state.lastIdealStyles));
+	    var styles = props.styles;
+	    if (typeof styles === 'function') {
+	      this.unreadPropStyles = styles(rehydrateStyles(this.state.mergedPropsStyles, this.unreadPropStyles, this.state.lastIdealStyles));
 	    } else {
-	      this.unreadPropStyles = props.styles;
+	      this.unreadPropStyles = styles;
 	    }
 	
 	    if (this.animationID == null) {
@@ -1422,6 +1508,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  componentWillUnmount: function componentWillUnmount() {
+	    this.unmounting = true;
 	    if (this.animationID != null) {
 	      _raf2['default'].cancel(this.animationID);
 	      this.animationID = null;
@@ -1497,7 +1584,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    ret[i] = next[i];
 	  }
 	  for (var i = 0; i < prev.length; i++) {
-	    if (!nextKeyIndex.hasOwnProperty(prev[i].key)) {
+	    if (!Object.prototype.hasOwnProperty.call(nextKeyIndex, prev[i].key)) {
 	      // this is called my TM's `mergeAndSync`, which calls willLeave. We don't
 	      // merge in keys that the user desires to kill
 	      var fill = onRemove(i, prev[i]);
@@ -1529,7 +1616,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // d, b's (the only) pivot
 	      for (var i = 0; i < next.length; i++) {
 	        var pivot = next[i].key;
-	        if (!prevKeyIndex.hasOwnProperty(pivot)) {
+	        if (!Object.prototype.hasOwnProperty.call(prevKeyIndex, pivot)) {
 	          continue;
 	        }
 	
@@ -1545,7 +1632,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // prevOrderA, nextOrderB
 	    for (var i = 0; i < next.length; i++) {
 	      var pivot = next[i].key;
-	      if (!prevKeyIndex.hasOwnProperty(pivot)) {
+	      if (!Object.prototype.hasOwnProperty.call(prevKeyIndex, pivot)) {
 	        continue;
 	      }
 	      if (nextOrderB < nextKeyIndex[pivot] && prevOrderA > prevKeyIndex[pivot]) {
