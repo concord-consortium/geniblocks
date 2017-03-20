@@ -1425,8 +1425,8 @@ body {
   line-height: 1.15;
   color: #ddd;
 }
-.os-windows .geniblocks.trial-count .hud-text-area {
-  margin-top: 0.1rem;
+.os-windows .geniblocks.location-indicator .hud-text-area {
+  margin-top: 0.2rem;
 }
 
 .geniblocks.parentDrake {
