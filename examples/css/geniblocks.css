@@ -226,15 +226,13 @@ body {
 .mission-backdrop .button-label {
   font-family: 'Yanone Kaffeesatz';
 }
-.fv-layout #mission-wrapper {
-  flex-grow: 1;
-}
 .mission-backdrop.fv-layout-c {
+  display: block;
+  position: relative;
   width: 1920px;
   height: 1080px;
   transform: scale(0.75);
   transform-origin: 0 0;
-  flex-direction: column;
   min-width: 1200px;
   min-height: 700px;
 }
@@ -244,14 +242,13 @@ body {
 }
 .mission-backdrop.fv-layout-c.match-target {
   background-image: url("../resources/fablevision/layout-c/screen_bottom_lines.png"), url("../resources/fablevision/layout-c/screen_top_lines.png"), url("../resources/fablevision/layout-c/screen_center_box.png"), url("../resources/fablevision/layout-c/background.png");
-  background-position: 50% 91.5%, 50% 7.25%, 50% 48%, 50% 50%;
+  background-position: 50% 91%, 50% 7.25%, 50% 48%, 50% 50%;
 }
 .fv-hud {
   left: 0;
   right: 0;
   width: 100%;
   display: flex;
-  flex-grow: 0;
   align-items: center;
   justify-content: center;
   color: #eee;
@@ -275,11 +272,13 @@ body {
 #mission-wrapper {
   width: 1400px;
   margin: 90px auto;
-  height: 900px;
+  height: 890px;
   display: flex;
   justify-content: center;
 }
 .fv-layout-c #mission-wrapper {
+  position: absolute;
+  top: 85px;
   margin: auto;
 }
 .challenge-award {
@@ -1189,12 +1188,13 @@ body {
 }
 
 .fv-bottom-hud {
-  position: relative;
+  position: absolute;
+  bottom: 0px;
 }
 .fv-bottom-hud .geniblocks.trial-count {
   position: absolute;
   left: 1400px;
-  top: 35px;
+  top: 38px;
 }
 
 .geniblocks.breed-button-area {
@@ -1384,14 +1384,14 @@ body {
 }
 .geniblocks.fv-stable .stable-counter {
   font-family: 'Yanone Kaffeesatz';
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   color: #fff;
-  margin-top: 2px;
+  margin-top: 1.5px;
   display: flex;
   flex-direction: row;
 }
 .geniblocks.fv-stable .stable-counter .stable-count {
-  margin-left: 68px;
+  margin-left: 58px;
 }
 .geniblocks.fv-stable .stable-drakes {
   display: flex;
@@ -1402,6 +1402,31 @@ body {
 }
 .os-windows .geniblocks.fv-stable .stable-counter {
   margin-top: 0.4rem;
+}
+
+.geniblocks.location-indicator {
+  width: 1096px;
+  height: 93px;
+  background-image: url("../resources/fablevision/huds/Location_bar.png");
+  background-size: 100% 100%;
+}
+.geniblocks.location-indicator .hud-text-area {
+  position: relative;
+  left: 90px;
+  top: 16px;
+  width: 770px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: bold;
+  font-size: 2rem;
+  line-height: 1.15;
+  color: #ddd;
+}
+.os-windows .geniblocks.trial-count .hud-text-area {
+  margin-top: 0.1rem;
 }
 
 .geniblocks.parentDrake {
@@ -1470,16 +1495,15 @@ body {
 .geniblocks.target-drake-container {
   display: flex;
   flex-direction: row;
-  height: 588px;
+  height: 272px;
   width: 520px;
   background: url("../resources/fablevision/layout-c/target_drake_gizmo.png");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   justify-content: center;
   align-self: center;
-  margin-bottom: -425px;
-  margin-top: auto;
-  margin-left: 60px;
+  margin-bottom: -420px;
+  margin-top: 40px;
   z-index: 2;
 }
 .geniblocks.target-drake-container .target-drake-text {
@@ -1487,10 +1511,20 @@ body {
   font-size: 30px;
   color: #fff;
   margin-top: 70px;
-  margin-left: -40px;
+  margin-left: -10px;
 }
 .geniblocks.target-drake-container .organism {
   margin-top: 10px;
+}
+
+.fv-top-hud {
+  position: absolute;
+  top: 0px;
+}
+.fv-top-hud .geniblocks.location-indicator {
+  position: absolute;
+  left: 480px;
+  top: 0px;
 }
 
 .geniblocks.trial-count {
@@ -1499,7 +1533,7 @@ body {
   background-image: url("../resources/fablevision/huds/Trial_screen.png");
   background-size: 100% 100%;
 }
-.geniblocks.trial-count .text-area {
+.geniblocks.trial-count .hud-text-area {
   position: relative;
   left: 30px;
   top: 25px;
@@ -1514,6 +1548,6 @@ body {
   line-height: 1.15;
   color: #555;
 }
-.os-windows .geniblocks.trial-count .text-area {
+.os-windows .geniblocks.trial-count .hud-text-area {
   margin-top: 0.1rem;
 }
