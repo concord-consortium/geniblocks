@@ -112,10 +112,6 @@ body {
   align-items: center;
   flex-direction: column;
   float: left;
-  margin-top: 25px;
-}
-#challenges.fv-layout-c .column {
-  margin-top: 40px;
 }
 #challenges .column-label {
   margin-top: 125px;
@@ -317,9 +313,6 @@ body {
 }
 .columns.centered {
   flex-direction: row;
-  justify-content: center;
-}
-.fv-layout-c .columns.centered {
   justify-content: space-around;
 }
 .fade-in-on-render {
@@ -416,6 +409,7 @@ body {
 }
 .egg .fertilization {
   display: flex;
+  flex-direction: row;
   align-items: flex-start;
   height: 218px;
 }
@@ -442,6 +436,7 @@ body {
   width: 76px;
 }
 .egg .gametes {
+  margin-top: -35px;
   display: flex;
   justify-content: space-between;
 }
@@ -467,7 +462,7 @@ body {
 .egg .gametes .ovum {
   position: absolute;
   transition: left 2s;
-  top: -135px;
+  top: -140px;
   left: 110px;
 }
 .egg .gametes .ovum.matching {
@@ -476,17 +471,17 @@ body {
 .egg .gametes .sperm {
   position: absolute;
   transition: left 2s;
-  top: -117px;
+  top: -141px;
   left: -12px;
 }
 .egg .gametes .sperm.matching {
   top: -142px;
 }
 .egg .gametes.unfertilized .ovum {
-  left: 75px;
+  left: 20px;
 }
 .egg .gametes.unfertilized .sperm {
-  left: 65px;
+  left: 110px;
 }
 .egg .fertilize-button {
   margin-top: 45px;
@@ -533,9 +528,6 @@ body {
 .fv-layout-c #egg-game .column .egg .gametes {
   margin-top: 20px;
 }
-.fv-layout-c .egg .fertilization {
-  flex-direction: row;
-}
 .fv-layout-c .egg .gametes {
   margin-top: 50px;
 }
@@ -543,10 +535,10 @@ body {
   left: -90px;
 }
 .fv-layout-c .egg .gametes.unfertilized .sperm {
-  left: 140px;
+  left: 150px;
 }
 .fv-layout-c .egg .gametes .ovum {
-  left: 64px;
+  left: 50px;
   top: -195px;
 }
 .fv-layout-c .egg .gametes .sperm {
@@ -1195,35 +1187,9 @@ body {
   height: 320px;
 }
 
-.geniblocks.avatar-button {
-  width: 116px;
-  height: 107px;
-  background-image: url("../resources/fablevision/huds/Avatar_base.png");
-  background-size: cover;
-}
-.geniblocks.avatar-button .avatar-center {
-  position: absolute;
-  left: 22px;
-  top: 19px;
-  width: 74px;
-  height: 74px;
-  background-image: url("../resources/fablevision/huds/Avatar_center.png");
-  background-size: 100% 100%;
-}
-
 .fv-bottom-hud {
   position: absolute;
   bottom: 0px;
-}
-.fv-bottom-hud .geniblocks.avatar-button {
-  position: absolute;
-  left: 70px;
-  top: 38px;
-}
-.fv-bottom-hud .geniblocks.level-indicator {
-  position: absolute;
-  left: 300px;
-  top: 54px;
 }
 .fv-bottom-hud .geniblocks.trial-count {
   position: absolute;
@@ -1244,17 +1210,26 @@ body {
 .geniblocks.breed-button-area .egg-image {
   width: 115px;
   height: 158px;
+  margin-right: 20px;
   padding: 0;
-  margin-top: -5px;
   background-image: url("../resources/fablevision/layout-d/egg_unclicked.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
-.geniblocks.breed-button-area .organism {
-  width: 200px;
-  height: 200px;
-  margin-left: -35px;
+.geniblocks.breed-button-area .egg-image.matching {
   margin-top: -10px;
+}
+.geniblocks.breed-button-area .organism {
+  padding-left: 25px;
+  padding-right: 10px;
+  width: 180px;
+  height: 180px;
+}
+.geniblocks.breed-button-area .organism.matching {
+  margin-top: -30px;
+  padding-left: 10px;
+  padding-right: 20px;
+  height: 140px;
 }
 .geniblocks.breed-button-area .offspring-buttons {
   display: flex;
@@ -1429,54 +1404,17 @@ body {
   margin-top: 0.4rem;
 }
 
-.geniblocks.level-indicator {
-  width: 207px;
-  height: 82px;
-  background-image: url("../resources/fablevision/huds/Levels_screen.png");
-  background-size: 100% 100%;
-}
-.geniblocks.level-indicator .level-text-area {
-  position: relative;
-}
-.geniblocks.level-indicator .level-text-area .level-indicator-label {
-  position: absolute;
-  left: 51px;
-  top: 22px;
-  width: 56px;
-  height: 34px;
-}
-.geniblocks.level-indicator .level-text-area .level-indicator-text {
-  position: absolute;
-  left: 120px;
-  top: 22px;
-  width: 30px;
-  height: 34px;
-}
-.geniblocks.level-indicator .level-text-area .hud-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Yanone Kaffeesatz';
-  font-weight: bold;
-  font-size: 1.4rem;
-  color: #555;
-}
-.os-windows .geniblocks.level-indicator .hud-text-area {
-  margin-top: 0.1rem;
-}
-
 .geniblocks.location-indicator {
-  width: 592px;
-  height: 96px;
+  width: 1096px;
+  height: 93px;
   background-image: url("../resources/fablevision/huds/Location_bar.png");
   background-size: 100% 100%;
 }
 .geniblocks.location-indicator .hud-text-area {
   position: relative;
-  left: 174px;
+  left: 90px;
   top: 16px;
-  width: 245px;
+  width: 770px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1585,7 +1523,7 @@ body {
 }
 .fv-top-hud .geniblocks.location-indicator {
   position: absolute;
-  left: 654px;
+  left: 480px;
   top: 0px;
 }
 
