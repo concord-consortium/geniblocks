@@ -9,16 +9,13 @@
   background-image: url('../resources/fablevision/layout-c/screen_eggsperm_box.png')
 
   .egg-image
-    background: url('../resources/fablevision/layout-c/egg_combined_animation.png') left center
+    background: url('../resources/fablevision/layout-c/egg_combined_animation.png')
+    background-position-y: 50%
+    background-position-x: 0%
     width: 1476px
     height: 1080px
-    animation: play 2s steps(25) normal;
     position: relative
     z-index: 2
-
-  @keyframes play {
-     100% { background-position: -36900px; }
-  }
 
   .organism
     width: 200px
