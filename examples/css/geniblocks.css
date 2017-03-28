@@ -553,6 +553,12 @@ body {
   left: -50px;
   top: -195px;
 }
+.fv-layout-c .egg-image {
+  padding: 0;
+  margin-top: 75px;
+  margin-left: -10px;
+  transform: scale(0.7);
+}
 .fv-layout-c .offspring-buttons {
   margin-top: -40px;
   display: flex;
@@ -1242,13 +1248,13 @@ body {
   background-image: url("../resources/fablevision/layout-c/screen_eggsperm_box.png");
 }
 .geniblocks.breed-button-area .egg-image {
-  width: 115px;
-  height: 158px;
-  padding: 0;
-  margin-top: -5px;
-  background-image: url("../resources/fablevision/layout-d/egg_unclicked.png");
-  background-size: contain;
-  background-repeat: no-repeat;
+  background: url("../resources/fablevision/layout-c/egg_animation.png");
+  background-position-y: 50%;
+  background-position-x: 0%;
+  width: 1052px;
+  height: 946px;
+  position: relative;
+  z-index: 2;
 }
 .geniblocks.breed-button-area .organism {
   width: 200px;
@@ -1270,12 +1276,12 @@ body {
 
 .geniblocks.breed-button-surround {
   background: url("../resources/fablevision/layout-c/breed_surround.png");
-  width: 236px;
   height: 236px;
+  width: 100%;
   margin-top: -45px;
   display: flex;
   justify-content: center;
-  background-position: -69px -68px;
+  background-position: 50% 50%;
   background-size: 370px 369px;
   background-repeat: no-repeat;
   align-items: center;

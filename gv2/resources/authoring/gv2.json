@@ -1,67 +1,60 @@
-[
-  [
-    [
-      {
-        "comment": "*** Level 1, Mission 1.1: Playground ***",
-        "template": "GenomePlayground",
-        "initialDrake": {
-          "alleles": "M-M, T-T, w-w, C-C, B-B, D-D, rh-rh, Bog-Bog",
-          "sex": 1
-        },
-        "userChangeableGenes": "wings, forelimbs, hindlimbs, armor, horns"
-      }
-    ],
-  ],
-  [
-    [
-      {
-        "comment": "*** Level 2, Mission 1.1: Genome Challenge (basics intro, user drake visible) ***",
-        "template": "GenomeChallenge",
-        "instructions": "Match the target drake!",
-        "showUserDrake": true,
-        "randomizeTrials": true,
-        "initialDrake": {
-          "alleles": "Bog-, D-, rh-rh",
-          "sex": 1
-        },
-        "targetDrakes": [{
-          "alleles": "",
-          "sex": 0
-        },
-        {
-          "alleles": "",
-          "sex": 1
-        }],
-        "userChangeableGenes": "wings, forelimbs, hindlimbs",
-        "linkedGenes": {
-          "drakes": [0, 1],
-          "genes": "metallic, tail, horns, color, black, dilute, armor, nose, bogbreath"
-        }
+{
+  "challenges": {
+    "playground": {
+      "comment": "*** Level 1, Mission 1.1: Playground ***",
+      "template": "GenomePlayground",
+      "initialDrake": {
+        "alleles": "M-M, T-T, w-w, C-C, B-B, D-D, rh-rh, Bog-Bog",
+        "sex": 1
+      },
+      "userChangeableGenes": "wings, forelimbs, hindlimbs, armor, horns"
+    },
+    "basicsIntroVisible": {
+      "comment": "*** Level 2, Mission 1.1: Genome Challenge (basics intro, user drake visible) ***",
+      "template": "GenomeChallenge",
+      "instructions": "Match the target drake!",
+      "showUserDrake": true,
+      "randomizeTrials": true,
+      "initialDrake": {
+        "alleles": "Bog-, D-, rh-rh",
+        "sex": 1
+      },
+      "targetDrakes": [{
+        "alleles": "",
+        "sex": 0
       },
       {
-        "comment": "*** Level 2, Mission 1.2: Genome Challenge (basics intro, user drake hidden) ***",
-        "template": "GenomeChallenge",
-        "instructions": "Match 2 drakes!",
-        "trialGenerator": {
-          "type": "all-combinations",
-          "baseDrake": "M-M, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
-          "initialDrakeCombos": [
-            ["W-W",   "W-w",   "w-W",   "w-w"],
-            ["Fl-Fl", "Fl-fl", "fl-Fl", "fl-fl"],
-            ["Hl-Hl", "Hl-hl", "hl-Hl", "hl-hl"]
-          ],
-          "targetDrakeCombos": [
-            ["W-W",   "w-w"],
-            ["Fl-Fl", "fl-fl"],
-            ["Hl-Hl", "hl-hl"]
-          ]
-        },
-        "targetDrakes": [{},{}],
-        "userChangeableGenes": "wings, forelimbs, hindlimbs"
+        "alleles": "",
+        "sex": 1
+      }],
+      "userChangeableGenes": "wings, forelimbs, hindlimbs",
+      "linkedGenes": {
+        "drakes": [0, 1],
+        "genes": "metallic, tail, horns, color, black, dilute, armor, nose, bogbreath"
       }
-    ],
-    [
-      {
+    },
+    "basicsIntroHidden": {
+      "comment": "*** Level 2, Mission 1.2: Genome Challenge (basics intro, user drake hidden) ***",
+      "template": "GenomeChallenge",
+      "instructions": "Match 2 drakes!",
+      "trialGenerator": {
+        "type": "all-combinations",
+        "baseDrake": "M-M, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+        "initialDrakeCombos": [
+          ["W-W",   "W-w",   "w-W",   "w-w"],
+          ["Fl-Fl", "Fl-fl", "fl-Fl", "fl-fl"],
+          ["Hl-Hl", "Hl-hl", "hl-Hl", "hl-hl"]
+        ],
+        "targetDrakeCombos": [
+          ["W-W",   "w-w"],
+          ["Fl-Fl", "fl-fl"],
+          ["Hl-Hl", "hl-hl"]
+        ]
+      },
+      "targetDrakes": [{},{}],
+      "userChangeableGenes": "wings, forelimbs, hindlimbs"
+    },
+    "eggSortingWings": {
         "comment": "*** Level 2, Mission 2.1: Egg Sorting Game (wings) ***",
         "template": "EggSortGame",
         "trialGenerator": {
@@ -86,7 +79,7 @@
           { "label": "Females without wings", "alleles": ["w-w"], "sex": 1 }
         ]
       },
-      {
+      "eggSortingLimbs": {
         "comment": "*** Level 2, Mission 2.2: Egg Sorting Game (forelimbs/hindlimbs) ***",
         "template": "EggSortGame",
         "trialGenerator": {
@@ -109,10 +102,8 @@
           { "label": "Drakes with only hindlimbs", "alleles": ["fl-fl, Hl-", "fl-fl, -Hl"] },
           { "label": "Drakes with forelimbs and hindlimbs", "alleles": ["Fl-, Hl-","Fl-, -Hl","-Fl, Hl-","-Fl, -Hl"] }
         ]
-      }
-    ],
-    [
-      {
+      },
+      "genomeChallengeArmorVisible": {
         "comment": "*** Level 2, Mission 3.1: Genome Challenge (armor intro, user drake visible) ***",
         "template": "GenomeChallenge",
         "randomizeTrials": true,
@@ -154,7 +145,7 @@
           "genes": "metallic, wings, forelimbs, hindlimbs, tail, color, black, dilute, nose, bogbreath"
         }
       },
-      {
+      "genomeChallengeArmorHidden": {
         "comment": "*** Level 2, Mission 3.2: Genome Challenge (armor intro, user drake hidden) ***",
         "template": "GenomeChallenge",
         "randomizeTrials": true,
@@ -196,7 +187,7 @@
           "genes": "metallic, wings, forelimbs, hindlimbs, tail, color, black, dilute, nose, bogbreath"
         }
       },
-      {
+      "eggSortingHorns": {
         "comment": "*** Level 2, Mission 3.3: Egg Sorting Game (horns) ***",
         "template": "EggSortGame",
         "trialGenerator": {
@@ -221,7 +212,7 @@
           { "label": "Females without horns", "alleles": ["H-","-H"], "sex": 1 }
         ]
       },
-      {
+      "eggSortingArmor": {
         "comment": "*** Level 2, Mission 3.4: Egg Sorting Game (armor) ***",
         "template": "EggSortGame",
         "trialGenerator": {
@@ -245,7 +236,7 @@
           { "label": "Drakes with five armor plates", "alleles": ["A1-A1"] }
         ]
       },
-      {
+      "eggSortingHornsWingsArmor": {
         "comment": "*** Level 2, Mission 3.5: Egg Sorting Game (horns/wings/armor) ***",
         "template": "EggSortGame",
         "trialGenerator": {
@@ -268,12 +259,8 @@
           { "label": "Drakes with wings", "alleles": ["W-", "-W"] },
           { "label": "Drakes with armor", "alleles": ["A1-","-A1"] }
         ]
-      }
-    ]
-  ],
-  [
-    [
-      {
+      },
+      "incompleteLevel": {
         "comment": "*** Level 3 Stand In ***",
         "template": "GenomeChallenge",
         "instructions": "THIS LEVEL NOT YET COMPLETE",
@@ -285,12 +272,8 @@
         },
         "targetDrakes": [{}],
         "userChangeableGenes": "metallic"
-      }
-    ]
-  ],
-  [
-    [
-      {
+      },
+      "eggBreedingBasicChromosomesUnique": {
         "comment": "*** Level 4, Mission 1.1: Egg Breeding (select chromosome to create 5 unique drakes) ***",
         "template": "EggGame",
         "challengeType": "create-unique",
@@ -307,7 +290,7 @@
         },
         "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
       },
-      {
+      "eggBreedingBasicGametesUnique": {
         "comment": "*** Level 4, Mission 1.2: Egg Breeding (select gametes to create 5 unique drakes) ***",
         "template": "EggGame",
         "challengeType": "create-unique",
@@ -325,7 +308,7 @@
         "gameteCounts": [8, 8],
         "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
       },
-      {
+      "eggBreedingBasicGametesTarget": {
         "comment": "*** Level 4, Mission 1.3: Egg Breeding (select gametes to match drakes) ***",
         "template": "EggGame",
         "challengeType": "match-target",
@@ -343,14 +326,9 @@
         "gameteCounts": [[2, 1], [1, 3], [4, 4]],
         "targetDrakes": [{}, {}, {}],
         "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
-      }
-    ]
-  ],
-  [
-    [
-      {
+      },
+      "eggBreedingProtoVisible": {
         "comment": "*** Demo: Egg Breeding (match three drakes, user drake visible) ***",
-        "challengeId": "egg-breeding-basic-match-visible",
         "template": "EggGame",
         "challengeType": "match-target",
         "instructions": "Match 3 drakes!",
@@ -366,9 +344,8 @@
         "targetDrakes": [{},{},{}],
         "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
       },
-      {
+      "eggBreedingProtoHidden": {
         "comment": "*** Demo: Egg Breeding (match three drakes, user drake hidden) ***",
-        "challengeId": "egg-breeding-basic-match-hidden",
         "template": "EggGame",
         "challengeType": "match-target",
         "instructions": "Match 3 drakes!",
@@ -383,12 +360,8 @@
         },
         "targetDrakes": [{},{},{}],
         "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
-      }
-    ]
-  ],
-  [
-    [
-      {
+      },
+      "gamete-5unique-simple": {
         "comment": "*** FV Test Level ***",
         "container": "FVContainer",
         "template": "FVEggGame",
@@ -406,9 +379,8 @@
         },
         "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
       },
-      {
+      "gamete-1target-simple": {
         "comment": "*** FV Test Level 2 ***",
-        "challengeId": "gamete-1target-simple",
         "container": "FVContainer",
         "template": "FVEggGame",
         "challengeType": "match-target",
@@ -426,6 +398,159 @@
         },
         "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
       }
+  },
+
+
+  "application": {
+    "levels": [
+      {
+        "name": "Level 1",
+        "missions": [
+          {
+            "name": "Mission 1.1",
+            "challenges": [
+              {
+                "name": "Challenge 1.1.1",
+                "id": "playground"
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "name": "Level 2",
+        "missions": [
+          {
+            "name": "Mission 2.1",
+            "challenges": [
+              {
+                "name": "Challenge 2.1.1",
+                "id": "basicsIntroVisible"
+              },
+              {
+                "name": "Challenge 2.1.2",
+                "id": "basicsIntroHidden"
+              }
+            ]
+          },
+          {
+            "name": "Mission 2.2",
+            "challenges": [
+              {
+                "name": "Challenge 2.2.1",
+                "id": "eggSortingWings"
+              },
+              {
+                "name": "Challenge 2.2.2",
+                "id": "eggSortingLimbs"
+              }
+            ]
+          },
+          {
+            "name": "Mission 2.3",
+            "challenges": [
+              {
+                "name": "Challenge 2.3.1",
+                "id": "genomeChallengeArmorVisible"
+              },
+              {
+                "name": "Challenge 2.3.2",
+                "id": "genomeChallengeArmorHidden"
+              },
+              {
+                "name": "Challenge 2.3.3",
+                "id": "eggSortingHorns"
+              },
+              {
+                "name": "Challenge 2.3.4",
+                "id": "eggSortingArmor"
+              },
+              {
+                "name": "Challenge 2.3.5",
+                "id": "eggSortingHornsWingsArmor"
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "name": "Level 3",
+        "missions": [
+          {
+            "name": "Mission 3.1",
+            "challenges": [
+              {
+                "name": "Challenge 3.1.1",
+                "id": "incompleteLevel"
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "name": "Level 4",
+        "missions": [
+          {
+            "name": "Mission 4.1",
+            "challenges": [
+              {
+                "name": "Challenge 4.1.1",
+                "id": "eggBreedingBasicChromosomesUnique"
+              },
+              {
+                "name": "Challenge 4.1.2",
+                "id": "eggBreedingBasicGametesUnique"
+              },
+              {
+                "name": "Challenge 4.1.3",
+                "id": "eggBreedingBasicGametesTarget"
+              }
+            ]
+          }
+        ]
+      },
+
+
+      {
+        "name": "Level 5",
+        "missions": [
+          {
+            "name": "Mission 5.1",
+            "challenges": [
+              {
+                "name": "Challenge 5.1.1",
+                "id": "eggBreedingProtoVisible"
+              },
+              {
+                "name": "Challenge 5.1.2",
+                "id": "eggBreedingProtoHidden"
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "name": "Level 6",
+        "missions": [
+          {
+            "name": "Mission 6.1",
+            "challenges": [
+              {
+                "name": "Challenge 6.1.1",
+                "id": "gamete-5unique-simple"
+              },
+              {
+                "name": "Challenge 6.1.2",
+                "id": "gamete-1target-simple"
+              }
+            ]
+          }
+        ]
+      }
     ]
-  ]
-]
+  }
+}
