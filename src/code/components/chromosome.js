@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import ChromosomeImageView from './chromosome-image';
 import GeneLabelView from './gene-label';
+import FVGeneLabelView from '../fv-components/fv-gene-label';
 import AlleleView from './allele';
 import GeneticsUtils from '../utilities/genetics-utils';
 /**
@@ -38,10 +39,7 @@ const ChromosomeView = ({chromosome, org, ChromosomeImageClass=ChromosomeImageVi
           );
         } else {
           return (
-            <div className={"geniblocks fv-gene-label allele noneditable " + a.allele.toLowerCase()} key={a.allele}>
-              <div className="line"></div>
-              {chromosome.species.alleleLabelMap[a.allele]}
-            </div>
+            <FVGeneLabelView allele={a.allele} species={chromosome.species} />
           );
         }
       });
