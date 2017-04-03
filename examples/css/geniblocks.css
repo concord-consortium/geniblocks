@@ -248,6 +248,19 @@ body {
   background-image: url("../resources/fablevision/layout-c/screen_bottom_lines.png"), url("../resources/fablevision/layout-c/screen_top_lines.png"), url("../resources/fablevision/layout-c/screen_center_box.png"), url("../resources/fablevision/layout-c/background.png");
   background-position: 50% 91%, 50% 7.25%, 50% 48%, 50% 50%;
 }
+.mission-backdrop.fv-layout-d {
+  display: block;
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  transform: scale(0.75);
+  transform-origin: 0 0;
+  min-width: 1200px;
+  min-height: 700px;
+  background-size: cover;
+  background-image: url("../resources/fablevision/layout-d/background.png");
+  background-position: 50% 50%;
+}
 .fv-hud {
   left: 0;
   right: 0;
@@ -501,10 +514,6 @@ body {
   width: 103px;
   padding: 34px;
 }
-.egg .egg-image.matching {
-  margin-top: 0px;
-  width: 70px;
-}
 .egg .organism {
   padding-top: 40px;
 }
@@ -560,6 +569,7 @@ body {
   transform: scale(0.7);
 }
 .fv-layout-c .offspring-buttons {
+  z-index: 2;
   margin-top: -40px;
   display: flex;
 }
@@ -1218,6 +1228,7 @@ body {
 }
 
 .fv-bottom-hud {
+  z-index: 2;
   position: absolute;
   bottom: 0px;
 }
@@ -1370,6 +1381,145 @@ body {
   font-family: 'Yanone Kaffeesatz';
   font-size: 1.5rem;
   color: #fff;
+}
+
+.fv-layout-d .straw {
+  width: 1920px;
+  height: 375px;
+  position: absolute;
+  top: 195px;
+  background-image: url("../resources/fablevision/layout-d/straw_over.png");
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 1;
+}
+.fv-layout-d #egg-0 {
+  top: 63px;
+  left: 20px;
+  transform: rotate(-17deg);
+}
+.fv-layout-d #egg-1 {
+  top: 131px;
+  left: 178px;
+  transform: rotate(20deg);
+}
+.fv-layout-d #egg-2 {
+  top: 131px;
+  left: 306px;
+  transform: rotate(-3deg);
+}
+.fv-layout-d #egg-3 {
+  top: 208px;
+  left: 468px;
+  transform: rotate(-45deg);
+}
+.fv-layout-d #egg-4 {
+  top: 208px;
+  left: 615px;
+  transform: rotate(-40deg);
+}
+.fv-layout-d #egg-5 {
+  top: 168px;
+  left: 745px;
+  transform: rotate(-40deg);
+}
+.fv-layout-d #egg-6 {
+  top: 158px;
+  left: 892px;
+  transform: rotate(-40deg);
+}
+.fv-layout-d #egg-7 {
+  top: 168px;
+  left: 1031px;
+  transform: rotate(-22deg);
+}
+
+.fv-layout-d #mission-wrapper {
+  margin: 70px 0 0 0;
+  width: 100%;
+}
+.fv-layout-d #mission-wrapper #egg-sort-game {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.fv-layout-d #mission-wrapper #egg-sort-game #eggs {
+  width: 100%;
+  height: 100%;
+}
+.fv-layout-d #mission-wrapper #egg-sort-game .clutch-egg {
+  background: url("../resources/fablevision/layout-d/egg_unclicked.png");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  width: 115px;
+  height: 158px;
+  opacity: 1;
+  position: absolute;
+  margin-left: 49px;
+  margin-top: 49px;
+  z-index: 1;
+}
+.fv-layout-d #mission-wrapper #egg-sort-game .clutch-egg.selected {
+  z-index: 0;
+  margin-left: 0;
+  margin-top: 0;
+  width: 213px;
+  height: 256px;
+  background: url("../resources/fablevision/layout-d/egg_clicked.png");
+}
+.fv-layout-d #mission-wrapper #egg-sort-game #baskets {
+  width: inherit;
+}
+.fv-layout-d #mission-wrapper #egg-sort-game #baskets .basket-set {
+  width: inherit;
+  align-items: flex-start;
+}
+.fv-layout-d #mission-wrapper #egg-sort-game #baskets .basket-set .basket {
+  bottom: 300px;
+  right: 250px;
+}
+.fv-layout-d #mission-wrapper #egg-sort-game #baskets .basket-set .basket .basket-image {
+  background: url("../resources/fablevision/layout-d/basket.png");
+  width: 505px;
+  height: 503px;
+  background-size: contain;
+  position: absolute;
+}
+.fv-layout-d #mission-wrapper #egg-sort-game #baskets .basket-set .basket .basket-label {
+  width: 80px;
+  left: 230px;
+  top: 375px;
+  font-family: 'Yanone Kaffeesatz';
+  position: absolute;
+  text-align: center;
+}
+.fv-layout-d #mission-wrapper #egg-sort-game #left-section {
+  width: 1156px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fv-layout-d #mission-wrapper #egg-sort-game #right-section {
+  position: static;
+}
+.fv-layout-d #mission-wrapper #egg-sort-game #right-section #container {
+  background: none;
+  border: none;
+  font-family: 'Yanone Kaffeesatz';
+}
+.fv-layout-d #mission-wrapper #egg-sort-game #right-section #container #background {
+  background: none;
+  border: none;
+}
+.fv-layout-d #mission-wrapper #egg-sort-game .chromomatic {
+  height: 871px;
+  width: 764px;
+  background: url("../resources/fablevision/layout-d/chromomatic.png");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  margin-left: 10px;
 }
 
 .ovum .gamete-container {
@@ -1586,6 +1736,7 @@ body {
 }
 
 .fv-top-hud {
+  z-index: 2;
   position: absolute;
   top: 0px;
 }
