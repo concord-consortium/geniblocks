@@ -1247,6 +1247,11 @@ body {
   left: 1400px;
   top: 38px;
 }
+.fv-bottom-hud .geniblocks.score-count {
+  position: absolute;
+  left: 1560px;
+  top: 38px;
+}
 
 .geniblocks.breed-button-area {
   width: 1001px;
@@ -1328,6 +1333,31 @@ body {
   margin-top: 0.4rem;
 }
 
+.geniblocks.counter {
+  width: 158px;
+  height: 107px;
+  background-image: url("../resources/fablevision/huds/Trial_screen.png");
+  background-size: 100% 100%;
+}
+.geniblocks.counter .hud-text-area {
+  position: relative;
+  left: 30px;
+  top: 25px;
+  width: 108px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 1.15;
+  color: #555;
+}
+.os-windows .geniblocks.counter .hud-text-area {
+  margin-top: 0.1rem;
+}
+
 .fv-chromosome-image {
   height: 78px;
   width: 27px;
@@ -1355,7 +1385,7 @@ body {
 }
 .fv-chromosome-image.empty,
 .parent .fv-chromosome-image.bold {
-  background: url("../resources/fablevision/layout-c/egg_sperm_chromosome.png");
+  background: url("../resources/fablevision/layout-c/egg_sperm_chromosome_empty.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1373,6 +1403,56 @@ body {
 }
 .fv-chromosome-image.empty.small.yChromosome,
 .parent .fv-chromosome-image.bold.small.yChromosome {
+  height: 74px;
+  width: 20px;
+  background: url("../resources/fablevision/layout-c/chromosome_half_dark.png");
+}
+.geniblocks.fv-gene-label {
+  font-family: 'Yanone Kaffeesatz';
+  font-size: 1.5rem;
+  color: #fff;
+}
+.sperm .fv-chromosome-image {
+  height: 78px;
+  width: 27px;
+  background: url("../resources/fablevision/layout-c/egg_sperm_chromosome_filled_orig.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sperm .fv-chromosome-image.yChromosome {
+  height: 55px;
+  width: 27px;
+  background: url("../resources/fablevision/layout-c/egg_sperm_chromosome_half_filled_orig.png");
+}
+.sperm .fv-chromosome-image.small {
+  background: url("../resources/fablevision/layout-c/chromosome_lite_stripes.png");
+  height: 122px;
+  width: 20px;
+}
+.sperm .fv-chromosome-image.small.xChromosome {
+  background: url("../resources/fablevision/layout-c/chromosome_lite.png");
+}
+.sperm .fv-chromosome-image.small.yChromosome {
+  height: 74px;
+  width: 20px;
+  background: url("../resources/fablevision/layout-c/chromosome_half_lite.png");
+}
+.sperm .fv-chromosome-image.empty {
+  background: url("../resources/fablevision/layout-c/egg_sperm_chromosome_orig.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.sperm .fv-chromosome-image.empty.yChromosome {
+  height: 55px;
+  width: 27px;
+  background: url("../resources/fablevision/layout-c/egg_sperm_chromosome_half_orig.png");
+}
+.sperm .fv-chromosome-image.empty.small {
+  height: 122px;
+  width: 20px;
+  background: url("../resources/fablevision/layout-c/chromosome_dark.png");
+}
+.sperm .fv-chromosome-image.empty.small.yChromosome {
   height: 74px;
   width: 20px;
   background: url("../resources/fablevision/layout-c/chromosome_half_dark.png");
@@ -1744,29 +1824,4 @@ body {
   position: absolute;
   left: 654px;
   top: 0px;
-}
-
-.geniblocks.trial-count {
-  width: 158px;
-  height: 107px;
-  background-image: url("../resources/fablevision/huds/Trial_screen.png");
-  background-size: 100% 100%;
-}
-.geniblocks.trial-count .hud-text-area {
-  position: relative;
-  left: 30px;
-  top: 25px;
-  width: 108px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Yanone Kaffeesatz';
-  font-weight: bold;
-  font-size: 1.4rem;
-  line-height: 1.15;
-  color: #555;
-}
-.os-windows .geniblocks.trial-count .hud-text-area {
-  margin-top: 0.1rem;
 }
