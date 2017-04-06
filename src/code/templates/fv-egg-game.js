@@ -12,11 +12,13 @@ import { assign, clone, cloneDeep, shuffle, range } from 'lodash';
 import classNames from 'classnames';
 import { motherGametePool, fatherGametePool, gametePoolSelector,
         motherSelectedGameteIndex, fatherSelectedGameteIndex } from '../modules/gametes';
+import CustomDragLayer from '../components/custom-drag-layer';
+import DragOrganismView from '../components/drag-organism';
 import ParentDrakeView from '../fv-components/parent-drake';
 import GenomeView from '../components/genome';
 import GametePenView, { getGameteLocation } from '../components/gamete-pen';
 import BreedButtonAreaView from '../fv-components/breed-button-area';
-import FVStableView from '../fv-components/fv-stable';
+import FVDropStableView from '../fv-components/fv-drop-stable';
 import FVGameteImageView from '../fv-components/fv-gamete-image';
 import AnimatedComponentView from '../components/animated-component';
 import TargetDrakeView from '../fv-components/target-drake';
@@ -927,7 +929,7 @@ export default class FVEggGame extends Component {
   }
 
   render() {
-    const { challengeType, interactionType, scale, showUserDrake, trial, drakes, gametes,
+    const { challengeType, interactionType, scale, showUserDrake, trial, drakes, gametes, useCustomDragLayer,
             userChangeableGenes, visibleGenes, userDrakeHidden, onChromosomeAlleleChange,
             onFertilize, onHatch, onResetGametes, onKeepOffspring, onDrakeSubmission } = this.props,
           { currentGametes } = gametes,
@@ -971,12 +973,16 @@ export default class FVEggGame extends Component {
       }
     };
 
+    const handleSubmitStableDrake = function() {
+      const offspringIndices = range(3, drakes.length);
+      onKeepOffspring(2, offspringIndices, 8);
+    };
+
     const handleSubmit = function () {
       let childImage = child.getImageName(),
           success = false;
       if (challengeType === 'create-unique') {
-        let offspringIndices = range(3, drakes.length);
-        onKeepOffspring(2, offspringIndices, 8);
+        handleSubmitStableDrake();
       }
       else if (challengeType === 'match-target') {
         const targetDrakeOrg = new BioLogica.Organism(BioLogica.Species.Drake,
@@ -1027,7 +1033,8 @@ export default class FVEggGame extends Component {
                                 ? <TargetDrakeView org={targetDrakeOrg} />
                                 : null;
     let offspringButtons, offspringButtonsVisible = false,
-        ovumView, spermView, penView;
+        ovumView, spermView, penView,
+        customDragLayer = useCustomDragLayer ? <CustomDragLayer /> : null;
     if (child && animationEvents.hatch.complete) {
       if (showUserDrake)
         handleHatch();
@@ -1067,7 +1074,8 @@ export default class FVEggGame extends Component {
 
     if (isCreationChallenge) {
       penView = <div className='columns bottom'>
-                  <FVStableView orgs={ keptDrakes } width={500} columns={5} rows={1} tightenRows={20}/>
+                  <FVDropStableView orgs={ keptDrakes } width={500} columns={5} rows={1} tightenRows={20}
+                                    onDropDrake={handleSubmitStableDrake} />
                 </div>;
     }
 
@@ -1140,7 +1148,9 @@ export default class FVEggGame extends Component {
             {offspringButtons}
             <BreedButtonAreaView challengeClasses={classNames(challengeClasses)} scale={scale}
                                   ovumChromosomes={ovumChromosomes} spermChromosomes={spermChromosomes}
-                                  userDrake={child} showUserDrake={showUserDrake} userDrakeHidden={userDrakeHidden}
+                                  UserDrakeView={DragOrganismView} userDrake={child}
+                                  showUserDrake={showUserDrake} userDrakeHidden={userDrakeHidden}
+                                  useCustomDragLayer={useCustomDragLayer}
                                   isHatchingInProgress={animationEvents.hatch.inProgress}
                                   hatchAnimationDuration={durationHatchAnimation}
                                   handleHatchingComplete={animationEvents.hatch.onFinish}
@@ -1166,6 +1176,7 @@ export default class FVEggGame extends Component {
         {penView}
         {targetDrakeSection}
         {animatedComponents}
+        {customDragLayer}
       </div>
     );
   }
@@ -1234,6 +1245,7 @@ export default class FVEggGame extends Component {
     userChangeableGenes: PropTypes.array.isRequired,
     visibleGenes: PropTypes.array.isRequired,
     userDrakeHidden: PropTypes.bool,
+    useCustomDragLayer: PropTypes.bool,
     onChromosomeAlleleChange: PropTypes.func.isRequired,
     onGameteChromosomeAdded: PropTypes.func.isRequired,
     onSelectGameteInPool: PropTypes.func.isRequired,

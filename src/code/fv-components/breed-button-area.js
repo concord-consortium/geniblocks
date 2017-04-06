@@ -17,9 +17,11 @@ class BreedButtonAreaView extends React.Component {
     scale: PropTypes.number,
     ovumChromosomes: PropTypes.array,
     spermChromosomes: PropTypes.array,
+    UserDrakeView: PropTypes.func,
     userDrake: PropTypes.object,
     showUserDrake: PropTypes.bool,
     userDrakeHidden: PropTypes.bool,
+    useCustomDragLayer: PropTypes.bool,
     isHatchingInProgress: PropTypes.bool,
     hatchAnimationDuration: PropTypes.number,
     handleHatchingComplete: PropTypes.func,
@@ -27,9 +29,13 @@ class BreedButtonAreaView extends React.Component {
     onBreed: PropTypes.func
   };
 
+  static defaultProps = {
+    UserDrakeView: OrganismView
+  }
+
   render() {
-    const { challengeClasses, ovumChromosomes, spermChromosomes,
-          userDrake, showUserDrake, userDrakeHidden,
+    const { scale, challengeClasses, ovumChromosomes, spermChromosomes,
+          UserDrakeView, userDrake, showUserDrake, userDrakeHidden, useCustomDragLayer,
           isHatchingInProgress, isHatchingComplete, onBreed } = this.props,
           // ovumClasses = classNames('ovum', challengeClasses),
           // spermClasses = classNames('sperm', challengeClasses),
@@ -43,7 +49,8 @@ class BreedButtonAreaView extends React.Component {
     let userDrakeView = null;
 
     if (userDrake && isHatchingComplete) {
-      const drakeImageView = <OrganismView className="matching" org={userDrake} width={200} key={1} />,
+      const drakeImageView = <UserDrakeView className="matching" org={userDrake} width={200} key={1}
+                                            scale={scale} useCustomDragLayer={useCustomDragLayer} />,
             eggOrDrakeView = showUserDrake || !userDrakeHidden ? drakeImageView : eggImageView;
       userDrakeView = eggOrDrakeView;
     } else {
