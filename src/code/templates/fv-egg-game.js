@@ -72,12 +72,10 @@ function animatedChromosomeImageHOC(WrappedComponent) {
             { yChromosome } = this.props,
             defaultWidth = 19,
             defaultHeight = yChromosome ? 62 : 90,
-            defaultSplit = yChromosome ? 32 : 34,
             sizeRatio = displayStyle.size != null ? displayStyle.size : 1,
             width = defaultWidth * sizeRatio,
-            height = defaultHeight * sizeRatio,
-            split = defaultSplit * sizeRatio;
-      return <WrappedComponent width={width} height={height} split={split} {...otherProps} />;
+            height = defaultHeight * sizeRatio;
+      return <WrappedComponent width={width} height={height} {...otherProps} />;
     }
   };
 }
@@ -478,8 +476,7 @@ var animationEvents = {
       for (let i = 0; i < parentGameteChromEls.length; ++i) {
         const parentGameteChromEl = parentGameteChromEls[i],
               srcChromBounds = parentGameteChromEl.getBoundingClientRect(),
-              targetIsY = parentGameteChromEl.id.indexOf('XYy') > 0,
-              chromView = <AnimatedChromosomeImageView small={true} empty={false} bold={false} yChromosome={targetIsY}/>;
+              chromView = <AnimatedChromosomeImageView small={true} empty={false} bold={false} chromosomeName={parentGameteChromEl.id}/>;
         components.push(chromView);
         positions.push({ startPositionRect: srcChromBounds, startSize: 1.0,
                         targetPositionRect: getDstChromBounds(i), endSize: 0.2 });
@@ -578,7 +575,7 @@ var animationEvents = {
     }
   },
   selectChromosome: { id: 5, activeCount: 0, complete: false, ready: false,
-    animate: function(positions, targetIsY, targetIsX, speed, onFinish) {
+    animate: function(positions, chromosomeId, speed, onFinish) {
       if (++animationEvents.selectChromosome.activeCount === 1)
         animationEvents.selectChromosome.onFinishCaller = onFinish;
 
@@ -586,7 +583,7 @@ var animationEvents = {
         start: 1.0,
         end: 1.0
       };
-      animatedComponentToRender = <FVChromosomeImageView small={true} empty={false} bold={true} xChromosome={targetIsX} yChromosome={targetIsY}/>;
+      animatedComponentToRender = <FVChromosomeImageView small={true} empty={false} bold={true} chromosomeName={chromosomeId}/>;
       animateMultipleComponents([animatedComponentToRender], [positions], opacity, speed,
                                 animationEvents.selectChromosome.id,
                                 animationEvents.selectChromosome.onFinish);
@@ -870,11 +867,9 @@ export default class FVEggGame extends Component {
     function animateChromosomeSelection() {
       chromEntries.forEach((entry) => {
         let positions = findBothElements(sex, entry.name, entry.elt, scale),
-            chromosomeId = entry.elt.getElementsByClassName("chromosome-allele-container")[0].id,
-            targetIsY = chromosomeId.endsWith('XYy'),
-            targetIsX = chromosomeId.indexOf('x') > -1;
+            chromosomeId = entry.elt.getElementsByClassName("chromosome-allele-container")[0].id;
         // animate the chromosomes being added
-        animationEvents.selectChromosome.animate(positions, targetIsY, targetIsX,
+        animationEvents.selectChromosome.animate(positions, chromosomeId,
                                                   selectChromosomesAnimationSpeed,
                                                   onFinish);
       });
