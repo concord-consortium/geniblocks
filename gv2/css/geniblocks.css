@@ -2736,13 +2736,13 @@ body .app .copy-right {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../resources/fablevision/layout-a/hatch_ON.png");
+  background-image: url("../resources/fablevision/layout-a/Hatch_ON.png");
   cursor: pointer;
   color: #fff;
 }
 .fv-layout-a .hatch-drake-button:active {
   cursor: default;
-  background-image: url("../resources/fablevision/layout-a/hatch_OFF.png");
+  background-image: url("../resources/fablevision/layout-a/Hatch_OFF.png");
   background-position: 17px 17px;
   background-size: auto;
   background-repeat: no-repeat;
