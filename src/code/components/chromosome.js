@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import ChromosomeImageView from './chromosome-image';
 import GeneLabelView from './gene-label';
+import FVGeneLabelView from '../fv-components/fv-gene-label';
 import AlleleView from './allele';
 import GeneticsUtils from '../utilities/genetics-utils';
 /**
@@ -30,16 +31,15 @@ const ChromosomeView = ({chromosome, org, ChromosomeImageClass=ChromosomeImageVi
       let labels = visibleAlleles.map(a => {
         if (ChromosomeImageClass === ChromosomeImageView) {
           return (
-          <GeneLabelView key={a.allele} species={chromosome.species} allele={a.allele} editable={editable && a.editable}
-          hiddenAlleles={ hiddenAlleles }
-          onAlleleChange={function(event) {
-            onAlleleChange(a.allele, event.target.value);
-          }}/>);
+            <GeneLabelView key={a.allele} species={chromosome.species} allele={a.allele} editable={editable && a.editable}
+            hiddenAlleles={ hiddenAlleles }
+            onAlleleChange={function(event) {
+              onAlleleChange(a.allele, event.target.value);
+            }}/>
+          );
         } else {
           return (
-            <div className="geniblocks fv-gene-label allele noneditable" key={a.allele}>
-              {chromosome.species.alleleLabelMap[a.allele]}
-            </div>
+            <FVGeneLabelView allele={a.allele} species={chromosome.species} />
           );
         }
       });
@@ -52,6 +52,8 @@ const ChromosomeView = ({chromosome, org, ChromosomeImageClass=ChromosomeImageVi
 
       if (!labelsOnRight) {
         containerClass += " rtl";
+      } else {
+        containerClass += " ltl";
       }
     }
 
