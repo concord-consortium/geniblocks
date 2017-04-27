@@ -1,9 +1,5 @@
 {
   "challenges": {
-    "navigation": {
-      "comment": "*** Navigation ***",
-      "template": "Navigation"
-    },
     "playground": {
       "comment": "*** Level 1, Mission 1.1: Playground ***",
       "template": "GenomePlayground",
@@ -758,23 +754,7 @@
             ]
           }
         ]
-      },
-
-      {
-        "name": "Navigation level",
-        "missions": [
-          {
-            "name": "Navigation mission",
-            "challenges": [
-              {
-                "name": "Navigation menu",
-                "id": "navigation"
-              }
-            ]
-          }
-        ]
       }
-
     ]
   }
 }

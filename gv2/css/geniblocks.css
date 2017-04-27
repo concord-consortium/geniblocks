@@ -1823,6 +1823,9 @@ body {
   width: 100%;
   align-content: space-around;
   max-height: 600px;
+  width: 1400px;
+  margin: 90px;
+  justify-content: center;
 }
 .navigate-button {
   width: 315px;
@@ -1844,9 +1847,10 @@ body {
 .navigate-button .navigate-button-label {
   font-size: 2rem;
 }
-.mission-backdrop.navigation-layout {
+.navigation-layout {
   background-image: url("../resources/fablevision/layout-c/background.png");
   background-position: 50% 50%;
+  background-size: cover;
 }
 
 .geniblocks.notification-container {
