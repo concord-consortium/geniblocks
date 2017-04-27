@@ -1,5 +1,9 @@
 {
   "challenges": {
+    "navigation": {
+      "comment": "*** Navigation ***",
+      "template": "Navigation"
+    },
     "playground": {
       "comment": "*** Level 1, Mission 1.1: Playground ***",
       "template": "GenomePlayground",
@@ -54,7 +58,7 @@
       "targetDrakes": [{},{}],
       "userChangeableGenes": "wings, forelimbs, hindlimbs"
     },
-    "eggSortingWings": {
+    "basicEggSortingWings": {
       "comment": "*** Level 2, Mission 2.1: Egg Sorting Game (wings) ***",
       "template": "EggSortGame",
       "trialGenerator": {
@@ -79,7 +83,7 @@
         { "label": "Females without wings", "alleles": ["w-w"], "sex": 1 }
       ]
     },
-    "eggSortingLimbs": {
+    "basicEggSortingLimbs": {
       "comment": "*** Level 2, Mission 2.2: Egg Sorting Game (forelimbs/hindlimbs) ***",
       "template": "EggSortGame",
       "trialGenerator": {
@@ -187,7 +191,7 @@
         "genes": "metallic, wings, forelimbs, hindlimbs, tail, color, black, dilute, nose, bogbreath"
       }
     },
-    "eggSortingHorns": {
+    "basicEggSortingHorns": {
       "comment": "*** Level 2, Mission 3.3: Egg Sorting Game (horns) ***",
       "template": "EggSortGame",
       "trialGenerator": {
@@ -212,7 +216,7 @@
         { "label": "Females without horns", "alleles": ["H-","-H"], "sex": 1 }
       ]
     },
-    "eggSortingArmor": {
+    "basicEggSortingArmor": {
       "comment": "*** Level 2, Mission 3.4: Egg Sorting Game (armor) ***",
       "template": "EggSortGame",
       "trialGenerator": {
@@ -236,7 +240,7 @@
         { "label": "Drakes with five armor plates", "alleles": ["A1-A1"] }
       ]
     },
-    "eggSortingHornsWingsArmor": {
+    "basicEggSortingHornsWingsArmor": {
       "comment": "*** Level 2, Mission 3.5: Egg Sorting Game (horns/wings/armor) ***",
       "template": "EggSortGame",
       "trialGenerator": {
@@ -398,7 +402,7 @@
       },
       "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
     },
-    "eggSortTest": {
+    "eggSortingWings": {
       "comment": "*** Egg Sorting Game Test ***",
       "container": "FVContainer",
       "template": "FVEggSortGame",
@@ -424,10 +428,112 @@
         { "label": "Females without wings", "alleles": ["w-w"], "sex": 1 }
       ]
     },
+    "eggSortingLimbs": {
+      "comment": "*** Level 2, Mission 2.2: Egg Sorting Game (forelimbs/hindlimbs) ***",
+      "container": "FVContainer",
+      "template": "FVEggSortGame",
+      "trialGenerator": {
+        "type": "randomize-order",
+        "baseDrake": "T-T, C-C, rh-rh, Bog-Bog",
+        "drakes": [
+          { "alleles": "Fl-fl, Hl-hl" },
+          { "alleles": "fl-fl, Hl-hl" },
+          { "alleles": "Fl-fl, hl-hl" },
+          { "alleles": "fl-Fl, Hl-Hl" },
+          { "alleles": "fl-fl, Hl-Hl" },
+          { "alleles": "fl-Fl, hl-hl" },
+          { "alleles": "Fl-Fl, hl-hl" },
+          { "alleles": "Fl-Fl, Hl-Hl" }
+        ]
+      },
+      "visibleGenes": "forelimbs, hindlimbs",
+      "baskets": [
+        { "label": "Drakes with only forelimbs", "alleles": ["Fl-, hl-hl", "-Fl, hl-hl"] },
+        { "label": "Drakes with only hindlimbs", "alleles": ["fl-fl, Hl-", "fl-fl, -Hl"] },
+        { "label": "Drakes with forelimbs and hindlimbs", "alleles": ["Fl-, Hl-","Fl-, -Hl","-Fl, Hl-","-Fl, -Hl"] }
+      ]
+    },
+    "eggSortingHorns": {
+      "comment": "*** Level 2, Mission 3.3: Egg Sorting Game (horns) ***",
+      "container": "FVContainer",
+      "template": "FVEggSortGame",
+      "trialGenerator": {
+        "type": "randomize-order",
+        "baseDrake": "T-T, C-C, rh-rh, Bog-Bog",
+        "drakes": [
+          { "alleles": "H-H", "sex": 0 },
+          { "alleles": "H-h", "sex": 0 },
+          { "alleles": "h-H", "sex": 0 },
+          { "alleles": "h-h", "sex": 0 },
+          { "alleles": "H-H", "sex": 1 },
+          { "alleles": "H-h", "sex": 1 },
+          { "alleles": "h-H", "sex": 1 },
+          { "alleles": "h-h", "sex": 1 }
+        ]
+      },
+      "visibleGenes": "horns",
+      "baskets": [
+        { "label": "Males with horns", "alleles": ["h-h"], "sex": 0 },
+        { "label": "Males without horns", "alleles": ["H-","-H"], "sex": 0 },
+        { "label": "Females with horns", "alleles": ["h-h"], "sex": 1 },
+        { "label": "Females without horns", "alleles": ["H-","-H"], "sex": 1 }
+      ]
+    },
+    "eggSortingArmor": {
+      "comment": "*** Level 2, Mission 3.4: Egg Sorting Game (armor) ***",
+      "container": "FVContainer",
+      "template": "FVEggSortGame",
+      "trialGenerator": {
+        "type": "randomize-order",
+        "baseDrake": "T-T, C-C, rh-rh, Bog-Bog",
+        "drakes": [
+          { "alleles": "A1-A1", "sex": 0 },
+          { "alleles": "A1-a", "sex": 0 },
+          { "alleles": "a-A1", "sex": 0 },
+          { "alleles": "a-a", "sex": 0 },
+          { "alleles": "A1-A1", "sex": 1 },
+          { "alleles": "A1-a", "sex": 1 },
+          { "alleles": "a-A1", "sex": 1 },
+          { "alleles": "a-a", "sex": 1 }
+        ]
+      },
+      "visibleGenes": "armor",
+      "baskets": [
+        { "label": "Drakes with no armor plates", "alleles": ["a-a"] },
+        { "label": "Drakes with three armor plates", "alleles": ["A1-a", "a-A1"] },
+        { "label": "Drakes with five armor plates", "alleles": ["A1-A1"] }
+      ]
+    },
+    "eggSortingHornsWingsArmor": {
+      "comment": "*** Level 2, Mission 3.5: Egg Sorting Game (horns/wings/armor) ***",
+      "container": "FVContainer",
+      "template": "FVEggSortGame",
+      "trialGenerator": {
+        "type": "randomize-order",
+        "baseDrake": "T-T, C-C, rh-rh, Bog-Bog",
+        "drakes": [
+          { "alleles": "h-h, w-w, a-a" },
+          { "alleles": "h-h, w-w, a-a" },
+          { "alleles": "H-h, W-w, a-a" },
+          { "alleles": "H-H, w-w, A1-a" },
+          { "alleles": "H-h, w-w, A1-A1" },
+          { "alleles": "H-H, W-W, a-a" },
+          { "alleles": "h-H, w-w, A1-A1" },
+          { "alleles": "H-H, w-W, a-a" }
+        ]
+      },
+      "visibleGenes": "horns, wings, armor",
+      "baskets": [
+        { "label": "Drakes with horns", "alleles": ["h-h"] },
+        { "label": "Drakes with wings", "alleles": ["W-", "-W"] },
+        { "label": "Drakes with armor", "alleles": ["A1-","-A1"] }
+      ]
+    },
     "fvGenomeChallengeTestVisible": {
       "comment": "*** Level 2, Mission 1.1: Genome Challenge (basics intro, user drake visible) ***",
       "container": "FVContainer",
       "template": "FVGenomeChallenge",
+      "challengeType": "match-target",
       "instructions": "Match the target drake!",
       "showUserDrake": true,
       "randomizeTrials": true,
@@ -453,6 +559,7 @@
       "comment": "*** Level 2, Mission 1.2: Genome Challenge (basics intro, user drake hidden) ***",
       "container": "FVContainer",
       "template": "FVGenomeChallenge",
+      "challengeType": "match-target",
       "instructions": "Match 2 drakes!",
       "trialGenerator": {
         "type": "all-combinations",
@@ -471,6 +578,18 @@
       "targetDrakes": [{},{}],
       "userChangeableGenes": "wings, forelimbs, hindlimbs"
     },
+    "fvGenomeChallengeTestStable": {
+      "container": "FVContainer",
+      "template": "FVGenomeChallenge",
+      "challengeType": "create-unique",
+      "instructions": "Create 5 unique drakes!",
+      "showUserDrake": true,
+      "initialDrake": {
+        "alleles": "M-M, T-T, w-w, C-C, B-B, D-D, rh-rh, Bog-Bog",
+        "sex": 1
+      },
+      "userChangeableGenes": "wings, forelimbs, hindlimbs"
+    },
   },
 
 
@@ -484,7 +603,7 @@
             "challenges": [
               {
                 "name": "Challenge 1.1.1",
-                "id": "playground"
+                "id": "fvGenomeChallengeTestStable"
               }
             ]
           }
@@ -499,11 +618,11 @@
             "challenges": [
               {
                 "name": "Challenge 2.1.1",
-                "id": "basicsIntroVisible"
+                "id": "fvGenomeChallengeTestVisible"
               },
               {
                 "name": "Challenge 2.1.2",
-                "id": "basicsIntroHidden"
+                "id": "fvGenomeChallengeTestHidden"
               }
             ]
           },
@@ -622,7 +741,7 @@
               },
               {
                 "name": "Challenge 6.1.3",
-                "id": "eggSortTest"
+                "id": "eggSortingWings"
               },
               {
                 "name": "Challenge 6.1.4",
@@ -631,11 +750,31 @@
               {
                 "name": "Challenge 6.1.5",
                 "id": "fvGenomeChallengeTestHidden"
+              },
+              {
+                "name": "Challenge 6.1.6",
+                "id": "fvGenomeChallengeTestStable"
+              },
+            ]
+          }
+        ]
+      },
+
+      {
+        "name": "Navigation level",
+        "missions": [
+          {
+            "name": "Navigation mission",
+            "challenges": [
+              {
+                "name": "Navigation menu",
+                "id": "navigation"
               }
             ]
           }
         ]
       }
+
     ]
   }
 }

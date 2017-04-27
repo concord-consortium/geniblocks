@@ -129,6 +129,118 @@
 }
 
 /*
+ * This file was originally a CSS file used for a standalone Case 5 example page.
+ * When Cases 1, 3, and 5 were combined into a single application the bulk of
+ * it was indented under #case-1 and left alone. There is plenty of opportunity
+ * for more efficient use of Stylus and/or for better coordination between the
+ * styles of the separate cases.
+ */
+#case-5 .column-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+#case-5 .column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+#case-5 .column-label {
+  margin-top: 78px;
+  margin-bottom: 25px;
+  color: #fff;
+  font-size: 14pt;
+  font-weight: bold;
+}
+#case-5 .parent-drake {
+  margin-top: -20px;
+}
+#case-5 .geniblocks.genome {
+  margin-top: -20px;
+}
+#case-5 #father-genome-unknown {
+  width: 334px;
+  text-align: center;
+  text-align: center;
+  font-family: cursive;
+  font-weight: bold;
+  font-size: 14em;
+  line-height: 1;
+  color: #0d0d8c;
+  text-shadow: -2px 1px #a6ab58, 0 2px #565408, 3px 0 #a8ab07, 0 -2px #656205;
+}
+#case-5 button {
+  background-color: #fff;
+  margin: 40px 0 10px 0;
+  padding: 2px 19px 3px 19px;
+}
+#case-5 #breed-button {
+  margin-top: 180px;
+  height: 24px;
+  width: 100px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+#case-5 .tabs {
+  margin-top: 50px;
+}
+#case-5 .tabs-menu-item a {
+  font-weight: bold;
+  color: #000;
+}
+#case-5 .tabs-menu-item.is-active a {
+  text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+}
+#case-5 .tab-panel {
+  padding: 10px 0px;
+}
+#case-5 .geniblocks.pen {
+  background-color: #936942;
+}
+#case-5 .geniblocks.stats {
+  background-color: #fff;
+}
+#case-5 #stats-table {
+  border-collapse: collapse;
+}
+#case-5 #stats-table.no-data {
+  display: none;
+}
+#case-5 #stats-table th,
+#case-5 td {
+  border: 1px solid #999;
+  padding: 2px;
+}
+#case-5 #stats-table .even-trait {
+  background: #ddd;
+}
+#case-5 #stats-table .label {
+  text-align: left;
+}
+#case-5 #stats-table .numeric {
+  text-align: right;
+}
+#case-5 #overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+#case-5 #test-wrapper {
+  display: none;
+  z-index: 2;
+  position: relative;
+  top: -252px;
+  background-color: #ddd;
+  padding: 15px;
+  box-shadow: 0px 0px 15px #c2c793;
+}
+
+/*
  * This file was originally a CSS file used for a standalone Case 3 example page.
  * When Cases 1, 3, and 5 were combined into a single application the bulk of
  * it was indented under #case-1 and left alone. There is plenty of opportunity
@@ -258,118 +370,6 @@
   margin-top: 30px;
   float: right;
   width: 90px;
-}
-
-/*
- * This file was originally a CSS file used for a standalone Case 5 example page.
- * When Cases 1, 3, and 5 were combined into a single application the bulk of
- * it was indented under #case-1 and left alone. There is plenty of opportunity
- * for more efficient use of Stylus and/or for better coordination between the
- * styles of the separate cases.
- */
-#case-5 .column-wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-}
-#case-5 .column {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-#case-5 .column-label {
-  margin-top: 78px;
-  margin-bottom: 25px;
-  color: #fff;
-  font-size: 14pt;
-  font-weight: bold;
-}
-#case-5 .parent-drake {
-  margin-top: -20px;
-}
-#case-5 .geniblocks.genome {
-  margin-top: -20px;
-}
-#case-5 #father-genome-unknown {
-  width: 334px;
-  text-align: center;
-  text-align: center;
-  font-family: cursive;
-  font-weight: bold;
-  font-size: 14em;
-  line-height: 1;
-  color: #0d0d8c;
-  text-shadow: -2px 1px #a6ab58, 0 2px #565408, 3px 0 #a8ab07, 0 -2px #656205;
-}
-#case-5 button {
-  background-color: #fff;
-  margin: 40px 0 10px 0;
-  padding: 2px 19px 3px 19px;
-}
-#case-5 #breed-button {
-  margin-top: 180px;
-  height: 24px;
-  width: 100px;
-  background-color: #fff;
-  border-radius: 10px;
-}
-#case-5 .tabs {
-  margin-top: 50px;
-}
-#case-5 .tabs-menu-item a {
-  font-weight: bold;
-  color: #000;
-}
-#case-5 .tabs-menu-item.is-active a {
-  text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
-}
-#case-5 .tab-panel {
-  padding: 10px 0px;
-}
-#case-5 .geniblocks.pen {
-  background-color: #936942;
-}
-#case-5 .geniblocks.stats {
-  background-color: #fff;
-}
-#case-5 #stats-table {
-  border-collapse: collapse;
-}
-#case-5 #stats-table.no-data {
-  display: none;
-}
-#case-5 #stats-table th,
-#case-5 td {
-  border: 1px solid #999;
-  padding: 2px;
-}
-#case-5 #stats-table .even-trait {
-  background: #ddd;
-}
-#case-5 #stats-table .label {
-  text-align: left;
-}
-#case-5 #stats-table .numeric {
-  text-align: right;
-}
-#case-5 #overlay {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.3);
-}
-#case-5 #test-wrapper {
-  display: none;
-  z-index: 2;
-  position: relative;
-  top: -252px;
-  background-color: #ddd;
-  padding: 15px;
-  box-shadow: 0px 0px 15px #c2c793;
 }
 
 /*
