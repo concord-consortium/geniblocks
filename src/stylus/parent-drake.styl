@@ -1,0 +1,24 @@
+.geniblocks.parentDrake
+	color : white
+	display: flex
+	flex-direction: row
+	align-items: flex-start
+	width: 475px
+	height: 187px
+	font-size: 54px
+	font-family: 'Yanone Kaffeesatz';	
+
+	&.female
+		background: url('../resources/images/female_drake_overlay.png')
+		justify-content: flex-end
+		.organism
+			margin-right: 20px
+
+	&.male
+		background: url('../resources/images/male_drake_overlay.png')
+		justify-content: flex-start
+		.organism
+			margin-left: 20px
+
+	.parentTitle
+		margin-top: 10px
