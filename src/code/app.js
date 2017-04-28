@@ -94,6 +94,16 @@ function handleCompleteUpload(authoring) {
   renderApp();
 }
 
+function initializeApp() {
+  // BioLogica overrides
+  let drakeAlleleMap = BioLogica.Species.Drake.alleleLabelMap;
+  drakeAlleleMap.C = "Color";
+  drakeAlleleMap.B = "Gray";
+  drakeAlleleMap.b = "Orange";
+  drakeAlleleMap.M = "Shiny";
+  drakeAlleleMap.m = "Dull";
+}
+
 function renderApp() {
   const content = isAuthorUploadEnabled
                     ? <AuthoringUpload isEnabled={isAuthorUploadEnabled}
@@ -113,4 +123,5 @@ function renderApp() {
   , document.getElementById("gv"));
 }
 
+initializeApp();
 renderApp();
