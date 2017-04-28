@@ -398,7 +398,7 @@
       },
       "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
     },
-    "eggSortingWings": {
+    "egg-drop-01": {
       "comment": "*** Egg Sorting Game Test ***",
       "container": "FVContainer",
       "template": "FVEggSortGame",
@@ -627,7 +627,7 @@
             "challenges": [
               {
                 "name": "Challenge 2.2.1",
-                "id": "eggSortingWings"
+                "id": "egg-drop-01"
               },
               {
                 "name": "Challenge 2.2.2",
@@ -737,7 +737,7 @@
               },
               {
                 "name": "Challenge 6.1.3",
-                "id": "eggSortingWings"
+                "id": "egg-drop-01"
               },
               {
                 "name": "Challenge 6.1.4",
