@@ -1813,7 +1813,7 @@ body {
   display: block;
   font-family: 'Yanone Kaffeesatz';
   font-size: 1.5rem;
-  margin-top: 1px;
+  margin-top: -1px;
 }
 
 #navigation {
@@ -2109,6 +2109,7 @@ body {
   display: inline-block;
   width: 50%;
   height: 100%;
+  cursor: pointer;
 }
 .geniblocks.change-sex-toggle-group .change-sex-toggle .toggle-button.selected {
   background-image: url("../resources/fablevision/layout-a/toggle_button.png");
@@ -2293,11 +2294,7 @@ body {
   background-size: contain;
   position: absolute;
 }
-.fv-layout-d #mission-wrapper #egg-sort-game #baskets .basket-set .basket.selected .basket-image {
-  background-image: url("../resources/fablevision/layout-d/basket.png");
-  cursor: pointer;
-}
-.fv-layout-d #mission-wrapper #egg-sort-game #baskets .basket-set .basket .basket-label {
+.fv-layout-d #mission-wrapper #egg-sort-game #baskets .basket-set .basket .basket-image .basket-label {
   width: 133px;
   height: 135px;
   left: 203px;
@@ -2308,6 +2305,18 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.fv-layout-d #mission-wrapper #egg-sort-game #baskets .basket-set .basket.selected .basket-image {
+  background-image: url("../resources/fablevision/layout-d/basket.png");
+}
+.fv-layout-d #mission-wrapper #egg-sort-game #baskets .basket-set .basket.selected .basket-image .basket-hover {
+  width: 250px;
+  height: 200px;
+  position: absolute;
+  left: 130px;
+  top: 300px;
+  cursor: pointer;
+  z-index: 3;
 }
 .fv-layout-d #mission-wrapper #egg-sort-game #left-section {
   width: 1156px;
@@ -2368,7 +2377,7 @@ body {
 .geniblocks.genome #mountNode .react-selectize-control {
   display: flex;
   flex-direction: row;
-  height: 40px;
+  height: 28px;
 }
 .geniblocks.genome #mountNode .react-selectize-control input {
   font-family: "Yanone Kaffeesatz";
@@ -2404,12 +2413,18 @@ body {
   flex-direction: row;
 }
 .geniblocks.fv-gene-label.allele.noneditable.w {
-  z-index: 4;
+  z-index: 6;
+}
+.geniblocks.fv-gene-label.allele.noneditable.h {
+  z-index: 5;
 }
 .geniblocks.fv-gene-label.allele.noneditable.fl {
-  z-index: 3;
+  z-index: 4;
 }
 .geniblocks.fv-gene-label.allele.noneditable.hl {
+  z-index: 3;
+}
+.geniblocks.fv-gene-label.allele.noneditable.a {
   z-index: 2;
 }
 .fv-layout .geniblocks.fv-gene-label {
@@ -2462,6 +2477,9 @@ body {
 .fv-layout .h .line {
   width: 21px;
 }
+.fv-layout .a .line {
+  width: 25px;
+}
 .fv-layout .ltl .fl .line {
   transform: rotate(-35deg);
   left: -30px;
@@ -2479,6 +2497,16 @@ body {
 .fv-layout .rtl .h .line {
   transform: rotate(-15deg);
   top: 15px;
+}
+.fv-layout .ltl .a .line {
+  transform: rotate(42deg);
+  top: 15px;
+  left: -30px;
+}
+.fv-layout .rtl .a .line {
+  transform: rotate(-42deg);
+  top: 15px;
+  right: -30px;
 }
 
 .fv-layout-a.mission-backdrop {
