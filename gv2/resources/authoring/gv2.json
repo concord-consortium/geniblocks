@@ -396,7 +396,7 @@
         "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 0
       },
-      "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
+      "visibleGenes": "metallic, wings, forelimbs, hindlimbs, armor, horns"
     },
     "eggDrop-wings": {
       "comment": "*** Egg Sorting Game Test ***",
@@ -666,8 +666,7 @@
             "sex": 1
           }
         ],
-        "visibleGenes": "forelimbs, hindlimbs, wings",
-        "userChangeableGenes": "armor, horns",
+        "userChangeableGenes": "forelimbs, hindlimbs, wings, armor, horns",
         "hiddenAlleles": "A2",
         "linkedGenes": {
           "drakes": [0, 1],
@@ -675,8 +674,6 @@
         }
       },
     },
-
-
 
   "application": {
     "levels": [
