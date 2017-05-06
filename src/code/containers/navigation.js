@@ -47,16 +47,17 @@ class Navigation extends Component {
         <div id="navigation">
           {navigateButton(1, 1, 1)}
           {navigateButton(2, 1, 1)}
-          {navigateButton(2, 1, 2)}
-          {navigateButton(2, 2, 1)}
-          {navigateButton(2, 2, 2)}
-          {navigateButton(2, 3, 1)}
-          {navigateButton(2, 3, 2)}
-          {navigateButton(2, 3, 3)}
-          {navigateButton(2, 3, 4)}
-          {navigateButton(2, 3, 5)}
+          {navigateButton(3, 1, 1)}
+          {navigateButton(4, 1, 1)}
+          {navigateButton(5, 1, 1)}
           {navigateButton(6, 1, 1)}
-          {navigateButton(6, 1, 2)}
+          {navigateButton(7, 1, 1)}
+          {navigateButton(8, 1, 1)}
+          {navigateButton(9, 1, 1)}
+          {navigateButton(10, 1, 1)}
+          {navigateButton(11, 1, 1)}
+          {navigateButton(12, 1, 1)}
+          {navigateButton(13, 1, 1)}
         </div>
       </div>
     );
