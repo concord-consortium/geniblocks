@@ -37,7 +37,7 @@ class Navigation extends Component {
     };
 
     const navigateButton = function(level, mission, challenge) {
-      return <NavigateButton label={"Mission " + missionNum++} 
+      return <NavigateButton label={"Level " + missionNum++} 
                              routeSpec={{level: level - 1, mission: mission - 1, challenge: challenge - 1}} 
                              onClick={handleNavigateButton} />;
     };

@@ -13,7 +13,7 @@ export default {
 
   // Challenge popup alerts
   "~ALERT.TITLE.GOOD_WORK": "Good work!",
-  "~ALERT.TITLE.MISSION_ACCOMPLISHED": "Mission Accomplished!",
+  "~ALERT.TITLE.MISSION_ACCOMPLISHED": "Level Accomplished!",
   "~ALERT.TITLE.INCORRECT_DRAKE": "That's not the drake!",
   "~ALERT.TITLE.EGG_MISMATCH": "That egg doesn't belong!",
   "~ALERT.TITLE.MISTAKE": "Uh oh!",
@@ -22,7 +22,7 @@ export default {
   "~ALERT.AWARD_LEVEL_SILVER": "silver",
   "~ALERT.AWARD_LEVEL_BRONZE": "bronze",
   "~ALERT.COMPLETE_COIN": "You have earned all the pieces of this coin!",
-  "~ALERT.COMPLETE_LAST_MISSION": "You have completed the last mission!",
+  "~ALERT.COMPLETE_LAST_MISSION": "You have completed the last level!",
   "~ALERT.CORRECT_DRAKE": "The drake you have created matches the target drake.",
   "~ALERT.INCORRECT_DRAKE": "The drake you have created doesn't match the target drake.\n\
                             Please try again.",
@@ -35,12 +35,12 @@ export default {
   "~BUTTON.TRY_AGAIN": "Try again",
   "~BUTTON.TRY_ANOTHER_EGG": "Try another egg!",
   "~BUTTON.RETRY_CHALLENGE": "Retry challenge",
-  "~BUTTON.RETRY_MISSION": "Retry mission",
+  "~BUTTON.RETRY_MISSION": "Retry level",
   "~BUTTON.CONTINUE": "Continue",
   "~BUTTON.NEXT_TRIAL": "Next trial",
   "~BUTTON.NEXT_CHALLENGE": "Next challenge",
-  "~BUTTON.END_MISSION": "End mission",
-  "~BUTTON.NEXT_MISSION": "Next mission",
+  "~BUTTON.END_MISSION": "End level",
+  "~BUTTON.NEXT_MISSION": "Next level",
   "~BUTTON.PLAYGROUND_MOVE_FORWARD": "Bring It On!",
   "~BUTTON.CHECK_DRAKE": "Check Drake",
   "~BUTTON.HATCH_DRAKE": "Hatch Drake",
