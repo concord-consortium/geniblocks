@@ -333,14 +333,6 @@ export function submitDrake(targetDrakeIndex, userDrakeIndex, correct, incorrect
         dialog = {
           message: "~ALERT.TITLE.MISSION_ACCOMPLISHED",
           explanation: "~ALERT.COMPLETE_LAST_MISSION",
-          leftButton: {
-            label: "~BUTTON.RETRY_CHALLENGE",
-            action: "retryCurrentChallenge"
-          },
-          rightButton: {
-            label: "~BUTTON.RETRY_MISSION",
-            action: "retryCurrentMission"
-          },
           showAward: true
         };
       }
