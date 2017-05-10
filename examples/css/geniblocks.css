@@ -2129,6 +2129,7 @@ body {
 .geniblocks.change-sex-toggle-group .sex-label {
   font-family: 'Yanone Kaffeesatz';
   font-size: 1.8rem;
+  cursor: pointer;
   color: #ccc;
 }
 .geniblocks.change-sex-toggle-group .sex-label.selected {

@@ -495,7 +495,7 @@
       },
       "visibleGenes": "armor",
       "baskets": [
-        { "label": "Drakes with no armor plates", "alleles": ["a-a"] },
+        { "label": "Drakes without armor plates", "alleles": ["a-a"] },
         { "label": "Drakes with three armor plates", "alleles": ["A1-a", "a-A1"] },
         { "label": "Drakes with five armor plates", "alleles": ["A1-A1"] }
       ]
