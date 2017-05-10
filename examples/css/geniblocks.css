@@ -1066,6 +1066,40 @@ body {
   background-image: url("../resources/fablevision/layout-c/screen_right_chromosome_box.png");
   background-repeat: no-repeat;
 }
+.fv-layout-c #egg-game .interactive-gamete.egg {
+  width: 111px;
+  height: 111px;
+  background-image: url("../resources/fablevision/layout-c/egg_chrom_inactive.png");
+  cursor: pointer;
+  z-index: 2;
+}
+.fv-layout-c #egg-game .interactive-gamete.egg.selected {
+  background-image: url("../resources/fablevision/layout-c/egg_chrom_active.png");
+  cursor: default;
+}
+.fv-layout-c #egg-game .interactive-gamete.sperm {
+  width: 105px;
+  height: 105px;
+  background-image: url("../resources/fablevision/layout-c/sperm_chrom_inactive.png");
+  cursor: pointer;
+  z-index: 2;
+}
+.fv-layout-c #egg-game .interactive-gamete.sperm.selected {
+  background-image: url("../resources/fablevision/layout-c/sperm_chrom_active.png");
+  cursor: default;
+}
+.fv-layout-c #egg-game .gamete-pen {
+  border: none;
+  background-color: transparent;
+}
+.fv-layout-c #egg-game #mother-gamete-pen {
+  left: 525px;
+  bottom: 400px;
+}
+.fv-layout-c #egg-game #father-gamete-pen {
+  right: 250px;
+  bottom: 400px;
+}
 .egg {
   position: relative;
   display: flex;
@@ -2312,10 +2346,10 @@ body {
 }
 .fv-layout-d #mission-wrapper #egg-sort-game #baskets .basket-set .basket.selected .basket-image .basket-hover {
   width: 250px;
-  height: 200px;
+  height: 230px;
   position: absolute;
   left: 130px;
-  top: 300px;
+  top: 265px;
   cursor: pointer;
   z-index: 3;
 }
@@ -2811,11 +2845,11 @@ body {
   margin-top: 1rem;
 }
 
-.geniblocks .stable-drakes {
+.fv-layout .stable-drakes {
   margin-right: 10px;
 }
-.geniblocks .stable-drake-overlay {
-  background: url("../resources/fablevision/layout-c/stable_drake_background.png");
+.fv-layout .stable-drake-overlay {
+  background-image: url("../resources/fablevision/layout-c/stable_drake_background.png");
   display: flex;
   justify-content: center;
   background-size: contain;
@@ -2824,9 +2858,12 @@ body {
   margin-top: 10px;
   margin-right: 15px;
 }
-.geniblocks .stable-drake-overlay .organism {
+.fv-layout .stable-drake-overlay .organism {
   margin-top: -23px;
   margin-left: -20px;
+}
+.fv-layout.fv-layout-a .stable-drake-overlay {
+  background-image: url("../resources/fablevision/layout-a/stable_drake_background.png");
 }
 
 .geniblocks.target-drake-container {
