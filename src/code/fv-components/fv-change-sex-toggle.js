@@ -28,7 +28,7 @@ const FVChangeSexToggle = ({sex, style={}, onChange}) => {
 
   return (
     <div className='geniblocks change-sex-toggle-group'>
-      <div className={classNames('sex-label female-label', { selected: isFemaleSelected })}>
+      <div className={classNames('sex-label female-label', { selected: isFemaleSelected })} onClick={handleSexToggle}>
         {t('~BUTTON.FEMALE')}
       </div>
       <div className={`change-sex-toggle ${selectedSexClass}`} style={style} >
@@ -37,7 +37,7 @@ const FVChangeSexToggle = ({sex, style={}, onChange}) => {
         <div className={classNames('toggle-button male-button', { selected: isMaleSelected })}
               onClick={handleSexToggle}></div>
       </div>
-      <div className={classNames('sex-label male-label', { selected: isMaleSelected })}>
+      <div className={classNames('sex-label male-label', { selected: isMaleSelected })} onClick={handleSexToggle}>
         {t('~BUTTON.MALE')}
       </div>
     </div>

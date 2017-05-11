@@ -370,14 +370,14 @@
       "instructions": "Create 5 different baby drakes!",
       "showUserDrake": true,
       "mother":{
-        "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
+        "alleles": "w-W, M-m, fl-, hl-, T-T, h-, C-C, A1-a, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 1
       },
       "father": {
-        "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+        "alleles": "w-W, m-m, T-T, h-, a-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 0
       },
-      "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
+      "visibleGenes": "wings, forelimbs, hindlimbs, armor, horns"
     },
     "gamete-targetMatch-starterTraits": {
       "comment": "*** FV Test Level 2 ***",
@@ -389,11 +389,11 @@
       "showUserDrake": true,
       "targetDrakes": [{},{},{}],
       "mother":{
-        "alleles": "w-W, M-m, fl-, hl-, T-T, h-, C-C, A1-, B-B, D-D, rh-rh, Bog-Bog",
+        "alleles": "w-W, M-m, fl-, hl-, T-T, h-, C-C, A1-a, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 1
       },
       "father": {
-        "alleles": "w-W, m-m, T-T, H-, a-, C-C, B-B, D-D, rh-rh, Bog-Bog",
+        "alleles": "w-W, m-m, T-T, H-, a-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 0
       },
       "visibleGenes": "wings, forelimbs, hindlimbs, armor, horns"
@@ -495,7 +495,7 @@
       },
       "visibleGenes": "armor",
       "baskets": [
-        { "label": "Drakes with no armor plates", "alleles": ["a-a"] },
+        { "label": "Drakes without armor plates", "alleles": ["a-a"] },
         { "label": "Drakes with three armor plates", "alleles": ["A1-a", "a-A1"] },
         { "label": "Drakes with five armor plates", "alleles": ["A1-A1"] }
       ]
@@ -671,7 +671,7 @@
         "genes": "metallic, wings, forelimbs, hindlimbs, tail, color, black, dilute, nose, bogbreath"
       }
     },
-    "gamete-game-test": {
+    "gamete-selectSpermEgg-starterTraits": {
       "comment": "*** Level 4, Mission 1.3: Egg Breeding (select gametes to match drakes) ***",
       "container": "FVContainer",
       "template": "FVEggGame",
@@ -680,16 +680,16 @@
       "instructions": "Match the target drakes!",
       "showUserDrake": true,
       "mother":{
-        "alleles": "w-W, M-m, fl-, hl-, T-T, h-h, C-C, A1-A1, B-B, D-D, rh-rh, Bog-Bog",
+        "alleles": "w-W, M-m, fl-, hl-, T-T, H-h, C-C, a-A1, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 1
       },
       "father": {
-        "alleles": "w-W, m-m, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+        "alleles": "w-W, m-m, T-T, h-H, A1-a, C-C, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 0
       },
       "gameteCounts": [[2, 1], [1, 3], [4, 4]],
       "targetDrakes": [{}, {}, {}],
-      "visibleGenes": "metallic, wings, forelimbs, hindlimbs"
+      "visibleGenes": "wings, forelimbs, hindlimbs, armor, horns"
     },
   },
 
@@ -874,6 +874,22 @@
           }
         ]
       },
+
+      {
+        "name": "Level 13",
+        "missions": [
+          {
+            "name": "Mission 1.1",
+            "challenges": [
+              {
+                "name": "Challenge 1.1.1",
+                "id": "gamete-selectSpermEgg-starterTraits"
+              }
+            ]
+          }
+        ]
+      },
+
     ]
   }
 }
