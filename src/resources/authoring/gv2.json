@@ -370,7 +370,7 @@
       "instructions": "Create 5 different baby drakes!",
       "showUserDrake": true,
       "mother":{
-        "alleles": "w-W, M-m, fl-, hl-, T-T, h-, C-C, A1-a, B-B, D-D, rh-rh, Bog-Bog",
+        "alleles": "w-W, M-M, fl-, hl-, T-T, h-, C-C, A1-a, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 1
       },
       "father": {
@@ -389,7 +389,7 @@
       "showUserDrake": true,
       "targetDrakes": [{},{},{}],
       "mother":{
-        "alleles": "w-W, M-m, fl-, hl-, T-T, h-, C-C, A1-a, B-B, D-D, rh-rh, Bog-Bog",
+        "alleles": "w-W, M-M, fl-, hl-, T-T, h-, C-C, A1-a, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 1
       },
       "father": {
@@ -687,8 +687,8 @@
         "alleles": "w-W, m-m, T-T, h-H, A1-a, C-C, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 0
       },
-      "gameteCounts": [[2, 1], [1, 3], [4, 4]],
-      "targetDrakes": [{}, {}, {}],
+      "gameteCounts": [[3, 1], [1, 3], [3, 3], [3, 3]],
+      "targetDrakes": [{}, {}, {}, {}],
       "visibleGenes": "wings, forelimbs, hindlimbs, armor, horns"
     },
   },

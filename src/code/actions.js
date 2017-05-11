@@ -382,6 +382,7 @@ export function submitDrake(targetDrakeIndex, userDrakeIndex, correct, incorrect
           label: "~BUTTON.TRY_AGAIN",
           action: incorrectAction || "dismissModalDialog"
         },
+        top: "65%"
       };
     }
     dispatch(showModalDialog(dialog));

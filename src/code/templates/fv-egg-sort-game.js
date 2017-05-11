@@ -96,7 +96,7 @@ let animationEvents = {
               topOffset = -28;
         appendAnimation('hatchDrakeInBasket',
           <NewEggHatch
-              organism={animatingDrake} scale={scale}
+              organism={animatingDrake} scale={scale} duration={500}
               initial={{ id: `basket-${targetBasketIndex}`, leftOffset, topOffset }}
               initialStyle={{ position: "fixed", size: EGG_IMAGE_WIDTH_MEDIUM }}
               onEnd={function() { animationFinish(animationEvents.hatchDrakeInBasket.id); }}

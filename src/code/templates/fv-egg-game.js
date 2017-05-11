@@ -815,6 +815,9 @@ export default class FVEggGame extends Component {
 
     if (newChallenge || newTrialInChallenge || gametesReset) {
       if (newChallenge) {
+        if (!this.freshLoad) {
+          location.reload();
+        }
         challengeDidChange = true;
         this.setState({ animatingGametes: null, animatingGametesInPools: [0, 0],
                         animation: "complete", isIntroComplete: false });
@@ -867,6 +870,8 @@ export default class FVEggGame extends Component {
   activeSelectionAnimations = 0;
 
   selectChromosomes(sex, speed, chromEntries, onFinish) {
+    this.freshLoad = false;
+
     // onFinish is only used by animated auto-selection
     const isTriggeredByUser = !onFinish,
           { scale } = this.props;
@@ -1225,6 +1230,7 @@ export default class FVEggGame extends Component {
   }
 
   componentDidMount() {
+    this.freshLoad = true;
     this.updateComponentLayout();
   }
 
