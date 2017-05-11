@@ -793,6 +793,7 @@ export default class FVEggGame extends Component {
   componentWillMount() {
     _this = this;
     challengeDidChange = true;
+    chromosomeDisplayStyle = {display: "none"},
     resetAnimationEvents({ showStaticGametes: false,
                           showHatchAnimation: this.props.showUserDrake,
                           clearAnimatedComponents: true,
@@ -1150,6 +1151,24 @@ export default class FVEggGame extends Component {
                                                       }}  />;
     }
 
+    function createGametes() {
+      console.log("make gametes");
+      _setTimeout( () => {
+        // first animation - show gametes
+        animationEvents.showGametes.animate();
+      }, 0);
+      challengeDidChange = false;
+    }
+
+    function createGametesButton(isGameteChallenge, challengeDidChange) {
+      if (isGameteChallenge && challengeDidChange) {
+        // Make a button for the first challenge in a series
+        return <div onClick={createGametes} className="gamete-create-button">GENERATE GAMETES</div>;
+      } else {
+        return null;
+      }
+    }
+
     return (
       <div className={classNames("", {matching: isMatchingChallenge})} id="egg-game">
         <div className="columns centered">
@@ -1168,6 +1187,7 @@ export default class FVEggGame extends Component {
                                   handleHatchingComplete={animationEvents.hatch.onFinish}
                                   isHatchingComplete={animationEvents.hatch.complete}
                                   onBreed={handleFertilize} />
+            {createGametesButton(isSelectingGametes, challengeDidChange)}
             <div className={ gametesClass }>
               <div className='half-genome half-genome-left' id="mother-gamete-genome">
                 { ovumView }
@@ -1219,7 +1239,7 @@ export default class FVEggGame extends Component {
       left: father.left
     };
 
-    if (challengeDidChange) {
+    if (challengeDidChange && (this.props.interactionType !== "select-gametes" || this.props.trial > 0)) {
       // animate the gametes moving from parents after page has rendered
       _setTimeout( () => {
         // first animation - show gametes
@@ -1239,6 +1259,7 @@ export default class FVEggGame extends Component {
   }
 
   componentWillUnmount() {
+    this.props.onResetGametes();
     _this = null;
     resetAnimationEvents();
   }

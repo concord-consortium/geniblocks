@@ -78,13 +78,18 @@ const ChromosomeView = ({chromosome, chromosomeDescriptor, ChromosomeImageClass=
     }
   };
 
+  let labelStyle = {};
+  if (displayStyle.display === "none") {
+    labelStyle = {display: "none"};
+  }
+
   return (
     <div className="geniblocks chromosome-container" onClick={ handleSelect } >
       <div className={ containerClass }>
         <div className="chromosome-allele-container" id={chromId} style={displayStyle}>
           <ChromosomeImageClass small={small} empty={empty} bold={selected} chromosomeDescriptor={chromosomeDescriptor}/>
         </div>
-        <div className="labels">
+        <div className="labels" style={labelStyle}>
           { labels }
         </div>
       </div>
