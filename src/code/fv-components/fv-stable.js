@@ -17,6 +17,7 @@ const FVStableView = ({className, orgs, idPrefix='organism-', height=218, onClic
     if (onClick) onClick(index, id, org);
   }
 
+  orgs.reverse(); // So that drakes don't move once placed
   let stableDrakeWidth = height * (5/8),
       stableDrakeViews = orgs.map((org, index) => {
         return (
