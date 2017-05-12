@@ -10,10 +10,11 @@ import {getChromosomeDescriptor} from '../fv-components/fv-chromosome-image';
  */
 const GenomeView = ({org, className="", ChromosomeImageClass, chromosomes, species, userChangeableGenes=[], visibleGenes=[], hiddenAlleles=[], editable=true, showLabels=true, labelEmptyChromosomes=false, selectedChromosomes={}, small=false, orgName, displayStyle, onAlleleChange, onChromosomeSelected, chromosomeHeight}) => {
   // Prefer explicitly passed variables to those extracted from the passed organism
-  let displayChromosomes = chromosomes || org.genetics.genotype.chromosomes;
+  chromosomes = chromosomes || org.genetics.genotype.chromosomes;
 
+  let fullChromosomes;
   if (labelEmptyChromosomes && org) {
-    displayChromosomes = org.genetics.genotype.chromosomes;
+    fullChromosomes = org.genetics.genotype.chromosomes;
   }
   species = species || org.species;
 
@@ -26,7 +27,7 @@ const GenomeView = ({org, className="", ChromosomeImageClass, chromosomes, speci
           empty = false;
       if (labelEmptyChromosomes && !chromosome) {
         empty = true;
-        chromosome = displayChromosomes[chromosomeName][side];
+        chromosome = fullChromosomes[chromosomeName][side];
       }
       pairs.push(
         <ChromosomeView
