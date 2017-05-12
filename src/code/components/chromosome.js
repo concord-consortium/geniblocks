@@ -25,11 +25,10 @@ import {getChromosomeDescriptor} from '../fv-components/fv-chromosome-image';
  * @param {number} height - the height in pixels of the rendered chromosome
  * @param {object} displayStyle - this style will be applied to the actual chromosome, as opposed to its labels
  */
-const ChromosomeView = ({chromosome, chromosomeDescriptor, ChromosomeImageClass=ChromosomeImageView, userChangeableGenes = [], visibleGenes = [], hiddenAlleles = [], small = false, editable = true, selected = false, onAlleleChange, onChromosomeSelected, showLabels = true, labelsOnRight = true, orgName, height, displayStyle = {}}) => {
+const ChromosomeView = ({chromosome, chromosomeDescriptor, ChromosomeImageClass=ChromosomeImageView, userChangeableGenes = [], visibleGenes = [], hiddenAlleles = [], small = false, editable = true, selected = false, onAlleleChange, onChromosomeSelected, showLabels = true, labelsOnRight = true, empty = false, orgName, height, displayStyle = {}}) => {
   chromosomeDescriptor = chromosomeDescriptor || getChromosomeDescriptor(chromosome);
 
   var containerClass = "items",
-      empty = false,
       labels;
 
   if (!labelsOnRight) {
@@ -116,7 +115,8 @@ ChromosomeView.propTypes = {
   onAlleleChange: PropTypes.func,
   onChromosomeSelected: PropTypes.func,
   orgName: PropTypes.string,
-  height: PropTypes.number
+  height: PropTypes.number,
+  empty: PropTypes.bool
 };
 
 export default ChromosomeView;
