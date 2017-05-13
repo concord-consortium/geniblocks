@@ -8,6 +8,9 @@ import FVChallengeContainer from './fv-challenge-container';
 import AuthoringUtils from '../utilities/authoring-utils';
 
 function hasChangedRouteParams(currentRouteSpec, routeParams) {
+  if (!currentRouteSpec) {
+    return true;
+  }
   const { level: currLevel, mission: currMission, challenge: currChallenge } = currentRouteSpec,
         currLevelStr = String(currLevel + 1),
         currMissionStr = String(currMission + 1),
@@ -37,7 +40,7 @@ class ChallengeContainerSelector extends Component {
       level: PropTypes.number,
       mission: PropTypes.number,
       challenge: PropTypes.number
-    }).isRequired,
+    }),
     // Potentially updated, incoming route parameters
     routeParams: PropTypes.shape({
       level: PropTypes.string,
@@ -77,8 +80,11 @@ class ChallengeContainerSelector extends Component {
   }
 
   render() {
-    const { authoring, currentRouteSpec, ...otherProps } = this.props,
-          authoredChallenge = AuthoringUtils.getChallengeDefinition(authoring, currentRouteSpec),
+    const { authoring, currentRouteSpec, ...otherProps } = this.props;
+    if (!currentRouteSpec) {
+      return null;
+    }
+    const authoredChallenge = AuthoringUtils.getChallengeDefinition(authoring, currentRouteSpec),
           containerName = authoredChallenge.container,
           ContainerClass = mapContainerNameToContainer(containerName);
     return (

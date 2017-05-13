@@ -21,7 +21,7 @@ function initialState() {
             visibleGenes: [],
             hiddenAlleles: [],
             trial: 0,
-            routeSpec: {level: 0, mission: 0, challenge: 0},
+            routeSpec: null,
             challenges: 1,
             challengeProgress: {},
             errors: 0,

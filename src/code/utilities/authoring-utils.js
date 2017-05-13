@@ -6,6 +6,9 @@ export default class AuthoringUtils {
   }
 
   static getChallengeId(authoring, routeSpec) {
+    if (!routeSpec) {
+      return null;
+    }
     const levels = authoring.application.levels,
           missions = levels ? levels[routeSpec.level].missions : null,
           challenges = missions ? missions[routeSpec.mission].challenges : null,
