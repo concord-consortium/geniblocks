@@ -1071,6 +1071,7 @@ body {
   height: 111px;
   background-image: url("../resources/fablevision/layout-c/egg_chrom_inactive.png");
   cursor: pointer;
+  margin-top: -18px;
   z-index: 2;
 }
 .fv-layout-c #egg-game .interactive-gamete.egg.selected {
@@ -1081,6 +1082,7 @@ body {
   width: 105px;
   height: 105px;
   background-image: url("../resources/fablevision/layout-c/sperm_chrom_inactive.png");
+  margin-top: -12px;
   cursor: pointer;
   z-index: 2;
 }
@@ -1094,11 +1096,11 @@ body {
 }
 .fv-layout-c #egg-game #mother-gamete-pen {
   left: 525px;
-  bottom: 400px;
+  bottom: 434px;
 }
 .fv-layout-c #egg-game #father-gamete-pen {
   right: 250px;
-  bottom: 400px;
+  bottom: 440px;
 }
 .egg {
   position: relative;
