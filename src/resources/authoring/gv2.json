@@ -680,14 +680,14 @@
       "instructions": "Match the target drakes!",
       "showUserDrake": true,
       "mother":{
-        "alleles": "w-W, M-m, fl-, hl-, T-T, H-h, C-C, a-A1, B-B, D-D, rh-rh, Bog-Bog",
+        "alleles": "w-W, M-M, fl-, hl-, T-T, H-h, C-C, a-A1, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 1
       },
       "father": {
         "alleles": "w-W, m-m, T-T, h-H, A1-a, C-C, B-B, D-D, rh-rh, Bog-Bog",
         "sex": 0
       },
-      "gameteCounts": [[3, 1], [1, 3], [3, 3], [3, 3]],
+      "gameteCounts": [[3, 1], [1, 3], [3, 3], [5, 5]],
       "targetDrakes": [{}, {}, {}, {}],
       "visibleGenes": "wings, forelimbs, hindlimbs, armor, horns"
     },
@@ -838,7 +838,7 @@
             "challenges": [
               {
                 "name": "Challenge 1.1.1",
-                "id": "eggDrop-hornsWingsArmor"
+                "id": "gamete-5drakes-starterTraits"
               }
             ]
           }
@@ -853,21 +853,6 @@
             "challenges": [
               {
                 "name": "Challenge 1.1.1",
-                "id": "gamete-5drakes-starterTraits"
-              }
-            ]
-          }
-        ]
-      },
-
-      {
-        "name": "Level 12",
-        "missions": [
-          {
-            "name": "Mission 1.1",
-            "challenges": [
-              {
-                "name": "Challenge 1.1.1",
                 "id": "gamete-targetMatch-starterTraits"
               }
             ]
@@ -876,7 +861,7 @@
       },
 
       {
-        "name": "Level 13",
+        "name": "Level 12",
         "missions": [
           {
             "name": "Mission 1.1",
