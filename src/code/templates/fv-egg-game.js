@@ -472,8 +472,7 @@ var animationEvents = {
                   width: 8, height: 20 };
       }
       let components = [],
-          positions = [],
-          opacity = { start: 1.0, end: 0.5 };
+          positions = [];
       for (let i = 0; i < parentGameteChromEls.length; ++i) {
         const parentGameteChromEl = parentGameteChromEls[i],
               srcChromBounds = unscaleProperties(parentGameteChromEl.getBoundingClientRect(), _this.props.scale),
@@ -485,15 +484,8 @@ var animationEvents = {
                         targetPositionRect: getDstChromBounds(i), endSize: 0.2 });
         ++animationEvents.moveChromosomesToGamete.activeCount;
       }
-      if (!debugSkipRandomGameteAnimation) {
-        animateMultipleComponents(components, positions, opacity, speed,
-                                  animationEvents.moveChromosomesToGamete.id,
-                                  animationEvents.moveChromosomesToGamete.onFinish);
-      }
-      else {
-        for (let i = animationEvents.moveChromosomesToGamete.activeCount; i >= 0; --i) {
-          animationEvents.moveChromosomesToGamete.onFinish(animationEvents.moveChromosomesToGamete.id);
-        }
+      for (let i = animationEvents.moveChromosomesToGamete.activeCount; i >= 0; --i) {
+        animationEvents.moveChromosomesToGamete.onFinish(animationEvents.moveChromosomesToGamete.id);
       }
       let animatingGametes = _this.state.animatingGametes || initialAnimGametes(),
           createdGametes = _this.state.createdGametes || [0, 0];
@@ -534,7 +526,7 @@ var animationEvents = {
             animatingGametesInPools = _this.state.animatingGametesInPools,
             gameteCount = animatingGametesInPools ? animatingGametesInPools[sex] : 0,
             loc = getGameteLocationInPen(sex, gameteCount),
-            dstGameteBounds = { top: gametePoolBounds.top + loc.top - 35,
+            dstGameteBounds = { top: gametePoolBounds.top + loc.top - 25,
                                 left: gametePoolBounds.left + loc.left - 35,
                                 width: srcGameteBounds.width / 2,
                                 height: srcGameteBounds.height / 2 },
