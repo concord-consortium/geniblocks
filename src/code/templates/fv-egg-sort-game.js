@@ -335,7 +335,7 @@ export default class FVEggSortGame extends Component {
       setTimeout(function() {
         // Delay the submit until the egg is finished hatching
         onSubmitEggForBasket(eggDrakeIndex, basketIndex, isSubmittedEggCorrect, isChallengeComplete);
-      }, 4000);
+      }, 3000);
     }
     this.setBasketSelection([basketIndex]);
   }
