@@ -628,6 +628,102 @@
         "genes": "metallic, wings, forelimbs, hindlimbs, tail, color, black, dilute, nose, bogbreath"
       }
     },
+    "allele-targetMatch-visible-simpleColors": {
+      "container": "FVContainer",
+      "template": "FVGenomeChallenge",
+      "challengeType": "match-target",
+      "randomizeTrials": true,
+      "instructions": "Match the target drake!",
+      "showUserDrake": true,
+      "initialDrake": [
+        {
+          "alleles": "M-m, Bog-, D-, rh-rh",
+        },
+        {
+          "alleles": "c-c, Bog-, D-, rh-rh",
+        },
+        {
+          "alleles": "B-b, Bog-, D-, rh-rh",
+        },
+        {
+          "alleles": "m-m, Bog-, D-, rh-rh",
+        },
+        {
+          "alleles": "C-c, Bog-, D-, rh-rh",
+        }
+      ],
+      "targetDrakes": [
+        {
+          "alleles": "m-m, C-C, B-B",
+        },
+        {
+          "alleles": "M-m, C-C, B-B",
+        },
+        {
+          "alleles": "m-m, C-C, b-b",
+        },
+        {
+          "alleles": "M-m, C-C, B-B",
+        },
+        {
+          "alleles": "m-m, c-c, B-B",
+        }
+      ],
+      "userChangeableGenes": "metallic, color, black",
+      "visibleGenes": "forelimbs, hindlimbs, wings, armor, horns",
+      "linkedGenes": {
+        "drakes": [0, 1],
+        "genes": "wings, forelimbs, armor, horns, hindlimbs, tail, dilute, nose, bogbreath"
+      }
+    },
+    "allele-targetMatch-hidden-simpleColors": {
+      "container": "FVContainer",
+      "template": "FVGenomeChallenge",
+      "challengeType": "match-target",
+      "randomizeTrials": true,
+      "showUserDrake": false,
+      "instructions": "Match the target drake!",
+      "initialDrake": [
+        {
+          "alleles": "M-m, Bog-, D-, rh-rh",
+        },
+        {
+          "alleles": "c-c, Bog-, D-, rh-rh",
+        },
+        {
+          "alleles": "B-b, Bog-, D-, rh-rh",
+        },
+        {
+          "alleles": "m-m, Bog-, D-, rh-rh",
+        },
+        {
+          "alleles": "C-c, Bog-, D-, rh-rh",
+        }
+      ],
+      "targetDrakes": [
+        {
+          "alleles": "m-m, C-C, B-B",
+        },
+        {
+          "alleles": "M-m, C-C, B-B",
+        },
+        {
+          "alleles": "m-m, C-C, b-b",
+        },
+        {
+          "alleles": "M-m, C-C, B-B",
+        },
+        {
+          "alleles": "m-m, c-c, B-B",
+        }
+      ],
+      "userChangeableGenes": "metallic, color, black",
+      "visibleGenes": "forelimbs, hindlimbs, wings, armor, horns",
+      "linkedGenes": {
+        "drakes": [0, 1],
+        "genes": "wings, forelimbs, armor, horns, hindlimbs, tail, dilute, nose, bogbreath"
+      }
+    },
     "allele-targetMatch-hidden-armorHorns": {
       "comment": "*** Level 2, Mission 3.2: Genome Challenge (armor intro, user drake hidden) ***",
       "container": "FVContainer",
@@ -875,6 +971,36 @@
         ]
       },
 
+      {
+        "name": "Level 13",
+        "missions": [
+          {
+            "name": "Mission 1.1",
+            "challenges": [
+              {
+                "name": "Challenge 1.1.1",
+                "id": "allele-targetMatch-visible-simpleColors"
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "name": "Level 14",
+        "missions": [
+          {
+            "name": "Mission 1.1",
+            "challenges": [
+              {
+                "name": "Challenge 1.1.1",
+                "id": "allele-targetMatch-hidden-simpleColors"
+              }
+            ]
+          }
+        ]
+      },
+      
     ]
   }
 }

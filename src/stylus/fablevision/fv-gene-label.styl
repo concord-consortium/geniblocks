@@ -34,16 +34,22 @@
   flex-direction: row
 
 .geniblocks.fv-gene-label.allele.noneditable
+  &.m
+    z-index: 8
   &.w
-    z-index: 6
+    z-index: 7
   &.h
+    z-index: 6
+  &.c
     z-index: 5
-  &.fl
+  &.b
     z-index: 4
-  &.hl
+  &.fl
     z-index: 3
-  &.a
+  &.hl
     z-index: 2
+  &.a
+    z-index: 1
 
 .fv-layout
 
@@ -112,14 +118,14 @@
     .fv-gene-label-text
       margin-top: -21px
 
-  .h
+  .w
     .line
-      margin-top: 1px
-      width: 21px 
+      margin-top: -7px
+      width: 25px 
     #mountNode
-      margin-top: 20px
+      margin-top: -17px
     .fv-gene-label-text
-      margin-top: 6px
+      margin-top: -21px
 
   .a 
     .line
@@ -129,6 +135,44 @@
       margin-top: 31px
     .fv-gene-label-text
       margin-top: 19px
+
+  .c 
+    .line
+      margin-top: -7px
+      width: 25px 
+    #mountNode
+      margin-top: -17px
+    .fv-gene-label-text
+      margin-top: 19px
+
+  .b
+    .line
+      margin-top: 3px
+      width: 25px 
+    #mountNode
+      margin-top: 7px
+    .fv-gene-label-text
+      margin-top: 19px
+
+  .ltl .w .line
+    transform: rotate(-35deg)
+    left: -30px
+    top: 12px
+
+  .rtl .w .line
+    transform: rotate(35deg)
+    right: -29px
+    top: 12px
+
+  .ltl .c .line
+    transform: rotate(-35deg)
+    left: -30px
+    top: 12px
+
+  .rtl .c .line
+    transform: rotate(35deg)
+    right: -29px
+    top: 12px
 
   .ltl .fl .line
     transform: rotate(-35deg)
@@ -140,14 +184,6 @@
     right: -29px
     top: 12px
 
-  .ltl .h .line
-    transform: rotate(15deg)
-    top: 15px
-
-  .rtl .h .line
-    transform: rotate(-15deg)
-    top: 15px
-
   .ltl .a .line
     transform: rotate(42deg)
     top: 15px
@@ -155,5 +191,15 @@
 
   .rtl .a .line
     transform: rotate(-42deg)
+    top: 15px
+    right: -30px
+
+  .ltl .b .line
+    transform: rotate(25deg)
+    top: 15px
+    left: -30px
+
+  .rtl .b .line
+    transform: rotate(-25deg)
     top: 15px
     right: -30px
