@@ -532,24 +532,22 @@
       "challengeType": "match-target",
       "instructions": "Match the target drake!",
       "showUserDrake": true,
-      "randomizeTrials": true,
-      "initialDrake": {
-        "alleles": "Bog-, D-, rh-rh",
-        "sex": 1
+      "trialGenerator": {
+        "type": "all-combinations",
+        "baseDrake": "M-M, T-T, h-h, A1-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+        "initialDrakeCombos": [
+          ["W-W",   "W-w",   "w-W",   "w-w"],
+          ["Fl-Fl", "Fl-fl", "fl-Fl", "fl-fl"],
+          ["Hl-Hl", "Hl-hl", "hl-Hl", "hl-hl"]
+        ],
+        "targetDrakeCombos": [
+          ["W-W",   "w-w"],
+          ["Fl-Fl", "fl-fl"],
+          ["Hl-Hl", "hl-hl"]
+        ]
       },
-      "targetDrakes": [{
-        "alleles": "",
-        "sex": 0
-      },
-      {
-        "alleles": "",
-        "sex": 1
-      }],
-      "userChangeableGenes": "wings, forelimbs, hindlimbs",
-      "linkedGenes": {
-        "drakes": [0, 1],
-        "genes": "metallic, tail, horns, color, black, dilute, armor, nose, bogbreath"
-      }
+      "targetDrakes": [{},{}],
+      "userChangeableGenes": "wings, forelimbs, hindlimbs"
     },
     "allele-targetMatch-hidden-simpleDom": {
       "comment": "*** Level 2, Mission 1.2: Genome Challenge (basics intro, user drake hidden) ***",
