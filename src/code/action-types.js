@@ -8,6 +8,7 @@ const actionTypes = {
   ALLELE_CHANGED: "Allele changed",
   SEX_CHANGED: "Sex changed",
   FERTILIZED: "Fertilized",
+  CLUTCH_BRED: "Clutch bred",
   HATCHED: "Hatched",
   EGG_SUBMITTED: "Egg submitted",
   EGG_ACCEPTED: "Egg accepted",

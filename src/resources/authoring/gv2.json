@@ -379,6 +379,24 @@
       },
       "visibleGenes": "wings, forelimbs, hindlimbs, armor, horns"
     },
+    "clutch-5drakes-starterTraits": {
+      "container": "FVContainer",
+      "template": "ClutchGame",
+      "challengeType": "create-unique",
+      "interactionType": "select-chromosomes",
+      "instructions": "Create 5 different baby drakes!",
+      "showUserDrake": true,
+      "targetDrakes": [{},{},{}],
+      "mother":{
+        "alleles": "w-W, M-M, fl-, hl-, T-T, h-, C-C, A1-a, B-B, D-D, rh-rh, Bog-Bog",
+        "sex": 1
+      },
+      "father": {
+        "alleles": "w-W, m-m, T-T, h-, a-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
+        "sex": 0
+      },
+      "visibleGenes": "wings, forelimbs, hindlimbs, armor, horns"
+    },
     "gamete-targetMatch-starterTraits": {
       "comment": "*** FV Test Level 2 ***",
       "container": "FVContainer",
@@ -869,6 +887,21 @@
               {
                 "name": "Challenge 1.1.1",
                 "id": "gamete-selectSpermEgg-starterTraits"
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "name": "Level 13",
+        "missions": [
+          {
+            "name": "Mission 1.1",
+            "challenges": [
+              {
+                "name": "Challenge 1.1.1",
+                "id": "clutch-5drakes-starterTraits"
               }
             ]
           }

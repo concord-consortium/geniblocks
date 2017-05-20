@@ -5,18 +5,12 @@ import AnimatedSprite from '../components/animated-sprite';
 import classNames from 'classnames';
 import unscaleProperties from '../utilities/unscale-properties';
 
-function isCompleteChromosomeSet(chromosomes) {
-  return chromosomes && (chromosomes.length >= 3) &&
-          chromosomes.every((ch) => ch != null);
-}
-
 class BreedButtonAreaView extends React.Component {
 
   static propTypes = {
     challengeClasses: PropTypes.string,
     scale: PropTypes.number,
-    ovumChromosomes: PropTypes.array,
-    spermChromosomes: PropTypes.array,
+    isBreedButtonEnabled: PropTypes.bool,
     userDrake: PropTypes.object,
     showUserDrake: PropTypes.bool,
     userDrakeHidden: PropTypes.bool,
@@ -28,13 +22,9 @@ class BreedButtonAreaView extends React.Component {
   };
 
   render() {
-    const { challengeClasses, ovumChromosomes, spermChromosomes,
+    const { challengeClasses, isBreedButtonEnabled,
           userDrake, showUserDrake, userDrakeHidden,
           isHatchingInProgress, isHatchingComplete, onBreed } = this.props,
-          // ovumClasses = classNames('ovum', challengeClasses),
-          // spermClasses = classNames('sperm', challengeClasses),
-          isBreedButtonEnabled = isCompleteChromosomeSet(ovumChromosomes) &&
-                                  isCompleteChromosomeSet(spermChromosomes),
           eggClasses = classNames('egg-image', challengeClasses),
           eggImageView = <div className={classNames('egg-wrapper', challengeClasses)}> 
                            <AnimatedSprite frames={16} frameWidth={1052} onEnd={this.props.handleHatchingComplete} 

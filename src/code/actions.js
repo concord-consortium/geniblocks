@@ -589,6 +589,13 @@ export function fertilize(gamete1, gamete2) {
   };
 }
 
+export function breedClutch(clutchSize) {
+  return {
+    type: actionTypes.CLUTCH_BRED,
+    clutchSize
+  };
+}
+
 export function hatch() {
   return {
     type: actionTypes.HATCHED,

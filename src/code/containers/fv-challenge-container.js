@@ -6,7 +6,7 @@ import templates from '../templates';
 import BottomHUDView from '../fv-components/bottom-hud';
 import TopHUDView from '../fv-components/top-hud';
 import { changeAllele, changeSex, submitDrake, navigateToNextChallenge,
-        keepOffspring, fertilize, hatch, completeChallenge,
+        keepOffspring, fertilize, breedClutch, hatch, completeChallenge,
         changeBasketSelection, changeDrakeSelection, submitEggForBasket } from '../actions';
 import { addGameteChromosome, resetGametes,
         addGametesToPool, selectGameteInPool, resetGametePools } from '../modules/gametes';
@@ -92,6 +92,7 @@ function mapDispatchToProps(dispatch) {
     onAddGametesToPool: (index, gametes) => dispatch(addGametesToPool(index, gametes)),
     onSelectGameteInPool: (sex, index) => dispatch(selectGameteInPool(sex, index)),
     onFertilize: (gamete1, gamete2) => dispatch(fertilize(gamete1, gamete2)),
+    onBreedClutch: (clutchSize) => dispatch(breedClutch(clutchSize)),
     onHatch: () => dispatch(hatch()),
     onResetGametes: (incrementMoves) => dispatch(resetGametes(incrementMoves)),
     onResetGametePools: () => dispatch(resetGametePools()),
