@@ -1,101 +1,24 @@
 import React, { Component, PropTypes } from 'react';
-import { assign, clone, cloneDeep, shuffle, range } from 'lodash';
+import { assign, clone, shuffle, range } from 'lodash';
 import classNames from 'classnames';
-import { motherGametePool, fatherGametePool, gametePoolSelector,
-        motherSelectedGameteIndex, fatherSelectedGameteIndex } from '../modules/gametes';
+import { gametePoolSelector, motherSelectedGameteIndex, fatherSelectedGameteIndex } from '../modules/gametes';
 import ParentDrakeView from '../fv-components/parent-drake';
 import GenomeView from '../components/genome';
-import GametePenView, { getGameteLocation } from '../components/gamete-pen';
+import GametePenView from '../components/gamete-pen';
 import BreedButtonAreaView from '../fv-components/breed-button-area';
 import FVStableView from '../fv-components/fv-stable';
 import FVGameteImageView from '../fv-components/fv-gamete-image';
-import AnimatedComponentView from '../components/animated-component';
 import TargetDrakeView from '../fv-components/target-drake';
 import FVChromosomeImageView from '../fv-components/fv-chromosome-image';
 import InteractiveGamete from '../fv-components/interactive-gamete';
-import TimerSet from '../utilities/timer-set';
-import unscaleProperties from '../utilities/unscale-properties';
 import t from '../utilities/translate';
-
-// debugging options to shorten animation/randomization for debugging purposes
-// IMPORTANT: remember to set these back to their defaults (e.g. false, false, 0) before committing
-const debugSkipIntroGameteAnimation = true,  // set to true to skip intro gamete animation
-      debugSkipRandomGameteAnimation = false, // set to true to skip randomized gamete animation
-      debugSkipFirstGameteStage = false,      // set to true to skip the one-by-one animation stage
-      debugTotalGameteCount = 0;              // non-zero value stops randomization after # gametes
 
       // Determines (with some random perturbation) the initial time interval in msec for the
       // slot machine animation. Acceleration (delta) is then applied to this base interval.
-const slotMachineBaseInterval = 30, // msec
-      // The delta applied to the interval on each iteration
-      slotMachineIntervalAcceleration = 15, // msec
-      // # of high-speed iterations before deceleration begins
-      slotMachineInitialIterations = 8,
-      // total duration of slot machine animation
-      slotMachineAnimationDuration = 2500,  // msec
-      // time from beginning of challenge to initial animation
-      delayStartShowGametesAnimation = 1000,  // msec
-      // pause after slot machine selection of chromosome before showing selection in half-genome
-      delayStartAutoSelectChromosome = 500, // msec
-      // pause after user selection of chromosome before showing selection in half-genome
-      delayStartUserSelectChromosome = 1000,  // msec
-      // animation speed used for most animations during early animation stages
-      defaultAnimationSpeed = 'fast',
-      // animation speed used for most animations during later animation stages
-      enhancedAnimationSpeed = 'noWobble',
-      // speed of animation of chromosomes from parent genome to half-genome
-      selectChromosomesAnimationSpeed = 'medium',
-      // wait for animating chromosomes to arrive at half-genome before showing selection and labels
-      delayShowSelectedChromosomeLabels = 2000, // msec
-      // pause after animating chromosomes to half-genome before animating to gamete
-      delayStartMoveChromosomesToGamete = 0,  // msec
-      durationFertilizationAnimation = 3000,  // msec
+const defaultAnimationSpeed = 'fast',
       durationHatchAnimation = 1333;  // msec
 
-function animatedChromosomeImageHOC(WrappedComponent) {
-  return class extends Component {
-    static propTypes = {
-      displayStyle: PropTypes.object,
-      yChromosome: PropTypes.bool
-    }
-
-    render() {
-      const { displayStyle, ...otherProps } = this.props,
-            { yChromosome } = this.props,
-            defaultWidth = 19,
-            defaultHeight = yChromosome ? 62 : 90,
-            sizeRatio = displayStyle.size != null ? displayStyle.size : 1,
-            width = defaultWidth * sizeRatio,
-            height = defaultHeight * sizeRatio;
-      return <WrappedComponent width={width} height={height} {...otherProps} />;
-    }
-  };
-}
-const AnimatedChromosomeImageView = animatedChromosomeImageHOC(FVChromosomeImageView);
-
-// a "reasonable" lookup function for the two gametes
-function lookupGameteChromosomeDOMElement(sex, chromosomeName) {
-  let wrapperId = sex === BioLogica.MALE ? "father-gamete-genome" : "mother-gamete-genome",
-      wrapper = document.getElementById(wrapperId),
-      chromosomePositions = {"1": 0, "2": 1, "XY": 2};
-  let genomeWrapper = wrapper.getElementsByClassName("genome")[0];
-  return genomeWrapper.querySelectorAll(".fv-chromosome-image")[chromosomePositions[chromosomeName]];
-}
-
-function findBothElements(sex, name, el, scale=1){
-  let t = lookupGameteChromosomeDOMElement(sex, name);
-  let s = el.getElementsByClassName("chromosome-allele-container")[0]; // the image of the alleles inside the chromosome container
-  let positions = {
-    startPositionRect : unscaleProperties(s.getClientRects()[0], scale),
-    targetPositionRect: unscaleProperties(t.getClientRects()[0], scale)
-  };
-  return positions;
-}
-
 var timers = [];
-function _setTimeout(fn, delay) {
-  timers.push(setTimeout(fn, delay));
-}
 function clearTimeouts() {
   for (let timer of timers) {
     clearTimeout(timer);
@@ -104,28 +27,15 @@ function clearTimeouts() {
 
 var _this,
   animatedComponents = [],
-  animatedComponentToRender,
-  startDisplay, targetDisplay,
-  lastAnimatedComponentId = 0,
-  animationTimeline = {},
-  mother, father,
   authoredGameteCounts = [0, 0],
   targetDrakes = [],
   gameteLayoutConstants = [{}, {}],
   authoredDrakes = [],
   challengeDidChange = true,
-  ovumTarget, spermTarget,
-  animatedOvumView, animatedSpermView,
-
-  motherDrakeStart, motherGameteStart,
-  fatherDrakeStart, fatherGameteStart,
 
   gameteDisplayStyle = { display: "none" },
-  chromosomeDisplayStyle = {display: "none"},
 
-  showHatchAnimation = false,
   hatchSoundPlayed = false,
-  offsetTopDrake = 130, offsetTopGamete = 160,
   timerSet = null;
 
 function oneOf(array) {
@@ -133,488 +43,7 @@ function oneOf(array) {
   return array[Math.floor(array.length * Math.random())];
 }
 
-function initialAnimGametes() {
-  // gametes [0,1] represent the highlighted chromosomes in the parent genomes
-  // gametes [2,3] represent the highlighted chromosomes in the half-genomes (proto-child)
-  return [{}, {}, {}, {}];
-}
-
 var animationEvents = {
-  showGametes: { id: 0, count: 0, complete: false,
-    animate: function() {
-      let motherPositions = {
-          startPositionRect : motherDrakeStart,
-          targetPositionRect: motherGameteStart,
-          startSize: 0.3,
-          endSize: 0.3
-        };
-
-      let fatherPositions = {
-        startPositionRect : fatherDrakeStart,
-        targetPositionRect: fatherGameteStart,
-        startSize: 0.3,
-        endSize: 0.3
-      };
-
-      let displayStyleContainer = {animated: true, size: 0.3};
-      animatedOvumView  = <FVGameteImageView className="ovum" isEgg={true} displayStyle={displayStyleContainer} />;
-      animatedSpermView = <FVGameteImageView className="sperm" isEgg={false} displayStyle={displayStyleContainer} />;
-
-      let opacity = {
-        start: 1.0,
-        end: 1.0
-      };
-
-      // hide the static gametes while the animated gametes are visible
-      showStaticGametes(false);
-
-      if (!debugSkipIntroGameteAnimation) {
-        animateMultipleComponents([animatedOvumView, animatedSpermView],
-                                  [motherPositions, fatherPositions],
-                                  opacity, defaultAnimationSpeed,
-                                  animationEvents.showGametes.id,
-                                  animationEvents.showGametes.onFinish);
-      }
-      else {
-        animationEvents.showGametes.onFinish(animationEvents.showGametes.id);
-        animationEvents.showGametes.onFinish(animationEvents.showGametes.id);
-      }
-
-      _this.setState({animation:"showGametes"});
-    },
-    onFinish: function() {
-      if (++animationEvents.showGametes.count === 2){
-        animationEvents.showGametes.complete = true;
-        animatedComponents = [];
-        animationEvents.moveGametes.animate();
-        _this.setState({ animation: 'complete' });
-      }
-    }
-  },
-  moveGametes: { id: 1, count: 0, complete: false,
-    animate: function() {
-      let motherPositions = {
-          startPositionRect : motherGameteStart,
-          targetPositionRect: ovumTarget,
-          startSize: 0.3,
-          endSize: 1.0
-      };
-
-      let fatherPositions = {
-        startPositionRect : fatherGameteStart,
-        targetPositionRect: spermTarget,
-        startSize: 0.3,
-        endSize: 1.0
-      };
-
-      let opacity = {
-        start: 1.0,
-        end: 1.0
-      };
-
-      if (!debugSkipIntroGameteAnimation) {
-        animateMultipleComponents([animatedOvumView, animatedSpermView],
-                                  [motherPositions, fatherPositions],
-                                  opacity, defaultAnimationSpeed,
-                                  animationEvents.moveGametes.id,
-                                  animationEvents.moveGametes.onFinish);
-      }
-      else {
-        animationEvents.moveGametes.onFinish(animationEvents.moveGametes.id);
-        animationEvents.moveGametes.onFinish(animationEvents.moveGametes.id);
-      }
-
-      _this.setState({animation:"moveGametes"});
-    },
-    onFinish: function() {
-      if (++animationEvents.moveGametes.count === 2){
-        animatedComponents = [];
-        // show static gametes when move complete
-        showStaticGametes(true);
-        animationEvents.moveGametes.complete = true;
-        animationEvents.selectChromosome.ready = true;
-        // show gamete placeholders
-        chromosomeDisplayStyle = {};
-
-        // show gamete formation animation for gamete selection challenges
-        if (_this.props.interactionType === 'select-gametes')
-          animationEvents.randomizeChromosomes.animate();
-        else
-          _this.setState({ animation: "complete", isIntroComplete: true });
-      }
-    }
-  },
-  randomizeChromosomes: { id: 2, stages: [], count: 0, complete: false, ready: false,
-    animate: function() {
-      let stages = animationEvents.randomizeChromosomes.stages,
-          stageIndex = animationEvents.randomizeChromosomes.count,
-          // # of high-speed iterations before deceleration begins
-          initialIterations = slotMachineInitialIterations,
-          gametesCompleted = 0,
-          BOTH_SEXES = -1;
-
-      // add a stage which randomizes a single chromosome
-      function addChromAnimStage(sex, speed, chromName, sides) {
-        let stage = { type: 'chromosome', speed, gameteIndex: gametesCompleted,
-                      chroms: [{ sex, name: chromName, sides }] };
-        stages.push(stage);
-      }
-
-      // add a stage which randomizes one or two entire gametes
-      function addGenomeAnimStage(sex, speed) {
-        let stage = { type: 'chromosome', speed, chroms: [], gameteIndex: gametesCompleted };
-        if ((sex === BioLogica.FEMALE) || (sex === BOTH_SEXES)) {
-          stage.chroms.push({ sex: BioLogica.FEMALE, name: '1', sides: ['a', 'b'] });
-          stage.chroms.push({ sex: BioLogica.FEMALE, name: '2', sides: ['a', 'b'] });
-          stage.chroms.push({ sex: BioLogica.FEMALE, name: 'XY', sides: ['x1', 'x2'] });
-        }
-        if ((sex === BioLogica.MALE) || (sex === BOTH_SEXES)) {
-          stage.chroms.push({ sex: BioLogica.MALE, name: '1', sides: ['a', 'b'] });
-          stage.chroms.push({ sex: BioLogica.MALE, name: '2', sides: ['a', 'b'] });
-          stage.chroms.push({ sex: BioLogica.MALE, name: 'XY', sides: ['x', 'y'] });
-        }
-        stages.push(stage);
-      }
-
-      // add a stage which animates the chromosomes to the gamete to the pool
-      function addGameteAnimStage(sex, speed) {
-        stages.push({ type: 'gamete', sex, speed });
-      }
-
-      if (!stages.length) {
-        if (!debugSkipFirstGameteStage) {
-          if (gametesCompleted < authoredGameteCounts[BioLogica.FEMALE]) {
-            // randomize mother's chromosomes one at a time
-            addChromAnimStage(BioLogica.FEMALE, defaultAnimationSpeed, '1', ['a', 'b']);
-            addChromAnimStage(BioLogica.FEMALE, defaultAnimationSpeed, '2', ['a', 'b']);
-            addChromAnimStage(BioLogica.FEMALE, defaultAnimationSpeed, 'XY', ['x1', 'x2']);
-            addGameteAnimStage(BioLogica.FEMALE, defaultAnimationSpeed);
-          }
-
-          if (gametesCompleted < authoredGameteCounts[BioLogica.MALE]) {
-            // randomize father's chromosomes one at a time
-            addChromAnimStage(BioLogica.MALE, defaultAnimationSpeed, '1', ['a', 'b']);
-            addChromAnimStage(BioLogica.MALE, defaultAnimationSpeed, '2', ['a', 'b']);
-            addChromAnimStage(BioLogica.MALE, defaultAnimationSpeed, 'XY', ['x', 'y']);
-            addGameteAnimStage(BioLogica.MALE, defaultAnimationSpeed);
-          }
-          ++ gametesCompleted;
-        }
-
-        if (!debugTotalGameteCount || (debugTotalGameteCount > gametesCompleted)) {
-          if (gametesCompleted < authoredGameteCounts[BioLogica.FEMALE]) {
-            // randomize mother's chromosomes simultaneously
-            addGenomeAnimStage(BioLogica.FEMALE, enhancedAnimationSpeed);
-            addGameteAnimStage(BioLogica.FEMALE, enhancedAnimationSpeed);
-          }
-
-          if (gametesCompleted < authoredGameteCounts[BioLogica.MALE]) {
-            // randomize father's chromosomes simultaneously
-            addGenomeAnimStage(BioLogica.MALE, enhancedAnimationSpeed);
-            addGameteAnimStage(BioLogica.MALE, enhancedAnimationSpeed);
-          }
-          ++ gametesCompleted;
-        }
-
-        // randomize the remaining gametes for both parents simultaneously
-        const totalGameteCount = debugTotalGameteCount || Math.max.apply(Math, authoredGameteCounts);
-        for (gametesCompleted; gametesCompleted < totalGameteCount; ++gametesCompleted) {
-          let sexes = BOTH_SEXES;
-          if (gametesCompleted >= authoredGameteCounts[BioLogica.MALE])
-            sexes = BioLogica.FEMALE;
-          else if (gametesCompleted >= authoredGameteCounts[BioLogica.FEMALE])
-            sexes = BioLogica.MALE;
-          addGenomeAnimStage(sexes, enhancedAnimationSpeed);
-          addGameteAnimStage(sexes, enhancedAnimationSpeed);
-        }
-
-        stages.push({ type: 'complete' });
-      }
-
-      function selectStageChromosomes(speed, chroms) {
-        let animatingGametes = cloneDeep(_this.state.animatingGametes) || initialAnimGametes();
-        chroms.forEach(({ sex, name }) => {
-          let gamete = animatingGametes[sex],
-              side = gamete[name];
-          if (side) {
-            const parentId = sex === BioLogica.FEMALE ? 'mother' : 'father',
-                  chromContainerId = `${parentId}-${name}-${side}`,
-                  elt = document.getElementById(chromContainerId).parentNode;
-            // this will trigger an animation which will call onFinish() when complete,
-            // which will trigger the next stage of the animation.
-            _this.selectChromosomes(sex, speed, [{name, side, elt}],
-                                    animationEvents.randomizeChromosomes.onFinish);
-          }
-        });
-        animatingGametes[2] = clone(animatingGametes[0]);
-        animatingGametes[3] = clone(animatingGametes[1]);
-        // delay appearance of labels until the chromosomes arrive
-        _setTimeout(() => _this.setState({ animatingGametes }), delayShowSelectedChromosomeLabels);
-      }
-
-      function toggleAnimatingGameteChromosome(sex, chromName, sides) {
-        let animatingGametes = _this.state.animatingGametes || initialAnimGametes(),
-            gamete = animatingGametes[sex],
-            currSide = gamete[chromName],
-            newSide = currSide != null
-                        ? (currSide === sides[0] ? sides[1] : sides[0])
-                        : oneOf(sides);
-        animatingGametes[sex] = assign({}, gamete, { [chromName]: newSide });
-         _this.setState({ animatingGametes });
-      }
-
-      function setFinalAnimatingGameteChromosome(sex, chromName, gameteIndex) {
-        let animatingGametes = _this.state.animatingGametes || initialAnimGametes(),
-            gametePool = gametePoolSelector(sex)(_this.props.gametes),
-            srcGamete = gametePool && gametePool[gameteIndex],
-            side = srcGamete && srcGamete[chromName],
-            dstGamete = animatingGametes[sex];
-        animatingGametes[sex] = assign({}, dstGamete, { [chromName]: side });
-         _this.setState({ animatingGametes });
-      }
-
-      function animateStage(stage) {
-        timerSet = new TimerSet({ onComplete: function() {
-                                    selectStageChromosomes(stage.speed, stage.chroms);
-                                  } });
-        const baseInterval = slotMachineBaseInterval,
-              totalDuration = slotMachineAnimationDuration;
-        stage.chroms.forEach(function({ sex, name, sides }) {
-          const halfBaseInterval = baseInterval / 2,
-                // initial interval is randomizes so timers aren't synchronized
-                initialInterval = Math.round(halfBaseInterval + halfBaseInterval * Math.random());
-          timerSet.add(function(iteration, options) {
-            if ((iteration < initialIterations) || (this.totalInterval < options.totalDuration)) {
-              toggleAnimatingGameteChromosome(options.sex, options.name, options.sides);
-            }
-            else {
-              setFinalAnimatingGameteChromosome(options.sex, options.name, options.gameteIndex);
-              return false;
-            }
-          }, { sex, name, sides, gameteIndex: stage.gameteIndex,
-                initialInterval, totalDuration,
-                // intervals increase with time/iterations to simulate slowing slot machine
-                interval: function(iteration, options) {
-                  var baseInterval = options.baseInterval || slotMachineBaseInterval,
-                      initialInterval = options.initialInterval || baseInterval,
-                      intervalAccel = options.interval.accel || slotMachineIntervalAcceleration,
-                      interval = iteration >= initialIterations
-                                  ? baseInterval + (iteration - initialIterations + 1) * intervalAccel
-                                  : initialInterval;
-                  return interval;
-                } });
-        });
-        timerSet.start();
-      }
-
-      if (stageIndex < stages.length) {
-        let stage = stages[stageIndex];
-        if (stage.type === 'chromosome') {
-          animateStage(stage);
-        }
-        else if (stage.type === 'gamete') {
-          _setTimeout(function() {
-            if (stage.sex === BOTH_SEXES) {
-              animationEvents.moveChromosomesToGamete.
-                animate(BioLogica.MALE, stage.speed, animationEvents.randomizeChromosomes.onFinish);
-              animationEvents.moveChromosomesToGamete.
-                animate(BioLogica.FEMALE, stage.speed, animationEvents.randomizeChromosomes.onFinish);
-            }
-            else {
-              animationEvents.moveChromosomesToGamete.
-                animate(stage.sex, stage.speed, animationEvents.randomizeChromosomes.onFinish);
-            }
-          }, delayStartMoveChromosomesToGamete);
-        }
-        else if (stage.type === 'complete') {
-          resetAnimationEvents({ showStaticGametes: true, reactState: { isIntroComplete: true } });
-          _this.autoSelectSingletonGametes();
-        }
-      }
-      _this.setState({ animation: 'randomizeChromosomes' });
-    },
-    onFinish: function() {
-      animatedComponents = [];
-      if (++animationEvents.randomizeChromosomes.count < animationEvents.randomizeChromosomes.stages.length)
-        animationEvents.randomizeChromosomes.animate();
-      else
-        _this.setState({ animation: 'complete' });
-    }
-  },
-  moveChromosomesToGamete: { id: 3, sexes: [], activeCount: 0, complete: false, ready: false,
-    animate: function(sex, speed, onFinish) {
-      const parentGameteGenomeId = sex === BioLogica.MALE ? 'father-gamete-genome' : 'mother-gamete-genome',
-            parentGameteGenomeEl = document.getElementById(parentGameteGenomeId),
-            parentGameteChromEls = parentGameteGenomeEl.getElementsByClassName('chromosome-allele-container'),
-            parentGameteImageClass = sex === BioLogica.MALE ? 'sperm' : 'ovum',
-            parentGameteImageEl = parentGameteGenomeEl.getElementsByClassName(parentGameteImageClass)[0],
-            parentGameteDivEl = parentGameteImageEl.getElementsByClassName('gamete-container')[0],
-            parentGameteBounds = unscaleProperties(parentGameteDivEl.getBoundingClientRect(), _this.props.scale),
-            spermChromOffsets = [{ dx: 49.5, dy: 11 }, { dx: 69.5, dy: 11 }, { dx: 89.5, dy: 11 }],
-            ovumChromOffsets = [{ dx: 59.5, dy: 11 }, { dx: 79.5, dy: 11 }, { dx: 99.5, dy: 11 }];
-
-      animationEvents.moveChromosomesToGamete.sexes.push(sex);
-      animationEvents.moveChromosomesToGamete.speed = speed;
-      animationEvents.moveChromosomesToGamete.onFinishCaller = onFinish;
-
-      function getDstChromBounds(index) {
-        const offsets = sex === BioLogica.MALE ? spermChromOffsets : ovumChromOffsets;
-        return { left: parentGameteBounds.left + offsets[index].dx,
-                  top: parentGameteBounds.top + offsets[index].dy,
-                  width: 8, height: 20 };
-      }
-      let components = [],
-          positions = [],
-          opacity = { start: 1.0, end: 0.5 };
-      for (let i = 0; i < parentGameteChromEls.length; ++i) {
-        const parentGameteChromEl = parentGameteChromEls[i],
-              srcChromBounds = unscaleProperties(parentGameteChromEl.getBoundingClientRect(), _this.props.scale),
-              descriptorComponents = parentGameteChromEl.id.split("-"),
-              chromosomeDescriptor = {name: descriptorComponents[1], side: descriptorComponents[2]},
-              chromView = <AnimatedChromosomeImageView small={true} empty={false} bold={false} chromosomeDescriptor={chromosomeDescriptor}/>;
-        components.push(chromView);
-        positions.push({ startPositionRect: srcChromBounds, startSize: 1.0,
-                        targetPositionRect: getDstChromBounds(i), endSize: 0.2 });
-        ++animationEvents.moveChromosomesToGamete.activeCount;
-      }
-      if (!debugSkipRandomGameteAnimation) {
-        animateMultipleComponents(components, positions, opacity, speed,
-                                  animationEvents.moveChromosomesToGamete.id,
-                                  animationEvents.moveChromosomesToGamete.onFinish);
-      }
-      else {
-        for (let i = animationEvents.moveChromosomesToGamete.activeCount; i >= 0; --i) {
-          animationEvents.moveChromosomesToGamete.onFinish(animationEvents.moveChromosomesToGamete.id);
-        }
-      }
-      let animatingGametes = _this.state.animatingGametes || initialAnimGametes(),
-          createdGametes = _this.state.createdGametes || [0, 0];
-      if (Object.keys(animatingGametes[2]).length)
-        ++ createdGametes[0];
-      if (Object.keys(animatingGametes[3]).length)
-        ++ createdGametes[1];
-      animatingGametes = initialAnimGametes();
-
-      _this.setState({ animation: 'moveChromosomesToGamete', animatingGametes, createdGametes });
-    },
-    onFinish: function() {
-      if (animationEvents.moveChromosomesToGamete.activeCount &&
-          (--animationEvents.moveChromosomesToGamete.activeCount === 0)) {
-        animatedComponents = [];
-        animationEvents.moveChromosomesToGamete.sexes.forEach((sex) => {
-          animationEvents.moveGameteToPool.
-            animate(sex, animationEvents.moveChromosomesToGamete.speed,
-                        animationEvents.moveChromosomesToGamete.onFinishCaller);
-        });
-        animationEvents.moveChromosomesToGamete.sexes = [];
-      }
-    }
-  },
-  moveGameteToPool: { id: 4, sexes: [], complete: false, ready: false,
-    animate: function(sex, speed, onFinish) {
-      function getGameteLocationInPen(sex, index) {
-        let loc = gameteLayoutConstants[sex]
-                    ? getGameteLocation(gameteLayoutConstants[sex], index)
-                    : { top: BioLogica.MALE ? 14 : 2, left: 3 + 31.125 * index };
-        return loc;
-      }
-      const gameteComponent = sex === BioLogica.MALE ? animatedSpermView : animatedOvumView,
-            srcGameteBounds = sex === BioLogica.MALE ? spermTarget : ovumTarget,
-            gametePoolId = sex === BioLogica.MALE ? 'father-gamete-pen' : 'mother-gamete-pen',
-            gametePoolElt = document.getElementById(gametePoolId),
-            gametePoolBounds = unscaleProperties(gametePoolElt.getBoundingClientRect(), _this.props.scale),
-            animatingGametesInPools = _this.state.animatingGametesInPools,
-            gameteCount = animatingGametesInPools ? animatingGametesInPools[sex] : 0,
-            loc = getGameteLocationInPen(sex, gameteCount),
-            dstGameteBounds = { top: gametePoolBounds.top + loc.top - 35,
-                                left: gametePoolBounds.left + loc.left - 35,
-                                width: srcGameteBounds.width / 2,
-                                height: srcGameteBounds.height / 2 },
-            positions = { startPositionRect: srcGameteBounds, startSize: 1.0,
-                          targetPositionRect: dstGameteBounds, endSize: 0.6 },
-            opacity = { start: 1.0, end: 1.0 };
-
-      animationEvents.moveGameteToPool.sexes.push(sex);
-      animationEvents.moveGameteToPool.onFinishCaller = onFinish;
-
-      if (!debugSkipRandomGameteAnimation) {
-        animateMultipleComponents([gameteComponent],
-                                  [positions],
-                                  opacity, speed,
-                                  animationEvents.moveGameteToPool.id,
-                                  animationEvents.moveGameteToPool.onFinish);
-      }
-      else {
-        animationEvents.moveGameteToPool.onFinish(animationEvents.moveGameteToPool.id);
-      }
-      _this.setState({ animation: 'moveGameteToPool' });
-    },
-    onFinish: function() {
-      animatedComponents = [];
-      if (animationEvents.moveGameteToPool.sexes) {
-        let createdGametes = _this.state.createdGametes || [0, 0],
-            animatingGametesInPools = _this.state.animatingGametesInPools || [0, 0];
-        animationEvents.moveGameteToPool.sexes.forEach((sex) => {
-          animatingGametesInPools[sex] += createdGametes[sex];
-          createdGametes[sex] = [];
-        });
-        if ((animatingGametesInPools[0] >= fatherGametePool(_this.props.gametes).length) &&
-            (animatingGametesInPools[1] >= motherGametePool(_this.props.gametes).length)) {
-          // all gametes have been animated to their respective pools
-          animatingGametesInPools = null;
-        }
-        _this.setState({ createdGametes, animatingGametesInPools });
-      }
-      animationEvents.moveGameteToPool.sexes = [];
-      animationEvents.moveGameteToPool.onFinishCaller(animationEvents.moveGameteToPool.id);
-    }
-  },
-  selectChromosome: { id: 5, activeCount: 0, complete: false, ready: false,
-    animate: function(positions, chromosomeId, speed, onFinish) {
-      if (++animationEvents.selectChromosome.activeCount === 1)
-        animationEvents.selectChromosome.onFinishCaller = onFinish;
-
-      let opacity = {
-        start: 1.0,
-        end: 1.0
-      };
-      let descriptorComponents = chromosomeId.split("-"),
-          chromosomeDescriptor = {name: descriptorComponents[1], side: descriptorComponents[2]};
-      animatedComponentToRender = <FVChromosomeImageView small={true} empty={false} bold={true} chromosomeDescriptor={chromosomeDescriptor}/>;
-      animateMultipleComponents([animatedComponentToRender], [positions], opacity, speed,
-                                animationEvents.selectChromosome.id,
-                                animationEvents.selectChromosome.onFinish);
-      _this.setState({animation:"selectChromosome"});
-    },
-    onFinish: function() {
-      if (animationEvents.selectChromosome.activeCount &&
-          (--animationEvents.selectChromosome.activeCount === 0)) {
-        if (animationEvents.selectChromosome.onFinishCaller)
-          animationEvents.selectChromosome.onFinishCaller(animationEvents.selectChromosome.id);
-        else {
-          animatedComponents = [];
-          _this.setState({animation:"complete"});
-        }
-      }
-    }
-  },
-  fertilize: { id: 6, inProgress: false, complete: false,
-    animate: function(){
-      animationEvents.selectChromosome.ready = false;
-      animationEvents.fertilize.started = true;
-
-      _setTimeout(animationEvents.fertilize.onFinish, durationFertilizationAnimation);
-    },
-    onFinish: function() {
-      animationEvents.fertilize.complete = true;
-      // hide static gametes during fertilization
-      showStaticGametes(false);
-      if (showHatchAnimation)
-        animationEvents.hatch.animate();
-      else
-        animationEvents.hatch.onFinish();
-    }
-  },
   hatch: { id: 7, inProgress: false, complete: false,
     animate: function() {
       animationEvents.hatch.inProgress = true;
@@ -640,54 +69,11 @@ var animationEvents = {
 function resetAnimationEvents(options = {}){
   if (timerSet) timerSet.reset();
   clearTimeouts();
-  animationEvents.showGametes.count = 0;
-  animationEvents.moveGametes.count = 0;
-  animationEvents.randomizeChromosomes.count = 0;
-  animationEvents.randomizeChromosomes.stages = [];
-  animationEvents.selectChromosome.ready = true;
-  animationEvents.selectChromosome.activeCount = 0;
-  animationEvents.moveChromosomesToGamete.activeCount = 0;
-  animationEvents.fertilize.started = false;
-  animationEvents.fertilize.complete = false;
   animationEvents.hatch.inProgress = false;
   animationEvents.hatch.complete = false;
   showStaticGametes(!!options.showStaticGametes);
-  showHatchAnimation = !!options.showHatchAnimation;
   if (options.clearAnimatedComponents) animatedComponents = [];
   if (_this) _this.setState(assign({ animation: 'complete', animatingGametes: null }, options.reactState));
-}
-
-function runAnimation(animationEvent, positions, opacity, speed, onFinish){
-  startDisplay = {
-    startPositionRect: positions.startPositionRect,
-    opacity: opacity.start,
-    size: positions.startSize
-  };
-  targetDisplay = {
-    targetPositionRect: positions.targetPositionRect,
-    opacity: opacity.end,
-    size: positions.endSize
-  };
-
-  let animationSpeed = speed;
-  animationTimeline[lastAnimatedComponentId] = animationEvent;
-  animatedComponents.push(
-    <AnimatedComponentView key={lastAnimatedComponentId}
-      animEvent={animationEvent}
-      speed={animationSpeed}
-      viewObject={animatedComponentToRender}
-      startDisplay={startDisplay}
-      targetDisplay={targetDisplay}
-      runAnimation={true}
-      onRest={onFinish} />);
-  lastAnimatedComponentId++;
-}
-
-function animateMultipleComponents(componentsToAnimate, positions, opacity, speed, animationEvent, onFinish){
-  for (let i = 0; i < componentsToAnimate.length; i++){
-    animatedComponentToRender = componentsToAnimate[i];
-    runAnimation(animationEvent, positions[i], opacity, speed, onFinish);
-  }
 }
 
 function areGametesEmpty(gametes) {
@@ -698,15 +84,6 @@ function areGametesEmpty(gametes) {
       return false;
   }
   return true;
-}
-
-function isGameteComplete(gamete) {
-  return gamete && Object.keys(gamete).length === 3;
-}
-
-function areGametesComplete(gametes) {
-  const length = gametes && gametes.length;
-  return (length >= 2) && isGameteComplete(gametes[0]) && isGameteComplete(gametes[1]);
 }
 
 function showStaticGametes(show) {
@@ -822,103 +199,7 @@ export default class ClutchGame extends Component {
     }
   }
 
-  // if there's only one gamete for a parent, select it automatically
-  autoSelectSingletonGametes(nextGametes) {
-    const gametes = nextGametes || this.props.gametes,
-          { onSelectGameteInPool } = this.props;
-    [BioLogica.MALE, BioLogica.FEMALE].forEach((sex) => {
-      const gameteCount = gametePoolSelector(sex)(gametes).length;
-      if ((gameteCount === 1) && (gametes.selectedIndices[sex] !== 0))
-        onSelectGameteInPool(sex, 0);
-    });
-  }
-
-  handleChromosomeSelected = (org, name, side, elt) => {
-    // Normally we would avoid querying elements in React- it would be better to determine emptiness from state
-    // However, since this element was just clicked on, we can rely on it existing for this call
-    if (this.props.interactionType !== 'select-gametes' && !elt.querySelector(".empty"))
-      this.selectChromosomes(org.sex, defaultAnimationSpeed, [{name, side, elt }]);
-  }
-
-  handleGameteSelected = (poolID, sex, gameteIndex, /*gameteID, gamete*/) => {
-    if (!this.state.isIntroComplete) {
-      // user selection of a gamete terminates intro animation
-      resetAnimationEvents({ showStaticGametes: true,
-                            clearAnimatedComponents: true,
-                            reactState: { animatingGametesInPools: null,
-                                          createdGametes: null,
-                                          isIntroComplete: true } });
-      chromosomeDisplayStyle = {};
-    }
-    this.autoSelectSingletonGametes();
-    if (gametePoolSelector(sex)(this.props.gametes).length === 1)
-      gameteIndex = 0;
-    this.props.onSelectGameteInPool(sex, gameteIndex);
-  }
-
   activeSelectionAnimations = 0;
-
-  selectChromosomes(sex, speed, chromEntries, onFinish) {
-    // onFinish is only used by animated auto-selection
-    const isTriggeredByUser = !onFinish,
-          { scale } = this.props;
-
-    function animateChromosomeSelection() {
-      chromEntries.forEach((entry) => {
-        let positions = findBothElements(sex, entry.name, entry.elt, scale),
-            chromosomeId = entry.elt.getElementsByClassName("chromosome-allele-container")[0].id;
-        // animate the chromosomes being added
-        animationEvents.selectChromosome.animate(positions, chromosomeId,
-                                                  selectChromosomesAnimationSpeed,
-                                                  onFinish);
-      });
-    }
-
-    if (animationEvents.selectChromosome.ready) {
-      if (isTriggeredByUser) {
-        // animating gametes include just-selected chromosomes
-        let { currentGametes } = this.props.gametes,
-            animatingGametes = (this.state.animatingGametes || currentGametes.asMutable())
-                                  .map((gamete, index) => {
-                                    let animGamete = assign({}, gamete);
-                                    if (index === sex) {
-                                      chromEntries.forEach(entry => {
-                                        animGamete[entry.name] = entry.side;
-                                      });
-                                    }
-                                    return animGamete;
-                                  });
-        // selected gametes don't include just-selected chromosomes (no labels)
-        // until the animation completes.
-        animatingGametes.push(currentGametes[0].asMutable(), currentGametes[1].asMutable());
-        ++this.activeSelectionAnimations;
-        this.setState({ animatingGametes });
-        // delay selection of chromosome until animation arrives
-        _setTimeout(() => {
-          chromEntries.forEach((entry) => {
-            this.props.onGameteChromosomeAdded(sex, entry.name, entry.side);
-          });
-
-          let animatingGametes = this.state.animatingGametes;
-          if (--this.activeSelectionAnimations === 0) {
-            animatingGametes = null;
-          }
-          else {
-            animatingGametes[2] = clone(currentGametes[0]);
-            animatingGametes[3] = clone(currentGametes[1]);
-          }
-          this.setState({ animatingGametes });
-        }, delayStartUserSelectChromosome);
-
-        animateChromosomeSelection();
-      }
-      // auto-selection triggered by animation
-      else {
-        // delay the initial animation to allow user to see selection state for a beat
-        _setTimeout(animateChromosomeSelection, delayStartAutoSelectChromosome);
-      }
-    }
-  }
 
   render() {
     const { challengeType, interactionType, scale, showUserDrake, trial, drakes, gametes,
@@ -926,7 +207,7 @@ export default class ClutchGame extends Component {
             onBreedClutch, onHatch, onResetGametes, onKeepOffspring, onDrakeSubmission, moves } = this.props,
           { currentGametes } = gametes,
           { animatingGametes } = this.state,
-          firstTargetDrakeIndex = 3, // 0: mother, 1: father, 2: child, 3-5: targets
+          firstTargetDrakeIndex = 2, // 0: mother, 1: father, 2: child, 3-5: targets
           targetDrake = drakes[firstTargetDrakeIndex + trial],
           isCreationChallenge = true,
           isMatchingChallenge = true,
@@ -942,17 +223,13 @@ export default class ClutchGame extends Component {
           father = new BioLogica.Organism(BioLogica.Species.Drake, drakes[1].alleleString, drakes[1].sex);
 
     let child = null;
-    if (drakes[2]) {
-      child = new BioLogica.Organism(BioLogica.Species.Drake, drakes[2].alleleString, drakes[2].sex);
-    }
 
-    const handleAlleleChange = function(chrom, side, prevAllele, newAllele) {
-      onChromosomeAlleleChange(0, chrom, side, prevAllele, newAllele);
+    const handleAlleleChange = function(chrom, side, prevAllele, newAllele, orgName) {
+      let index = orgName === "mother" ? 0 : 1;
+      onChromosomeAlleleChange(index, chrom, side, prevAllele, newAllele);
     };
     const handleFertilize = function() {
-      animationEvents.selectChromosome.ready = false;
       animatedComponents = [];
-      animationEvents.fertilize.animate();
       onBreedClutch(8);
     };
 
@@ -1093,7 +370,6 @@ export default class ClutchGame extends Component {
     }
 
     const parentGenomeClass = classNames('parent', challengeClasses),
-          childGenomeClass = classNames('child', challengeClasses),
           motherGametes = gametesToShowInPool(BioLogica.FEMALE),
           fatherGametes = gametesToShowInPool(BioLogica.MALE);
 
@@ -1103,18 +379,9 @@ export default class ClutchGame extends Component {
                               ? {orgName: 'mother', chromosomes: motherUnselectedChromosomesMap}
                               : {orgName: 'father', chromosomes: fatherUnselectedChromosomesMap};
       return <GenomeView className={parentGenomeClass}  species={org.species} org={org} {...uniqueProps}
-                         ChromosomeImageClass={FVChromosomeImageView} small={ true } editable={false} 
-                         userChangeableGenes={ userChangeableGenes } visibleGenes={ visibleGenes } onAlleleChange={ handleAlleleChange } 
-                         chromosomeHeight={122} onChromosomeSelected={_this.handleChromosomeSelected} />;
-    }
-
-    function parentHalfGenomeView(sex) {
-      const uniqueProps = sex === BioLogica.FEMALE
-                              ? { orgName: 'targetmother', chromosomes: femaleGameteChromosomeMap }
-                              : { orgName: 'targetfather', chromosomes: maleGameteChromosomeMap };
-      return <GenomeView className={childGenomeClass} species={mother.species} {...uniqueProps} ChromosomeImageClass={FVChromosomeImageView}
-                        editable={false} userChangeableGenes={ userChangeableGenes } visibleGenes={ visibleGenes } chromosomeHeight={122}
-                        small={true} displayStyle={chromosomeDisplayStyle} />;
+                         ChromosomeImageClass={FVChromosomeImageView} small={ true } editable={true} 
+                         userChangeableGenes={ visibleGenes } visibleGenes={ userChangeableGenes } onAlleleChange={ handleAlleleChange } 
+                         chromosomeHeight={122} />;
     }
 
     function parentGametePen(sex) {
@@ -1175,51 +442,6 @@ export default class ClutchGame extends Component {
     );
   }
 
-  updateComponentLayout() {
-    const { scale } = this.props;
-
-    // now that the DOM is loaded, get the positions of the elements
-    mother = unscaleProperties(document.getElementsByClassName("mother")[0].getClientRects()[0], scale);
-    father = unscaleProperties(document.getElementsByClassName("father")[0].getClientRects()[0], scale);
-
-    ovumTarget = unscaleProperties(document.getElementsByClassName("ovum")[0].getClientRects()[0], scale);
-    spermTarget = unscaleProperties(document.getElementsByClassName("sperm")[0].getClientRects()[0], scale);
-
-    motherDrakeStart = {
-      top: mother.top + offsetTopDrake,
-      left: mother.left
-    };
-    motherGameteStart = {
-      top: mother.top + offsetTopGamete,
-      left: mother.left
-    };
-    fatherDrakeStart = {
-      top: father.top + offsetTopDrake,
-      left: father.left
-    };
-    fatherGameteStart = {
-      top: father.top + offsetTopGamete,
-      left: father.left
-    };
-
-    if (challengeDidChange) {
-      // animate the gametes moving from parents after page has rendered
-      _setTimeout( () => {
-        // first animation - show gametes
-        animationEvents.showGametes.animate();
-      }, delayStartShowGametesAnimation);
-      challengeDidChange = false;
-    }
-  }
-
-  componentDidMount() {
-    this.updateComponentLayout();
-  }
-
-  componentDidUpdate() {
-    this.updateComponentLayout();
-  }
-
   componentWillUnmount() {
     _this = null;
     resetAnimationEvents();
@@ -1253,7 +475,7 @@ export default class ClutchGame extends Component {
   static authoredGametesToGametePools = function(authoredChallenge, drakes, trial) {
     const mother = drakes && drakes[0],
           father = drakes && drakes[1],
-          target = drakes && drakes[3 + trial],
+          target = drakes && drakes[2 + trial],
           matchingGametes = target && findCompatibleGametes(mother, father, target),
           fatherPool = [],
           motherPool = [],

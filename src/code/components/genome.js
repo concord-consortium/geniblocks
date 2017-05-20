@@ -49,7 +49,7 @@ const GenomeView = ({org, className="", ChromosomeImageClass, chromosomes, speci
           displayStyle={displayStyle}
           height={chromosomeHeight}
           onAlleleChange={function(prevAllele, newAllele) {
-            onAlleleChange(chromosomeName, side, prevAllele, newAllele);
+            onAlleleChange(chromosomeName, side, prevAllele, newAllele, orgName);
           }}
           onChromosomeSelected={function(el){
             if (onChromosomeSelected)
