@@ -43,6 +43,7 @@ describe('loading authored state into template', () => {
       "challenges": {
         "test": {
           "template": "GenomeChallenge",
+          "numTrials": 1,
           "initialDrake":{
             "alleles": "W-w, D-D, Bog-Bog, rh-rh",
             "sex": 0
@@ -95,6 +96,7 @@ describe('loading authored state into template', () => {
               "sex": 1
             }
           ],
+          "numTrials": 1,
           "trialOrder": [0,1]
         }));
     });
