@@ -717,6 +717,7 @@
           "alleles": "m-m, c-c, B-B",
         }
       ],
+      "numTrials": 3,
       "userChangeableGenes": "metallic, color, black",
       "visibleGenes": "forelimbs, hindlimbs, wings, armor, horns",
       "linkedGenes": {

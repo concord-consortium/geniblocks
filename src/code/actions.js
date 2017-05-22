@@ -307,8 +307,7 @@ export function submitDrake(targetDrakeIndex, userDrakeIndex, correct, incorrect
           levelCount = AuthoringUtils.getLevelCount(authoring),
           missionCount = AuthoringUtils.getMissionCount(authoring, state.routeSpec.level),
           challengeCount = AuthoringUtils.getChallengeCount(authoring, state.routeSpec.level, state.routeSpec.mission),
-          trials = state.trials,
-          trialCount = trials.length;
+          trialCount = state.numTrials;
     let challengeComplete = false,
         missionComplete = false,
         // levelComplete = false,

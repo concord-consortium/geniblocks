@@ -14,7 +14,7 @@ export default class GenomeChallengeTemplate extends Component {
 
   render() {
     const { drakes, instructions, onChromosomeAlleleChange, onSexChange, onDrakeSubmission,
-            userChangeableGenes, visibleGenes, hiddenAlleles, showUserDrake, userDrakeHidden, trial, trials } = this.props,
+            userChangeableGenes, visibleGenes, hiddenAlleles, showUserDrake, userDrakeHidden, trial, numTrials } = this.props,
           userDrakeDef = drakes[userDrakeIndex],
           targetDrakeDef = drakes[targetDrakeIndex],
           userDrake   = new BioLogica.Organism(BioLogica.Species.Drake, userDrakeDef.alleleString, userDrakeDef.sex),
@@ -45,7 +45,7 @@ export default class GenomeChallengeTemplate extends Component {
           <div id="target-drake-label" className="column-label">Target Drake</div>
           <OrganismGlowView id="target-drake" org={ targetDrake } />
           <FeedbackView id='trial-feedback' className='feedback-view'
-                                text={["TRIAL", `${trial+1} of ${trials.length}`]}/>
+                                text={["TRIAL", `${trial+1} of ${numTrials}`]}/>
           <FeedbackView id='goal-feedback' className='feedback-view'
                                 text={[`GOAL is ${this.props.goalMoves} MOVES`,
                                         `Your moves: ${this.props.moves}`]}/>
@@ -72,6 +72,7 @@ export default class GenomeChallengeTemplate extends Component {
     hiddenAlleles: PropTypes.array.isRequired,
     trial: PropTypes.number.isRequired,
     trials: PropTypes.array.isRequired,
+    numTrials: PropTypes.number.isRequired,
     moves: PropTypes.number.isRequired,
     goalMoves: PropTypes.number.isRequired,
     showUserDrake: PropTypes.bool,
@@ -101,7 +102,7 @@ export default class GenomeChallengeTemplate extends Component {
       initialDrake: state.drakes[0],
       targetDrake: state.drakes[1],
       goalMoves: state.goalMoves,
-      trials: state.trials.length,
+      trials: state.numTrials,
       trial: state.trial
     };
   }

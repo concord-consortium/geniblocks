@@ -115,7 +115,7 @@ export default function reducer(state, action) {
     case actionTypes.ADVANCED_TRIAL: {
       if (state.trialSuccess){
         let progress = updateProgress(state, true);
-        if (state.trial < state.trials.length - 1) {
+        if (state.trial < state.numTrials - 1) {
           return loadNextTrial(state, action.authoring, progress);
         }
         else {

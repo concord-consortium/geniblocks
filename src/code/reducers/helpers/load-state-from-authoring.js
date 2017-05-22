@@ -114,6 +114,7 @@ export function loadStateFromAuthoring(state, authoring, progress={}) {
         baskets = processAuthoredBaskets(authoredChallenge, state),
         showUserDrake = (authoredChallenge.showUserDrake != null) ? authoredChallenge.showUserDrake : false,
         trials = authoredChallenge.targetDrakes,
+        numTrials = authoredChallenge.numTrials || (trials ? trials.length : 1),
         trialOrder = createTrialOrder(trial, trials, state.trialOrder, authoredChallenge.randomizeTrials),
         drakes = processAuthoredDrakes(authoredChallenge, trialOrder[trial], template),
         gametes = processAuthoredGametes(authoredChallenge, drakes, state);
@@ -137,6 +138,7 @@ export function loadStateFromAuthoring(state, authoring, progress={}) {
     drakes,
     trial,
     trials,
+    numTrials,
     trialOrder,
     challenges,
     correct: 0,
@@ -153,7 +155,7 @@ export function loadStateFromAuthoring(state, authoring, progress={}) {
 export function loadNextTrial(state, authoring, progress) {
   let trial = state.trial;
   if (state.trialSuccess){
-    trial = (state.trial < state.trials.length) ? (trial+1) : 0;
+    trial = (state.trial < state.numTrials) ? (trial+1) : 0;
   }
   let nextState = state.merge({
     trial: trial

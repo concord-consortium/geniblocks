@@ -15,7 +15,7 @@ class FVChallengeContainer extends Component {
 
   render() {
     const { template, style, ...otherProps } = this.props,
-          { challengeType, interactionType, routeSpec, trial, trials, correct } = this.props;
+          { challengeType, interactionType, routeSpec, trial, numTrials, correct } = this.props;
 
     if (!template) return null;
 
@@ -31,7 +31,7 @@ class FVChallengeContainer extends Component {
         <div id="mission-wrapper">
           <Template {...otherProps} />
         </div>
-        <BottomHUDView level={routeSpec.level + 1} trial={trial + 1} trialCount={trials ? trials.length : 1}
+        <BottomHUDView level={routeSpec.level + 1} trial={trial + 1} trialCount={numTrials}
                        currScore={correct} maxScore={maxScore}/>
       </div>
     );
@@ -44,6 +44,7 @@ class FVChallengeContainer extends Component {
     interactionType: PropTypes.string,
     trial: PropTypes.number,
     trials: PropTypes.array,
+    numTrials: PropTypes.number,
     containerWidth: PropTypes.number,
     containerHeight: PropTypes.number,
     routeSpec: PropTypes.object,
@@ -66,6 +67,7 @@ function mapStateToProps (state) {
       baskets: state.baskets,
       trial: state.trial,
       trials: state.trials,
+      numTrials: state.numTrials,
       routeSpec: state.routeSpec,
       correct: state.correct,
       errors: state.errors,

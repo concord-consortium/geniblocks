@@ -253,7 +253,7 @@ export default class FVGenomeChallenge extends React.Component {
       initialDrake: state.drakes[0],
       targetDrake: state.drakes[1],
       goalMoves: state.goalMoves,
-      trials: state.trials ? state.trials.length : null,
+      trials: state.numTrials,
       trial: state.trial
     };
   }
