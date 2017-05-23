@@ -54,6 +54,10 @@ const ClutchView = React.createClass({
     if (nextProps.orgs.length === 0) {
       this.setState({pagesBack: 0});
     }
+    if (nextProps.orgs.length > this.props.orgs.length) {
+      // Move to the end whenever a new clutch is bred
+      this.setState({pagesBack: 0});
+    }
   },
 
   render() {

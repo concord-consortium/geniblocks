@@ -7,8 +7,8 @@ import GenomeView from '../components/genome';
 import GametePenView from '../components/gamete-pen';
 import BreedButtonAreaView from '../fv-components/breed-button-area';
 import ClutchView from '../components/clutch-view';
+import OrganismView from '../components/organism/';
 import FVGameteImageView from '../fv-components/fv-gamete-image';
-import TargetDrakeView from '../fv-components/target-drake';
 import FVChromosomeImageView from '../fv-components/fv-chromosome-image';
 import InteractiveGamete from '../fv-components/interactive-gamete';
 import t from '../utilities/translate';
@@ -299,9 +299,10 @@ export default class ClutchGame extends Component {
                                                         targetDrake.alleleString,
                                                         targetDrake.sex)
                               : null,
-          targetDrakeSection = isMatchingChallenge && targetDrakeOrg
-                                ? <TargetDrakeView org={targetDrakeOrg} />
-                                : null;
+          targetDrakeSection = <div className='geniblocks target-drake-container'>
+                                 <OrganismView org={targetDrakeOrg} width={170}/>
+                                 <div className="target-drake-text">Target Drake</div>
+                               </div>;
     let offspringButtons, offspringButtonsVisible = false,
         ovumView, spermView, penView;
     if (child && animationEvents.hatch.complete) {
