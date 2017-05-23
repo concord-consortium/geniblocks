@@ -1,2 +1,27 @@
-.clutch-drakes .organism
-  cursor: pointer
+.geniblocks
+  .clutch-drakes
+    .organism
+      cursor: pointer
+
+  .clutch-slider
+    margin-top: 50px
+    cursor: pointer
+    &.right
+      background-image: url('../resources/fablevision/layout-b/clutch_slider_arrow_right.png')
+      width: 16px
+      height: 29px
+    &.left
+      background-image: url('../resources/fablevision/layout-b/clutch_slider_arrow_left.png')
+      width: 16px
+      height: 29px
+
+  .drake-pages
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    width: 100%
+    .stable-drakes.clutch-drakes
+      margin-right: 0
+
+  .clutch-page-count
+      margin-left: 140px
