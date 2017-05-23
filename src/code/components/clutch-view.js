@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import FVStableCounter from '../fv-components/stable-counter';
-import OrganismView from './organism';
+import FVEggHatchView from '../fv-components/fv-egg-hatch';
 import classNames from 'classnames';
 
 /**
@@ -18,11 +18,11 @@ const ClutchView = ({className, orgs, idPrefix='organism-', height=218, onClick}
   }
 
   orgs.reverse(); // So that drakes don't move once placed
-  let stableDrakeWidth = height * (5/8),
+  let displayStyle = {size: height*(5/8), top: -153, marginLeft: -12},
       stableDrakeViews = orgs.map((org, index) => {
         return (
-          <div className="stable-drake-overlay">
-            <OrganismView org = {org} id = {idPrefix + index} width = {stableDrakeWidth} onClick = {handleClick} />
+          <div className="stable-drake-overlay" style={{width: 116}}>
+            <FVEggHatchView organism = {org} id={idPrefix + index} onClick={handleClick} eggStyle={{left: -477, top: -424}} displayStyle={displayStyle}/>
           </div>
         );
       });
@@ -31,7 +31,7 @@ const ClutchView = ({className, orgs, idPrefix='organism-', height=218, onClick}
   return (
     <div className={classes}>
       <FVStableCounter count={orgs.length} maxCount={5}/>
-      <div className="stable-drakes">
+      <div className="stable-drakes clutch-drakes">
         { stableDrakeViews }
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { assign, clone, shuffle, range } from 'lodash';
+import { assign, clone, shuffle } from 'lodash';
 import classNames from 'classnames';
 import { gametePoolSelector, motherSelectedGameteIndex, fatherSelectedGameteIndex } from '../modules/gametes';
 import ParentDrakeView from '../fv-components/parent-drake';
@@ -174,7 +174,7 @@ export default class ClutchGame extends Component {
     const { routeSpec: prevRouteSpec, trial: prevTrial, gametes: prevGametes } = this.props,
           { level: prevLevel, mission: prevMission, challenge: prevChallenge } = prevRouteSpec,
           { currentGametes: prevCurrentGametes } = prevGametes,
-          { routeSpec: nextRouteSpec, trial: nextTrial, gametes: nextGametes, showUserDrake, onResetGametes } = nextProps,
+          { routeSpec: nextRouteSpec, trial: nextTrial, gametes: nextGametes, showUserDrake } = nextProps,
           { level: nextLevel, mission: nextMission, challenge: nextChallenge } = nextRouteSpec,
           { currentGametes: nextCurrentGametes } = nextGametes,
           newChallenge = (prevLevel !== nextLevel) || (prevMission !== nextMission) || (prevChallenge !== nextChallenge),
@@ -196,9 +196,9 @@ export default class ClutchGame extends Component {
   activeSelectionAnimations = 0;
 
   render() {
-    const { challengeType, interactionType, scale, showUserDrake, trial, drakes, gametes,
+    const { interactionType, scale, showUserDrake, trial, drakes, gametes,
             userChangeableGenes, visibleGenes, userDrakeHidden, onChromosomeAlleleChange,
-            onBreedClutch, onHatch, onResetGametes, onKeepOffspring, onDrakeSubmission, moves } = this.props,
+            onBreedClutch, onHatch, onResetGametes, onDrakeSubmission, moves } = this.props,
           { currentGametes } = gametes,
           { animatingGametes } = this.state,
           firstTargetDrakeIndex = 2, // 0: mother, 1: father, 2: child, 3-5: targets
