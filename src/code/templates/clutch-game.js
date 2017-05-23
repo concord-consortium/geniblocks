@@ -6,7 +6,7 @@ import ParentDrakeView from '../fv-components/parent-drake';
 import GenomeView from '../components/genome';
 import GametePenView from '../components/gamete-pen';
 import BreedButtonAreaView from '../fv-components/breed-button-area';
-import FVStableView from '../fv-components/fv-stable';
+import ClutchView from '../components/clutch-view';
 import FVGameteImageView from '../fv-components/fv-gamete-image';
 import TargetDrakeView from '../fv-components/target-drake';
 import FVChromosomeImageView from '../fv-components/fv-chromosome-image';
@@ -15,8 +15,7 @@ import t from '../utilities/translate';
 
       // Determines (with some random perturbation) the initial time interval in msec for the
       // slot machine animation. Acceleration (delta) is then applied to this base interval.
-const defaultAnimationSpeed = 'fast',
-      durationHatchAnimation = 1333;  // msec
+const durationHatchAnimation = 1333;  // msec
 
 var timers = [];
 function clearTimeouts() {
@@ -191,11 +190,6 @@ export default class ClutchGame extends Component {
       resetAnimationEvents({ showStaticGametes: !challengeDidChange,
                             showHatchAnimation: showUserDrake,
                             clearAnimatedComponents: true });
-      this.autoSelectSingletonGametes(nextGametes);
-      if ((newChallenge || newTrialInChallenge) && onResetGametes) {
-        onResetGametes();
-        showStaticGametes(true);
-      }
     }
   }
 
@@ -240,20 +234,15 @@ export default class ClutchGame extends Component {
       }
     };
 
-    const handleSubmit = function () {
+    const handleSubmit = function (index, id, child) {
       let childImage = child.getImageName(),
           success = false;
-      if (challengeType === 'create-unique') {
-        let offspringIndices = range(3, drakes.length);
-        onKeepOffspring(2, offspringIndices, 8);
-      }
-      else if (challengeType === 'match-target') {
-        const targetDrakeOrg = new BioLogica.Organism(BioLogica.Species.Drake,
-                                                      targetDrake.alleleString,
-                                                      targetDrake.sex);
-        success = (childImage === targetDrakeOrg.getImageName());
-        onDrakeSubmission(firstTargetDrakeIndex + trial, 2, success, "resetGametes");
-      }
+
+      const targetDrakeOrg = new BioLogica.Organism(BioLogica.Species.Drake,
+                                                    targetDrake.alleleString,
+                                                    targetDrake.sex);
+      success = (childImage === targetDrakeOrg.getImageName());
+      onDrakeSubmission(firstTargetDrakeIndex + trial, index, success);
     };
     const handleReset = function() {
       if (moves >= 1) {
@@ -354,7 +343,7 @@ export default class ClutchGame extends Component {
 
     if (isCreationChallenge) {
       penView = <div className='columns bottom'>
-                  <FVStableView orgs={ keptDrakes } width={500} columns={5} rows={1} tightenRows={20}/>
+                  <ClutchView orgs={ keptDrakes } width={500} columns={5} rows={1} tightenRows={20} onClick={handleSubmit}/>
                 </div>;
     }
 
