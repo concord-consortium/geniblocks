@@ -637,19 +637,19 @@
       "showUserDrake": true,
       "initialDrake": [
         {
-          "alleles": "M-m, Bog-, D-, rh-rh",
+          "alleles": "M-m, A1-A1, Bog-, D-, rh-rh",
         },
         {
-          "alleles": "c-c, Bog-, D-, rh-rh",
+          "alleles": "c-c, A1-a, Bog-, D-, rh-rh",
         },
         {
-          "alleles": "B-b, Bog-, D-, rh-rh",
+          "alleles": "B-b, a-A1, Bog-, D-, rh-rh",
         },
         {
-          "alleles": "m-m, Bog-, D-, rh-rh",
+          "alleles": "m-m, a-a, Bog-, D-, rh-rh",
         },
         {
-          "alleles": "C-c, Bog-, D-, rh-rh",
+          "alleles": "C-c, A1-A1, Bog-, D-, rh-rh",
         }
       ],
       "targetDrakes": [
@@ -670,7 +670,6 @@
         }
       ],
       "userChangeableGenes": "metallic, color, black",
-      "visibleGenes": "forelimbs, hindlimbs, wings, armor, horns",
       "linkedGenes": {
         "drakes": [0, 1],
         "genes": "wings, forelimbs, armor, horns, hindlimbs, tail, dilute, nose, bogbreath"
