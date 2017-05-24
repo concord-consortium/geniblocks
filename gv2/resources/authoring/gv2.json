@@ -428,6 +428,55 @@
       },
       "visibleGenes": "wings, metallic, black"
     },
+    "clutch-5drakes-intermediateTraits": {
+      "container": "FVContainer",
+      "template": "ClutchGame",
+      "challengeType": "create-unique",
+      "interactionType": "select-chromosomes",
+      "instructions": "Create 5 different baby drakes!",
+      "showUserDrake": true,
+      "randomizeTrials": true,
+      "changeableDrakes": [
+        {
+          "alleles": "M-M, W-w, b-b, h-h, a-a, C-C, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+        },
+        {
+          "alleles": "M-m, W-W, b-b, h-h, A1-A1, c-c, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+        },
+        {
+          "alleles": "M-M, w-w, B-B, H-H, a-a, C-C, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+        }
+      ],
+      "staticDrakes": [
+        {
+          "alleles": "m-M, W-w, b-b, h-h, a-a, C-C, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+        },
+        {
+          "alleles": "M-m, w-W, b-b, h-h, A1-A1, c-c, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+        },
+        {
+          "alleles": "M-M, w-w, b-B, H-H, a-a, c-C, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+        }
+      ],
+      "targetDrakes": [
+        {
+          "alleles": "m-m, w-w, B-B, H-H, A1-a, c-c",
+        },
+        {
+          "alleles": "m-m, w-w, B-B, H-H, a-a, C-c",
+        },
+        {
+          "alleles": "m-m, W-W, b-b, h-h, A1-A1, c-c",
+        }
+      ],
+      "changeableDrakeType": ["all", "all", "all"],
+      "hiddenAlleles": "A2",
+      "linkedGenes": {
+        "drakes": [0, 1, 2],
+        "genes": "forelimbs, hindlimbs, tail, dilute, nose, bogbreath"
+      },
+      "visibleGenes": "wings, metallic, black, horns, armor, color"
+    },
     "gamete-targetMatch-starterTraits": {
       "comment": "*** FV Test Level 2 ***",
       "container": "FVContainer",
@@ -1059,6 +1108,21 @@
               {
                 "name": "Challenge 1.1.1",
                 "id": "clutch-5drakes-starterTraits"
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "name": "Level 16",
+        "missions": [
+          {
+            "name": "Mission 1.1",
+            "challenges": [
+              {
+                "name": "Challenge 1.1.1",
+                "id": "clutch-5drakes-intermediateTraits"
               }
             ]
           }

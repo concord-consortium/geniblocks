@@ -2598,6 +2598,9 @@ body {
 .fv-layout .h .line {
   width: 21px;
 }
+.fv-layout .h #mountNode {
+  margin-top: -6px;
+}
 .fv-layout .fl .line {
   margin-top: -7px;
   width: 25px;
@@ -2613,10 +2616,10 @@ body {
   width: 25px;
 }
 .fv-layout .w #mountNode {
-  margin-top: -17px;
+  margin-top: -23px;
 }
 .fv-layout .w .fv-gene-label-text {
-  margin-top: -21px;
+  margin-top: -24px;
 }
 .fv-layout .a .line {
   margin-top: 6px;
