@@ -386,16 +386,47 @@
       "interactionType": "select-chromosomes",
       "instructions": "Create 5 different baby drakes!",
       "showUserDrake": true,
-      "targetDrakes": [{},{},{}],
-      "mother":{
-        "alleles": "w-W, M-M, fl-, hl-, T-T, h-, C-C, A1-a, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 1
+      "randomizeTrials": true,
+      "changeableDrakes": [
+        {
+          "alleles": "M-M, w-w, B-b, T-T, h-h, A1-A1, fl-fl, Hl-Hl, C-C, D-D, rh-rh, Bog-Bog",
+        },
+        {
+          "alleles": "m-m, W-W, B-b, t-t, h-h, a-a, fl-fl, hl-hl, C-C, D-D, rh-rh, Bog-Bog",
+        },
+        {
+          "alleles": "M-m, W-W, b-b, T-T, H-H, A1-A1, Fl-Fl, Hl-Hl, C-C, D-D, rh-rh, Bog-Bog",
+        }
+      ],
+      "staticDrakes": [
+        {
+          "alleles": "m-M, W-w, B-b, T-T, h-h, A1-A1, fl-fl, Hl-Hl, C-C, D-D, rh-rh, Bog-Bog",
+        },
+        {
+          "alleles": "M-m, w-W, B-b, t-t, h-h, a-a, fl-fl, hl-hl, C-C, D-D, rh-rh, Bog-Bog",
+        },
+        {
+          "alleles": "m-M, w-W, b-B, T-T, H-H, A1-A1, Fl-Fl, Hl-Hl, C-C, D-D, rh-rh, Bog-Bog",
+        }
+      ],
+      "targetDrakes": [
+        {
+          "alleles": "m-m, W-W, b-b",
+        },
+        {
+          "alleles": "M-M, w-w, b-b",
+        },
+        {
+          "alleles": "m-m, w-w, B-B",
+        }
+      ],
+      "changeableDrakeType": ["mother", "father", "all"],
+      "hiddenAlleles": "A2",
+      "linkedGenes": {
+        "drakes": [0, 1, 2],
+        "genes": "armor, forelimbs, hindlimbs, horns, tail, color, dilute, nose, bogbreath"
       },
-      "father": {
-        "alleles": "w-W, m-m, T-T, h-, a-A1, C-C, B-B, D-D, rh-rh, Bog-Bog",
-        "sex": 0
-      },
-      "visibleGenes": "wings, forelimbs, hindlimbs, armor, horns"
+      "visibleGenes": "wings, metallic, black"
     },
     "gamete-targetMatch-starterTraits": {
       "comment": "*** FV Test Level 2 ***",

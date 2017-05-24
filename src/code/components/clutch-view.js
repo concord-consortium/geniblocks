@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-import FVStableCounter from '../fv-components/stable-counter';
 import FVEggHatchView from '../fv-components/fv-egg-hatch';
 import classNames from 'classnames';
 

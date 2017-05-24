@@ -7,7 +7,7 @@ import GenomeView from '../components/genome';
 import GametePenView from '../components/gamete-pen';
 import BreedButtonAreaView from '../fv-components/breed-button-area';
 import ClutchView from '../components/clutch-view';
-import OrganismView from '../components/organism/';
+import OrganismView from '../components/organism';
 import FVGameteImageView from '../fv-components/fv-gamete-image';
 import FVChromosomeImageView from '../fv-components/fv-chromosome-image';
 import InteractiveGamete from '../fv-components/interactive-gamete';
@@ -27,9 +27,8 @@ function clearTimeouts() {
 var _this,
   animatedComponents = [],
   authoredGameteCounts = [0, 0],
-  targetDrakes = [],
+  changeableDrakeType = "",
   gameteLayoutConstants = [{}, {}],
-  authoredDrakes = [],
   challengeDidChange = true,
 
   gameteDisplayStyle = { display: "none" },
@@ -196,13 +195,12 @@ export default class ClutchGame extends Component {
   activeSelectionAnimations = 0;
 
   render() {
-    const { interactionType, scale, showUserDrake, trial, drakes, gametes,
+    const { interactionType, scale, showUserDrake, drakes, gametes, hiddenAlleles,
             userChangeableGenes, visibleGenes, userDrakeHidden, onChromosomeAlleleChange,
             onBreedClutch, onHatch, onResetGametes, onDrakeSubmission, moves } = this.props,
           { currentGametes } = gametes,
           { animatingGametes } = this.state,
-          firstTargetDrakeIndex = 2, // 0: mother, 1: father, 2: child, 3-5: targets
-          targetDrake = drakes[firstTargetDrakeIndex + trial],
+          targetDrake = drakes[2], // 0: mother, 1: father, 2: target, 3...: children
           isCreationChallenge = true,
           isMatchingChallenge = true,
           isSelectingGametes = interactionType === 'select-gametes',
@@ -242,7 +240,7 @@ export default class ClutchGame extends Component {
                                                     targetDrake.alleleString,
                                                     targetDrake.sex);
       success = (childImage === targetDrakeOrg.getImageName());
-      onDrakeSubmission(firstTargetDrakeIndex + trial, index, success);
+      onDrakeSubmission(2, index, success);
     };
     const handleReset = function() {
       if (moves >= 1) {
@@ -339,7 +337,7 @@ export default class ClutchGame extends Component {
     ovumView  = <FVGameteImageView className={ovumClasses}  isEgg={true}  chromosomes={ovumChromosomes} displayStyle={gameteDisplayStyle} />;
     spermView = <FVGameteImageView className={spermClasses} isEgg={false} chromosomes={spermChromosomes} displayStyle={gameteDisplayStyle} />;
 
-    let keptDrakes = drakes.slice(2 + targetDrakes.length);
+    let keptDrakes = drakes.slice(3);
     keptDrakes = keptDrakes.asMutable().map((org) => new BioLogica.Organism(BioLogica.Species.Drake, org.alleleString, org.sex));
 
     if (isCreationChallenge) {
@@ -366,10 +364,14 @@ export default class ClutchGame extends Component {
     function parentGenomeView(sex) {
       const org = sex === BioLogica.FEMALE ? mother : father,
             uniqueProps = sex === BioLogica.FEMALE
-                              ? {orgName: 'mother', chromosomes: motherUnselectedChromosomesMap}
-                              : {orgName: 'father', chromosomes: fatherUnselectedChromosomesMap};
+                              ? { orgName: 'mother', 
+                                  chromosomes: motherUnselectedChromosomesMap, 
+                                  editable: changeableDrakeType === "mother" || changeableDrakeType === "all"}
+                              : { orgName: 'father', 
+                                  chromosomes: fatherUnselectedChromosomesMap,
+                                  editable: changeableDrakeType === "father" || changeableDrakeType === "all"};
       return <GenomeView className={parentGenomeClass}  species={org.species} org={org} {...uniqueProps}
-                         ChromosomeImageClass={FVChromosomeImageView} small={ true } editable={true} 
+                         ChromosomeImageClass={FVChromosomeImageView} small={ true } hiddenAlleles={hiddenAlleles}
                          userChangeableGenes={ visibleGenes } visibleGenes={ userChangeableGenes } onAlleleChange={ handleAlleleChange } 
                          chromosomeHeight={122} />;
     }
@@ -451,6 +453,7 @@ export default class ClutchGame extends Component {
     userChangeableGenes: PropTypes.array.isRequired,
     visibleGenes: PropTypes.array.isRequired,
     userDrakeHidden: PropTypes.bool,
+    hiddenAlleles: PropTypes.array,
     onChromosomeAlleleChange: PropTypes.func.isRequired,
     onGameteChromosomeAdded: PropTypes.func.isRequired,
     onSelectGameteInPool: PropTypes.func.isRequired,
@@ -465,7 +468,7 @@ export default class ClutchGame extends Component {
   static authoredGametesToGametePools = function(authoredChallenge, drakes, trial) {
     const mother = drakes && drakes[0],
           father = drakes && drakes[1],
-          target = drakes && drakes[2 + trial],
+          target = drakes && drakes[2],
           matchingGametes = target && findCompatibleGametes(mother, father, target),
           fatherPool = [],
           motherPool = [],
@@ -495,45 +498,23 @@ export default class ClutchGame extends Component {
     return [shuffle(fatherPool), shuffle(motherPool)];
   }
 
-  static authoredDrakesToDrakeArray = function(authoredChallenge, trial) {
-    const mother = new BioLogica.Organism(BioLogica.Species.Drake,
-                                          authoredChallenge.mother.alleles,
-                                          authoredChallenge.mother.sex),
-          father = new BioLogica.Organism(BioLogica.Species.Drake,
-                                          authoredChallenge.father.alleles,
-                                          authoredChallenge.father.sex),
-          // authored specs may be incomplete; these are complete specs
-          motherSpec = { alleles: mother.getAlleleString(), sex: mother.sex },
-          fatherSpec = { alleles: father.getAlleleString(), sex: father.sex };
-
-    // already generated drakes
-    if (trial > 0)
-      return authoredDrakes;
-
-    // challengeType === 'match-target'
-    targetDrakes = authoredChallenge.targetDrakes;
-    const targetDrakeCount = targetDrakes.length;
-
-    function childDrakesContain(alleles) {
-      for (let i = 3; i < authoredDrakes.length; ++i) {
-        if (authoredDrakes[i].alleles === alleles)
-          return true;
-      }
-      return false;
+  static authoredDrakesToDrakeArray = function(authoredChallenge, trial, unscrambledTrialNumber) {
+    const changeableDrake = new BioLogica.Organism(BioLogica.Species.Drake,
+                                                   authoredChallenge.changeableDrakes[trial].alleles,
+                                                   BioLogica.FEMALE),
+          staticDrake = new BioLogica.Organism(BioLogica.Species.Drake,
+                                               authoredChallenge.staticDrakes[trial].alleles,
+                                               BioLogica.FEMALE);
+    changeableDrakeType = authoredChallenge.changeableDrakeType[unscrambledTrialNumber];
+    let fatherSpec, motherSpec;
+    if (changeableDrakeType === "mother") {
+      motherSpec = { alleles: changeableDrake.getAlleleString(), sex: BioLogica.FEMALE };
+      fatherSpec = { alleles: staticDrake.getAlleleString(), sex: BioLogica.MALE };
+    } else {
+      motherSpec = { alleles: staticDrake.getAlleleString(), sex: BioLogica.FEMALE };
+      fatherSpec = { alleles: changeableDrake.getAlleleString(), sex: BioLogica.MALE };
     }
-
-    authoredDrakes = [motherSpec, fatherSpec];
-    for (let i = 0; i < targetDrakeCount; ++i) {
-      let child, childAlleles;
-      do {
-        child = BioLogica.breed(mother, father, false);
-        childAlleles = child.getAlleleString();
-        // don't generate the same set of alleles twice
-      } while (childDrakesContain(childAlleles));
-
-      authoredDrakes.push({ alleles: childAlleles, sex: child.sex });
-    }
-    return authoredDrakes;
+    return [motherSpec, fatherSpec, authoredChallenge.targetDrakes[trial]];
   }
 
   static calculateGoalMoves = function() {
