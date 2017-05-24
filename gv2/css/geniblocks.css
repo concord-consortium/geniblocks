@@ -1498,6 +1498,39 @@ body {
   align-items: flex-end;
 }
 
+.geniblocks .clutch-drakes .organism {
+  cursor: pointer;
+}
+.geniblocks .clutch-slider {
+  margin-top: 50px;
+  cursor: pointer;
+}
+.geniblocks .clutch-slider.right {
+  background-image: url("../resources/fablevision/layout-b/clutch_slider_arrow_right.png");
+  width: 16px;
+  height: 29px;
+}
+.geniblocks .clutch-slider.left {
+  background-image: url("../resources/fablevision/layout-b/clutch_slider_arrow_left.png");
+  width: 16px;
+  height: 29px;
+}
+.geniblocks .drake-pages {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.geniblocks .drake-pages .stable-drakes.clutch-drakes {
+  margin-right: 0;
+}
+.geniblocks .clutch-page-count {
+  margin-left: 140px;
+}
+.layout-b #egg-game .geniblocks.genome.parent {
+  background-image: none;
+}
+
 .coin {
   position: absolute;
   height: 256px;
@@ -2086,6 +2119,27 @@ body {
   margin-top: 0.4rem;
 }
 
+.layout-b .geniblocks.breed-button-surround {
+  margin-top: 300px;
+}
+.layout-b .geniblocks.target-drake-container {
+  background-image: url("../resources/fablevision/layout-b/target_gizmo_single.png");
+  margin-top: -853px;
+  width: 400px;
+  height: 362px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  flex-direction: column;
+}
+.layout-b .geniblocks.target-drake-container .organism {
+  margin-top: 62px;
+  margin-left: 100px;
+}
+.layout-b .geniblocks.target-drake-container .target-drake-text {
+  margin-top: -25px;
+  margin-left: 143px;
+}
+
 .geniblocks.counter {
   width: 158px;
   height: 107px;
@@ -2285,7 +2339,7 @@ body {
   transform: rotate(-22deg);
 }
 
-.fv-layout-d .animated-egg-image {
+.animated-egg-image {
   background-image: url("../resources/fablevision/layout-c/egg_animation.png");
   background-position-y: 50%;
   background-position-x: 0%;
@@ -2294,6 +2348,7 @@ body {
   position: absolute;
   z-index: 2;
 }
+
 .fv-layout-d #mission-wrapper {
   margin: 70px 0 0 0;
   width: 100%;
@@ -2591,7 +2646,7 @@ body {
   margin-top: 7px;
 }
 .fv-layout .b .fv-gene-label-text {
-  margin-top: 19px;
+  margin-top: 10px;
 }
 .fv-layout .ltl .w .line {
   transform: rotate(-35deg);
@@ -2922,6 +2977,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   height: 85px;
+  width: 85px;
   margin-top: 10px;
   margin-right: 15px;
 }
