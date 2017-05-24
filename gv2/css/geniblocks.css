@@ -1506,12 +1506,12 @@ body {
   cursor: pointer;
 }
 .geniblocks .clutch-slider.right {
-  background-image: url("../resources/fablevision/layout-b/clutch_slider_arrow_right.png");
+  background-image: url("../resources/fablevision/layout-b/Clutch_Slider_Arrow_R.png");
   width: 16px;
   height: 29px;
 }
 .geniblocks .clutch-slider.left {
-  background-image: url("../resources/fablevision/layout-b/clutch_slider_arrow_left.png");
+  background-image: url("../resources/fablevision/layout-b/Clutch_Slider_Arrow_L.png");
   width: 16px;
   height: 29px;
 }
