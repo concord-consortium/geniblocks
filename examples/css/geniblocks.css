@@ -1324,6 +1324,7 @@ body {
   top: 35px;
   width: 660px;
   height: 300px;
+  left: 0;
 }
 #egg-sort-game .geniblocks.basket-set {
   display: flex;
@@ -1351,6 +1352,7 @@ body {
 }
 #egg-sort-game #eggs {
   position: absolute;
+  left: 0;
   top: 350px;
   width: 660px;
 }
@@ -1932,7 +1934,7 @@ body {
 .navigation-layout {
   background-image: url("../resources/fablevision/layout-a/screen_border.png"), url("../resources/fablevision/layout-a/screen.png");
   background-position: 50% 50%, 50% 50%;
-  background-size: cover, auto;
+  height: 1080px;
   overflow: hidden;
 }
 
@@ -2292,6 +2294,7 @@ body {
   width: 1920px;
   height: 375px;
   position: absolute;
+  left: 0;
   top: 195px;
   background-image: url("../resources/fablevision/layout-d/straw_over.png");
   background-repeat: no-repeat;
@@ -2560,6 +2563,21 @@ body {
   justify-content: flex-start;
   padding-right: 30px;
 }
+.fv-layout.fv-layout-a .geniblocks.chromosome-container .items.rtl .labels .fv-gene-label {
+  right: 1490px;
+}
+.fv-layout.fv-layout-d .geniblocks.chromosome-container .items.rtl .labels .fv-gene-label {
+  right: 235px;
+}
+.fv-layout.fv-layout-c .mother .geniblocks.chromosome-container .items.rtl .labels .fv-gene-label {
+  right: 235px;
+}
+.fv-layout.fv-layout-c .father .geniblocks.chromosome-container .items.rtl .labels .fv-gene-label {
+  right: 360px;
+}
+.fv-layout.fv-layout-c .half-genome .geniblocks.chromosome-container .items.rtl .labels .fv-gene-label {
+  right: 55px;
+}
 .fv-layout .line {
   position: absolute;
   margin-top: -3px;
@@ -2822,6 +2840,7 @@ body {
   font-size: 2.5rem;
   font-weight: bold;
   color: #fff;
+  left: 267px;
 }
 .fv-layout-a .target-drake-gizmo #target-drake {
   margin-left: -80px;
