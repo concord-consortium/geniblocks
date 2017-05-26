@@ -1905,10 +1905,10 @@ body {
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  align-content: space-around;
   max-height: 600px;
-  margin: 90px;
+  margin: 90px 0 0 30px;
   justify-content: center;
+  overflow: scroll;
 }
 .navigate-button {
   width: 315px;
@@ -1934,7 +1934,6 @@ body {
   background-image: url("../resources/fablevision/layout-a/screen_border.png"), url("../resources/fablevision/layout-a/screen.png");
   background-position: 50% 50%, 50% 50%;
   height: 1080px;
-  overflow: hidden;
 }
 
 .geniblocks.notification-container {
