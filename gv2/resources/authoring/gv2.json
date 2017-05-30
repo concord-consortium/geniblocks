@@ -735,19 +735,19 @@
       "showUserDrake": true,
       "initialDrake": [
         {
-          "alleles": "M-m, A1-A1, Bog-, D-, rh-rh",
+          "alleles": "M-M, A1-A1, Bog-, D-, rh-rh",
         },
         {
-          "alleles": "c-c, A1-a, Bog-, D-, rh-rh",
+          "alleles": "c-c, m-m, A1-a, Bog-, D-, rh-rh",
         },
         {
-          "alleles": "B-b, a-A1, Bog-, D-, rh-rh",
+          "alleles": "B-b, M-m, a-A1, Bog-, D-, rh-rh",
         },
         {
-          "alleles": "m-m, a-a, Bog-, D-, rh-rh",
+          "alleles": "m-m, b-b, a-a, Bog-, D-, rh-rh",
         },
         {
-          "alleles": "C-c, A1-A1, Bog-, D-, rh-rh",
+          "alleles": "C-C, A1-A1, Bog-, D-, rh-rh",
         }
       ],
       "targetDrakes": [
@@ -782,19 +782,19 @@
       "instructions": "Match the target drake!",
       "initialDrake": [
         {
-          "alleles": "M-m, Bog-, D-, rh-rh",
+          "alleles": "M-M, A1-A1, Bog-, D-, rh-rh",
         },
         {
-          "alleles": "c-c, Bog-, D-, rh-rh",
+          "alleles": "c-c, m-m, A1-a, Bog-, D-, rh-rh",
         },
         {
-          "alleles": "B-b, Bog-, D-, rh-rh",
+          "alleles": "B-b, M-m, a-A1, Bog-, D-, rh-rh",
         },
         {
-          "alleles": "m-m, Bog-, D-, rh-rh",
+          "alleles": "m-m, b-b, a-a, Bog-, D-, rh-rh",
         },
         {
-          "alleles": "C-c, Bog-, D-, rh-rh",
+          "alleles": "C-C, A1-A1, Bog-, D-, rh-rh",
         }
       ],
       "targetDrakes": [
