@@ -1938,18 +1938,56 @@ body {
 
 .geniblocks.notification-container {
   position: fixed;
-  top: 0;
-  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  z-index: 4;
 }
 .geniblocks.notification-container .notification {
-  width: 200px;
-  margin: 17px;
+  width: 1405px;
+  height: 189px;
+  margin: 0 -67px;
   padding: 12px;
   color: #2d1c06;
-  border-radius: 5px;
-  border: 1px solid #2d1c06;
-  background: rgba(250,235,215,0.8);
-  box-shadow: inset 0px 0px 18px #fff, 0px 0px 8px #ffdfb5;
+  background-image: url("../resources/fablevision/huds/scroll.png");
+}
+.geniblocks.notification-container .notification .message-text {
+  position: absolute;
+  margin-left: 140px;
+  top: 216px;
+  font-family: 'Yanone Kaffeesatz';
+  font-size: 2rem;
+  color: #000;
+  width: 1000px;
+}
+.geniblocks.notification-container .notification .close-button {
+  background-image: url("../resources/fablevision/huds/scroll_close.png");
+  width: 47px;
+  height: 45px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: 1250px;
+  margin-top: 50px;
+  cursor: pointer;
+}
+.geniblocks.notification-container .notification .next-arrow {
+  background-image: url("../resources/fablevision/huds/arrow_right.png");
+  height: 42px;
+  width: 46px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: 1155px;
+  margin-top: -7px;
+  cursor: pointer;
+}
+.geniblocks.notification-container .fv-character {
+  background-image: url("../resources/fablevision/huds/speaker.png");
+  width: 325px;
+  height: 359px;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .geniblocks.ordinal-organism {
@@ -2037,6 +2075,24 @@ body {
   position: absolute;
   left: 1560px;
   top: 38px;
+}
+.next-trial-button {
+  position: absolute;
+  width: 237px;
+  height: 161px;
+  background-image: url("../resources/fablevision/huds/Trial_screen.png");
+  background-size: cover;
+  top: 0;
+  margin-top: 897px;
+  margin-left: 1654px;
+  z-index: 4;
+  cursor: pointer;
+}
+.next-trial-button .next-trial-text {
+  margin-top: 50px;
+  margin-left: 61px;
+  font-family: 'Yanone Kaffeesatz';
+  font-size: 2.5rem;
 }
 
 .geniblocks.breed-button-area {
@@ -2442,6 +2498,12 @@ body {
 .fv-layout-d #mission-wrapper #egg-sort-game #right-section #container #background {
   background: none;
   border: none;
+}
+.fv-layout-d #mission-wrapper #egg-sort-game .chromomatic-container {
+  display: block;
+  position: absolute;
+  right: 0;
+  z-index: 3;
 }
 .fv-layout-d #mission-wrapper #egg-sort-game .chromomatic {
   height: 871px;
