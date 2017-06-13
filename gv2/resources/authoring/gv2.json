@@ -386,27 +386,32 @@
       "interactionType": "select-chromosomes",
       "instructions": "Create 5 different baby drakes!",
       "showUserDrake": true,
-      "randomizeTrials": true,
-      "changeableDrakes": [
+      "mother": [
         {
           "alleles": "M-M, w-w, B-b, T-T, h-h, A1-A1, fl-fl, Hl-Hl, C-C, D-D, rh-rh, Bog-Bog",
-        },
-        {
-          "alleles": "m-m, W-W, B-b, t-t, h-h, a-a, fl-fl, hl-hl, C-C, D-D, rh-rh, Bog-Bog",
-        },
-        {
-          "alleles": "M-m, W-W, b-b, T-T, H-H, A1-A1, Fl-Fl, Hl-Hl, C-C, D-D, rh-rh, Bog-Bog",
-        }
-      ],
-      "staticDrakes": [
-        {
-          "alleles": "m-M, W-w, B-b, T-T, h-h, A1-A1, fl-fl, Hl-Hl, C-C, D-D, rh-rh, Bog-Bog",
+          "sex": 1
         },
         {
           "alleles": "M-m, w-W, B-b, t-t, h-h, a-a, fl-fl, hl-hl, C-C, D-D, rh-rh, Bog-Bog",
+          "sex": 1
+        },
+        {
+          "alleles": "M-m, W-W, b-b, T-T, H-H, A1-A1, Fl-Fl, Hl-Hl, C-C, D-D, rh-rh, Bog-Bog",
+          "sex": 1
+        }
+      ],
+      "father": [
+        {
+          "alleles": "m-M, W-w, B-b, T-T, h-h, A1-A1, fl-fl, Hl-Hl, C-C, D-D, rh-rh, Bog-Bog",
+          "sex": 0
+        },
+        {
+          "alleles": "m-m, W-W, B-b, t-t, h-h, a-a, fl-fl, hl-hl, C-C, D-D, rh-rh, Bog-Bog",
+          "sex": 0
         },
         {
           "alleles": "m-M, w-W, b-B, T-T, H-H, A1-A1, Fl-Fl, Hl-Hl, C-C, D-D, rh-rh, Bog-Bog",
+          "sex": 0
         }
       ],
       "targetDrakes": [
@@ -420,13 +425,27 @@
           "alleles": "m-m, w-w, B-B",
         }
       ],
-      "changeableDrakeType": ["mother", "father", "all"],
+      "goalMoves": [1, 1, 1],
       "hiddenAlleles": "A2",
       "linkedGenes": {
         "drakes": [0, 1, 2],
         "genes": "armor, forelimbs, hindlimbs, horns, tail, color, dilute, nose, bogbreath"
       },
-      "visibleGenes": "wings, metallic, black"
+      "visibleGenes": ["wings", "metallic", "black"],
+      "userChangeableGenes": [
+        {
+          "mother": "wings, metallic, black",
+          "father": ""
+        },
+        {
+          "mother": "",
+          "father": "wings, metallic, black"
+        },
+        {
+          "mother": "wings, metallic, black",
+          "father": "wings, metallic, black"
+        }
+      ]
     },
     "clutch-5drakes-intermediateTraits": {
       "container": "FVContainer",
@@ -436,31 +455,37 @@
       "instructions": "Create 5 different baby drakes!",
       "showUserDrake": true,
       "randomizeTrials": true,
-      "changeableDrakes": [
+      "mother": [
         {
           "alleles": "M-M, W-w, b-b, h-h, a-a, C-C, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+          "sex": 1
         },
         {
           "alleles": "M-m, W-W, b-b, h-h, A1-A1, c-c, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+          "sex": 1
         },
         {
-          "alleles": "M-M, w-w, B-B, H-H, a-a, C-C, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+          "alleles": "M-M, w-w, B-B, H-H, A1-a, C-C, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+          "sex": 1
         }
       ],
-      "staticDrakes": [
+      "father": [
         {
-          "alleles": "m-M, W-w, b-b, h-h, a-a, C-C, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+          "alleles": "m-M, W-w, b-b, h-h, A1-a, C-C, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+          "sex": 0
         },
         {
           "alleles": "M-m, w-W, b-b, h-h, A1-A1, c-c, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+          "sex": 0
         },
         {
-          "alleles": "M-M, w-w, b-B, H-H, a-a, c-C, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+          "alleles": "M-M, w-w, b-B, H-h, A1-a, c-C, T-T, fl-fl, Hl-Hl, D-D, rh-rh, Bog-Bog",
+          "sex": 0
         }
       ],
       "targetDrakes": [
         {
-          "alleles": "m-m, w-w, B-B, H-H, A1-a, c-c",
+          "alleles": "m-m, w-w, B-B, H-H, A1-A1, c-c",
         },
         {
           "alleles": "m-m, w-w, B-B, H-H, a-a, C-c",
@@ -469,13 +494,13 @@
           "alleles": "m-m, W-W, b-b, h-h, A1-A1, c-c",
         }
       ],
-      "changeableDrakeType": ["all", "all", "all"],
+      "goalMoves": [6, 6, 6],
       "hiddenAlleles": "A2",
       "linkedGenes": {
         "drakes": [0, 1, 2],
         "genes": "forelimbs, hindlimbs, tail, dilute, nose, bogbreath"
       },
-      "visibleGenes": "wings, metallic, black, horns, armor, color"
+      "userChangeableGenes": "wings, metallic, black, horns, armor, color"
     },
     "gamete-targetMatch-starterTraits": {
       "comment": "*** FV Test Level 2 ***",
@@ -736,35 +761,45 @@
       "initialDrake": [
         {
           "alleles": "M-M, A1-A1, Bog-, D-, rh-rh",
+          "sex": 0
         },
         {
           "alleles": "c-c, m-m, A1-a, Bog-, D-, rh-rh",
+          "sex": 1
         },
         {
           "alleles": "B-b, M-m, a-A1, Bog-, D-, rh-rh",
+          "sex": 0
         },
         {
           "alleles": "m-m, b-b, a-a, Bog-, D-, rh-rh",
+          "sex": 1
         },
         {
           "alleles": "C-C, A1-A1, Bog-, D-, rh-rh",
+          "sex": 0
         }
       ],
       "targetDrakes": [
         {
-          "alleles": "m-m, C-C, B-B",
+          "alleles": "m-m, C-C, B-B, rh-rh",
+          "sex": 0
         },
         {
-          "alleles": "M-m, C-C, B-B",
+          "alleles": "M-m, C-C, B-B, rh-rh",
+          "sex": 0
         },
         {
-          "alleles": "m-m, C-C, b-b",
+          "alleles": "m-m, C-C, b-b, rh-rh",
+          "sex": 1
         },
         {
-          "alleles": "M-m, C-C, B-B",
+          "alleles": "M-m, C-C, B-B, rh-rh",
+          "sex": 0
         },
         {
-          "alleles": "m-m, c-c, B-B",
+          "alleles": "m-m, c-c, B-B, rh-rh",
+          "sex": 0
         }
       ],
       "userChangeableGenes": "metallic, color, black",
@@ -783,35 +818,45 @@
       "initialDrake": [
         {
           "alleles": "M-M, A1-A1, Bog-, D-, rh-rh",
+          "sex": 0
         },
         {
           "alleles": "c-c, m-m, A1-a, Bog-, D-, rh-rh",
+          "sex": 0
         },
         {
           "alleles": "B-b, M-m, a-A1, Bog-, D-, rh-rh",
+          "sex": 1
         },
         {
           "alleles": "m-m, b-b, a-a, Bog-, D-, rh-rh",
+          "sex": 0
         },
         {
           "alleles": "C-C, A1-A1, Bog-, D-, rh-rh",
+          "sex": 0
         }
       ],
       "targetDrakes": [
         {
-          "alleles": "m-m, C-C, B-B",
+          "alleles": "m-m, C-C, B-B, rh-rh",
+          "sex": 0
         },
         {
-          "alleles": "M-m, C-C, B-B",
+          "alleles": "M-m, C-C, B-B, rh-rh",
+          "sex": 1
         },
         {
-          "alleles": "m-m, C-C, b-b",
+          "alleles": "m-m, C-C, b-b, rh-rh",
+          "sex": 0
         },
         {
-          "alleles": "M-m, C-C, B-B",
+          "alleles": "M-m, C-C, B-B, rh-rh",
+          "sex": 1
         },
         {
-          "alleles": "m-m, c-c, B-B",
+          "alleles": "m-m, c-c, B-B, rh-rh",
+          "sex": 0
         }
       ],
       "numTrials": 3,
