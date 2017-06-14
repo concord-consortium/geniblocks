@@ -30,14 +30,12 @@ class Navigation extends Component {
   render() {
     const { navigateToChallenge } = this.props;
 
-    let missionNum = 1;
-
     const handleNavigateButton = function(routeSpec) {
       navigateToChallenge(routeSpec);
     };
 
-    const navigateButton = function(level, mission, challenge) {
-      return <NavigateButton label={"Level " + missionNum++} 
+    const navigateButton = function(challengeName, level, mission, challenge) {
+      return <NavigateButton label={challengeName} 
                              routeSpec={{level: level - 1, mission: mission - 1, challenge: challenge - 1}} 
                              onClick={handleNavigateButton} />;
     };
@@ -45,22 +43,23 @@ class Navigation extends Component {
     return (
       <div className="mission-backdrop navigation-layout">
         <div id="navigation">
-          {navigateButton(1, 1, 1)}
-          {navigateButton(2, 1, 1)}
-          {navigateButton(3, 1, 1)}
-          {navigateButton(4, 1, 1)}
-          {navigateButton(5, 1, 1)}
-          {navigateButton(6, 1, 1)}
-          {navigateButton(7, 1, 1)}
-          {navigateButton(8, 1, 1)}
-          {navigateButton(9, 1, 1)}
-          {navigateButton(10, 1, 1)}
-          {navigateButton(11, 1, 1)}
-          {navigateButton(12, 1, 1)}
-          {navigateButton(13, 1, 1)}
-          {navigateButton(14, 1, 1)}
-          {navigateButton(15, 1, 1)}
-          {navigateButton(16, 1, 1)}
+          {navigateButton("Mission 1.1.1", 1, 1, 1)}
+          {navigateButton("Mission 2.1.1", 2, 1, 1)}
+          {navigateButton("Mission 2.1.2", 3, 1, 1)}
+          {navigateButton("Mission 2.2.1", 4, 1, 1)}
+          {navigateButton("Mission 2.2.2", 5, 1, 1)}
+          {navigateButton("Mission 2.3.1", 6, 1, 1)}
+          {navigateButton("Mission 2.3.2", 7, 1, 1)}
+          {navigateButton("Mission 2.3.3", 8, 1, 1)}
+          {navigateButton("Mission 2.3.4", 9, 1, 1)}
+          {navigateButton("Mission 4.1.1", 10, 1, 1)}
+          {navigateButton("Mission 4.1.2", 11, 1, 1)}
+          {navigateButton("Mission 4.1.3", 12, 1, 1)}
+          {navigateButton("Mission 4.1.4", 13, 1, 1)}
+          {navigateButton("Mission 3.1.1", 14, 1, 1)}
+          {navigateButton("Mission 3.1.2", 15, 1, 1)}
+          {navigateButton("Mission 4.2.1", 16, 1, 1)}
+          {navigateButton("Mission 4.2.1", 17, 1, 1)}
         </div>
       </div>
     );
