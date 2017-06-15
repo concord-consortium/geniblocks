@@ -1944,6 +1944,7 @@ body {
   flex-direction: row;
   align-items: flex-end;
   z-index: 4;
+  pointer-events: none;
 }
 .geniblocks.notification-container .notification {
   width: 1405px;
@@ -1951,6 +1952,7 @@ body {
   margin: 0 -67px;
   padding: 12px;
   color: #2d1c06;
+  pointer-events: all;
   background-image: url("../resources/fablevision/huds/scroll.png");
 }
 .geniblocks.notification-container .notification .message-text {
@@ -1983,7 +1985,7 @@ body {
   cursor: pointer;
 }
 .geniblocks.notification-container .fv-character {
-  background-image: url("../resources/fablevision/huds/speaker.png");
+  background-image: url("../resources/fablevision/huds/Rajput_active.png");
   width: 325px;
   height: 359px;
   background-repeat: no-repeat;
@@ -2102,6 +2104,10 @@ body {
   margin-left: 61px;
   font-family: 'Yanone Kaffeesatz';
   font-size: 2.5rem;
+}
+.gem-set {
+  transform: scale(0.7);
+  margin-top: 50px;
 }
 
 .geniblocks.breed-button-area {
@@ -2325,7 +2331,7 @@ body {
   margin-top: 50px;
 }
 .end-level-dialog-container .end-level-dialog-screen .gem-info .gem-win-box .gem-container {
-  margin-left: 75px;
+  margin-left: 85px;
   margin-top: 50px;
   position: absolute;
 }
@@ -2337,7 +2343,7 @@ body {
   width: 263px;
 }
 .end-level-dialog-container .end-level-dialog-screen .gem-info .gem-set {
-  margin-top: 50px;
+  margin-top: 55px;
   margin-left: 85px;
 }
 .end-level-dialog-container .end-level-dialog-screen .end-level-navigation-buttons {
@@ -2649,6 +2655,7 @@ body {
   position: absolute;
   right: 0;
   z-index: 3;
+  pointer-events: none;
 }
 .fv-layout-d #mission-wrapper #egg-sort-game .chromomatic {
   height: 871px;
@@ -3099,7 +3106,7 @@ body {
 }
 
 .gem-container .gem-fill {
-  width: 106px;
+  width: 82px;
   height: 158px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -3108,19 +3115,18 @@ body {
   background-image: url("../resources/fablevision/venture-pad/gem_blue.png");
 }
 .gem-container .gem-fill-1 {
-  background-image: url("../resources/fablevision/venture-pad/gem_amber.png");
+  background-image: url("../resources/fablevision/venture-pad/gem_yellow.png");
 }
 .gem-container .gem-fill-2 {
-  background-image: url("../resources/fablevision/venture-pad/gem_ruby.png");
+  background-image: url("../resources/fablevision/venture-pad/gem_red.png");
 }
 .gem-set {
   display: flex;
   flex-direction: row;
 }
 .gem-set .gem-container {
-  margin-left: 10px;
+  margin-left: 5px;
   width: 90px;
-  margin-right: -10px;
 }
 .gem-set .gem-container .gem-outline-highlight {
   width: 100px;
@@ -3133,10 +3139,10 @@ body {
 .gem-set .gem-container .gem-outline-highlight .gem-fill {
   position: absolute;
   margin-right: 0;
-  width: 90px;
+  width: 73px;
   height: 150px;
-  margin-left: 6px;
-  margin-top: 8px;
+  margin-left: 15px;
+  margin-top: 15px;
 }
 .gem-set .gem-container .gem-outline {
   width: 78px;
@@ -3148,6 +3154,13 @@ body {
   position: absolute;
   margin-left: 27px;
   margin-top: 17px;
+  font-family: 'Yanone Kaffeesatz';
+  font-size: 4rem;
+  color: #fff;
+}
+.gem-set .gem-container.highlight {
+  margin-right: 10px;
+  margin-left: -5px;
 }
 
 .geniblocks.level-indicator {
