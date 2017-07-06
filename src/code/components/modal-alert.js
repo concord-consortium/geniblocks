@@ -42,6 +42,7 @@ class ModalAlert extends React.Component {
                               routeSpec={this.props.routeSpec}
                               challengeCount={this.props.challengeCount}
                               enableContinueButton={this.props.enableContinueButton}
+                              authoring={this.props.authoring}
                               onNextChallenge={this.props.onRightButtonClick} onTryAgain={this.props.onLeftButtonClick}/>
         );
       } else if (this.props.showMap) {

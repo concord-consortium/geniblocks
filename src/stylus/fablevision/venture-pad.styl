@@ -11,8 +11,8 @@
     bottom: 0
     left: 0
     right: 0
-    backgroundColor: '#000'
-    opacity: 0.9
+    background-color: black
+    opacity: 0.8
 
   .venture-pad-background
     position: absolute
@@ -23,6 +23,7 @@
     background-image: url('../resources/fablevision/venture-pad/screen_behind.png')
     background-position: 30% 50%
     background-repeat: no-repeat
+    margin-left: 460px
     z-index: 11
 
   .venture-pad-screen
@@ -32,7 +33,7 @@
     width: 700px
     height: 825px
     z-index: 12
-    margin-left: 70px
+    margin-left: 530px
     background-size: cover
     background-repeat: no-repeat
     overflow-y: auto
@@ -69,9 +70,61 @@
     left: 28%
     width: 921px
     height: 894px
+    margin-left: 460px
     background-image: url('../resources/fablevision/venture-pad/frame.png'),
                       url('../resources/fablevision/venture-pad/screen_over.png')
     background-position: 50% 50%, 30% 50%
     background-repeat: no-repeat
     pointer-events: none
     z-index: 13
+
+.venture-pad-glass
+    position: absolute
+    width: 1590px
+    height: 824px
+    background-image: url('../resources/fablevision/venture-pad/glass.png')
+    background-size: contain
+    background-repeat: no-repeat
+    top: 125px
+    left: 25px
+    z-index: 10
+
+    .venture-pad-map
+      background-image: url('../resources/fablevision/venture-pad/map.png')
+      width: 1008px
+      height: 798px
+      background-size: contain
+      background-repeat: no-repeat
+
+      .venture-pad-room-highlight
+        position: absolute
+        &.hatchery
+          background-image: url('../resources/fablevision/venture-pad/map_hatchery_highlight.png')
+          width: 216px
+          height: 114px
+          margin-left: 70px
+          margin-top: 310px
+        &.zoomroom
+          background-image: url('../resources/fablevision/venture-pad/map_zoomroom_highlight.png')
+          width: 167px
+          height: 133px
+          margin-left: 708px
+          margin-top: 564px
+        &.simroom
+          background-image: url('../resources/fablevision/venture-pad/map_simfactory_highlight.png')
+          width: 222px
+          height: 66px
+          margin-left: 708px
+          margin-top: 463px
+        &.breedingbarn
+          background-image: url('../resources/fablevision/venture-pad/map_breedingbarn_highlight.png')
+          width: 294px
+          height: 319px
+          margin-left: 355px
+          margin-top: 377px
+        &.home
+          background-image: url('../resources/fablevision/venture-pad/map_missioncontrol_highlight.png')
+          width: 331px
+          height: 222px
+          margin-left: 339px
+          margin-top: 207px

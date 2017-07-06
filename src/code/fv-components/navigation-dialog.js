@@ -28,15 +28,19 @@ export default class NavigationDialogView extends React.Component {
   }
 
   render() {
-    let {gems, onNavigateToChallenge, onHideMap, authoring} = this.props;
+    let {gems, onNavigateToChallenge, onHideMap, authoring} = this.props,
+        currChallengeSpec = AuthoringUtils.getCurrentChallengeFromGems(authoring, gems),
+        currChallengeMeta = AuthoringUtils.getChallengeMeta(authoring, currChallengeSpec),
+        isCurrLevel = this.state.level === currChallengeSpec.level;
 
     let gemSets = [];
 
     for (let mission = 0; mission < AuthoringUtils.getMissionCount(authoring, this.state.level); mission++) {
+      let isCurrMission = isCurrLevel && mission === currChallengeSpec.mission;
       gemSets.push(<div id={"gem-label-" + mission} className="gem-set-label">
                      {"Mission " + (this.state.level + 1) + "." + (mission + 1) + ":"}
                    </div>);
-      gemSets.push(<GemSetView level={this.state.level} mission={mission}
+      gemSets.push(<GemSetView level={this.state.level} mission={mission} challenge={isCurrMission ? currChallengeSpec.challenge : null}
                                challengeCount={AuthoringUtils.getChallengeCount(authoring, this.state.level, mission)}
                                gems={gems}
                                onNavigateToChallenge={onNavigateToChallenge} />);
@@ -69,7 +73,8 @@ export default class NavigationDialogView extends React.Component {
       </div>
     );
 
-    return <VenturePadView title={t("~VENTURE.MAP")} screen={screen} onClickOutside={onHideMap}>stuff stuff stuff</VenturePadView>;
+    return <VenturePadView title={t("~VENTURE.MAP")} screen={screen} onClickOutside={onHideMap} 
+                           room={isCurrLevel ? currChallengeMeta && currChallengeMeta.room : null}></VenturePadView>;
   }
 }
 

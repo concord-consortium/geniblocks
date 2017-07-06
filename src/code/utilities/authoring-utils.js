@@ -1,3 +1,5 @@
+import { scoreValues } from '../reducers/helpers/gems-helper';
+
 export default class AuthoringUtils {
   static getChallengeDefinition(authoring, routeSpec) {
     const challengeId = this.getChallengeId(authoring, routeSpec),
@@ -90,6 +92,30 @@ export default class AuthoringUtils {
               level: i,
               mission: j,
               started: k > 0
+            };
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Returns an object representing the current level, mission and challenge the user is on,
+   * by finding the first challenge which is failed or incomplete
+   */
+  static getCurrentChallengeFromGems(authoring, gems) {
+    for (let i = 0, ii = authoring.application.levels.length; i < ii; i++) {
+      let level = authoring.application.levels[i];
+      for (let j = 0, jj = level.missions.length; j < jj; j++) {
+        let mission = level.missions[j];
+        for (let k = 0, kk = mission.challenges.length; k < kk; k++) {
+          if (gems[i] && gems[i][j] && !isNaN(gems[i][j][k]) && gems[i][j][k] !== scoreValues.NONE) {
+            continue;
+          } else {
+            return {
+              level: i,
+              mission: j,
+              challenge: k
             };
           }
         }

@@ -1,11 +1,17 @@
 import React, {PropTypes} from 'react';
+import classNames from 'classnames';
 
-const VenturePadView = ({title, screen, onClickOutside}) => {
+const VenturePadView = ({title, screen, onClickOutside, room}) => {
   return (
     <div className="venture-pad-container">
       <div className="venture-pad-backdrop" onClick={onClickOutside}></div>
       <div className="venture-pad-background"></div>
       <div className="venture-pad-overlay"></div>
+      <div className="venture-pad-glass">
+        <div className="venture-pad-map">
+          <div className={classNames("venture-pad-room-highlight", room ? room : "home")}></div>
+        </div>
+      </div>
       <div className="venture-pad-screen">
         <div className="venture-pad-title">
           /{title}
@@ -27,7 +33,8 @@ const VenturePadView = ({title, screen, onClickOutside}) => {
 VenturePadView.propTypes = {
   title: PropTypes.string,
   screen: PropTypes.object,
-  onClickOutside: PropTypes.func
+  onClickOutside: PropTypes.func,
+  room: PropTypes.string
 };
 
 export default VenturePadView;
