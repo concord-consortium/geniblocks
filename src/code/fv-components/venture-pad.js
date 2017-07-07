@@ -1,7 +1,14 @@
 import React, {PropTypes} from 'react';
 import classNames from 'classnames';
+import AuthoringUtils from '../utilities/authoring-utils';
 
-const VenturePadView = ({title, screen, onClickOutside, room}) => {
+const VenturePadView = ({title, screen, onClickOutside, onNavigateToChallenge, authoring, roomHighlightRoute}) => {
+  let roomMeta = AuthoringUtils.getChallengeMeta(authoring, roomHighlightRoute);
+  let handleNavigateToChallenge = () => {
+    if (onNavigateToChallenge) {
+      onNavigateToChallenge(roomHighlightRoute);
+    }
+  };
   return (
     <div className="venture-pad-container">
       <div className="venture-pad-backdrop" onClick={onClickOutside}></div>
@@ -9,7 +16,9 @@ const VenturePadView = ({title, screen, onClickOutside, room}) => {
       <div className="venture-pad-overlay"></div>
       <div className="venture-pad-glass">
         <div className="venture-pad-map">
-          <div className={classNames("venture-pad-room-highlight", room ? room : "home")}></div>
+          <div style={onNavigateToChallenge ? {cursor: "pointer"} : null}
+               className={classNames("venture-pad-room-highlight", roomMeta ? roomMeta.room : "home")} 
+               onClick={handleNavigateToChallenge}></div>
         </div>
       </div>
       <div className="venture-pad-screen">
@@ -34,7 +43,9 @@ VenturePadView.propTypes = {
   title: PropTypes.string,
   screen: PropTypes.object,
   onClickOutside: PropTypes.func,
-  room: PropTypes.string
+  onNavigateToChallenge: PropTypes.func,
+  authoring: PropTypes.object,
+  roomHighlightRoute: PropTypes.object
 };
 
 export default VenturePadView;

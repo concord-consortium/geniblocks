@@ -29,20 +29,19 @@ export default class NavigationDialogView extends React.Component {
 
   render() {
     let {gems, onNavigateToChallenge, onHideMap, authoring} = this.props,
-        currChallengeSpec = AuthoringUtils.getCurrentChallengeFromGems(authoring, gems),
-        currChallengeMeta = AuthoringUtils.getChallengeMeta(authoring, currChallengeSpec),
-        isCurrLevel = this.state.level === currChallengeSpec.level;
+        currChallengeRoute = AuthoringUtils.getCurrentChallengeInLevelFromGems(authoring, gems, this.state.level),
+        isCurrLevel = this.state.level === currChallengeRoute.level;
 
     let gemSets = [];
 
     for (let mission = 0; mission < AuthoringUtils.getMissionCount(authoring, this.state.level); mission++) {
-      let isCurrMission = isCurrLevel && mission === currChallengeSpec.mission;
-      gemSets.push(<div id={"gem-label-" + mission} className="gem-set-label">
+      let isCurrMission = isCurrLevel && mission === currChallengeRoute.mission;
+      gemSets.push(<div id={"gem-label-" + mission} className="gem-set-label" key={"label-" + mission}>
                      {"Mission " + (this.state.level + 1) + "." + (mission + 1) + ":"}
                    </div>);
-      gemSets.push(<GemSetView level={this.state.level} mission={mission} challenge={isCurrMission ? currChallengeSpec.challenge : null}
+      gemSets.push(<GemSetView level={this.state.level} mission={mission} challenge={isCurrMission ? currChallengeRoute.challenge : null}
                                challengeCount={AuthoringUtils.getChallengeCount(authoring, this.state.level, mission)}
-                               gems={gems}
+                               gems={gems} key={"gem-set-" + mission}
                                onNavigateToChallenge={onNavigateToChallenge} />);
     }
 
@@ -73,8 +72,8 @@ export default class NavigationDialogView extends React.Component {
       </div>
     );
 
-    return <VenturePadView title={t("~VENTURE.MAP")} screen={screen} onClickOutside={onHideMap} 
-                           room={isCurrLevel ? currChallengeMeta && currChallengeMeta.room : null}></VenturePadView>;
+    return <VenturePadView title={t("~VENTURE.MAP")} screen={screen} onClickOutside={onHideMap} onNavigateToChallenge={onNavigateToChallenge}
+                           authoring={authoring} roomHighlightRoute={currChallengeRoute}></VenturePadView>;
   }
 }
 

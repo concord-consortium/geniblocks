@@ -3,7 +3,6 @@ import t from '../utilities/translate';
 import GemSetView, {GemView} from './gem-set';
 import { getChallengeGem } from '../reducers/helpers/gems-helper';
 import VenturePadView from './venture-pad';
-import AuthoringUtils from '../utilities/authoring-utils';
 
 const EndLevelDialogView = ({gems, routeSpec, challengeCount, enableContinueButton, authoring, onNextChallenge, onTryAgain}) => {
   let getGemDisplayName = (gem) => {
@@ -30,7 +29,6 @@ const EndLevelDialogView = ({gems, routeSpec, challengeCount, enableContinueButt
       mission = routeSpec.mission,
       challenge = routeSpec.challenge,
       currentScore = getChallengeGem(level, mission, challenge, gems),
-      currChallengeMeta = AuthoringUtils.getChallengeMeta(authoring, routeSpec),
       endLevelButtonClass = "end-level-navigation-buttons" + (enableContinueButton ? "" : " disabled");
 
 
@@ -64,7 +62,7 @@ const EndLevelDialogView = ({gems, routeSpec, challengeCount, enableContinueButt
     </div>
   );
 
-  return <VenturePadView title={t("~VENTURE.END_LEVEL")} screen={screen} room={currChallengeMeta && currChallengeMeta.room}/>;
+  return <VenturePadView title={t("~VENTURE.END_LEVEL")} screen={screen} authoring={authoring} roomHighlightRoute={routeSpec}/>;
 };
 
 EndLevelDialogView.propTypes = {

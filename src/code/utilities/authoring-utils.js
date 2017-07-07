@@ -100,26 +100,31 @@ export default class AuthoringUtils {
   }
 
   /**
-   * Returns an object representing the current level, mission and challenge the user is on,
-   * by finding the first challenge which is failed or incomplete
+   * Returns an object representing the current mission and challenge the user is on in the given level,
+   * by finding the first challenge which is failed or incomplete. If all challenges are complete,
+   * returns the first challenge instead.
    */
-  static getCurrentChallengeFromGems(authoring, gems) {
-    for (let i = 0, ii = authoring.application.levels.length; i < ii; i++) {
-      let level = authoring.application.levels[i];
-      for (let j = 0, jj = level.missions.length; j < jj; j++) {
-        let mission = level.missions[j];
-        for (let k = 0, kk = mission.challenges.length; k < kk; k++) {
-          if (gems[i] && gems[i][j] && !isNaN(gems[i][j][k]) && gems[i][j][k] !== scoreValues.NONE) {
-            continue;
-          } else {
-            return {
-              level: i,
-              mission: j,
-              challenge: k
-            };
-          }
+  static getCurrentChallengeInLevelFromGems(authoring, gems, levelNum) {
+    let level = authoring.application.levels[levelNum];
+    for (let j = 0, jj = level.missions.length; j < jj; j++) {
+      let mission = level.missions[j];
+      for (let k = 0, kk = mission.challenges.length; k < kk; k++) {
+        if (gems[levelNum] && gems[levelNum][j] && !isNaN(gems[levelNum][j][k]) && gems[levelNum][j][k] !== scoreValues.NONE) {
+          continue;
+        } else {
+          return {
+            level: levelNum,
+            mission: j,
+            challenge: k
+          };
         }
       }
     }
+    // All challenges are complete
+    return {
+      level: levelNum,
+      mission: 0,
+      challenge: 0
+    };
   }
 }
