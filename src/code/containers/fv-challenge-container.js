@@ -3,10 +3,14 @@ import scaleToFit from '../hoc/scale-to-fit';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import templates from '../templates';
+import loadImage from 'image-promise';
+import LoadingView from '../components/loading';
 import BottomHUDView from '../fv-components/bottom-hud';
 import TopHUDView from '../fv-components/top-hud';
 import NotificationContainer from "./notification-container";
 import ModalMessageContainer from "./modal-message-container";
+
+import preloadImageList from '../preload-images.json';
 
 import { changeAllele, changeSex, submitDrake, submitParents,
         keepOffspring, fertilize, breedClutch, hatch,
@@ -17,7 +21,50 @@ import { addGameteChromosome, resetGametes,
 
 class FVChallengeContainer extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      imagesLoaded: false
+    };
+  }
+
+  componentDidMount() {
+    this.preloadImages(this.props.location.id);
+  }
+
+  componentWillUpdate(nextProps) {
+    if (this.props.location.id !== nextProps.location.id) {
+      this.setState({imagesLoaded: false});
+      this.preloadImages(nextProps.location.id);
+    }
+  }
+
+  preloadImages(roomName) {
+    const images = preloadImageList[roomName];
+    if (images && images.length) {
+      const self = this;
+
+      loadImage(images)
+        .then(function (allImgs) {
+          console.log(allImgs.length, 'images loaded!', allImgs);
+          self.setState({imagesLoaded: true});
+        })
+        .catch(function (err) {
+          console.error('One or more images have failed to load :(');
+          console.error(err.errored);
+          // load page regardless, we probably have an error in our preloaded images paths
+          self.setState({imagesLoaded: true});
+        });
+      } else {
+        this.setState({imagesLoaded: true});
+      }
+  }
+
   render() {
+    if (!this.state.imagesLoaded) {
+      return( <LoadingView /> );
+    }
+
     const { template, style, location, showingRoom, ...otherProps } = this.props,
           { challengeType, interactionType, routeSpec, trial, numTrials, correct, challenges, showAward } = this.props;
 

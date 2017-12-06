@@ -24,6 +24,7 @@
     "babel-polyfill": "^6.20.0",
     "classnames": "^2.2.5",
     "iframe-phone": "^1.2.0",
+    "image-promise": "^5.0.1",
     "lodash": "^4.17.3",
     "mustache": "^2.3.0",
     "react": "^15.4.1",

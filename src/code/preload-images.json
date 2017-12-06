@@ -1,0 +1,68 @@
+{
+	"home": [
+		"resources/fablevision/rooms/missioncontrol.jpg",
+		"resources/fablevision/venture-pad/map.png",
+		"resources/fablevision/venture-pad/glass.png",
+		"resources/fablevision/venture-pad/screen_behind.png",
+		"resources/fablevision/venture-pad/screen_over.png",
+		"resources/fablevision/venture-pad/frame.png",
+		"resources/fablevision/rooms/sprites/mission_control/MissionControl_spritesheet-group1_150x203-tiny.png",
+		"resources/fablevision/rooms/sprites/mission_control/MissionControl_spritesheet-group2_206x227-tiny.png",
+		"resources/fablevision/huds/HUD_top.png",
+		"resources/fablevision/huds/scroll.png",
+		"resources/fablevision/huds/HUD_bottom.png",
+		"resources/fablevision/huds/characters/Hatch_active.png"
+	],
+	"simroom": [
+		"resources/fablevision/rooms/simroom.jpg",
+		"resources/fablevision/rooms/sprites/sim_room/outerpaper_spritesheet700x644-tiny.png",
+		"resources/fablevision/rooms/sprites/sim_room/RollMachine_spritesheet683x700-tiny.png",
+		"resources/fablevision/layout-a/screen_border.png",
+		"resources/fablevision/layout-a/screen_center_box.png",
+		"resources/fablevision/layout-a/screen_R_chromosome_box.png",
+		"resources/fablevision/layout-a/screen_L_chromosome_box.png",
+		"resources/fablevision/layout-a/screen_target_yourdrake.png",
+		"resources/fablevision/layout-a/screen_top_lines.png",
+		"resources/fablevision/layout-a/screen.png",
+		"resources/fablevision/layout-a/target_gizmo_decorative.png",
+		"resources/fablevision/layout-a/Hatch_ON.png",
+		"resources/fablevision/layout-a/Hatch_OFF.png",
+		"resources/fablevision/layout-a/toggle_button.png",
+		"resources/fablevision/layout-a/Toggle_base.png",
+		"resources/fablevision/layout-c/egg_animation.png",
+		"resources/fablevision/huds/HUD_top.png",
+		"resources/fablevision/huds/scroll.png",
+		"resources/fablevision/huds/HUD_bottom.png"
+	],
+	"hatchery": [
+		"resources/fablevision/rooms/hatchery.jpg",
+		"resources/fablevision/layout-a/screen_border.png",
+		"resources/fablevision/layout-d/background.png",
+		"resources/fablevision/layout-d/egg_unclicked.png",
+		"resources/fablevision/layout-d/egg_clicked.png",
+		"resources/fablevision/layout-d/basket.png",
+		"resources/fablevision/layout-d/basket_inactive.png",
+		"resources/fablevision/layout-d/chromomatic.png",
+		"resources/fablevision/layout-d/straw_over.png",
+		"resources/fablevision/layout-c/egg_animation.png",
+		"resources/fablevision/layout-c/screen_top_lines.png",
+		"resources/fablevision/layout-c/screen_center_box.png",
+		"resources/fablevision/layout-c/background.png",
+		"resources/fablevision/huds/scroll.png"
+	],
+	"breedingbarn": [
+		"resources/fablevision/rooms/hatchingbarn.jpg",
+		"resources/fablevision/rooms/sprites/breeding_barn/Tail-Orange_Spritesheet_375x454-tiny.png",
+		"resources/fablevision/rooms/sprites/breeding_barn/Tail-Blue_Spritesheet164x195-tiny.png",
+		"resources/fablevision/layout-a/screen_border.png",
+		"resources/fablevision/layout-b/background.jpg",
+		"resources/fablevision/layout-b/Target_Gizmo_single.jpg",
+		"resources/fablevision/layout-h/background.jpg",
+		"resources/fablevision/layout-c/egg_animation.png",
+		"resources/fablevision/huds/scroll.png"
+	],
+	"zoomroom": [
+		"resources/fablevision/rooms/zoom.jpg",
+		"resources/fablevision/huds/scroll.png"
+	]
+}
