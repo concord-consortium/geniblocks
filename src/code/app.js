@@ -118,18 +118,16 @@ function loadAuthoring() {
 }
 
 function verifyLocalAuthoringCache(remoteAuthoring) {
-
-  let localGV1Authoring;
   const url = `resources/authoring/gv-1.json`;
   fetch(url)
-    .then(response => {
-      localGV1Authoring = response.json();
+    .then(response => response.json())
+    .then(localGV1Authoring => {
+      if (JSON.stringify(localGV1Authoring) !== JSON.stringify(remoteAuthoring)) {
+        console.warn("Local authoring cache gv-1 does not match live data!");
+      } else {
+        console.log("Local and Live data are in sync");
+      }
     });
-  if (localGV1Authoring !== remoteAuthoring) {
-    console.warn("Local authoring cache gv-1 does not match live data!");
-  } else {
-    console.log("Local and Live data are in sync");
-  }
   handleAuthoringLoad(remoteAuthoring);
 }
 
