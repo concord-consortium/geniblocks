@@ -1,0 +1,2884 @@
+{
+  "application" : {
+    "levels" : [ {
+      "missions" : [ {
+        "challenges" : [ {
+          "about" : {
+            "description" : "Students will create drakes with different traits  (arms, legs, wings, horns, armor)  by selecting alleles from pulldown menus and changing the sex of the drakes. To complete the challenge, students must create five different looking drakes and save them to their stable.",
+            "type" : "Drake Builder"
+          },
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "YEUNG",
+                "text" : "You did it, but you took too many moves to earn a crystal. Let's try this one again!"
+              } ],
+              "success" : [ {
+                "character" : "YEUNG",
+                "text" : "Our Cadet succeeded with the simulator, Professor Hatch!"
+              }, {
+                "character" : "HATCH",
+                "text" : "Great work, Cadet! You're now part of our team! And check out that crystal you've earned."
+              }, {
+                "character" : "YEUNG",
+                "text" : "We use these crystals to power the devices that both heal and help breed our dragons. Red crystals are fairly weak, followed by yellow crystals, and blue crystals are the most powerful. We need as much power as possible to build our forces and secure our defenses."
+              } ]
+            },
+            "start" : [ {
+              "character" : "YEUNG",
+              "text" : "Good to meet you, Cadet! I'm Professor Yeung, and I'm in charge of the Sim Room. We’re going to show you on this simulator how to breed five different kinds of drakes - with different combinations of arms, legs, wings, horns, and armor."
+            }, {
+              "character" : "HATCH",
+              "text" : "Remember, we learn what we can from drakes and then apply what we’ve learned to dragons."
+            }, {
+              "character" : "YEUNG",
+              "text" : "Now let’s get going! Every moment lost could mean a dragon’s life! Click the screen to get started!"
+            } ]
+          },
+          "id" : "allele-5drakes-tutorial",
+          "name" : "Challenge 1.1.1",
+          "room" : "simroom"
+        } ],
+        "dialog" : {
+          "end" : [ {
+            "character" : "HATCH",
+            "text" : "By completing this mission, you’ve earned the right to use one of our most valuable tools: the Chromoscope."
+          }, {
+            "character" : "WEAVER",
+            "text" : "The Chromoscope checks and displays chromosome alleles for each drake. It will be invaluable in your future missions!"
+          }, {
+            "character" : "HATCH",
+            "text" : "Speaking of which..."
+          } ],
+          "middle" : [ {
+            "character" : "YEUNG",
+            "text" : "It looks like you've finished everything! Open your VentureMap if you'd like to redo a challenge."
+          } ],
+          "start" : [ {
+            "character" : "HATCH",
+            "text" : "Welcome, Cadet, to our underground hideout! I'm Professor Hatch, director of the Drake Breeder's Guild."
+          }, {
+            "character" : "WEAVER",
+            "text" : "And I'm Dr. Weaver, head of Mission Control here in the heart of our subterranean base."
+          }, {
+            "character" : "HATCH",
+            "text" : "Our country -- the Wyvern Republic -- depends on its dragons for defense, but they are under attack from the evil Kingdom of Darkwell, and in danger of going extinct! "
+          }, {
+            "character" : "WEAVER",
+            "text" : "You are training to be part of an elite team of scientists who will help us bring dragons back from the brink! We want to assemble a small dragon squad to stage a behind-enemy-lines strike on the Darkwellians to end the war."
+          }, {
+            "character" : "HATCH",
+            "text" : "Time is running out and we need to train you fast! Come with me to the Sim Room. Click your VenturePad to navigate around the base."
+          } ]
+        },
+        "name" : "Mission 1.1"
+      } ],
+      "name" : "Level 1"
+    }, {
+      "missions" : [ {
+        "challenges" : [ {
+          "about" : {
+            "description" : "Students will match a series of target drakes by selecting alleles from a pulldown menu. The drake that the student is creating will be visible to the student while they are manipulating the alleles. The manipulable alleles are limited to wings, arms and legs (all simple dominance).",
+            "tip" : "Students may not notice that the neck flap only appears on male drakes. Students will only receive a blue crystal if they create the drake in the fewest moves possible.",
+            "type" : "Visible Drake Match"
+          },
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "YEUNG",
+                "text" : "You did it, but you took too many moves to earn a crystal. Let's try this one again!"
+              } ],
+              "success" : [ {
+                "character" : "YEUNG",
+                "text" : "Great job, Cadet! Remember the value of those crystals: red are weakest, yellow are in the middle, and blue crystals are the most powerful."
+              }, {
+                "character" : "HERRERA",
+                "text" : "We need as many blue crystals as possible to power the devices that heal and help breed our dragons!"
+              } ]
+            },
+            "start" : [ {
+              "character" : "HERRERA",
+              "text" : "So, we need you to learn how to change alleles. Remember, alleles are different versions of a gene!"
+            }, {
+              "character" : "YEUNG",
+              "text" : "Right. So in this case you are going to use the simulator to learn how to change alleles for arms, legs, and wings to match the targeted drakes you see on the screen."
+            }, {
+              "character" : "HERRERA",
+              "text" : "And it’s critical that you do it in as few moves as possible! So tap on the simulator and show us the shortest, quickest way to the finish line!"
+            } ]
+          },
+          "id" : "allele-targetMatch-visible-simpleDom",
+          "name" : "Challenge 2.1.1",
+          "room" : "simroom"
+        }, {
+          "about" : {
+            "description" : "Students will match a series of target drakes by selecting alleles from a pulldown menu. The drake that the student is creating will be invisible to the student while they are manipulating the alleles. The manipulable alleles are limited to wings, arms and legs (all simple dominance).",
+            "tip" : "Students may not notice that the neck flap only appears on male drakes. Students will only receive a blue crystal if they create the drake in the fewest moves possible.",
+            "type" : "Invisible Drake Match"
+          },
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "YEUNG",
+                "text" : "You did it, but you took too many moves to earn a crystal. Let's try this one again!"
+              } ],
+              "success" : [ {
+                "character" : "YEUNG",
+                "text" : "Okay, Cadet. Now let’s take a, um, time out!"
+              }, {
+                "character" : "HERRERA",
+                "text" : "Another touchdown for Yeung! Ha ha! Okay, but seriously, Cadet, let’s activate your VentureMap and move along!"
+              } ]
+            },
+            "start" : [ {
+              "character" : "HERRERA",
+              "text" : "Okay, Cadet! You’ll be using the simulator to change alleles for arms, legs, and wings to match a target drake. But we’re gonna throw you a curveball!"
+            }, {
+              "character" : "YEUNG",
+              "text" : "Right. You don’t get to see how your drake looks until you submit your answer!"
+            }, {
+              "character" : "HERRERA",
+              "text" : "You make it through these higher levels of training, and you’re starting to play in the big leagues!"
+            }, {
+              "character" : "YEUNG",
+              "text" : "Is everything a silly sports analogy with you, de Herrera?"
+            }, {
+              "character" : "HERRERA",
+              "text" : "What can I say, Yeung? I’m a team player. Give it a shot."
+            }, {
+              "character" : "YEUNG",
+              "text" : "Sigh. Okay, Cadet. The, um, ball is in your, uh, court. Please tap on the simulator and, see if you can, uh, hit any home runs."
+            }, {
+              "character" : "HERRERA",
+              "text" : "Yeung shoots! She scores!"
+            } ]
+          },
+          "id" : "allele-targetMatch-hidden-simpleDom",
+          "name" : "Challenge 2.1.2",
+          "room" : "simroom"
+        } ],
+        "dialog" : {
+          "end" : [ {
+            "character" : "HERRERA",
+            "text" : "Cadet, you’ve cleared a major hurdle and shown that you just might be able to help us save the day."
+          }, {
+            "character" : "YEUNG",
+            "text" : "Yes, you have mastered a key skill. You now know how to manipulate alleles. Since alleles are different versions of genes, you can now help us select the genes we need to breed the dragons necessary for defeating Darkwell."
+          }, {
+            "character" : "HERRERA",
+            "text" : "Well, let’s not celebrate yet. I’m getting word that Darkwellian spies have learned that there’s a new member of our team."
+          }, {
+            "character" : "YEUNG",
+            "text" : "That means you, Cadet."
+          }, {
+            "character" : "HERRERA",
+            "text" : "Right. And they’re trying to make life even more difficult for us now by stepping up their attacks on our remaining dragons!"
+          }, {
+            "character" : "YEUNG",
+            "text" : "Looks like this is going to be, um, down to the wire."
+          } ],
+          "middle" : [ {
+            "character" : "YEUNG",
+            "text" : "Open your VentureMap and head on over to the Sim Room. Quickly! We don’t have much time!"
+          } ],
+          "start" : [ {
+            "character" : "HERRERA",
+            "text" : "Attention, Cadet! I’m Colonel de Herrera, commander of the dragon pilots! We’re losing the war against Darkwell, so I will be leading the sneaky mission behind enemy lines!"
+          }, {
+            "character" : "YEUNG",
+            "text" : "Over the course of your service here with us, we will need your help understanding how to breed different types of drakes so that we can develop dragons that help Colonel de Herrera and his squad!"
+          }, {
+            "character" : "HERRERA",
+            "text" : "I hear you’ve been training in the Sim Room and show lots of promise! So let’s go back there and see if you can knock a few out of the park!"
+          }, {
+            "character" : "YEUNG",
+            "text" : "Open your VentureMap and head on over there with us. Quickly! We don’t have much time!"
+          } ]
+        },
+        "name" : "Mission 2.1"
+      }, {
+        "challenges" : [ {
+          "about" : {
+            "description" : "Students will examine the genotype of eggs and sort them into the appropriate baskets. Students will receive a point for correctly sorted eggs. Students will receive a hint for incorrectly sorted eggs. Students will sort eggs based only on wings (dominant trait).",
+            "tip" : "Students may not notice that the X and Y chromosomes are different lengths. The Y, only appearing in males, is the shorter chromosome.",
+            "type" : "Egg Drop"
+          },
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "NETANYA",
+                "text" : "You got there, but you need to sort more drakes correctly to earn a crystal."
+              } ],
+              "success" : [ {
+                "character" : "NETANYA",
+                "text" : "Good work, Cadet. Those pet drakes will sell fast!"
+              }, {
+                "character" : "HERRERA",
+                "text" : "And we’ll also use those winged drakes to carry hidden messages to our allies in the Principality of Robinstone. It’s the only way to communicate without the Darkwellians listening in."
+              } ]
+            },
+            "start" : [ {
+              "character" : "HERRERA",
+              "text" : "We’re short on cash and need to sell a few thousand wingless drakes as pets for toddlers."
+            }, {
+              "character" : "NETANYA",
+              "text" : "Parents prefer wingless drakes because, well, flying drakes sometimes give the toddlers unexpected rides that go up about a quarter mile in the sky."
+            }, {
+              "character" : "HERRERA",
+              "text" : "Yeah, and it’s bad enough that the flying drakes, um, expel their waste from way up there, but, uh, let’s just say a freaked out toddler can drop one heck of a load from a thousand feet."
+            }, {
+              "character" : "HERRERA",
+              "text" : "So, we have to sort out four kinds of drake eggs – fast! Females with wings, females without wings, males with wings, and males without wings."
+            }, {
+              "character" : "NETANYA",
+              "text" : "See the baskets and the big pile of eggs? Click over there and get sorting!"
+            } ]
+          },
+          "id" : "eggDrop-wings",
+          "name" : "Challenge 2.2.1",
+          "room" : "hatchery"
+        }, {
+          "about" : {
+            "description" : "Students will examine the genotype of eggs and sort them into the appropriate baskets. Students will receive a point for correctly sorted eggs. Students will receive a hint for incorrectly sorted eggs. Students will sort eggs based on both arms and legs (both dominant traits).",
+            "tip" : "Students may not notice that the X and Y chromosomes are different lengths. The Y, only appearing in males, is the shorter chromosome.",
+            "type" : "Egg Drop"
+          },
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "NETANYA",
+                "text" : "You got there, but you need to sort more drakes correctly to earn a crystal."
+              } ],
+              "success" : [ {
+                "character" : "NETANYA",
+                "text" : "Great job. Those legs-only drakes are useful, too. They develop really strong, fast legs, and we need to study them so we can breed cavalry mount dragons."
+              }, {
+                "character" : "HERRERA",
+                "text" : "By the way, those arms-only, burrowing drakes can also do a great job at wrecking a golf course! Remind me to tell you about the prank we played on Darkwell when they hosted last year’s Evil Empires Golf Open."
+              }, {
+                "character" : "NETANYA",
+                "text" : "Maybe later, Colonel. Cadet, let’s get going!"
+              } ]
+            },
+            "start" : [ {
+              "character" : "NETANYA",
+              "text" : "Hey Cadet! We need you to help us breed some drakes for farming!"
+            }, {
+              "character" : "HERRERA",
+              "text" : "Here’s the deal. The Darkwellians have ruined all of Wyvern’s crops. The Kingdom of Bloomberg has offered to grow extra crops for us, but they don’t have the resources for tilling all the extra fields. So we need to give them drakes that only have arms."
+            }, {
+              "character" : "NETANYA",
+              "text" : "Arms-only drakes naturally burrow in soil and can help prepare fields for crops. It’s like they swim through it!"
+            }, {
+              "character" : "HERRERA",
+              "text" : "We need to quickly sort out three kinds of eggs – those with arms only, those with legs only, and those with both."
+            }, {
+              "character" : "NETANYA",
+              "text" : "So check out the baskets and the giant egg pile, then tap over there and start sorting!"
+            } ]
+          },
+          "id" : "eggDrop-limbs",
+          "name" : "Challenge 2.2.2",
+          "room" : "hatchery"
+        } ],
+        "dialog" : {
+          "end" : [ {
+            "character" : "HERRERA",
+            "text" : "Oh no! I’m getting reports that Darkwell has found out about the secret messages we send via flying drakes to the Principality of Robinstone!"
+          }, {
+            "character" : "NETANYA",
+            "text" : "What? It must be those spies! If only we knew who they were!"
+          }, {
+            "character" : "HERRERA",
+            "text" : "Well, it gets even worse. They also know that the Kingdom of Bloomberg was going to grow crops for us. Darkwell is  going to kill two birds with one stone by polluting the skies."
+          }, {
+            "character" : "NETANYA",
+            "text" : "Now our drakes won’t be able to fly to Robinstone, and Bloomberg’s crops will be ruined."
+          }, {
+            "character" : "HERRERA",
+            "text" : "Things are pretty grim, Cadet. We already had a couple of strikes against us, and we’re not gonna have many more chances at bat."
+          } ],
+          "middle" : [ {
+            "character" : "NETANYA",
+            "text" : "Activate your VentureMap and come help us in the Hatchery."
+          } ],
+          "start" : [ {
+            "character" : "HERRERA",
+            "text" : "Listen up, Cadet! This is for your ears only! Aboveground, there’s a tunnel to this underground base, hidden in a cute, innocent-looking little cottage."
+          }, {
+            "character" : "NETANYA",
+            "text" : "That cottage is home to the Drake Breeders’ Guild. It houses a veterinary clinic and store, which I run. The money made by the store helps pay for the secret work we do down here."
+          }, {
+            "character" : "HERRERA",
+            "text" : "The Darkwellians have no idea that the Guild is just a front. The thing is, we suddenly need a lot more drakes than usual…"
+          }, {
+            "character" : "NETANYA",
+            "text" : "…And if a ton of drakes start coming and going from the cottage, the Darkwellians will get suspicious. So activate your VentureMap and come help us in the Hatchery."
+          } ]
+        },
+        "name" : "Mission 2.2"
+      }, {
+        "challenges" : [ {
+          "about" : {
+            "description" : "Students will match a series of target drakes by selecting alleles from a pulldown menu. The drake that the student is creating will be visible to the student while they are manipulating the alleles. The manipulable alleles will be limited to horns (recessive trait) and armor (incomplete dominance).",
+            "tip" : "Students will only receive a blue crystal if they create the drake in the fewest moves possible. Students may be confused by horns being a recessive trait. Students may not immediately see the difference between 3-plate and 5-plate armor.",
+            "type" : "Visible Drake Match"
+          },
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "YEUNG",
+                "text" : "You did it, but you took too many moves to earn a crystal. Let's try this one again!"
+              } ],
+              "success" : [ {
+                "character" : "YEUNG",
+                "text" : "Congratulations, Cadet. With your work, our chances of saving the Wyvern Republic are growing every day!"
+              } ]
+            },
+            "start" : [ {
+              "character" : "HERRERA",
+              "text" : "For my undercover operation against the Darkwellians, I need the toughest dragons we can create. I want dragons with horns and five armor plates."
+            }, {
+              "character" : "YEUNG",
+              "text" : "And for the Guild store, super charging the cuddle factor will maximize profit! Drakes without horns or armor will sell the best."
+            }, {
+              "character" : "HERRERA",
+              "text" : "Start by breeding drakes on the simulator. You’ll be changing the alleles to create a drake that matches the target in as few moves as possible. Click the screen to begin."
+            } ]
+          },
+          "id" : "allele-targetMatch-visible-armorHorns",
+          "name" : "Challenge 2.3.1",
+          "room" : "simroom"
+        }, {
+          "about" : {
+            "description" : "Students will match a series of target drakes by selecting alleles from a pulldown menu. The drake that the student is creating will be invisible to the student while they are manipulating the alleles. The manipulable alleles will be limited to horns (recessive trait) and armor (incomplete dominance).",
+            "tip" : "Students will only receive a blue crystal if they create the drake in the fewest moves possible. Students may be confused by horns being a recessive trait. Students may not immediately see the difference between 3-plate and 5-plate armor.",
+            "type" : "Invisible Drake Match"
+          },
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "YEUNG",
+                "text" : "You did it, but you took too many moves to earn a crystal. Let's try this one again!"
+              } ],
+              "success" : [ {
+                "character" : "HERRERA",
+                "text" : "Excellent work, Cadet. Did you know that dragons with five armor plates and no horns are more docile than those with horns? The Guild could use some of these dragons for armored transport."
+              }, {
+                "character" : "YEUNG",
+                "text" : "Great idea, Colonel! And it won’t be long before our new cadet here can turn that into reality by transferring the knowledge from the simulators to real drakes and dragons."
+              } ]
+            },
+            "start" : [ {
+              "character" : "HERRERA",
+              "text" : "My pilots need dragons with horns. The horns will act as lifesaving handles to steady ourselves during our undercover operation."
+            }, {
+              "character" : "YEUNG",
+              "text" : "And the Guild store customers love drakes with three plates that can roll themselves into a ball. Use the simulator to breed drakes with these target traits."
+            }, {
+              "character" : "HERRERA",
+              "text" : "But watch out! That curveball is back! Only the target drake is visible, so make sure you know what you’re doing with those alleles. Click the screen to begin."
+            } ]
+          },
+          "id" : "allele-targetMatch-hidden-armorHorns",
+          "name" : "Challenge 2.3.2",
+          "room" : "simroom"
+        }, {
+          "about" : {
+            "description" : "Students will examine the genotype of eggs and sort them into the appropriate baskets. Students will receive a point for correctly sorted eggs. Students will receive a hint for incorrectly sorted eggs. Students will sort eggs based only on horns (recessive trait).",
+            "type" : "Egg Drop"
+          },
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "YEUNG",
+                "text" : "You got there, but you need to sort more drakes correctly to earn a crystal."
+              } ],
+              "success" : [ {
+                "character" : "YEUNG",
+                "text" : "Impressive work, Cadet. Selling those adorable drakes without horns or armor as pets will boost our cash reserves. Underground bases and dragon armies are not cheap to run, you know!"
+              }, {
+                "character" : "HERRERA",
+                "text" : "And now that we know how to breed drakes with horns, we’re a step closer to breeding dragons with “handle horns” for my pilots."
+              } ]
+            },
+            "start" : [ {
+              "character" : "YEUNG",
+              "text" : "Okay, Cadet, this is the real deal! We’re working with actual drake eggs here in the hatchery."
+            }, {
+              "character" : "HERRERA",
+              "text" : "Get started by clicking on the baskets and eggs."
+            } ]
+          },
+          "id" : "eggDrop-horns",
+          "name" : "Challenge 2.3.3",
+          "room" : "hatchery"
+        }, {
+          "about" : {
+            "description" : "Students will examine the genotype of eggs and sort them into the appropriate baskets. Students will receive a point for correctly sorted eggs. Students will receive a hint for incorrectly sorted eggs. Students will sort eggs based only on armor (incomplete dominance).",
+            "type" : "Egg Drop"
+          },
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "YEUNG",
+                "text" : "You got there, but you need to sort more drakes correctly to earn a crystal."
+              } ],
+              "success" : [ {
+                "character" : "YEUNG",
+                "text" : "Impressive work, Cadet. We have a new set of drakes to sell in the store…"
+              }, {
+                "character" : "HERRERA",
+                "text" : "...and a better understanding of how to breed dragons with five armor plates. You’re a natural hatcher, a master drake designer, a..."
+              }, {
+                "character" : "YEUNG",
+                "text" : "Just stop. You’re out of your league, here, de Herrera. Despite our progress here, we’re still one step behind the Darkwellians..."
+              } ]
+            },
+            "start" : [ {
+              "character" : "HERRERA",
+              "text" : "Get ready--there’s a whole bunch of drake eggs to sort! You’ll need to separate out drakes with no armor, as well as drakes with three plates that can roll themselves into balls. We’ll sell these as pets in the store."
+            }, {
+              "character" : "YEUNG",
+              "text" : "I also want you to identify those drakes with five armor plates. This will help us breed the toughest dragons for the Colonel and his pilots."
+            }, {
+              "character" : "HERRERA",
+              "text" : "This is not a drill, Cadet. Click the baskets and eggs to start."
+            } ]
+          },
+          "id" : "eggDrop-armor",
+          "name" : "Challenge 2.3.4",
+          "room" : "hatchery"
+        } ],
+        "dialog" : {
+          "end" : [ {
+            "character" : "HATCH",
+            "text" : "Cadet, I’m impressed at how quickly you jumped from the simulations to working with real drakes. You are showing all the signs of a master breeder!"
+          }, {
+            "character" : "WEAVER",
+            "text" : "All these new crystals are powering our dragon-breeding and healing machines for longer than ever. Our dragon force is on its way to being unstoppable! "
+          }, {
+            "character" : "HATCH",
+            "text" : "And the Guild store is turning a huge profit selling the cute new drakes we’ve been breeding!"
+          }, {
+            "character" : "WEAVER",
+            "text" : "By completing this mission, Cadet, you’ve unlocked access to the Zoom Room projector, a vital tool that simulates the inner workings of drakes and dragons."
+          } ],
+          "middle" : [ {
+            "character" : "HERRERA",
+            "text" : "Open your VentureMap!"
+          } ],
+          "start" : [ {
+            "character" : "HERRERA",
+            "text" : "My elite team of pilots needs powerful dragons that can hold their own in battle if we are to have any chance of defeating Darkwell."
+          }, {
+            "character" : "YEUNG",
+            "text" : "And I just heard from Dr. Netanya that customers at the Guild store are complaining that our drakes with armor don’t make great pets. She’s asking whether we can make “cuddlier” drakes to raise more money."
+          }, {
+            "character" : "HERRERA",
+            "text" : "Let’s tackle both of these needs at once. Cadet, open your VentureMap and start cuddling! The drakes, I mean; making them cuddlier. "
+          } ]
+        },
+        "name" : "Mission 2.3"
+      } ],
+      "name" : "Level 2"
+    }, {
+      "missions" : [ {
+        "challenges" : [ {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "YEUNG",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "HERRERA",
+                "text" : "Great work! Our allies in the nation of Admar will be truly grateful once we are able to breed albino drakes and dragons."
+              }, {
+                "character" : "YEUNG",
+                "text" : "The people of Admar consider albino dragons sacred, and our lucrative a trade deal with them depends on us sharing that secret."
+              } ]
+            },
+            "start" : [ {
+              "character" : "YEUNG",
+              "text" : "Listen up, Cadet! You need to get up to speed on breeding drakes and dragons with a variety of scale colors. Each color is an invaluable tool for the Guild."
+            }, {
+              "character" : "HERRERA",
+              "text" : "Case in point: dark, charcoal-colored dragons can blend in with the sky when my pilots fly night missions."
+            }, {
+              "character" : "YEUNG",
+              "text" : "And shiny, steel-colored drakes (and dragons) tend to have infrared vision -- meaning they can see in the dark. "
+            }, {
+              "character" : "HERRERA",
+              "text" : "These dragons can help us find hidden and camouflaged Darkwell troops and installations. Let’s get started!"
+            } ]
+          },
+          "id" : "allele-targetMatch-visible-simpleColors",
+          "name" : "Challenge 3.1.1",
+          "room" : "simroom"
+        }, {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "YEUNG",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "YEUNG",
+                "text" : "You’re a natural at this. It won’t be long before we’re able to breed lava-colored drakes and dragons."
+              }, {
+                "character" : "HERRERA",
+                "text" : "They have a natural immunity to a parasitic worm the Darkwellians have unleashed on dragons, so the Guild plans to isolate that immunity and create a cure."
+              } ]
+            },
+            "start" : [ {
+              "character" : "HERRERA",
+              "text" : "Our allies in the volcanic islands of Sawaki need lava-colored dragons that can blend in with the landscape and serve as a defense force."
+            }, {
+              "character" : "YEUNG",
+              "text" : "In exchange for several tons of papayas, which the Guild turns into biofuel, the Guild will provide Sawaki with lava dragons… once we figure out how to breed them!"
+            }, {
+              "character" : "HERRERA",
+              "text" : "In this simulation, we’re going to gauge your accuracy at creating different colored drakes just by viewing the target. Let’s go! "
+            } ]
+          },
+          "id" : "allele-targetMatch-hidden-simpleColors",
+          "name" : "Challenge 3.1.2",
+          "room" : "simroom"
+        } ],
+        "dialog" : {
+          "end" : [ {
+            "character" : "HATCH",
+            "text" : "Cadet, your skills are increasing rapidly. I’m very impressed."
+          }, {
+            "character" : "WEAVER",
+            "text" : "Our allies in Admar and Sawaki are encouraged with the progress the Guild is making in breeding dragons to help the cause."
+          }, {
+            "character" : "HATCH",
+            "text" : "Your work here will be extraordinarily valuable in solving the dire threat from the Darkwellians. Keep up the good work!"
+          } ],
+          "middle" : [ {
+            "character" : "HATCH",
+            "text" : "Open your VentureMap and head on over to the Sim Room. Quickly! We don’t have much time!"
+          } ],
+          "start" : [ {
+            "character" : "WEAVER",
+            "text" : "Things just got a whole lot tougher, Cadet! We’ve just heard that some of the dragons that the Guild supplied to our allies are also under attack from the Darkwellians."
+          }, {
+            "character" : "HATCH",
+            "text" : "It’ll stretch our resources even further, but we have to help our allies and their dragons as well."
+          }, {
+            "character" : "WEAVER",
+            "text" : "I agree. We need to start breeding dragons with specific traits to counter the targeted attacks the Darkwellians have been staging."
+          }, {
+            "character" : "HATCH",
+            "text" : "We’re going to need you to stay sharp, Cadet. Check out the VentureMap to see what you should tackle first."
+          } ]
+        },
+        "name" : "Mission 3.1"
+      }, {
+        "challenges" : [ {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "ELLIS",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "ELLIS",
+                "text" : "Now you’ve seen how a drake gets to be charcoal-gray! Great big pods of melanin give the scale cell its gray color. Next, you'll have to work with a cell that has a broken protein, and help it go from lava-orange to charcoal-gray."
+              }, {
+                "character" : "HERRERA",
+                "text" : "Cadet, go on and make me proud!"
+              } ]
+            },
+            "start" : [ {
+              "character" : "HERRERA",
+              "text" : "Welcome to the Zoom Room, Cadet! This room does exactly what what it sounds like: our simulator can zoom into drake cells to see how the genetic instructions create proteins that change the drake."
+            }, {
+              "character" : "ELLIS",
+              "text" : "Cadet, we’ll start with a simple walkthrough of the equipment, and the basics of how drake scale color can be modified. Click the projection wall to begin."
+            } ]
+          },
+          "id" : "cell-game-size-intro",
+          "name" : "Challenge 3.2.1",
+          "room" : "zoomroom"
+        }, {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "ELLIS",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "ELLIS",
+                "text" : "Congratulations, Cadet!"
+              } ]
+            },
+            "start" : [ {
+              "character" : "ELLIS",
+              "text" : "Alright Cadet, let’s see if you can help out when one of the proteins that makes melanin stars is broken. Your goal is to turn a lava cell to charcoal-gray."
+            }, {
+              "character" : "HERRERA",
+              "text" : "I won’t lie to you, Cadet. Charcoal dragons that blend in with the dark sky could make or break the surprise attack on Darkwell that will make or break us. "
+            }, {
+              "character" : "ELLIS",
+              "text" : "Look carefully to find the broken protein. Then help it do its job right. Click the projection and work out how to create a charcoal scale color from lava."
+            } ]
+          },
+          "id" : "cell-game-lava-charcoal-size",
+          "name" : "Challenge 3.2.2",
+          "room" : "zoomroom"
+        }, {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "ELLIS",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "ELLIS",
+                "text" : "Congratulations, Cadet! You mastered how the proteins work to create both the lava and charcoal scale colors."
+              }, {
+                "character" : "HERRERA",
+                "text" : "You’ve earned a shortcut for your hard work: you now have access to the orange/gray allele that controls the mela-maker directly in the nucleus."
+              } ]
+            },
+            "start" : [ {
+              "character" : "ELLIS",
+              "text" : "Now that you’ve mastered making charcoal scales, let’s see if you can reverse it to make lava scales. "
+            }, {
+              "character" : "HERRERA",
+              "text" : "Case in point: our allies in the volcanic landscape of Sawaki need those lava dragons to build their camouflaged defense force!"
+            }, {
+              "character" : "ELLIS",
+              "text" : "You know what to do. Click the projection and get working on those proteins to turn that drake from charcoal to lava."
+            } ]
+          },
+          "id" : "cell-game-charcoal-lava-size",
+          "name" : "Challenge 3.2.3",
+          "room" : "zoomroom"
+        }, {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "ELLIS",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "ELLIS",
+                "text" : "You did it! Congratulations!"
+              } ]
+            },
+            "start" : [ {
+              "character" : "ELLIS",
+              "text" : "In this challenge, you’ll need to turn the drake’s scales from lava to charcoal again, just like before."
+            }, {
+              "character" : "HERRERA",
+              "text" : "But now you’ve unlocked the orange/gray allele that controls the mela-maker protein, so you can swap between the orange and gray traits directly in the cell nucleus."
+            }, {
+              "character" : "ELLIS",
+              "text" : "Best of all, changing the allele in the nucleus affects the proteins permanently, so it should be super-quick! Click the projection to start."
+            } ]
+          },
+          "id" : "cell-game-lava-charcoal-nucleus",
+          "name" : "Challenge 3.2.4",
+          "room" : "zoomroom"
+        } ],
+        "dialog" : {
+          "end" : [ {
+            "character" : "HATCH",
+            "text" : "Great work in the Zoom Room, Cadet! I just wish there was better news from our pilots."
+          }, {
+            "character" : "WEAVER",
+            "text" : "I won’t sugar coat it for you. The situation is still grim, and the battle is not going well."
+          } ],
+          "middle" : [ {
+            "character" : "HATCH",
+            "text" : "Open your VentureMap and head on over to the Sim Room. Quickly! We don’t have much time!"
+          } ],
+          "start" : [ {
+            "character" : "WEAVER",
+            "text" : "News from the front! Darkwell has just attacked our allies in both Sawaki and Admar with a debilitating virus. We need more help!"
+          }, {
+            "character" : "ELLIS",
+            "text" : "Cadet, it’s a pleasure to meet you. If everything I’ve heard about you is true, I have high hopes for the future of Wyvern and its allies."
+          }, {
+            "character" : "WEAVER",
+            "text" : "Dr. Ellis is chief of the Protein Lab, or as we like to call it, the Zoom Room. His equipment lets us see how the genetic instructions in the chromosomes create proteins that affect the traits of drakes and dragons."
+          }, {
+            "character" : "ELLIS",
+            "text" : "We’ll begin by having you investigate how drakes get their different colors. Click the VentureMap to navigate to the Zoom Room."
+          } ]
+        },
+        "name" : "Mission 3.2"
+      }, {
+        "challenges" : [ {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "ELLIS",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "ELLIS",
+                "text" : "Congratulations, Cadet! Another challenge completed, more science knowledge absorbed, and a new crystal collected!"
+              } ]
+            },
+            "start" : [ {
+              "character" : "ELLIS",
+              "text" : "We’ll start by trying to modify our familiar charcoal drake so it is albino.  Click the projection to get started."
+            } ]
+          },
+          "id" : "cell-game-charcoal-frost-size",
+          "name" : "Challenge 3.3.1",
+          "room" : "zoomroom"
+        }, {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "ELLIS",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "ELLIS",
+                "text" : "Now that we understand what’s going on with the proteins, I’ve programmed the simulator to unlock the albino/color allele so we can control the mela-maker protein directly from the nucleus. "
+              } ]
+            },
+            "start" : [ {
+              "character" : "ELLIS",
+              "text" : "You know what’s coming next! Now that we’ve modified the drake’s scale color from charcoal to albino , let’s try going the other way. Click the projection. "
+            } ]
+          },
+          "id" : "cell-game-frost-charcoal-size",
+          "name" : "Challenge 3.3.2",
+          "room" : "zoomroom"
+        }, {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "ELLIS",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "ELLIS",
+                "text" : "Well done! "
+              } ]
+            },
+            "start" : [ {
+              "character" : "ELLIS",
+              "text" : "Let’s use our newly unlocked albino/color allele to modify the drake scale color from charcoal to albino, directly in the nucleus. Click the projection."
+            } ]
+          },
+          "id" : "cell-game-frost-charcoal-nucleus",
+          "name" : "Challenge 3.3.3",
+          "room" : "zoomroom"
+        } ],
+        "dialog" : {
+          "end" : [ {
+            "character" : "ELLIS",
+            "text" : "That was some great teamwork! I’ve already shared what we learned about albino drakes and dragons with my counterpart in Admar."
+          }, {
+            "character" : "HATCH",
+            "text" : "And I already heard back from Admar that they’ve signed our trade deal. Well done, you two. "
+          }, {
+            "character" : "ELLIS",
+            "text" : "That’s a significant win that will help our defenses, but there’s still so much to do to build our dragon force. It’s time to shift into high gear. "
+          } ],
+          "middle" : [ {
+            "character" : "ELLIS",
+            "text" : "Open your VentureMap and head on over to the Sim Room. Quickly! We don’t have much time!"
+          } ],
+          "start" : [ {
+            "character" : "ELLIS",
+            "text" : "We’re in new territory here, Cadet. For this next challenge, you and I will be learning together."
+          }, {
+            "character" : "HERRERA",
+            "text" : "You remember our allies from Admar? Albino  dragons are sacred to them. The Admar rulers know we are close to figuring how proteins cause drakes and dragons to become albino... "
+          }, {
+            "character" : "ELLIS",
+            "text" : "And if we share our knowledge, they will approve a massive trade deal that will help our cause. Open the VentureMap and come with me to the Zoom Room!"
+          } ]
+        },
+        "name" : "Mission 3.3"
+      }, {
+        "challenges" : [ {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "ELLIS",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "HERRERA",
+                "text" : "Excellent, Cadet, another crystal!"
+              }, {
+                "character" : "ELLIS",
+                "text" : "And, just as important, we now know that when melanosomes are blocked from entering the drake scales, the drake becomes shiny."
+              }, {
+                "character" : "HERRERA",
+                "text" : "And I’m guessing there are proteins that control how those melanosomes move around. I wonder what’s really going on..."
+              }, {
+                "character" : "ELLIS",
+                "text" : "You want to trade your wings for my lab coat and have ME lead the pilots, Colonel? Stay in your lane. "
+              } ]
+            },
+            "start" : [ {
+              "character" : "ELLIS",
+              "text" : "Interesting! Our dragon carers are reporting that copper-colored drakes and dragons have a natural immunity to the parasitic worm unleashed by Darkwell."
+            }, {
+              "character" : "HERRERA",
+              "text" : "Meaning that if we can isolate that immunity, we could create a cure?"
+            }, {
+              "character" : "ELLIS",
+              "text" : "Yes! But first we need to understand how copper drakes get their color. Copper drakes are shiny versions of lava drakes, so we need to zoom in on a lava drake and see if we can turn it copper."
+            }, {
+              "character" : "HERRERA",
+              "text" : "Lucky for us that we’re in the Zoom Room. Projection, please, Cadet!"
+            } ]
+          },
+          "id" : "cell-game-lava-copper-gate",
+          "name" : "Challenge 3.4.2",
+          "room" : "zoomroom"
+        }, {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "ELLIS",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "ELLIS",
+                "text" : "Now that we understand what’s going on with the proteins, I’ve programmed the simulator to unlock the shiny/dull allele so we can control the mela-port protein directly from the nucleus. "
+              } ]
+            },
+            "start" : [ {
+              "character" : "ELLIS",
+              "text" : "You know the drill! Now we’ve modified the drake’s scale color from lava to copper, let’s try going from copper to lava. Click the projection."
+            } ]
+          },
+          "id" : "cell-game-copper-lava-gate",
+          "name" : "Challenge 3.4.3",
+          "room" : "zoomroom"
+        }, {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "ELLIS",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "ELLIS",
+                "text" : "You did it! Congratulations!"
+              } ]
+            },
+            "start" : [ {
+              "character" : "ELLIS",
+              "text" : "Let’s use our newly unlocked shiny/dull allele to modify the drake scale color permanently from copper to lava, directly in the nucleus. Click the projection."
+            } ]
+          },
+          "id" : "cell-game-copper-lava-nucleus",
+          "name" : "Challenge 3.4.4",
+          "room" : "zoomroom"
+        } ],
+        "dialog" : {
+          "end" : [ {
+            "character" : "WEAVER",
+            "text" : "Cadet, you’ve proven yourself ready to take the Guild to the next level. We are granting you access to the Breeding Barn equipment. "
+          }, {
+            "character" : "HATCH",
+            "text" : "As grim as things may seem out there, the Guild is making significant progress thanks to you. Keep it up!"
+          } ],
+          "middle" : [ {
+            "character" : "HERRERA",
+            "text" : "Open your VentureMap and head on over to the Sim Room. Quickly! We don’t have much time!"
+          } ],
+          "start" : [ {
+            "character" : "HERRERA",
+            "text" : "My dragon pilots are reporting that the Darkwellian forces are building more quickly than we expected."
+          }, {
+            "character" : "HATCH",
+            "text" : "And we also suspect that Darkwell has unleashed a parasitic worm on our dragons; several have become ill in the last 24 hours."
+          }, {
+            "character" : "HERRERA",
+            "text" : "Professor Hatch, permission to mobilize our surprise attack!"
+          }, {
+            "character" : "HATCH",
+            "text" : "Not yet, Colonel! We’re so close to understanding how to control the full range of scale colors in drakes. Applying that knowledge to our dragon defenses will give us the edge in our attack."
+          }, {
+            "character" : "HERRERA",
+            "text" : "But if we delay the strike much longer, our defeat is inevitable. "
+          }, {
+            "character" : "HATCH",
+            "text" : "Cadet, use the VenturePad to meet up with Ellis in the Zoom Room team. Hurry! "
+          } ]
+        },
+        "name" : "Mission 3.4"
+      } ],
+      "name" : "Level 3"
+    }, {
+      "missions" : [ {
+        "challenges" : [ {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "HATCH",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "HATCH",
+                "text" : "Great job, Cadet! You’re now ready to move from the simulation to the real world!"
+              } ]
+            },
+            "start" : [ {
+              "character" : "HATCH",
+              "text" : "Cadet, you know by now the importance of being able to breed drakes and dragons with specific combinations of wings, horns, and armor."
+            }, {
+              "character" : "NETANYA",
+              "text" : "So far, you’ve sorted eggs that have already been laid and worked with simulations where you can directly change the alleles in a drake."
+            }, {
+              "character" : "HATCH",
+              "text" : "But in this challenge, you’ll be using the simulator to investigate how genes are inherited from parents. Click the screen to start."
+            } ]
+          },
+          "id" : "gamete-5drakes-starterTraits",
+          "name" : "Challenge 4.1.1",
+          "room" : "hatchery"
+        }, {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "HATCH",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "HATCH",
+                "text" : "Great job, Cadet! You’re proving that your simulation work translates succesfully in real world experiments. "
+              }, {
+                "character" : "NETANYA",
+                "text" : "And I’ve got the medical team developing the paralysis venom from the grey drakes we’ve bred. It will be an invaluable tool on the front line."
+              } ]
+            },
+            "start" : [ {
+              "character" : "NETANYA",
+              "text" : "This is the real deal: real drakes, no simulations. I need you to match the target drakes by assembling chromosomes in the egg and sperm."
+            }, {
+              "character" : "HATCH",
+              "text" : "Grey drakes have been identified as a target because they spit a venom that can cause temporary unconsciousness and paralysis. The venom can be used to knock out the enemy, or as an anesthetic."
+            }, {
+              "character" : "NETANYA",
+              "text" : "If I means they'll stop talking, I have one or two people I’d like to use that on! Click the screen to start."
+            } ]
+          },
+          "id" : "gamete-targetMatch-starterTraits",
+          "name" : "Challenge 4.1.2",
+          "room" : "hatchery"
+        }, {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "NETANYA",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "NETANYA",
+                "text" : "Excellent work, Cadet! The Guild will be benefiting immediately from selling more shiny drake pets in the store."
+              } ]
+            },
+            "start" : [ {
+              "character" : "NETANYA",
+              "text" : "You’ll be selecting either an egg or a sperm to match the target drakes in this challenge."
+            }, {
+              "character" : "HATCH",
+              "text" : "We’ve identified shiny drakes as a target because their iridescence makes them popular in the Storefront as pets."
+            }, {
+              "character" : "NETANYA",
+              "text" : "Let’s go! Click the screen!"
+            } ]
+          },
+          "id" : "gamete-selectSpermEgg-starterTraits",
+          "name" : "Challenge 4.1.3",
+          "room" : "hatchery"
+        }, {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "HATCH",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "HATCH",
+                "text" : "Fantastic work, Cadet! I’ve tasked the team to work around the clock to breed enough orange drakes to counter the mind-dulling drug!"
+              } ]
+            },
+            "start" : [ {
+              "character" : "NETANYA",
+              "text" : "You’ll be selecting both egg and sperm to match the target drakes in this challenge."
+            }, {
+              "character" : "HATCH",
+              "text" : "Watch out for those orange-colored drakes as targets. Their saliva contains a chemical that can counter the mind-dulling drug that the Darkwellians have added to the Wyvern Republic’s water supply."
+            }, {
+              "character" : "NETANYA",
+              "text" : "Click the screen to start this challenge."
+            } ]
+          },
+          "id" : "gamete-selectSpermEgg-starterTraits-bothParents",
+          "name" : "Challenge 4.1.4",
+          "room" : "hatchery"
+        } ],
+        "dialog" : {
+          "end" : [ {
+            "character" : "WEAVER",
+            "text" : "Thanks to your progress, Cadet, we’ve combated the tainted water supply and our population is alert again!"
+          }, {
+            "character" : "HATCH",
+            "text" : "Although Darkwell’s growing strength is of great concern, the Guild is also more powerful and prepared than ever before."
+          } ],
+          "middle" : [ {
+            "character" : "WEAVER",
+            "text" : "Open your VentureMap and head on over to the Sim Room. Quickly! We don’t have much time!"
+          } ],
+          "start" : [ {
+            "character" : "HATCH",
+            "text" : "Bad news, Cadet! The Darkwellians have tainted the Wyvern Republic’s water supply with a drug that dulls the minds of the entire population! They are shuffling around like Zombies! "
+          }, {
+            "character" : "WEAVER",
+            "text" : "But there is hope! The Guild has found that saliva from orange-colored drakes can counter the drug."
+          }, {
+            "character" : "HATCH",
+            "text" : "We need more orange drakes, and to push ahead with our breeding program for other invaluable traits."
+          }, {
+            "character" : "WEAVER",
+            "text" : "Let’s go, Cadet! Time is of the essence!"
+          } ]
+        },
+        "name" : "Mission 4.1"
+      }, {
+        "challenges" : [ {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "RAJPUT",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "RAJPUT",
+                "text" : "Excellent job, Cadet! Another set of targets completed, and another crystal to power the machines that are strengthening our dragon force!"
+              }, {
+                "character" : "WEAVER",
+                "text" : "Meanwhile, I’ll get the team working on breeding those fungus-colored drakes to search for mushrooms..."
+              } ]
+            },
+            "start" : [ {
+              "character" : "RAJPUT",
+              "text" : "With the Darkwellians attacking our agriculture, we need alternative sources of food."
+            }, {
+              "character" : "WEAVER",
+              "text" : "We need more dull-colored drakes to help search for mushrooms since these drakes blend in with the forest floor and are less likely to be spotted by Darkwellian patrols."
+            }, {
+              "character" : "RAJPUT",
+              "text" : "That’s just one of the target drakes we need. In this challenge, only one parent’s alleles are known, and you must choose the others to breed the target. Click the screen to get started."
+            } ]
+          },
+          "id" : "clutch-5drakes-starterTraits",
+          "name" : "Challenge 4.2.1",
+          "room" : "breedingbarn"
+        }, {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "RAJPUT",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "WEAVER",
+                "text" : "Excellent job, Cadet!"
+              }, {
+                "character" : "RAJPUT",
+                "text" : "Now we’ll be able to breed enough shiny drakes to develop stores of the antidote for the virus unleashed by Darkwell."
+              } ]
+            },
+            "start" : [ {
+              "character" : "RAJPUT",
+              "text" : "Okay, Cadet, in this challenge you can change alleles for both parents in order to breed a drake that matches the target."
+            }, {
+              "character" : "WEAVER",
+              "text" : "One of the targets will be shiny scale color. Shiny scales exude a natural defense to the virus the Darkwellians used against Sawaki and Admar."
+            } ]
+          },
+          "id" : "clutch-5drakes-intermediateTraits",
+          "name" : "Challenge 4.2.2",
+          "room" : "breedingbarn"
+        } ],
+        "dialog" : {
+          "end" : [ {
+            "character" : "WEAVER",
+            "text" : "Another mission complete, and more disasters averted! The dull-colored drakes you helped us breed, Cadet, are at work foraging mushrooms to keep the people of Wyvern fed."
+          }, {
+            "character" : "HATCH",
+            "text" : "And our allies in Sawaki and Admar are gaining strength again now that we have stock-piled and shared our antidote to the Darwellian’s virus."
+          }, {
+            "character" : "WEAVER",
+            "text" : "Thanks to your work, Cadet, the Guild has faith that the tide will turn in favor of the Wyvern Republic."
+          }, {
+            "character" : "HATCH",
+            "text" : "We can’t wait another moment. I will give the order for the surprise attack on Darkwell."
+          }, {
+            "character" : "WEAVER",
+            "text" : "I just hope we were able to breed enough dragons and gain enough support from our allies to make this a success."
+          }, {
+            "character" : "HATCH",
+            "text" : "Our future is now in the hands of Colonel de Herrera and the dragon force…"
+          } ],
+          "middle" : [ {
+            "character" : "RAJPUT",
+            "text" : "Open your VentureMap and head on over to the Sim Room. Quickly! We don’t have much time!"
+          } ],
+          "start" : [ {
+            "character" : "WEAVER",
+            "text" : "The Darkwellians have ruined our agriculture and food supplies are low. And our allies in Sawaki and Admar are in bad shape due to the virus Darwell unleashed."
+          }, {
+            "character" : "WEAVER",
+            "text" : "And I've also heard from the front line that the Darkwellians are getting close. I’m preparing to launch our undercover attack. The Guild needs you, Cadet, to team up with Professor Rajput for our final push."
+          }, {
+            "character" : "RAJPUT",
+            "text" : "Great to meet you, Cadet! My team and I work in the Breeding Barn on drakes and dragons of all variations. Follow me there now using the VentureMap."
+          } ]
+        },
+        "name" : "Mission 4.2"
+      },
+
+
+      {
+        "challenges" : [ {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "RAJPUT",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "RAJPUT",
+                "text" : "Excellent job, Cadet! You picked some parents, woo!"
+              } ]
+            },
+            "start" : [ {
+              "character" : "RAJPUT",
+              "text" : "Pick the parents challenge 1, woo!"
+            } ]
+          },
+          "id" : "siblings-1",
+          "name" : "Challenge 4.3.1",
+          "room" : "breedingbarn"
+        }, {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "RAJPUT",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "RAJPUT",
+                "text" : "Excellent job, Cadet! You picked some parents, woo!"
+              } ]
+            },
+            "start" : [ {
+              "character" : "RAJPUT",
+              "text" : "Pick the parents challenge 2, woo!"
+            } ]
+          },
+          "id" : "siblings-2",
+          "name" : "Challenge 4.3.2",
+          "room" : "breedingbarn"
+        }, {
+          "dialog" : {
+            "end" : {
+              "failure" : [ {
+                "character" : "RAJPUT",
+                "text" : "You got there, but you'll need to do better to earn a crystal!."
+              } ],
+              "success" : [ {
+                "character" : "RAJPUT",
+                "text" : "Excellent job, Cadet! You picked some parents, woo!"
+              } ]
+            },
+            "start" : [ {
+              "character" : "RAJPUT",
+              "text" : "Pick the parents challenge 3, woo!"
+            } ]
+          },
+          "id" : "siblings-3",
+          "name" : "Challenge 4.3.3",
+          "room" : "breedingbarn"
+        } ],
+        "dialog" : {
+          "end" : [ {
+            "character" : "WEAVER",
+            "text" : "Yay, sibling challenges are all done. Woo!"
+          } ],
+          "middle" : [ {
+            "character" : "RAJPUT",
+            "text" : "Open your VentureMap and head on over to the Sim Room. Quickly! We don’t have much time!"
+          } ],
+          "start" : [ {
+            "character" : "WEAVER",
+            "text" : "This is a mission about siblings. Woo!"
+          } ]
+        },
+        "name" : "Mission 4.3"
+      }
+
+       ],
+      "name" : "Level 4"
+    } ]
+  },
+  "challenges" : {
+    "allele-5drakes-tutorial" : {
+      "challengeType" : "create-unique",
+      "container" : "FVContainer",
+      "initialDrake" : {
+        "alleles" : "a:T,b:T,a:h,b:h,a:A1,b:A1,a:D,a:rh,b:rh,a:Bog",
+        "sex" : 1
+      },
+      "instructions" : "Create 5 unique drakes!",
+      "showUserDrake" : true,
+      "template" : "FVGenomeChallenge",
+      "userChangeableGenes" : "wings, forelimbs, hindlimbs"
+    },
+    "allele-5drakes-tutorial-original" : {
+      "comment" : "*** Level 1, Mission 1.1: Playground ***",
+      "initialDrake" : {
+        "alleles" : "a:M,b:M,a:T,b:T,a:w,b:w,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 1
+      },
+      "template" : "GenomePlayground",
+      "userChangeableGenes" : "wings, forelimbs, hindlimbs, armor, horns"
+    },
+    "allele-targetMatch-hidden-armorHorns" : {
+      "challengeType" : "match-target",
+      "comment" : "*** Level 2, Mission 3.2: Genome Challenge (armor intro, user drake hidden) ***",
+      "container" : "FVContainer",
+      "hiddenAlleles" : "A2",
+      "initialDrake" : [ {
+        "alleles" : "a:A1,b:A1,a:H,b:H,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 1
+      }, {
+        "alleles" : "a:a,b:a,a:h,b:h,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 0
+      }, {
+        "alleles" : "a:a,b:A1,a:H,b:h,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 1
+      } ],
+      "instructions" : "Match the target drake!",
+      "linkedGenes" : {
+        "drakes" : [ 0, 1 ],
+        "genes" : "metallic, wings, forelimbs, hindlimbs, tail, color, black, dilute, nose, bogbreath"
+      },
+      "randomizeTrials" : true,
+      "showUserDrake" : false,
+      "targetDrakes" : [ {
+        "alleles" : "a:a,b:a,a:h,b:h",
+        "sex" : 0
+      }, {
+        "alleles" : "a:A1,b:a,a:H,b:H",
+        "sex" : 0
+      }, {
+        "alleles" : "a:A1,b:A1,a:H,b:H",
+        "sex" : 1
+      } ],
+      "template" : "FVGenomeChallenge",
+      "userChangeableGenes" : "forelimbs, hindlimbs, wings, armor, horns"
+    },
+    "allele-targetMatch-hidden-armorHorns-original" : {
+      "comment" : "*** Level 2, Mission 3.2: Genome Challenge (armor intro, user drake hidden) ***",
+      "hiddenAlleles" : "A2",
+      "initialDrake" : [ {
+        "alleles" : "a:A1,b:A1,a:H,b:H,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 1
+      }, {
+        "alleles" : "a:a,b:a,a:h,b:h,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 0
+      }, {
+        "alleles" : "a:a,b:A1,a:H,b:h,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 1
+      } ],
+      "instructions" : "Match the target drake!",
+      "linkedGenes" : {
+        "drakes" : [ 0, 1 ],
+        "genes" : "metallic, wings, forelimbs, hindlimbs, tail, color, black, dilute, nose, bogbreath"
+      },
+      "randomizeTrials" : true,
+      "showUserDrake" : false,
+      "targetDrakes" : [ {
+        "alleles" : "a:a,b:a,a:h,b:h",
+        "sex" : 0
+      }, {
+        "alleles" : "a:A1,b:a,a:H,b:H",
+        "sex" : 0
+      }, {
+        "alleles" : "a:A1,b:A1,a:H,b:H",
+        "sex" : 1
+      } ],
+      "template" : "GenomeChallenge",
+      "userChangeableGenes" : "armor, horns",
+      "visibleGenes" : "forelimbs, hindlimbs, wings"
+    },
+    "allele-targetMatch-hidden-simpleColors" : {
+      "challengeType" : "match-target",
+      "container" : "FVContainer",
+      "initialDrake" : [ {
+        "alleles" : "a:M,b:M,a:A1,b:A1,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 0
+      }, {
+        "alleles" : "a:c,b:c,a:m,b:m,a:A1,b:a,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 0
+      }, {
+        "alleles" : "a:B,b:b,a:M,b:m,a:a,b:A1,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 1
+      }, {
+        "alleles" : "a:m,b:m,a:b,b:b,a:a,b:a,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 0
+      }, {
+        "alleles" : "a:C,b:C,a:A1,b:A1,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 0
+      } ],
+      "instructions" : "Match the target drake!",
+      "linkedGenes" : {
+        "drakes" : [ 0, 1 ],
+        "genes" : "wings, forelimbs, armor, horns, hindlimbs, tail, dilute, nose, bogbreath"
+      },
+      "numTrials" : 3,
+      "randomizeTrials" : true,
+      "showUserDrake" : false,
+      "targetDrakes" : [ {
+        "alleles" : "a:m,b:m,a:C,b:C,a:B,b:B,a:rh,b:rh",
+        "sex" : 0
+      }, {
+        "alleles" : "a:M,b:m,a:C,b:C,a:B,b:B,a:rh,b:rh",
+        "sex" : 1
+      }, {
+        "alleles" : "a:m,b:m,a:C,b:C,a:b,b:b,a:rh,b:rh",
+        "sex" : 0
+      }, {
+        "alleles" : "a:M,b:m,a:C,b:C,a:B,b:B,a:rh,b:rh",
+        "sex" : 1
+      }, {
+        "alleles" : "a:m,b:m,a:c,b:c,a:B,b:B,a:rh,b:rh",
+        "sex" : 0
+      } ],
+      "template" : "FVGenomeChallenge",
+      "userChangeableGenes" : "metallic, color, black",
+      "visibleGenes" : "forelimbs, hindlimbs, wings, armor, horns"
+    },
+    "allele-targetMatch-hidden-simpleDom" : {
+      "challengeType" : "match-target",
+      "comment" : "*** Level 2, Mission 1.2: Genome Challenge (basics intro, user drake hidden) ***",
+      "container" : "FVContainer",
+      "instructions" : "Match 2 drakes!",
+      "numTrials" : 2,
+      "template" : "FVGenomeChallenge",
+      "trialGenerator" : {
+        "baseDrake" : "a:M,b:M,a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "initialDrakeCombos" : [ [ "a:W,b:W", "a:W,b:w", "a:w,b:W", "a:w,b:w" ], [ "a:Fl,b:Fl", "a:Fl,b:fl", "a:fl,b:Fl", "a:fl,b:fl" ], [ "a:Hl,b:Hl", "a:Hl,b:hl", "a:hl,b:Hl", "a:hl,b:hl" ] ],
+        "targetDrakeCombos" : [ [ "a:W,b:W", "a:w,b:w" ], [ "a:Fl,b:Fl", "a:fl,b:fl" ], [ "a:Hl,b:Hl", "a:hl,b:hl" ] ],
+        "type" : "all-combinations"
+      },
+      "userChangeableGenes" : "wings, forelimbs, hindlimbs"
+    },
+    "allele-targetMatch-hidden-simpleDom-original" : {
+      "comment" : "*** Level 2, Mission 1.2: Genome Challenge (basics intro, user drake hidden) ***",
+      "instructions" : "Match 2 drakes!",
+      "template" : "GenomeChallenge",
+      "trialGenerator" : {
+        "baseDrake" : "a:M,b:M,a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "initialDrakeCombos" : [ [ "a:W,b:W", "a:W,b:w", "a:w,b:W", "a:w,b:w" ], [ "a:Fl,b:Fl", "a:Fl,b:fl", "a:fl,b:Fl", "a:fl,b:fl" ], [ "a:Hl,b:Hl", "a:Hl,b:hl", "a:hl,b:Hl", "a:hl,b:hl" ] ],
+        "targetDrakeCombos" : [ [ "a:W,b:W", "a:w,b:w" ], [ "a:Fl,b:Fl", "a:fl,b:fl" ], [ "a:Hl,b:Hl", "a:hl,b:hl" ] ],
+        "type" : "all-combinations"
+      },
+      "userChangeableGenes" : "wings, forelimbs, hindlimbs"
+    },
+    "allele-targetMatch-visible-armorHorns" : {
+      "challengeType" : "match-target",
+      "comment" : "*** Level 2, Mission 3.1: Genome Challenge (armor intro, user drake visible) ***",
+      "container" : "FVContainer",
+      "hiddenAlleles" : "A2",
+      "initialDrake" : [ {
+        "alleles" : "a:a,b:a,a:H,b:H,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 1
+      }, {
+        "alleles" : "a:A1,b:A1,a:H,b:h,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 0
+      }, {
+        "alleles" : "a:a,b:A1,a:h,b:h,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 1
+      } ],
+      "instructions" : "Match the target drake!",
+      "linkedGenes" : {
+        "drakes" : [ 0, 1 ],
+        "genes" : "metallic, wings, forelimbs, hindlimbs, tail, color, black, dilute, nose, bogbreath"
+      },
+      "randomizeTrials" : true,
+      "showUserDrake" : true,
+      "targetDrakes" : [ {
+        "alleles" : "a:A1,b:A1,a:h,b:h",
+        "sex" : 1
+      }, {
+        "alleles" : "a:A1,b:a,a:h,b:h",
+        "sex" : 1
+      }, {
+        "alleles" : "a:a,b:a,a:H,b:h",
+        "sex" : 0
+      } ],
+      "template" : "FVGenomeChallenge",
+      "userChangeableGenes" : "armor, horns",
+      "visibleGenes" : "forelimbs, hindlimbs, wings"
+    },
+    "allele-targetMatch-visible-armorHorns-original" : {
+      "comment" : "*** Level 2, Mission 3.1: Genome Challenge (armor intro, user drake visible) ***",
+      "hiddenAlleles" : "A2",
+      "initialDrake" : [ {
+        "alleles" : "a:a,b:a,a:H,b:H,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 1
+      }, {
+        "alleles" : "a:A1,b:A1,a:H,b:h,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 0
+      }, {
+        "alleles" : "a:a,b:A1,a:h,b:h,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 1
+      } ],
+      "instructions" : "Match the target drake!",
+      "linkedGenes" : {
+        "drakes" : [ 0, 1 ],
+        "genes" : "metallic, wings, forelimbs, hindlimbs, tail, color, black, dilute, nose, bogbreath"
+      },
+      "randomizeTrials" : true,
+      "showUserDrake" : true,
+      "targetDrakes" : [ {
+        "alleles" : "a:A1,b:A1,a:h,b:h",
+        "sex" : 1
+      }, {
+        "alleles" : "a:A1,b:a,a:h,b:h",
+        "sex" : 1
+      }, {
+        "alleles" : "a:a,b:a,a:H,b:h",
+        "sex" : 0
+      } ],
+      "template" : "GenomeChallenge",
+      "userChangeableGenes" : "armor, horns",
+      "visibleGenes" : "forelimbs, hindlimbs, wings"
+    },
+    "allele-targetMatch-visible-simpleColors" : {
+      "challengeType" : "match-target",
+      "container" : "FVContainer",
+      "initialDrake" : [ {
+        "alleles" : "a:M,b:M,a:A1,b:A1,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 0
+      }, {
+        "alleles" : "a:c,b:c,a:m,b:m,a:A1,b:a,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 1
+      }, {
+        "alleles" : "a:B,b:b,a:M,b:m,a:a,b:A1,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 0
+      }, {
+        "alleles" : "a:m,b:m,a:b,b:b,a:a,b:a,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 1
+      }, {
+        "alleles" : "a:C,b:C,a:A1,b:A1,a:Bog,a:D,a:rh,b:rh",
+        "sex" : 0
+      } ],
+      "instructions" : "Match the target drake!",
+      "linkedGenes" : {
+        "drakes" : [ 0, 1 ],
+        "genes" : "wings, forelimbs, armor, horns, hindlimbs, tail, dilute, nose, bogbreath"
+      },
+      "randomizeTrials" : true,
+      "showUserDrake" : true,
+      "targetDrakes" : [ {
+        "alleles" : "a:m,b:m,a:C,b:C,a:B,b:B,a:rh,b:rh",
+        "sex" : 0
+      }, {
+        "alleles" : "a:M,b:m,a:C,b:C,a:B,b:B,a:rh,b:rh",
+        "sex" : 0
+      }, {
+        "alleles" : "a:m,b:m,a:C,b:C,a:b,b:b,a:rh,b:rh",
+        "sex" : 1
+      }, {
+        "alleles" : "a:M,b:m,a:C,b:C,a:B,b:B,a:rh,b:rh",
+        "sex" : 0
+      }, {
+        "alleles" : "a:m,b:m,a:c,b:c,a:B,b:B,a:rh,b:rh",
+        "sex" : 0
+      } ],
+      "template" : "FVGenomeChallenge",
+      "userChangeableGenes" : "metallic, color, black"
+    },
+    "allele-targetMatch-visible-simpleDom" : {
+      "challengeType" : "match-target",
+      "comment" : "*** Level 2, Mission 1.1: Genome Challenge (basics intro, user drake visible) ***",
+      "container" : "FVContainer",
+      "instructions" : "Match the target drake!",
+      "numTrials" : 2,
+      "showUserDrake" : true,
+      "template" : "FVGenomeChallenge",
+      "trialGenerator" : {
+        "baseDrake" : "a:M,b:M,a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "initialDrakeCombos" : [ [ "a:W,b:W", "a:W,b:w", "a:w,b:W", "a:w,b:w" ], [ "a:Fl,b:Fl", "a:Fl,b:fl", "a:fl,b:Fl", "a:fl,b:fl" ], [ "a:Hl,b:Hl", "a:Hl,b:hl", "a:hl,b:Hl", "a:hl,b:hl" ] ],
+        "targetDrakeCombos" : [ [ "a:W,b:W", "a:w,b:w" ], [ "a:Fl,b:Fl", "a:fl,b:fl" ], [ "a:Hl,b:Hl", "a:hl,b:hl" ] ],
+        "type" : "all-combinations"
+      },
+      "userChangeableGenes" : "wings, forelimbs, hindlimbs"
+    },
+    "allele-targetMatch-visible-simpleDom-original" : {
+      "comment" : "*** Level 2, Mission 1.1: Genome Challenge (basics intro, user drake visible) ***",
+      "initialDrake" : {
+        "alleles" : "a:Bog,a:D,a:rh,b:rh",
+        "sex" : 1
+      },
+      "instructions" : "Match the target drake!",
+      "linkedGenes" : {
+        "drakes" : [ 0, 1 ],
+        "genes" : "metallic, tail, horns, color, black, dilute, armor, nose, bogbreath"
+      },
+      "randomizeTrials" : true,
+      "showUserDrake" : true,
+      "targetDrakes" : [ {
+        "alleles" : "",
+        "sex" : 0
+      }, {
+        "alleles" : "",
+        "sex" : 1
+      } ],
+      "template" : "GenomeChallenge",
+      "userChangeableGenes" : "wings, forelimbs, hindlimbs"
+    },
+    "cell-game-charcoal-frost-size" : {
+      "comment" : "*** Level 3, Mission 3.1: Charcoal -> Frost (Albino), Size - Working Everything ***",
+      "container" : "FVContainer",
+      "template" : "ZoomChallenge",
+      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=charcoal-frost&alleles=11111111&game=size"
+    },
+    "cell-game-charcoal-lava-size" : {
+      "comment" : "*** Level 3, Mission 2.2: Charcoal -> Lava, Size - Heterozygous TRP ***",
+      "container" : "FVContainer",
+      "template" : "ZoomChallenge",
+      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=charcoal-lava&alleles=10111111&game=size"
+    },
+    "cell-game-copper-lava-gate" : {
+      "comment" : "*** Level 3, Mission 4.3: Copper -> Lava, Gates - Broken TRP, Heterozygous ASIP ***",
+      "container" : "FVContainer",
+      "template" : "ZoomChallenge",
+      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=copper-lava&alleles=00111110&game=gate"
+    },
+    "cell-game-copper-lava-nucleus" : {
+      "comment" : "*** Level 3, Mission 4.4: Copper -> Lava, Nucleus ***",
+      "container" : "FVContainer",
+      "template" : "ZoomChallenge",
+      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=copper-lava&alleles=00111110&game=gate&nucleusGenes=00000011"
+    },
+    "cell-game-frost-charcoal-nucleus" : {
+      "comment" : "*** Level 3, Mission 3.3: Frost (Albino) -> Charcoal, Nucleus ***",
+      "container" : "FVContainer",
+      "template" : "ZoomChallenge",
+      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=frost-charcoal&alleles=11001111&game=size&nucleusGenes=00110000"
+    },
+    "cell-game-frost-charcoal-size" : {
+      "comment" : "*** Level 3, Mission 3.2: Frost (Albino) -> Charcoal, Size - Homozygous Broken TYR ***",
+      "container" : "FVContainer",
+      "template" : "ZoomChallenge",
+      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=frost-charcoal&alleles=11001111&game=size"
+    },
+    "cell-game-lava-charcoal-nucleus" : {
+      "comment" : "*** Level 3, Mission 2.4: Lava -> Charcoal, Nucleus ***",
+      "container" : "FVContainer",
+      "template" : "ZoomChallenge",
+      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=lava-charcoal&alleles=00111111&game=size&nucleusGenes=11000000"
+    },
+    "cell-game-lava-charcoal-size" : {
+      "comment" : "*** Level 3, Mission 2.3: Lava -> Charcoal, Size - Homozygous Broken TRP ***",
+      "container" : "FVContainer",
+      "template" : "ZoomChallenge",
+      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=lava-charcoal&alleles=00111111&game=size"
+    },
+    "cell-game-lava-copper-gate" : {
+      "comment" : "*** Level 3, Mission 4.2: Lava -> Copper, Gates - Broken TRP ***",
+      "container" : "FVContainer",
+      "template" : "ZoomChallenge",
+      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=lava-copper&alleles=00111111&game=gate"
+    },
+    "cell-game-lava-steel-nucleus" : {
+      "comment" : "*** Level 3, Mission 4.5: Lava -> Steel, Nucleus ***",
+      "container" : "FVContainer",
+      "template" : "ZoomChallenge",
+      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=lava-steel&alleles=00111111&game=nucleus"
+    },
+    "cell-game-size-intro" : {
+      "comment" : "*** Level 3, Mission 2.1: Empty -> Charcoal, Size Tutorial ***",
+      "container" : "FVContainer",
+      "template" : "ZoomChallenge",
+      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=frost-charcoal&alleles=11111111&numStars=0&game=size"
+    },
+    "clutch-5drakes-intermediateTraits" : {
+      "challengeType" : "create-unique",
+      "container" : "FVContainer",
+      "mother" : [ {
+        "randomMatched": [
+          {
+            "alleles" : "H-H, w-w, B-B, M-M, A1-A1, Fl-Fl, hl-hl, T-T, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "W-W, b-b, H-H, m-m, A1-A1, fl-fl, Hl-Hl, t-t, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "B-B, w-w, h-h, M-M, a-a, Fl-Fl, Hl-Hl, Tk-Tk, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "h-h, b-b, W-W, m-m, a-a, fl-fl, hl-hl, t-t, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "W-W, h-h, B-B, M-M a-a, Fl-Fl, hl-hl, T-T, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          }
+        ]
+      }, {
+        "randomMatched": [
+          {
+            "alleles" : "C-C, Hl-hl, a-a, B-B, T-T, Fl-Fl, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "C-C, H-hl, A1-A1, b-b, Tk-Tk, fl-fl, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "c-c, Hl-hl, A1-A1, B-B, t-t, fl-fl, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "c-c, Hl-hl, A1-A1, b-b, T-T, fl-fl, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "c-C, H-hl, A1-a, B-B, Fl-Fl, t-t, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          }
+        ]
+      } ],
+      "father" : [ {
+        "randomMatched": [
+          {
+            "alleles" : "H-h, W-w, b-b",
+            "sex" : 0
+          },
+          {
+            "alleles" : "w-W, B-b, H-H",
+            "sex" : 0
+          },
+          {
+            "alleles" : "b-B, W-w, H-H",
+            "sex" : 0
+          },
+          {
+            "alleles" : "h-h, B-b, w-w",
+            "sex" : 0
+          },
+          {
+            "alleles" : "W-w, H-h, b-b",
+            "sex" : 0
+          }
+        ]
+      }, {
+        "randomMatched": [
+          {
+            "alleles" : "c-c, Hl-hl, a-a",
+            "sex" : 0
+          },
+          {
+            "alleles" : "C-C, Hl-hl, A1-a",
+            "sex" : 0
+          },
+          {
+            "alleles" : "c-c, Hl-hl, A1-A1",
+            "sex" : 0
+          },
+          {
+            "alleles" : "c-c, Hl-hl, A1-A1",
+            "sex" : 0
+          },
+          {
+            "alleles" : "C-C, Hl-hl, A1-A1",
+            "sex" : 0
+          }
+        ]
+      } ],
+      "targetDrakes" : [ {
+        "randomMatched": [
+          {
+            "alleles" : "h-h, W-W, b-b"
+          }, 
+          {
+            "alleles" : "w-w, B-B, h-h"
+          }, 
+          {
+            "alleles" : "b-b, W-W, h-h"
+          }, 
+          {
+            "alleles" : "H-H, B-B, w-w"
+          }, 
+          {
+            "alleles" : "w-w, h-h, b-b"
+          }
+        ]
+      }, {
+        "randomMatched": [
+          {
+            "alleles" : "c-c, hl-hl, A1-A1"
+          }, 
+          {
+            "alleles" : "c-c, hl-hl, a-a"
+          }, 
+          {
+            "alleles" : "C-C, hl-hl, A1-a"
+          }, 
+          {
+            "alleles" : "C-C, hl-hl, a-a"
+          }, 
+          {
+            "alleles" : "c-c, hl-hl, a-a"
+          }
+        ]
+      } ],
+      "goalMoves" : [ [2, 3, 2, 2, 2], [3, 3, 2, 3, 2] ],
+      "hiddenAlleles" : "A2",
+      "instructions" : "Create 5 different baby drakes!",
+      "interactionType" : "select-chromosomes",
+      "linkedGenes" : [{
+        "drakes" : [ 0, 1, 2 ],
+        "genes" : "armor, forelimbs, hindlimbs, tail, metallic, color, dilute, nose, bogbreath"
+      },
+      {
+        "drakes" : [ 0, 1, 2 ],
+        "genes" : "black, wings, horns, forelimbs, tail, metallic, dilute, nose, bogbreath"
+      }],
+      "randomizeTrials" : false,
+      "showUserDrake" : true,
+      "template" : "ClutchGame",
+      "userChangeableGenes" : [ {
+        "father" : "wings, black, horns",
+        "mother" : "wings, black, horns"
+      }, {
+        "father" : "color, armor, hindlimbs",
+        "mother" : "color, armor, hindlimbs"
+      } ]
+    },
+    "clutch-5drakes-starterTraits" : {
+      "challengeType" : "create-unique",
+      "container" : "FVContainer",
+      "mother" : [ {
+        "randomMatched": [
+          {
+            "alleles" : "M-M, w-w, B-B, Fl-Fl, hl-hl, H-H, t-t, A1-A1, C-, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "M-M, W-W, b-b, fl-fl, Hl-Hl, h-h, T-T, a-a, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "M-M, w-w, B-B, Fl-Fl, Hl-Hl, H-H, Tk-Tk, A1-A1, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "M-M, W-W, b-b, fl-fl, hl-hl, h-h, Tk-Tk, a-a, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "m-m, W-W, B-B, Fl-Fl, hl-hl, H-H, t-t, A1-A1, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          }
+        ]
+      }, {
+        "randomMatched": [
+          {
+            "alleles" : "m-m, w-w, B-b, Fl-Fl, hl-hl, H-H, t-t, a-a, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "M-m, w-w, b-b, fl-fl, Hl-Hl, h-h, T-T, a-a, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "m-m, W-w, b-b, Fl-Fl, Hl-Hl, H-H, Tk-Tk, a-a, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "m-m, W-w, b-b, fl-fl, hl-hl, h-h, Tk-Tk, A1-A1, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "M-m, w-w, b-b, Fl-Fl, hl-hl, H-H, t-t, A1-A1, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          }
+        ]
+      }, {
+        "randomMatched": [
+          {
+            "alleles" : "M-M, w-w, B-b, Fl-Fl, hl-hl, H-H, t-t, A1-A1, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "m-m, W-W, B-b, fl-fl, Hl-Hl, h-h, T-T, A1-A1, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "m-M, W-W, B-B, Fl-Fl, Hl-Hl, H-H, Tk-Tk, a-a, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "m-M, W-W, B-B, fl-fl, hl-hl, h-h, Tk-Tk, a-a, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          },
+          {
+            "alleles" : "M-M, w-W, B-B, Fl-Fl, hl-hl, H-H, t-t, A1-A1, C-C, D-D, rh-rh, Bog-Bog",
+            "sex" : 1
+          }
+        ]
+      } ],
+      "father" : [ {
+        "randomMatched": [
+          {
+            "alleles" : "m-M, W-w, b-b",
+            "sex" : 0
+          },
+          {
+            "alleles" : "m-m, w-W, B-b",
+            "sex" : 0
+          },
+          {
+            "alleles" : "m-m, W-w, b-B",
+            "sex" : 0
+          },
+          {
+            "alleles" : "m-M, w-w, B-b",
+            "sex" : 0
+          },
+          {
+            "alleles" : "M-m, W-w, b-b",
+            "sex" : 0
+          }
+        ]
+      }, {
+        "randomMatched": [
+          {
+            "alleles" : "m-m, W-W, B-b",
+            "sex" : 0
+          },
+          {
+            "alleles" : "M-m, w-w, B-B",
+            "sex" : 0
+          },
+          {
+            "alleles" : "m-m, W-w, B-B",
+            "sex" : 0
+          },
+          {
+            "alleles" : "M-M, W-w, b-b",
+            "sex" : 0
+          },
+          {
+            "alleles" : "M-m, w-w, B-B",
+            "sex" : 0
+          }
+        ]
+      }, {
+        "randomMatched": [
+          {
+            "alleles" : "M-M, W-W, b-B",
+            "sex" : 0
+          },
+          {
+            "alleles" : "M-M, W-W, b-B",
+            "sex" : 0
+          },
+          {
+            "alleles" : "M-m, W-W, b-b",
+            "sex" : 0
+          },
+          {
+            "alleles" : "m-M, w-w, B-B",
+            "sex" : 0
+          },
+          {
+            "alleles" : "M-M, w-W, b-b",
+            "sex" : 0
+          }
+        ]
+      } ],
+      "targetDrakes" : [ {
+        "randomMatched": [
+          {
+            "alleles" : "m-m, W-W, b-b"
+          }, 
+          {
+            "alleles" : "m-m, w-w, B-B"
+          }, 
+          {
+            "alleles" : "m-m, W-W, b-b"
+          }, 
+          {
+            "alleles" : "m-m, w-w, B-B"
+          }, 
+          {
+            "alleles" : "M-M, w-w, b-b"
+          }
+        ]
+      }, {
+        "randomMatched": [
+          {
+            "alleles" : "M-M, w-w, b-b"
+          }, 
+          {
+            "alleles" : "m-m, W-W, b-b"
+          }, 
+          {
+            "alleles" : "M-M, W-W, b-b"
+          }, 
+          {
+            "alleles" : "m-m, w-w, B-B"
+          }, 
+          {
+            "alleles" : "m-m, W-W, b-b"
+          }
+        ]
+      }, {
+        "randomMatched": [
+          {
+            "alleles" : "m-m, w-w, b-b"
+          }, 
+          {
+            "alleles" : "m-m, w-w, b-b"
+          }, 
+          {
+            "alleles" : "m-m, w-w, b-b"
+          }, 
+          {
+            "alleles" : "m-m, w-w, b-b"
+          }, 
+          {
+            "alleles" : "m-m, w-w, b-b"
+          }
+        ]
+      } ],
+      "goalMoves" : [ 2, 2, [2, 2, 2, 2, 3] ],
+      "hiddenAlleles" : "A2",
+      "instructions" : "Create 5 different baby drakes",
+      "interactionType" : "select-chromosomes",
+      "linkedGenes" : {
+        "drakes" : [ 0, 1, 2 ],
+        "genes" : "armor, forelimbs, hindlimbs, horns, tail, color, dilute, nose, bogbreath"
+      },
+      "showUserDrake" : true,
+      "template" : "ClutchGame",
+      "userChangeableGenes" : [ {
+        "father" : "",
+        "mother" : "wings, metallic, black"
+      }, {
+        "father" : "wings, metallic, black",
+        "mother" : ""
+      }, {
+        "father" : "wings, metallic, black",
+        "mother" : "wings, metallic, black"
+      } ],
+      "visibleGenes" : [ "wings", "metallic", "black" ]
+    },
+    "siblings-1" : {
+      "challengeType" : "submit-parents",
+      "container" : "FVContainer",
+      "mother" : [{
+        "randomMatched": [ {
+          "alleles" : "M-M, W-W, Fl-fl, Bog-Bog, D-D",
+          "sex" : 1
+        }, {
+          "alleles" : "W-W, m-m, Fl-Fl, Bog-Bog, D-D",
+          "sex" : 1
+        }, {
+          "alleles" : "W-W, M-m, Fl-Fl, Bog-Bog, D-D",
+          "sex" : 1
+        }, {
+          "alleles" : "W-W, M-M, fl-fl, Bog-Bog, D-D",
+          "sex" : 1
+        }, {
+          "alleles" : "W-W, Fl-fl, M-M, Bog-Bog, D-D",
+          "sex" : 1
+        }]
+      }],
+      "father" : [{
+        "randomMatched": [{
+          "alleles" : "m-M, W-w, Fl-fl",
+          "sex" : 0
+        }, {
+          "alleles" : "w-w, M-M, Fl-fl",
+          "sex" : 0
+        }, {
+          "alleles" : "w-w, M-M, fl-Fl",
+          "sex" : 0
+        }, {
+          "alleles" : "w-W, M-m, Fl-fl",
+          "sex" : 0
+        }, {
+          "alleles" : "w-w, Fl-fl, M-m",
+          "sex" : 0
+        }]
+      }],
+      "targetDrakes" : [{
+        "randomMatched": [ [{
+          "alleles" : "M-, w-w, fl-fl",
+          "sex": 0
+        }, {
+          "alleles" : "m-m, w-w, Fl-",
+          "sex": 1
+        }],
+        [{
+          "alleles" : "w-w, M-, fl-fl",
+          "sex": 0
+        }, {
+          "alleles" : "W-, M-, Fl-",
+          "sex": 1
+        }],
+        [{
+          "alleles" : "w-w, m-m, Fl-",
+          "sex": 0
+        }, {
+          "alleles" : "W-, m-m, fl-fl",
+          "sex": 1
+        }],
+        [{
+          "alleles" : "w-w, M-, Fl-",
+          "sex": 0
+        }, {
+          "alleles" : "W-, m-m, fl-fl",
+          "sex": 1
+        }],
+        [{
+          "alleles" : "w-w, Fl-, M-",
+          "sex": 0
+        }, {
+          "alleles" : "w-w, m-m, fl-fl",
+          "sex": 1
+        }] ]
+      }],
+      "goalMoves" : [[0, 0, 0, 0]],
+      "hiddenAlleles" : "A2",
+      "instructions" : "Create 5 different baby drakes!",
+      "interactionType" : "select-chromosomes",
+      "linkedGenes" : {
+        "drakes" : [ 0, 1, 2 ],
+        "genes" : "color, hindlimbs, black, horns, armor, tail, dilute, nose, bogbreath"
+      },
+      "showUserDrake" : true,
+      "template" : "ClutchGame",
+      "userChangeableGenes" : [ {
+        "father" : "",
+        "mother" : "wings, forelimbs, metallic"
+      }],
+      "visibleGenes" : "wings, forelimbs, metallic"
+    },
+    "siblings-2" : {
+      "challengeType" : "submit-parents",
+      "container" : "FVContainer",
+      "mother" : [{
+        "randomMatched": [ {
+          "alleles" : "B-b, A1-A1, h-h, C-C, Bog-Bog, D-D, rh-rh",
+          "sex" : 1
+        }, {
+          "alleles" : "B-b, A1-a, h-h, C-C, Bog-Bog, D-D, rh-rh",
+          "sex" : 1
+        }, {
+          "alleles" : "B-b, a-A1, h-h, C-C, Bog-Bog, D-D, rh-rh",
+          "sex" : 1
+        }, {
+          "alleles" : "b-B, A1-A1, h-H, C-C, Bog-Bog, D-D, rh-rh",
+          "sex" : 1
+        }]
+      }],
+      "father" : [{
+        "randomMatched": [{
+          "alleles" : "B-b, A1-A1, H-H",
+          "sex" : 0
+        }, {
+          "alleles" : "b-B, A1-A1, H-H",
+          "sex" : 0
+        }, {
+          "alleles" : "b-B, A1-A1, H-H",
+          "sex" : 0
+        }, {
+          "alleles" : "B-B, A1-A1, H-h",
+          "sex" : 0
+        }]
+      }],
+      "targetDrakes" : [{
+        "randomMatched": [ [{
+          "alleles" : "b-b, h-h, A1-A1",
+          "sex": 0
+        }, {
+          "alleles" : "B-, h-h, A1-a",
+          "sex": 1
+        }],
+        [{
+          "alleles" : "B-, h-h, a-a",
+          "sex": 0
+        }, {
+          "alleles" : "b-b, h-h, A1-a",
+          "sex": 1
+        }],
+        [{
+          "alleles" : "b-b, h-h, a-a",
+          "sex": 0
+        }, {
+          "alleles" : "B-, h-h, A1-A1",
+          "sex": 1
+        }],
+        [{
+          "alleles" : "B-, H-, A1-A1",
+          "sex": 0
+        }, {
+          "alleles" : "b-b, h-h, A1-a",
+          "sex": 1
+        }] ]
+      }],
+      "goalMoves" : [[0, 0, 0, 0]],
+      "hiddenAlleles" : "A2",
+      "instructions" : "Create 5 different baby drakes!",
+      "interactionType" : "select-chromosomes",
+      "linkedGenes" : {
+        "drakes" : [ 0, 1, 2 ],
+        "genes" : "forelimbs, hindlimbs, wings, color, metallic, tail, dilute, nose, bogbreath"
+      },
+      "showUserDrake" : true,
+      "template" : "ClutchGame",
+      "userChangeableGenes" : [ {
+        "father" : "black, armor, horns",
+        "mother" : "black, armor, horns"
+      }],
+      "visibleGenes" : ""
+    },
+    "siblings-3" : {
+      "challengeType" : "submit-parents",
+      "container" : "FVContainer",
+      "mother" : [{
+        "randomMatched": [ {
+          "alleles" : "Hl-Hl, W-W, H-H, A1-A1, B-B, C-C, Bog-Bog, D-D, rh-rh",
+          "sex" : 1
+        }, {
+          "alleles" : "Hl-Hl, W-W, H-H, A1-A1, B-B, C-C, Bog-Bog, D-D, rh-rh",
+          "sex" : 1
+        }, {
+          "alleles" : "hl-hl-, w-w, h-h, a-a, b-b, C-C, Bog-Bog, D-D, rh-rh",
+          "sex" : 1
+        }, {
+          "alleles" : "Hl-Hl, W-W, H-H, A1-A1, B-B, C-C, Bog-Bog, D-D, rh-rh",
+          "sex" : 1
+        }]
+      }],
+      "father" : [{
+        "randomMatched": [{
+          "alleles" : "Hl-Hl, W-W, H-H, A1-A1, B-B",
+          "sex" : 0
+        }, {
+          "alleles" : "hl-hl, w-w, h-h, a-a, b-b",
+          "sex" : 0
+        }, {
+          "alleles" : "Hl-Hl, W-W, H-H, A1-A1, B-B",
+          "sex" : 0
+        }, {
+          "alleles" : "Hl-hl, w-W, H-h, a-A1, B-b",
+          "sex" : 0
+        }]
+      }],
+      "targetDrakes" : [{
+        "randomMatched": [ [{
+          "alleles" : "Hl-, W- h-h, A1-A1, B-",
+          "sex": 0
+        }, {
+          "alleles" : "hl-hl, w-w, H-, a-a, b-b",
+          "sex": 1
+        }],
+        [{
+          "alleles" : "hl-hl, w-w, H-, A1-a, b-b",
+          "sex": 0
+        }, {
+          "alleles" : "Hl-, W-, h-h, A1-A1, B-",
+          "sex": 1
+        }],
+        [{
+          "alleles" : "Hl-, W- h-h, a-a, B-",
+          "sex": 0
+        }, {
+          "alleles" : "hl-hl, w-w, H-, A1-a, b-b",
+          "sex": 1
+        }],
+        [{
+          "alleles" : "hl-hl, W-, H-, a-a, b-b",
+          "sex": 0
+        }, {
+          "alleles" : "Hl-, w-w, h-h, A1-A1, B-",
+          "sex": 1
+        }] ]
+      }],
+      "goalMoves" : [[0, 0, 0, 0]],
+      "hiddenAlleles" : "A2",
+      "instructions" : "Create 5 different baby drakes!",
+      "interactionType" : "select-chromosomes",
+      "linkedGenes" : {
+        "drakes" : [ 0, 1, 2 ],
+        "genes" : "forelimbs, color, metallic, tail, dilute, nose, bogbreath"
+      },
+      "showUserDrake" : true,
+      "template" : "ClutchGame",
+      "userChangeableGenes" : [ {
+        "father" : "hindlimbs, wings, horns, armor, black",
+        "mother" : "hindlimbs, wings, horns, armor, black"
+      }],
+      "visibleGenes" : ""
+    },
+    "eggBreedingBasicChromosomesUnique" : {
+      "challengeType" : "create-unique",
+      "comment" : "*** Level 4, Mission 1.1: Egg Breeding (select chromosome to create 5 unique drakes) ***",
+      "father" : {
+        "alleles" : "a:w,b:W,a:m,b:m,a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 0
+      },
+      "instructions" : "Create 5 different baby drakes!",
+      "interactionType" : "select-chromosomes",
+      "mother" : {
+        "alleles" : "a:w,b:W,a:M,b:m,a:fl,a:hl,a:T,b:T,a:h,b:h,a:C,b:C,a:A1,b:A1,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 1
+      },
+      "showUserDrake" : true,
+      "template" : "EggGame",
+      "visibleGenes" : "metallic, wings, forelimbs, hindlimbs"
+    },
+    "eggBreedingBasicGametesTarget" : {
+      "challengeType" : "match-target",
+      "comment" : "*** Level 4, Mission 1.3: Egg Breeding (select gametes to match drakes) ***",
+      "father" : {
+        "alleles" : "a:w,b:W,a:m,b:m,a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 0
+      },
+      "gameteCounts" : [ [ 2, 1 ], [ 1, 3 ], [ 4, 4 ] ],
+      "instructions" : "Match the target drakes!",
+      "interactionType" : "select-gametes",
+      "mother" : {
+        "alleles" : "a:w,b:W,a:M,b:m,a:fl,a:hl,a:T,b:T,a:h,b:h,a:C,b:C,a:A1,b:A1,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 1
+      },
+      "showUserDrake" : true,
+      "template" : "EggGame",
+      "visibleGenes" : "metallic, wings, forelimbs, hindlimbs"
+    },
+    "eggBreedingBasicGametesUnique" : {
+      "challengeType" : "create-unique",
+      "comment" : "*** Level 4, Mission 1.2: Egg Breeding (select gametes to create 5 unique drakes) ***",
+      "father" : {
+        "alleles" : "a:w,b:W,a:m,b:m,a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 0
+      },
+      "gameteCounts" : [ 8, 8 ],
+      "instructions" : "Create 5 different baby drakes!",
+      "interactionType" : "select-gametes",
+      "mother" : {
+        "alleles" : "a:w,b:W,a:M,b:m,a:fl,a:hl,a:T,b:T,a:h,b:h,a:C,b:C,a:A1,b:A1,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 1
+      },
+      "showUserDrake" : true,
+      "template" : "EggGame",
+      "visibleGenes" : "metallic, wings, forelimbs, hindlimbs"
+    },
+    "eggBreedingProtoHidden" : {
+      "challengeType" : "match-target",
+      "comment" : "*** Demo: Egg Breeding (match three drakes, user drake hidden) ***",
+      "father" : {
+        "alleles" : "a:w,b:W,a:m,b:m,a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 0
+      },
+      "instructions" : "Match 3 drakes!",
+      "mother" : {
+        "alleles" : "a:w,b:W,a:M,b:m,a:fl,a:hl,a:T,b:T,a:h,b:h,a:C,b:C,a:A1,b:A1,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 1
+      },
+      "showUserDrake" : false,
+      "template" : "EggGame",
+      "visibleGenes" : "metallic, wings, forelimbs, hindlimbs"
+    },
+    "eggBreedingProtoVisible" : {
+      "challengeType" : "match-target",
+      "comment" : "*** Demo: Egg Breeding (match three drakes, user drake visible) ***",
+      "father" : {
+        "alleles" : "a:w,b:W,a:m,b:m,a:T,b:T,a:h,b:h,a:A1,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 0
+      },
+      "instructions" : "Match 3 drakes!",
+      "mother" : {
+        "alleles" : "a:w,b:W,a:M,b:m,a:fl,a:hl,a:T,b:T,a:h,b:h,a:C,b:C,a:A1,b:A1,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 1
+      },
+      "showUserDrake" : true,
+      "template" : "EggGame",
+      "visibleGenes" : "metallic, wings, forelimbs, hindlimbs"
+    },
+    "eggDrop-armor" : {
+      "baskets" : [ {
+        "alleles" : [ "a:a,b:a" ],
+        "label" : "Drakes without armor plates"
+      }, {
+        "alleles" : [ "a:A1,b:a", "a:a,b:A1" ],
+        "label" : "Drakes with three armor plates"
+      }, {
+        "alleles" : [ "a:A1,b:A1" ],
+        "label" : "Drakes with five armor plates"
+      } ],
+      "comment" : "*** Level 2, Mission 3.4: Egg Sorting Game (armor) ***",
+      "container" : "FVContainer",
+      "template" : "FVEggSortGame",
+      "trialGenerator" : {
+        "baseDrake" : "a:T,b:T,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
+        "drakes" : [ {
+          "alleles" : "a:A1,b:A1",
+          "sex" : 0
+        }, {
+          "alleles" : "a:A1,b:a",
+          "sex" : 0
+        }, {
+          "alleles" : "a:a,b:A1",
+          "sex" : 0
+        }, {
+          "alleles" : "a:a,b:a",
+          "sex" : 0
+        }, {
+          "alleles" : "a:A1,b:A1",
+          "sex" : 1
+        }, {
+          "alleles" : "a:A1,b:a",
+          "sex" : 1
+        }, {
+          "alleles" : "a:a,b:A1",
+          "sex" : 1
+        }, {
+          "alleles" : "a:a,b:a",
+          "sex" : 1
+        } ],
+        "type" : "randomize-order"
+      },
+      "visibleGenes" : "armor"
+    },
+    "eggDrop-armor-original" : {
+      "baskets" : [ {
+        "alleles" : [ "a:a,b:a" ],
+        "label" : "Drakes without armor plates"
+      }, {
+        "alleles" : [ "a:A1,b:a", "a:a,b:A1" ],
+        "label" : "Drakes with three armor plates"
+      }, {
+        "alleles" : [ "a:A1,b:A1" ],
+        "label" : "Drakes with five armor plates"
+      } ],
+      "comment" : "*** Level 2, Mission 3.4: Egg Sorting Game (armor) ***",
+      "template" : "EggSortGame",
+      "trialGenerator" : {
+        "baseDrake" : "a:T,b:T,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
+        "drakes" : [ {
+          "alleles" : "a:A1,b:A1",
+          "sex" : 0
+        }, {
+          "alleles" : "a:A1,b:a",
+          "sex" : 0
+        }, {
+          "alleles" : "a:a,b:A1",
+          "sex" : 0
+        }, {
+          "alleles" : "a:a,b:a",
+          "sex" : 0
+        }, {
+          "alleles" : "a:A1,b:A1",
+          "sex" : 1
+        }, {
+          "alleles" : "a:A1,b:a",
+          "sex" : 1
+        }, {
+          "alleles" : "a:a,b:A1",
+          "sex" : 1
+        }, {
+          "alleles" : "a:a,b:a",
+          "sex" : 1
+        } ],
+        "type" : "randomize-order"
+      },
+      "visibleGenes" : "armor"
+    },
+    "eggDrop-horns" : {
+      "baskets" : [ {
+        "alleles" : [ "a:h,b:h" ],
+        "label" : "Males with horns",
+        "sex" : 0
+      }, {
+        "alleles" : [ "a:H", "b:H" ],
+        "label" : "Males without horns",
+        "sex" : 0
+      }, {
+        "alleles" : [ "a:h,b:h" ],
+        "label" : "Females with horns",
+        "sex" : 1
+      }, {
+        "alleles" : [ "a:H", "b:H" ],
+        "label" : "Females without horns",
+        "sex" : 1
+      } ],
+      "comment" : "*** Level 2, Mission 3.3: Egg Sorting Game (horns) ***",
+      "container" : "FVContainer",
+      "template" : "FVEggSortGame",
+      "trialGenerator" : {
+        "baseDrake" : "a:T,b:T,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
+        "drakes" : [ {
+          "alleles" : "a:H,b:H",
+          "sex" : 0
+        }, {
+          "alleles" : "a:H,b:h",
+          "sex" : 0
+        }, {
+          "alleles" : "a:h,b:H",
+          "sex" : 0
+        }, {
+          "alleles" : "a:h,b:h",
+          "sex" : 0
+        }, {
+          "alleles" : "a:H,b:H",
+          "sex" : 1
+        }, {
+          "alleles" : "a:H,b:h",
+          "sex" : 1
+        }, {
+          "alleles" : "a:h,b:H",
+          "sex" : 1
+        }, {
+          "alleles" : "a:h,b:h",
+          "sex" : 1
+        } ],
+        "type" : "randomize-order"
+      },
+      "visibleGenes" : "horns"
+    },
+    "eggDrop-horns-original" : {
+      "baskets" : [ {
+        "alleles" : [ "a:h,b:h" ],
+        "label" : "Males with horns",
+        "sex" : 0
+      }, {
+        "alleles" : [ "a:H", "b:H" ],
+        "label" : "Males without horns",
+        "sex" : 0
+      }, {
+        "alleles" : [ "a:h,b:h" ],
+        "label" : "Females with horns",
+        "sex" : 1
+      }, {
+        "alleles" : [ "a:H", "b:H" ],
+        "label" : "Females without horns",
+        "sex" : 1
+      } ],
+      "comment" : "*** Level 2, Mission 3.3: Egg Sorting Game (horns) ***",
+      "template" : "EggSortGame",
+      "trialGenerator" : {
+        "baseDrake" : "a:T,b:T,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
+        "drakes" : [ {
+          "alleles" : "a:H,b:H",
+          "sex" : 0
+        }, {
+          "alleles" : "a:H,b:h",
+          "sex" : 0
+        }, {
+          "alleles" : "a:h,b:H",
+          "sex" : 0
+        }, {
+          "alleles" : "a:h,b:h",
+          "sex" : 0
+        }, {
+          "alleles" : "a:H,b:H",
+          "sex" : 1
+        }, {
+          "alleles" : "a:H,b:h",
+          "sex" : 1
+        }, {
+          "alleles" : "a:h,b:H",
+          "sex" : 1
+        }, {
+          "alleles" : "a:h,b:h",
+          "sex" : 1
+        } ],
+        "type" : "randomize-order"
+      },
+      "visibleGenes" : "horns"
+    },
+    "eggDrop-hornsWingsArmor" : {
+      "baskets" : [ {
+        "alleles" : [ "a:h,b:h" ],
+        "label" : "Drakes with horns"
+      }, {
+        "alleles" : [ "a:W", "b:W" ],
+        "label" : "Drakes with wings"
+      }, {
+        "alleles" : [ "a:A1", "b:A1" ],
+        "label" : "Drakes with armor"
+      } ],
+      "comment" : "*** Level 2, Mission 3.5: Egg Sorting Game (horns/wings/armor) ***",
+      "container" : "FVContainer",
+      "template" : "FVEggSortGame",
+      "trialGenerator" : {
+        "baseDrake" : "a:T,b:T,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
+        "drakes" : [ {
+          "alleles" : "a:h,b:h,a:w,b:w,a:a,b:a"
+        }, {
+          "alleles" : "a:h,b:h,a:w,b:w,a:a,b:a"
+        }, {
+          "alleles" : "a:H,b:h,a:W,b:w,a:a,b:a"
+        }, {
+          "alleles" : "a:H,b:H,a:w,b:w,a:A1,b:a"
+        }, {
+          "alleles" : "a:H,b:h,a:w,b:w,a:A1,b:A1"
+        }, {
+          "alleles" : "a:H,b:H,a:W,b:W,a:a,b:a"
+        }, {
+          "alleles" : "a:h,b:H,a:w,b:w,a:A1,b:A1"
+        }, {
+          "alleles" : "a:H,b:H,a:w,b:W,a:a,b:a"
+        } ],
+        "type" : "randomize-order"
+      },
+      "visibleGenes" : "horns, wings, armor"
+    },
+    "eggDrop-hornsWingsArmor-original" : {
+      "baskets" : [ {
+        "alleles" : [ "a:h,b:h" ],
+        "label" : "Drakes with horns"
+      }, {
+        "alleles" : [ "a:W", "b:W" ],
+        "label" : "Drakes with wings"
+      }, {
+        "alleles" : [ "a:A1", "b:A1" ],
+        "label" : "Drakes with armor"
+      } ],
+      "comment" : "*** Level 2, Mission 3.5: Egg Sorting Game (horns/wings/armor) ***",
+      "template" : "EggSortGame",
+      "trialGenerator" : {
+        "baseDrake" : "a:T,b:T,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
+        "drakes" : [ {
+          "alleles" : "a:h,b:h,a:w,b:w,a:a,b:a"
+        }, {
+          "alleles" : "a:h,b:h,a:w,b:w,a:a,b:a"
+        }, {
+          "alleles" : "a:H,b:h,a:W,b:w,a:a,b:a"
+        }, {
+          "alleles" : "a:H,b:H,a:w,b:w,a:A1,b:a"
+        }, {
+          "alleles" : "a:H,b:h,a:w,b:w,a:A1,b:A1"
+        }, {
+          "alleles" : "a:H,b:H,a:W,b:W,a:a,b:a"
+        }, {
+          "alleles" : "a:h,b:H,a:w,b:w,a:A1,b:A1"
+        }, {
+          "alleles" : "a:H,b:H,a:w,b:W,a:a,b:a"
+        } ],
+        "type" : "randomize-order"
+      },
+      "visibleGenes" : "horns, wings, armor"
+    },
+    "eggDrop-limbs" : {
+      "baskets" : [ {
+        "alleles" : [ "a:Fl,a:hl,b:hl", "b:Fl,a:hl,b:hl" ],
+        "label" : "Drakes with only arms"
+      }, {
+        "alleles" : [ "a:fl,b:fl,a:Hl", "a:fl,b:fl,b:Hl" ],
+        "label" : "Drakes with only legs"
+      }, {
+        "alleles" : [ "a:Fl,a:Hl", "a:Fl,b:Hl", "b:Fl,a:Hl", "b:Fl,b:Hl" ],
+        "label" : "Drakes with arms and legs"
+      } ],
+      "comment" : "*** Level 2, Mission 2.2: Egg Sorting Game (forelimbs/hindlimbs) ***",
+      "container" : "FVContainer",
+      "template" : "FVEggSortGame",
+      "trialGenerator" : {
+        "baseDrake" : "a:T,b:T,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
+        "drakes" : [ {
+          "alleles" : "a:Fl,b:fl,a:Hl,b:hl"
+        }, {
+          "alleles" : "a:fl,b:fl,a:Hl,b:hl"
+        }, {
+          "alleles" : "a:Fl,b:fl,a:hl,b:hl"
+        }, {
+          "alleles" : "a:fl,b:Fl,a:Hl,b:Hl"
+        }, {
+          "alleles" : "a:fl,b:fl,a:Hl,b:Hl"
+        }, {
+          "alleles" : "a:fl,b:Fl,a:hl,b:hl"
+        }, {
+          "alleles" : "a:Fl,b:Fl,a:hl,b:hl"
+        }, {
+          "alleles" : "a:Fl,b:Fl,a:Hl,b:Hl"
+        } ],
+        "type" : "randomize-order"
+      },
+      "visibleGenes" : "forelimbs, hindlimbs"
+    },
+    "eggDrop-limbs-original" : {
+      "baskets" : [ {
+        "alleles" : [ "a:Fl,a:hl,b:hl", "b:Fl,a:hl,b:hl" ],
+        "label" : "Drakes with only arms"
+      }, {
+        "alleles" : [ "a:fl,b:fl,a:Hl", "a:fl,b:fl,b:Hl" ],
+        "label" : "Drakes with only legs"
+      }, {
+        "alleles" : [ "a:Fl,a:Hl", "a:Fl,b:Hl", "b:Fl,a:Hl", "b:Fl,b:Hl" ],
+        "label" : "Drakes with arms and legs"
+      } ],
+      "comment" : "*** Level 2, Mission 2.2: Egg Sorting Game (forelimbs/hindlimbs) ***",
+      "template" : "EggSortGame",
+      "trialGenerator" : {
+        "baseDrake" : "a:T,b:T,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
+        "drakes" : [ {
+          "alleles" : "a:Fl,b:fl,a:Hl,b:hl"
+        }, {
+          "alleles" : "a:fl,b:fl,a:Hl,b:hl"
+        }, {
+          "alleles" : "a:Fl,b:fl,a:hl,b:hl"
+        }, {
+          "alleles" : "a:fl,b:Fl,a:Hl,b:Hl"
+        }, {
+          "alleles" : "a:fl,b:fl,a:Hl,b:Hl"
+        }, {
+          "alleles" : "a:fl,b:Fl,a:hl,b:hl"
+        }, {
+          "alleles" : "a:Fl,b:Fl,a:hl,b:hl"
+        }, {
+          "alleles" : "a:Fl,b:Fl,a:Hl,b:Hl"
+        } ],
+        "type" : "randomize-order"
+      },
+      "visibleGenes" : "forelimbs, hindlimbs"
+    },
+    "eggDrop-wings" : {
+      "baskets" : [ {
+        "alleles" : [ "a:W", "b:W" ],
+        "label" : "Males with wings",
+        "sex" : 0
+      }, {
+        "alleles" : [ "a:w,b:w" ],
+        "label" : "Males without wings",
+        "sex" : 0
+      }, {
+        "alleles" : [ "a:W", "b:W" ],
+        "label" : "Females with wings",
+        "sex" : 1
+      }, {
+        "alleles" : [ "a:w,b:w" ],
+        "label" : "Females without wings",
+        "sex" : 1
+      } ],
+      "comment" : "*** Egg Sorting Game Test ***",
+      "container" : "FVContainer",
+      "template" : "FVEggSortGame",
+      "trialGenerator" : {
+        "baseDrake" : "a:T,b:T,a:a,b:a,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
+        "drakes" : [ {
+          "alleles" : "a:W,b:W",
+          "sex" : 0
+        }, {
+          "alleles" : "a:W,b:w",
+          "sex" : 0
+        }, {
+          "alleles" : "a:w,b:W",
+          "sex" : 0
+        }, {
+          "alleles" : "a:w,b:w",
+          "sex" : 0
+        }, {
+          "alleles" : "a:W,b:W",
+          "sex" : 1
+        }, {
+          "alleles" : "a:W,b:w",
+          "sex" : 1
+        }, {
+          "alleles" : "a:w,b:W",
+          "sex" : 1
+        }, {
+          "alleles" : "a:w,b:w",
+          "sex" : 1
+        } ],
+        "type" : "randomize-order"
+      },
+      "visibleGenes" : "wings"
+    },
+    "eggDrop-wings-original" : {
+      "baskets" : [ {
+        "alleles" : [ "a:W", "b:W" ],
+        "label" : "Males with wings",
+        "sex" : 0
+      }, {
+        "alleles" : [ "a:w,b:w" ],
+        "label" : "Males without wings",
+        "sex" : 0
+      }, {
+        "alleles" : [ "a:W", "b:W" ],
+        "label" : "Females with wings",
+        "sex" : 1
+      }, {
+        "alleles" : [ "a:w,b:w" ],
+        "label" : "Females without wings",
+        "sex" : 1
+      } ],
+      "comment" : "*** Level 2, Mission 2.1: Egg Sorting Game (wings) ***",
+      "template" : "EggSortGame",
+      "trialGenerator" : {
+        "baseDrake" : "a:T,b:T,a:a,b:a,a:C,b:C,a:rh,b:rh,a:Bog,b:Bog",
+        "drakes" : [ {
+          "alleles" : "a:W,b:W",
+          "sex" : 0
+        }, {
+          "alleles" : "a:W,b:w",
+          "sex" : 0
+        }, {
+          "alleles" : "a:w,b:W",
+          "sex" : 0
+        }, {
+          "alleles" : "a:w,b:w",
+          "sex" : 0
+        }, {
+          "alleles" : "a:W,b:W",
+          "sex" : 1
+        }, {
+          "alleles" : "a:W,b:w",
+          "sex" : 1
+        }, {
+          "alleles" : "a:w,b:W",
+          "sex" : 1
+        }, {
+          "alleles" : "a:w,b:w",
+          "sex" : 1
+        } ],
+        "type" : "randomize-order"
+      },
+      "visibleGenes" : "wings"
+    },
+    "gamete-5drakes-starterTraits" : {
+      "challengeType" : "create-unique",
+      "comment" : "*** FV Test Level ***",
+      "container" : "FVContainer",
+      "father" : {
+        "alleles" : "a:w,b:W,a:m,b:m,a:T,b:T,a:h,a:a,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 0
+      },
+      "instructions" : "Create 5 different baby drakes!",
+      "interactionType" : "select-chromosomes",
+      "mother" : {
+        "alleles" : "a:w,b:W,a:M,b:M,a:fl,a:hl,a:T,b:T,a:h,a:C,b:C,a:A1,b:a,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 1
+      },
+      "showUserDrake" : true,
+      "template" : "FVEggGame",
+      "visibleGenes" : "wings, forelimbs, hindlimbs, armor, horns"
+    },
+    "gamete-selectSpermEgg-starterTraits" : {
+      "challengeType" : "match-target",
+      "comment" : "*** Level 4, Mission 1.3: Egg Breeding (select gametes to match drakes) ***",
+      "container" : "FVContainer",
+      "father" : {
+        "alleles" : "a:w,b:W,a:m,b:m,a:T,b:T,a:h,b:H,a:A1,b:a,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 0
+      },
+      "gameteCounts" : [ [ 3, 1 ], [ 1, 3 ] ],
+      "instructions" : "Match the target drakes!",
+      "interactionType" : "select-gametes",
+      "mother" : {
+        "alleles" : "a:w,b:W,a:M,b:M,a:fl,a:hl,a:T,b:T,a:H,b:h,a:C,b:C,a:a,b:A1,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 1
+      },
+      "numTrials" : 2,
+      "showUserDrake" : true,
+      "template" : "FVEggGame",
+      "visibleGenes" : "wings, forelimbs, hindlimbs, armor, horns"
+    },
+    "gamete-selectSpermEgg-starterTraits-bothParents" : {
+      "challengeType" : "match-target",
+      "comment" : "*** Level 4, Mission 1.3: Egg Breeding (select gametes to match drakes) ***",
+      "container" : "FVContainer",
+      "father" : {
+        "alleles" : "a:w,b:W,a:m,b:m,a:T,b:T,a:h,b:H,a:A1,b:a,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 0
+      },
+      "gameteCounts" : [ [ 3, 3 ], [ 5, 5 ] ],
+      "instructions" : "Match the target drakes!",
+      "interactionType" : "select-gametes",
+      "mother" : {
+        "alleles" : "a:w,b:W,a:M,b:M,a:fl,a:hl,a:T,b:T,a:H,b:h,a:C,b:C,a:a,b:A1,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 1
+      },
+      "numTrials" : 2,
+      "showUserDrake" : true,
+      "template" : "FVEggGame",
+      "visibleGenes" : "wings, forelimbs, hindlimbs, armor, horns"
+    },
+    "gamete-targetMatch-starterTraits" : {
+      "challengeType" : "match-target",
+      "comment" : "*** FV Test Level 2 ***",
+      "container" : "FVContainer",
+      "father" : {
+        "alleles" : "a:w,b:W,a:m,b:m,a:T,b:T,a:H,a:a,b:A1,a:C,b:C,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 0
+      },
+      "instructions" : "Match the target drake!",
+      "interactionType" : "select-chromosomes",
+      "mother" : {
+        "alleles" : "a:w,b:W,a:M,b:M,a:fl,a:hl,a:T,b:T,a:h,a:C,b:C,a:A1,b:a,a:B,b:B,a:D,b:D,a:rh,b:rh,a:Bog,b:Bog",
+        "sex" : 1
+      },
+      "numTrials" : 3,
+      "showUserDrake" : true,
+      "template" : "FVEggGame",
+      "visibleGenes" : "wings, forelimbs, hindlimbs, armor, horns"
+    },
+    "incompleteLevel" : {
+      "comment" : "*** Level 3 Stand In ***",
+      "instructions" : "THIS LEVEL NOT YET COMPLETE",
+      "template" : "GenomeChallenge",
+      "trialGenerator" : {
+        "baseDrake" : "a:dl,b:dl",
+        "initialDrakeCombos" : [ [ "a:M,b:M" ] ],
+        "targetDrakeCombos" : [ [ "a:M,b:M" ] ],
+        "type" : "all-combinations"
+      },
+      "userChangeableGenes" : "metallic"
+    }
+  },
+  "rooms" : {
+    "breedingbarn" : {
+      "defaultCharacter" : "RAJPUT",
+      "name" : "Breeding Barn"
+    },
+    "hatchery" : {
+      "defaultCharacter" : "NETANYA",
+      "name" : "Hatchery"
+    },
+    "home" : {
+      "name" : "Mission Control"
+    },
+    "simroom" : {
+      "defaultCharacter" : "YEUNG",
+      "name" : "Sim Room"
+    },
+    "zoomroom" : {
+      "defaultCharacter" : "ELLIS",
+      "name" : "Zoom Room"
+    }
+  }
+}

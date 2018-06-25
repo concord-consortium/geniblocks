@@ -703,6 +703,17 @@
   -ms-user-select: none;
   user-select: none;
 }
+.loading-images {
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 2rem;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../resources/images/geniventure-logo.jpg") center no-repeat;
+}
 
 #upload-button-backdrop {
   position: absolute;
@@ -756,13 +767,17 @@ html {
   font-size: 18px;
 }
 /* no scroll bars if we have our minimum requirements */
-@media (min-width: 1200px) and (min-height: 700px) {
+@media (min-width: 1024px) and (min-height: 700px) {
   body {
     overflow: hidden;
   }
 }
 body {
   margin: 0;
+  background-color: #000;
+}
+.challenge-container {
+  background-color: #000;
 }
 #challenges #playground-wrapper {
   display: flex;
@@ -905,8 +920,11 @@ body {
   height: 1080px;
   transform: scale(0.75);
   transform-origin: 0 0;
-  min-width: 1200px;
+  min-width: 1024px;
   min-height: 700px;
+}
+.mission-backdrop {
+  overflow: hidden;
 }
 .mission-backdrop.fv-layout-c.create-unique {
   background-image: url("../resources/fablevision/layout-c/screen_top_lines.png"), url("../resources/fablevision/layout-c/screen_center_box.png"), url("../resources/fablevision/layout-c/background.png");
@@ -921,6 +939,12 @@ body {
   background-image: url("../resources/fablevision/layout-d/background.png");
   background-position: 50% 50%;
 }
+.mission-backdrop.test-cross {
+  background-image: url("../resources/fablevision/layout-a/screen_border.png"), url("../resources/fablevision/layout-i/screen.jpg");
+}
+.mission-backdrop.test-cross.remediation {
+  background-image: url("../resources/fablevision/layout-a/screen_border_remedial.png"), url("../resources/fablevision/layout-i/screen.jpg");
+}
 .fv-hud {
   left: 0;
   right: 0;
@@ -930,7 +954,7 @@ body {
   justify-content: center;
   color: #eee;
   background-repeat: no-repeat;
-  min-width: 1200px;
+  min-width: 1024px;
 }
 #fv-top-hud {
   top: 0;
@@ -1353,7 +1377,7 @@ body {
 #egg-sort-game #eggs {
   position: absolute;
   left: 0;
-  top: 350px;
+  top: 333px;
   width: 660px;
 }
 #egg-sort-game .geniblocks.egg-clutch {
@@ -1423,7 +1447,8 @@ body {
 }
 #egg-sort-game #right-section #container .geniblocks.genome {
   position: absolute;
-  margin: 20px 0;
+  margin-top: 20px;
+  margin-left: -20px;
 }
 #egg-sort-game .clutch-egg {
   background-image: url("../resources/images/egg_yellow.png");
@@ -1441,6 +1466,9 @@ body {
 }
 .animated-component-container {
   position: fixed;
+}
+.animated-component-container .stripe {
+  margin-top: -19px;
 }
 
 .geniblocks.change-sex-buttons {
@@ -1500,7 +1528,12 @@ body {
   align-items: flex-end;
 }
 
-.geniblocks.clutch-view .clutch-drakes .organism {
+.geniblocks.clutch-view .clutch-drakes .organism .clickable-area {
+  position: absolute;
+  left: 10px;
+  top: 30px;
+  width: 90%;
+  height: 70%;
   cursor: pointer;
 }
 .geniblocks.clutch-view .clutch-slider {
@@ -1525,6 +1558,7 @@ body {
 }
 .geniblocks.clutch-view .drake-pages .clutch-drakes {
   margin-right: 0;
+  flex-wrap: wrap;
 }
 .geniblocks.clutch-view .clutch-page-count {
   margin-left: 140px;
@@ -1943,10 +1977,14 @@ body {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  z-index: 4;
+  z-index: 14;
   pointer-events: none;
 }
 .geniblocks.notification-container .notification {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   width: 1405px;
   height: 189px;
   margin: 0 -67px;
@@ -1954,42 +1992,155 @@ body {
   color: #2d1c06;
   pointer-events: all;
   background-image: url("../resources/fablevision/huds/scroll.png");
+  background-repeat: no-repeat;
+}
+.geniblocks.notification-container .notification.raised {
+  margin-bottom: 82px;
+  text-align: center;
 }
 .geniblocks.notification-container .notification .message-text {
-  position: absolute;
   margin-left: 140px;
-  top: 202px;
+  margin-top: 23px;
   font-family: 'Yanone Kaffeesatz';
   font-size: 2rem;
   color: #000;
-  width: 1000px;
+  width: 1030px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-.geniblocks.notification-container .notification .close-button {
+.geniblocks.notification-container .notification .message-buttons {
+  padding-right: 112px;
+  height: 100%;
+  position: relative;
+}
+.geniblocks.notification-container .notification .message-buttons .close-button {
+  position: absolute;
+  top: -6px;
+  right: 111px;
   background-image: url("../resources/fablevision/huds/scroll_close.png");
   width: 47px;
   height: 45px;
   background-repeat: no-repeat;
   background-size: contain;
-  margin-left: 1250px;
   margin-top: 50px;
   cursor: pointer;
 }
-.geniblocks.notification-container .notification .next-arrow {
+.geniblocks.notification-container .notification .message-buttons .next-arrow {
+  position: absolute;
+  bottom: 53px;
+  right: 157px;
   background-image: url("../resources/fablevision/huds/arrow_right.png");
   height: 42px;
   width: 46px;
   background-repeat: no-repeat;
   background-size: contain;
-  margin-left: 1155px;
-  margin-top: -7px;
   cursor: pointer;
 }
+.geniblocks.notification-container .notification.its-hint {
+  background-image: none;
+  background-color: #ddd;
+  border-radius: 40px;
+  border: 6px solid #3bd018;
+  box-shadow: #fff 0 0 70px;
+  padding: 0;
+  height: 160px;
+  width: 1260px;
+  margin: 0 -8px;
+}
+.geniblocks.notification-container .notification.its-hint .message-text {
+  color: #4b4b4b;
+  font-family: sans-serif;
+  width: 1060px;
+  margin-left: 80px;
+  margin-top: 0;
+}
+.geniblocks.notification-container .notification.its-hint .close-button {
+  right: 40px;
+  top: -25px;
+}
+.geniblocks.notification-container .notification.its-hint .next-arrow {
+  right: 60px;
+}
 .geniblocks.notification-container .fv-character {
-  background-image: url("../resources/fablevision/huds/Rajput_active.png");
+  background-image: url("../resources/fablevision/huds/characters/Rajput_active.png");
   width: 325px;
   height: 359px;
   background-repeat: no-repeat;
   background-size: contain;
+}
+.geniblocks.notification-container .fv-character.ELLIS {
+  background-image: url("../resources/fablevision/huds/characters/Ellis_active.png");
+}
+.geniblocks.notification-container .fv-character.HATCH {
+  background-image: url("../resources/fablevision/huds/characters/Hatch_active.png");
+}
+.geniblocks.notification-container .fv-character.HERRERA {
+  background-image: url("../resources/fablevision/huds/characters/Herrera_active.png");
+}
+.geniblocks.notification-container .fv-character.RAJPUT {
+  background-image: url("../resources/fablevision/huds/characters/Rajput_active.png");
+}
+.geniblocks.notification-container .fv-character.TAKURUA {
+  background-image: url("../resources/fablevision/huds/characters/Takurua_active.png");
+}
+.geniblocks.notification-container .fv-character.WEAVER {
+  background-image: url("../resources/fablevision/huds/characters/Weaver_active.png");
+}
+.geniblocks.notification-container .fv-character.WINNEMUCCA {
+  background-image: url("../resources/fablevision/huds/characters/Winnemucca_active.png");
+}
+.geniblocks.notification-container .fv-character.YEUNG {
+  background-image: url("../resources/fablevision/huds/characters/Yeung_active.png");
+}
+.geniblocks.notification-container .fv-character.NETANYA {
+  background-image: url("../resources/fablevision/huds/characters/Takurua_active.png");
+}
+.geniblocks.notification-container .hint-arrow::before {
+  content: url("../resources/images/hint-arrow.svg");
+  position: absolute;
+  left: -152px;
+  top: 6px;
+}
+.fv-layout-a .hint-arrow {
+  position: absolute;
+  left: 243px;
+  top: 1000px;
+  width: 435px;
+  height: 51px;
+  border: 3px solid #15e617;
+  border-radius: 10px;
+  box-shadow: #fff 0 0 30px, #15e617 0 0 70px;
+}
+.fv-layout-a .hint-arrow.metallic {
+  top: -473px;
+}
+.fv-layout-a .hint-arrow.wings {
+  top: -434px;
+}
+.fv-layout-a .hint-arrow.horns {
+  top: -399px;
+}
+.fv-layout-a .hint-arrow.color {
+  top: -365px;
+}
+.fv-layout-a .hint-arrow.black {
+  top: -329px;
+}
+.fv-layout-a .hint-arrow.forelimbs {
+  top: -310px;
+}
+.fv-layout-a .hint-arrow.hindlimbs {
+  top: -274px;
+}
+.fv-layout-a .hint-arrow.armor {
+  top: -236px;
+}
+.fv-layout-a .hint-arrow.sex {
+  top: -60px;
 }
 
 .geniblocks.ordinal-organism {
@@ -2027,6 +2178,60 @@ body {
   background-color: rgba(255,255,255,0.4);
 }
 
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale(1);
+    box-shadow: 0 0 15px 4px #c2c793;
+  }
+  7% {
+    -webkit-transform: scale(1.4);
+    box-shadow: 0 0 15px 8px #c2c793;
+  }
+  14% {
+    -webkit-transform: scale(1);
+    box-shadow: 0 0 15px 4px #c2c793;
+  }
+  21% {
+    -webkit-transform: scale(1.4);
+    box-shadow: 0 0 15px 8px #c2c793;
+  }
+  28% {
+    -webkit-transform: scale(1);
+    box-shadow: 0 0 15px 4px #c2c793;
+  }
+  to {
+    -webkit-transform: scale(1);
+    box-shadow: 0 0 15px 4px #c2c793;
+  }
+}
+.pulse {
+  -webkit-animation-name: pulse;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+}
+@-webkit-keyframes mini-pulse {
+  from {
+    -webkit-transform: scale(1);
+  }
+  5% {
+    -webkit-transform: scale(1.06);
+  }
+  10% {
+    -webkit-transform: scale(1);
+  }
+  15% {
+    -webkit-transform: scale(1.06);
+  }
+  20% {
+    -webkit-transform: scale(1);
+  }
+}
+.mini-pulse {
+  -webkit-animation-name: mini-pulse;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+}
+
 .geniblocks.stats {
   display: flex;
   width: 400px;
@@ -2035,6 +2240,93 @@ body {
   margin: 3px;
   padding: 2px;
   height: 320px;
+}
+
+#tutorial {
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-family: 'Yanone Kaffeesatz';
+  font-size: 1rem;
+  transition: background-color 1s;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  background-color: rgba(0,0,0,0.7);
+}
+#tutorial .tutorial-content {
+  position: absolute;
+  top: 650px;
+  left: 150px;
+  width: 350px;
+  border-radius: 18px;
+  border: 4px solid #fff;
+  background-color: rgba(0,0,0,0.5);
+  color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 35px #000;
+}
+#tutorial .tutorial-content.bottom-right {
+  top: 800px;
+  left: 1350px;
+}
+#tutorial .tutorial-content.top-center {
+  top: 150px;
+  left: 760px;
+}
+#tutorial .tutorial-content.middle-right {
+  top: 330px;
+  left: 1330px;
+}
+#tutorial .tutorial-content.middle-center {
+  top: 370px;
+  left: 760px;
+}
+#tutorial .tutorial-content .tutorial-short {
+  font-size: 1.7rem;
+  padding-bottom: 10px;
+}
+#tutorial .tutorial-content .tutorial-long {
+  font-size: 1.4rem;
+}
+#tutorial .tutorial-content .tutorial-show-more {
+  font-size: 1.1rem;
+  margin: -10px 0 0 100px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+#tutorial .tutorial-content .forward-back-buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+}
+#tutorial .tutorial-content .forward-back-buttons .tutorial-navigate {
+  height: 34px;
+  width: 80px;
+  background-color: #fff;
+  border-radius: 20px;
+  color: #000;
+  text-align: center;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+#tutorial .tutorial-content .forward-back-buttons .tutorial-navigate.prev {
+  margin-right: auto;
+}
+#tutorial .tutorial-content .tutorial-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  border: 2px solid #fff;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+}
+.tutorial {
+  z-index: 201 !important;
 }
 
 .geniblocks.avatar-button {
@@ -2054,7 +2346,6 @@ body {
 }
 
 .fv-bottom-hud {
-  z-index: 2;
   position: absolute;
   bottom: 0px;
 }
@@ -2065,12 +2356,12 @@ body {
 }
 .fv-bottom-hud .geniblocks.level-indicator {
   position: absolute;
-  left: 300px;
+  left: 275px;
   top: 54px;
 }
 .fv-bottom-hud .geniblocks.trial-count {
   position: absolute;
-  left: 1400px;
+  left: 1418px;
   top: 38px;
 }
 .fv-bottom-hud .geniblocks.score-count {
@@ -2085,7 +2376,75 @@ body {
   width: 200px;
 }
 .fv-bottom-hud .geniblocks.moves-count .hud-text-area {
-  width: 158px;
+  left: 10px;
+}
+.fv-bottom-hud .gem-set-container {
+  background-image: url("../resources/fablevision/huds/crystal_bar.png");
+  width: 912px;
+  height: 114px;
+  margin-top: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.fv-bottom-hud .gem-set {
+  margin-top: 0px;
+  margin-left: 263px;
+}
+.fv-bottom-hud .gem-set .gem-number-text {
+  visibility: hidden;
+}
+.fv-bottom-hud .gem-set .gem-container .gem-outline-highlight {
+  margin-right: -3px;
+}
+.fv-bottom-hud .gem-set .gem-container .gem-outline-highlight .gem-outline {
+  background-image: url("../resources/fablevision/huds/empty_crystal.png");
+}
+.fv-bottom-hud .gem-set .gem-container .gem-outline-highlight .gem-fill,
+.fv-bottom-hud .gem-set .gem-container .gem-outline-highlight .gem-outline {
+  width: 68px;
+  margin-left: 17px;
+}
+.fv-bottom-hud .mission-screen {
+  background-image: url("../resources/fablevision/huds/mission_screen.png");
+  width: 264px;
+  height: 78px;
+  position: absolute;
+  margin-left: 69px;
+  margin-top: 54px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.fv-bottom-hud .mission-screen .mission-label {
+  position: absolute;
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #555;
+  margin-top: 17px;
+}
+.fv-bottom-hud .mission-screen .mission-label-text {
+  margin-left: 79px;
+  margin-top: 20px;
+}
+.fv-bottom-hud .mission-screen .mission-label-value {
+  margin-left: 187px;
+  margin-top: 20px;
+}
+.fv-bottom-hud .tutorial-activate {
+  position: absolute;
+  left: 1800px;
+  top: 40px;
+  width: 100px;
+  height: 100px;
+  background-image: url("../resources/fablevision/huds/tutorial_questionmark_button_base.png");
+}
+.fv-bottom-hud .tutorial-activate .tutorial-icon {
+  background-image: url("../resources/fablevision/huds/tutorial_questionmark_button.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
 }
 .next-trial-button {
   position: absolute;
@@ -2190,25 +2549,325 @@ body {
   margin-top: 0.4rem;
 }
 
-.layout-b .geniblocks.breed-button-surround {
-  margin-top: 300px;
+.geniblocks.fv-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  color: #3b74ff;
 }
-.layout-b .geniblocks.target-drake-container {
-  background-image: url("../resources/fablevision/layout-b/target_gizmo_single.png");
-  margin-top: -853px;
+.geniblocks.fv-button:active {
+  color: #82ebfe;
+}
+.geniblocks.fv-button.disabled {
+  color: #409ef6;
+}
+.geniblocks.fv-button .button-label {
+  font-size: 3rem;
+}
+
+#challenges.mission-backdrop.fv-layout-h {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+#challenges.mission-backdrop.fv-layout-h.create-unique {
+  background-image: url("../resources/fablevision/layout-a/screen_border.png"), url("../resources/fablevision/layout-b/background.jpg");
+}
+#challenges.mission-backdrop.fv-layout-h.create-unique.remediation {
+  background-image: url("../resources/fablevision/layout-a/screen_border_remedial.png"), url("../resources/fablevision/layout-b/background.jpg");
+}
+#challenges.mission-backdrop.fv-layout-h.submit-parents {
+  background-image: url("../resources/fablevision/layout-a/screen_border.png"), url("../resources/fablevision/layout-h/background.jpg");
+}
+#challenges.mission-backdrop.fv-layout-h.submit-parents.remediation {
+  background-image: url("../resources/fablevision/layout-a/screen_border_remedial.png"), url("../resources/fablevision/layout-h/background.jpg");
+}
+#challenges.mission-backdrop.fv-layout-h .center-column {
+  width: 674px;
+  display: flex;
+  margin-top: -3px;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake {
+  height: 240px;
+  margin: -17px 0 -45px 0;
+  position: relative;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake.mother,
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake.father {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake.mother .parentTitle,
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake.father .parentTitle {
+  position: absolute;
+  top: 56px;
+  color: #f9ec9a;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake.mother .organism,
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake.father .organism {
+  position: absolute;
+  top: -22px;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake.mother .parent-drake-hidden,
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake.father .parent-drake-hidden {
+  width: 100%;
+  margin-left: 200px;
+  margin-top: 30px;
+  font-size: 2em;
+  color: #f9ec9a;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake.mother {
+  background-image: none;
+  left: 53px;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake.mother .parentTitle {
+  left: -10px;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake.mother .organism {
+  left: 112px;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake.father {
+  background-image: none;
+  left: -33px;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake.father .parentTitle {
+  left: 346px;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.parentDrake.father .organism {
+  left: 64px;
+}
+#challenges.mission-backdrop.fv-layout-h.submit-parents .geniblocks.parentDrake {
+  margin: 0;
+}
+#challenges.mission-backdrop.fv-layout-h.submit-parents .geniblocks.parentDrake.mother .parentTitle,
+#challenges.mission-backdrop.fv-layout-h.submit-parents .geniblocks.parentDrake.father .parentTitle {
+  top: 137px;
+}
+#challenges.mission-backdrop.fv-layout-h.submit-parents .geniblocks.parentDrake.mother {
+  left: 0px;
+}
+#challenges.mission-backdrop.fv-layout-h.submit-parents .geniblocks.parentDrake.mother .parentTitle {
+  left: -27px;
+}
+#challenges.mission-backdrop.fv-layout-h.submit-parents .geniblocks.parentDrake.father {
+  left: 0px;
+}
+#challenges.mission-backdrop.fv-layout-h.submit-parents .geniblocks.parentDrake.father .parentTitle {
+  left: 388px;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.genome.parent {
+  margin-top: 40px;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.target-drake-container {
+  background-image: url("../resources/fablevision/layout-h/target_gizmo_single.png");
+  margin: -87px 0 17px 0;
   width: 400px;
   height: 362px;
-  background-size: contain;
-  background-repeat: no-repeat;
   flex-direction: column;
+  align-items: center;
 }
-.layout-b .geniblocks.target-drake-container .organism {
-  margin-top: 62px;
-  margin-left: 100px;
+#challenges.mission-backdrop.fv-layout-h .geniblocks.target-drake-container .organism {
+  margin: 65px 0 0 -14px;
 }
-.layout-b .geniblocks.target-drake-container .target-drake-text {
-  margin-top: -25px;
-  margin-left: 143px;
+#challenges.mission-backdrop.fv-layout-h .geniblocks.target-drake-container .target-drake-text {
+  margin-top: -4px;
+  margin-left: 5px;
+}
+#challenges.mission-backdrop.fv-layout-h.submit-parents .geniblocks.target-drake-container {
+  background-image: none;
+  margin: -53px 0 50px 0;
+}
+#challenges.mission-backdrop.fv-layout-h.submit-parents .geniblocks.target-drake-container .drakes {
+  display: flex;
+  justify-content: space-around;
+  width: 500px;
+}
+#challenges.mission-backdrop.fv-layout-h.submit-parents .geniblocks.target-drake-container .target-drake-text {
+  color: #b05e22;
+  font-size: 38px;
+  margin: -16px 0 0 0;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.clutch-view {
+  margin-top: -3px;
+  height: 323px;
+  width: 577px;
+  background: none;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.clutch-view .clutch-slider {
+  width: 169px;
+  height: 29px;
+  background-repeat: no-repeat;
+  background-position-y: 50%;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.clutch-view .clutch-slider.left {
+  background-image: url("../resources/fablevision/layout-b/Clutch_Slider_Arrow_L.png"), url("../resources/fablevision/layout-h/slider_track.jpg");
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.clutch-view .clutch-slider.right {
+  background-image: url("../resources/fablevision/layout-b/Clutch_Slider_Arrow_R.png"), url("../resources/fablevision/layout-h/slider_track.jpg");
+  background-position-x: 100%;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.clutch-view .clutch-counter {
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 5px;
+  z-index: 10;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.clutch-view .clutch-counter .stable-count {
+  margin-left: 70px;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.clutch-view .clutch-slider {
+  margin-top: 0;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.clutch-view .clutch-page-count {
+  margin-left: 0px;
+  white-space: nowrap;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.clutch-view .drake-pages {
+  height: 80%;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.clutch-view .drake-pages .clutch-drakes {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  margin: 0;
+  align-self: flex-end;
+  justify-content: space-around;
+  align-content: space-around;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.clutch-view .drake-pages .clutch-drakes .stable-drake-overlay {
+  background-image: url("../resources/fablevision/layout-h/pen_circle.png");
+  margin: 0;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.breed-button-area {
+  background-image: none;
+  height: auto;
+  width: auto;
+  margin-top: 23px;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.breed-button-surround {
+  background: none;
+  height: auto;
+  width: auto;
+  margin-top: 0;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.breed-button-surround .breed-button {
+  width: 236px;
+  height: 118px;
+  background: url("../resources/fablevision/layout-b/breed_on.png");
+  color: #95471f;
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.breed-button-surround .breed-button:active {
+  background: url("../resources/fablevision/layout-b/breed_on_clicked.png");
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.breed-button-surround .breed-button.disabled {
+  background: url("../resources/fablevision/layout-b/breed_off.png");
+}
+#challenges.mission-backdrop.fv-layout-h .geniblocks.breed-button-surround .breed-button.disabled .breed-button-label {
+  font-size: 3rem;
+}
+#challenges.mission-backdrop.fv-layout-h #bottom-buttons {
+  display: flex;
+  justify-content: center;
+}
+#challenges.mission-backdrop.fv-layout-h #bottom-buttons .submit-parents-button {
+  color: #95471f;
+  background-image: url("../resources/fablevision/layout-h/submitparent_button_unclicked.png");
+  width: 255px;
+  height: 100px;
+}
+#challenges.mission-backdrop.fv-layout-h #bottom-buttons .submit-parents-button .button-label {
+  font-size: 2rem;
+}
+#challenges.mission-backdrop.fv-layout-h #bottom-buttons .submit-parents-button:active {
+  background-image: url("../resources/fablevision/layout-h/submitparent_button_clicked.png");
+}
+#challenges.mission-backdrop.test-cross .geniblocks.clutch-view {
+  margin-top: 40px;
+  margin-bottom: -100px;
+  height: 650px;
+  width: 540px;
+}
+#challenges.mission-backdrop.test-cross .geniblocks.genome.parent {
+  margin-left: 25px;
+}
+#challenges.mission-backdrop.test-cross .geniblocks.ready-to-answer-button-area {
+  background-image: none;
+  height: auto;
+  width: auto;
+  margin-top: 200px;
+}
+#challenges.mission-backdrop.test-cross .geniblocks.ready-to-answer-button-surround {
+  background: none;
+  height: auto;
+  width: auto;
+  margin-top: 0;
+}
+#challenges.mission-backdrop.test-cross .geniblocks.ready-to-answer-button-surround .ready-to-answer-button {
+  width: 384px;
+  height: 131px;
+  background: url("../resources/fablevision/layout-i/ReadytoAnswer_button_unclicked.png");
+  color: #95471f;
+  font-size: 3rem;
+}
+#challenges.mission-backdrop.test-cross .geniblocks.ready-to-answer-button-surround .ready-to-answer-button:active {
+  background: url("../resources/fablevision/layout-i/ReadytoAnswer_clicked.png");
+}
+#challenges.mission-backdrop.test-cross .geniblocks.ready-to-answer-button-surround .ready-to-answer-button.disabled {
+  background: url("../resources/fablevision/layout-i/ReadytoAnswer_button_unclicked.png");
+  opacity: 0.5;
+}
+.geniblocks.test-cross-submit-button-surround {
+  background: none;
+  height: auto;
+  width: 45%;
+  display: inline-block;
+  margin-top: 0;
+}
+.geniblocks.test-cross-submit-button-surround .test-cross-submit-button {
+  width: 200px;
+  height: 80px;
+  background: url("../resources/fablevision/layout-i/resubmit_button.png");
+  color: #95471f;
+  font-size: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.geniblocks.test-cross-submit-button-surround .test-cross-submit-button:active {
+  background: url("../resources/fablevision/layout-i/resubmit_button_clicked.png");
+}
+.geniblocks.test-cross-submit-button-surround .test-cross-submit-button.disabled {
+  background: url("../resources/fablevision/layout-i/resubmit_button.png");
+  opacity: 0.5;
+}
+.geniblocks.test-cross-submit-button-surround .test-cross-submit-button .button-label {
+  font-size: 1.8rem;
+}
+.geniblocks.test-cross-save-button-surround {
+  background: none;
+  height: auto;
+  width: auto;
+  margin-top: 0;
+  width: 45%;
+  display: inline-block;
+}
+.geniblocks.test-cross-save-button-surround .test-cross-save-button {
+  width: 230px;
+  height: 80px;
+  background: url("../resources/fablevision/layout-i/saveandclose_button.png");
+  color: #95471f;
+  font-size: 2rem;
+}
+.geniblocks.test-cross-save-button-surround .test-cross-save-button:active {
+  background: url("../resources/fablevision/layout-i/saveandclose_button_clicked.png");
+}
+.geniblocks.test-cross-save-button-surround .test-cross-save-button.disabled {
+  background: url("../resources/fablevision/layout-i/saveandclose_button.png");
+  opacity: 0.5;
+}
+.geniblocks.test-cross-save-button-surround .test-cross-save-button .button-label {
+  font-size: 1.8rem;
 }
 
 .geniblocks.counter {
@@ -2219,9 +2878,10 @@ body {
 }
 .geniblocks.counter .hud-text-area {
   position: relative;
-  left: 30px;
+  text-align: center;
+  left: 0;
   top: 25px;
-  width: 108px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -2231,6 +2891,25 @@ body {
   font-size: 1.4rem;
   line-height: 1.15;
   color: #555;
+}
+.geniblocks.counter.blue {
+  background-image: url("../resources/fablevision/huds/move-screens/blue_moves.png");
+}
+.geniblocks.counter.yellow {
+  background-image: url("../resources/fablevision/huds/move-screens/yellow_moves.png");
+}
+.geniblocks.counter.red {
+  background-image: url("../resources/fablevision/huds/move-screens/red_moves.png");
+}
+.geniblocks.counter.black {
+  background-image: url("../resources/fablevision/huds/move-screens/null_moves.png");
+}
+.geniblocks.counter.black .hud-text-area {
+  color: #aaa;
+  width: 100%;
+}
+.geniblocks.counter.black .hud-text-area .count-label {
+  padding: 0 60px 0 60px;
 }
 .os-windows .geniblocks.counter .hud-text-area {
   margin-top: 0.1rem;
@@ -2252,146 +2931,87 @@ body {
   pointer-events: none;
 }
 .geniblocks.egg-hatch-drake .organism {
-  width: 200px;
-  height: 200px;
-  margin-left: -100px;
-  margin-top: -120px;
+  width: 300px;
+  height: 300px;
+  margin-left: 0px;
+  margin-top: -20px;
 }
 
-.end-level-dialog-container {
-  outline: none;
-  font-family: 'Yanone Kaffeesatz';
-  font-size: 4rem;
-  color: #fff;
-}
-.end-level-dialog-container .end-level-dialog-backdrop {
-  position: fixed;
-  zIndex: 10;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  backgroundColor: '#000';
-  opacity: 0.9;
-}
-.end-level-dialog-container .end-level-dialog-background {
-  position: absolute;
-  top: 7%;
-  left: 28%;
-  width: 921px;
-  height: 894px;
-  background-image: url("../resources/fablevision/venture-pad/screen_behind.png");
-  background-position: 30% 50%;
-  background-repeat: no-repeat;
-  z-index: 11;
-}
-.end-level-dialog-container .end-level-dialog-screen {
-  position: absolute;
-  top: 7%;
-  left: 28%;
-  width: 921px;
-  height: 894px;
-  z-index: 12;
-  margin-left: 70px;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.end-level-dialog-container .end-level-dialog-screen .challenge-complete-text {
-  margin-top: 80px;
-}
-.end-level-dialog-container .end-level-dialog-screen .end-level-flavor-text {
-  font-size: 1rem;
-  color: #808080;
-}
-.end-level-dialog-container .end-level-dialog-screen .you-earned-text {
+.you-earned-text {
   font-size: 3rem;
   margin-top: 50px;
 }
-.end-level-dialog-container .end-level-dialog-screen .end-level-separator {
-  position: absolute;
-  width: 720px;
-  height: 3px;
-  background-color: #808080;
+#end-level-separator-2 {
+  bottom: 158px;
 }
-.end-level-dialog-container .end-level-dialog-screen .end-level-separator#end-level-separator-1 {
-  margin-top: 20px;
-}
-.end-level-dialog-container .end-level-dialog-screen .end-level-separator#end-level-separator-2 {
-  margin-top: 40px;
-}
-.end-level-dialog-container .end-level-dialog-screen .gem-info {
-  display: flex;
-  flex-direction: row;
-}
-.end-level-dialog-container .end-level-dialog-screen .gem-info .gem-win-box {
+.gem-info .gem-win-box {
   width: 263px;
   height: 263px;
   background-image: url("../resources/fablevision/venture-pad/gemwin_box.png");
   margin-left: 50px;
   margin-top: 50px;
 }
-.end-level-dialog-container .end-level-dialog-screen .gem-info .gem-win-box .gem-container {
+.gem-info .gem-win-box .gem-container {
   margin-left: 85px;
   margin-top: 50px;
   position: absolute;
 }
-.end-level-dialog-container .end-level-dialog-screen .gem-info .gem-win-box .gem-won-text {
+.gem-info .gem-win-box .gem-won-text {
   font-size: 2rem;
   text-align: center;
   margin-top: 238px;
   position: absolute;
   width: 263px;
 }
-.end-level-dialog-container .end-level-dialog-screen .gem-info .gem-set {
-  margin-top: 55px;
-  margin-left: 85px;
+.gem-info .gem-set {
+  margin-top: -215px;
+  margin-left: 300px;
+  flex-wrap: wrap;
 }
-.end-level-dialog-container .end-level-dialog-screen .end-level-navigation-buttons {
+.end-level-navigation-buttons {
   display: flex;
   flex-direction: row;
-  margin-top: 75px;
+  position: absolute;
+  bottom: 40px;
 }
-.end-level-dialog-container .end-level-dialog-screen .end-level-navigation-buttons .continue-button-container {
+.end-level-navigation-buttons.disabled {
+  visibility: hidden;
+}
+.end-level-navigation-buttons.disabled .continue-button-container .continue-button {
+  cursor: default;
+}
+.end-level-navigation-buttons.disabled .try-again-button-container .try-again-button {
+  cursor: default;
+}
+.end-level-navigation-buttons .continue-button-container {
   display: flex;
   flex-direction: row;
-  margin-left: 250px;
+  margin-left: 237px;
   font-size: 3rem;
 }
-.end-level-dialog-container .end-level-dialog-screen .end-level-navigation-buttons .continue-button-container .continue-button {
+.end-level-navigation-buttons .continue-button-container .continue-button {
   width: 64px;
   height: 64px;
   background-image: url("../resources/fablevision/venture-pad/continue_button.png");
   margin-left: 20px;
   cursor: pointer;
 }
-.end-level-dialog-container .end-level-dialog-screen .end-level-navigation-buttons .try-again-button-container {
+.end-level-navigation-buttons .try-again-button-container {
   display: flex;
   flex-direction: row;
   font-size: 3rem;
 }
-.end-level-dialog-container .end-level-dialog-screen .end-level-navigation-buttons .try-again-button-container .try-again-text {
+.end-level-navigation-buttons .try-again-button-container .try-again-text {
   display: inline-block;
   white-space: nowrap;
   margin-left: -5px;
 }
-.end-level-dialog-container .end-level-dialog-screen .end-level-navigation-buttons .try-again-button-container .try-again-button {
+.end-level-navigation-buttons .try-again-button-container .try-again-button {
   width: 87px;
   background-image: url("../resources/fablevision/venture-pad/replay_button.png");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
-}
-.end-level-dialog-container .end-level-dialog-overlay {
-  position: absolute;
-  top: 7%;
-  left: 28%;
-  width: 921px;
-  height: 894px;
-  background-image: url("../resources/fablevision/venture-pad/frame.png"), url("../resources/fablevision/venture-pad/screen_over.png");
-  background-position: 50% 50%, 30% 50%;
-  background-repeat: no-repeat;
-  pointer-events: none;
-  z-index: 13;
 }
 
 .geniblocks.change-sex-toggle-group {
@@ -2456,6 +3076,12 @@ body {
   width: 20px;
   background-image: url("../resources/fablevision/layout-c/chromosome_half_lite.png");
 }
+.test-cross .fv-chromosome-image {
+  background-image: url("../resources/fablevision/layout-i/chromosome_full.png");
+}
+.test-cross .fv-chromosome-image.chromosome-y {
+  background-image: url("../resources/fablevision/layout-i/chromosome_full_y.png");
+}
 .fv-chromosome-image.empty,
 .parent .fv-chromosome-image.bold {
   background-image: url("../resources/fablevision/layout-c/egg_sperm_chromosome_empty.png");
@@ -2479,6 +3105,32 @@ body {
   height: 74px;
   width: 20px;
   background-image: url("../resources/fablevision/layout-c/chromosome_half_dark.png");
+}
+.chromosome-label {
+  position: relative;
+  left: 6px;
+  top: 18px;
+  font-family: "Yanone Kaffeesatz";
+  font-size: 0.9rem;
+  color: #333;
+}
+.chromosome-label.label-x {
+  top: 54px;
+}
+.chromosome-label.label-y {
+  top: 24px;
+}
+.chromosome-label.label-1 {
+  top: 48px;
+}
+.chromosome-label.label-2 {
+  top: 48px;
+}
+.chromosome-allele-container .empty .chromosome-label {
+  display: none;
+}
+.gamete-chromosomes .chromosome-label {
+  display: none;
 }
 
 /*
@@ -2624,11 +3276,11 @@ body {
   background-image: url("../resources/fablevision/layout-d/basket.png");
 }
 .fv-layout-d #mission-wrapper #egg-sort-game #baskets .basket-set .basket.selected .basket-image .basket-hover {
-  width: 250px;
-  height: 230px;
+  width: 290px;
+  height: 310px;
   position: absolute;
-  left: 130px;
-  top: 265px;
+  left: 90px;
+  top: 190px;
   cursor: pointer;
   z-index: 3;
 }
@@ -2695,14 +3347,165 @@ body {
   margin-left: -6px;
 }
 
+/* establish a stacking context, so all interior z-index values are local */
+.geniblocks.genome {
+  transform: scale(1);
+}
+.geniblocks.genome #mountNode .react-selectize.open {
+  z-index: 20;
+}
 .geniblocks.genome #mountNode .react-selectize-control {
   display: flex;
   flex-direction: row;
-  height: 28px;
+  height: 26px;
+  border-radius: 12px;
+  padding-left: 10px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
 }
 .geniblocks.genome #mountNode .react-selectize-control input {
   font-family: "Yanone Kaffeesatz";
   font-size: 1.5rem;
+}
+.rtl .fv-gene-option-value {
+  padding-left: 30px;
+}
+.fv-layout-a #mountNode .react-selectize-control {
+  background: #4c1fb6;
+  border: 2px solid #eae1fe;
+}
+.fv-layout-a .fv-gene-option {
+  background: #4c1fb6;
+}
+.fv-layout-a .dropdown-menu {
+  border-color: #eae1fe !important;
+}
+.fv-layout-a .dropdown-menu .option-wrapper {
+  background: #eae1fe;
+}
+.fv-layout-b #mountNode .react-selectize-control {
+  background: #cf670a;
+  border: 2px solid layout-b-highlight;
+}
+.fv-layout-b .fv-gene-option {
+  background: #cf670a;
+}
+.fv-layout-b .dropdown-menu {
+  border-color: #f7e88d !important;
+}
+.fv-layout-b .dropdown-menu .option-wrapper {
+  background: #f7e88d;
+}
+.fv-layout-c #mountNode .react-selectize-control {
+  background: #084875;
+  border: 2px solid #0bebff;
+}
+.fv-layout-c .fv-gene-option {
+  background: #084875;
+}
+.fv-layout-c .dropdown-menu {
+  border-color: #0bebff !important;
+}
+.fv-layout-c .dropdown-menu .option-wrapper {
+  background: #0bebff;
+}
+.fv-layout-e #mountNode .react-selectize-control {
+  background: #084875;
+  border: 2px solid #0bebff;
+}
+.fv-layout-e .fv-gene-option {
+  background: #084875;
+}
+.fv-layout-e .dropdown-menu {
+  border-color: #0bebff !important;
+}
+.fv-layout-e .dropdown-menu .option-wrapper {
+  background: #0bebff;
+}
+.fv-layout-h #mountNode .react-selectize-control {
+  background: #cf670a;
+  border: 2px solid #f7e88d;
+}
+.fv-layout-h .fv-gene-option {
+  background: #cf670a;
+}
+.fv-layout-h .dropdown-menu {
+  border-color: #f7e88d !important;
+}
+.fv-layout-h .dropdown-menu .option-wrapper {
+  background: #f7e88d;
+}
+.fv-layout-i #mountNode .react-selectize-control {
+  background: #cf670a;
+  border: 2px solid #f7e88d;
+}
+.fv-layout-i .fv-gene-option {
+  background: #cf670a;
+}
+.fv-layout-i .dropdown-menu {
+  border-color: #f7e88d !important;
+}
+.fv-layout-i .dropdown-menu .option-wrapper {
+  background: #f7e88d;
+}
+.react-selectize-toggle-button-container {
+  background: url("../resources/images/arrow.svg");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center center;
+}
+.ltl .react-selectize-toggle-button-container {
+  border-left: 2px solid #fff;
+}
+.rtl .react-selectize-toggle-button-container {
+  position: absolute;
+  border-right: 2px solid #fff;
+  left: 0px;
+}
+.react-selectize-toggle-button {
+  display: none;
+}
+.dropdown-menu {
+  border: 1px solid #666;
+  border-color: #333 !important;
+  background: #000;
+  top: 0px;
+  border-radius: 12px !important;
+  padding: 1px;
+  box-shadow: 0px 0px 15px #333;
+}
+.dropdown-menu .option-wrapper {
+  padding: 2px 1px 1px 1px;
+  background: #fff;
+}
+.dropdown-menu .option-wrapper.highlight {
+  background: #fff !important;
+}
+.fv-gene-option {
+  width: 100%;
+  color: #fff;
+  padding: 6px 0px;
+  border-radius: 12px;
+}
+.fv-gene-option :hover {
+  border-radius: 12px;
+  background: #444;
+}
+.fv-gene-option div {
+  padding-left: 16px;
+  font-size: 1.1em !important;
+}
+.fv-gene-option .selected {
+  position: relative;
+  float: left;
+  margin-left: -2px;
+  color: #fff;
+  background: url("../resources/images/arrow.svg");
+  background-repeat: no-repeat;
+  background-size: 80%;
+  transform: rotate(270deg);
+  background-position: center center;
 }
 .react-selectize.root-node {
   position: relative;
@@ -2733,28 +3536,40 @@ body {
   display: flex;
   flex-direction: row;
 }
-.geniblocks.fv-gene-label.allele.noneditable.m {
+.labels .geniblocks.fv-gene-label.allele.noneditable.t {
+  z-index: 12;
+}
+.labels .geniblocks.fv-gene-label.allele.noneditable.m {
+  z-index: 11;
+}
+.labels .geniblocks.fv-gene-label.allele.noneditable.w {
+  z-index: 10;
+}
+.labels .geniblocks.fv-gene-label.allele.noneditable.h {
+  z-index: 9;
+}
+.labels .geniblocks.fv-gene-label.allele.noneditable.c {
   z-index: 8;
 }
-.geniblocks.fv-gene-label.allele.noneditable.w {
+.labels .geniblocks.fv-gene-label.allele.noneditable.b {
   z-index: 7;
 }
-.geniblocks.fv-gene-label.allele.noneditable.h {
+.labels .geniblocks.fv-gene-label.allele.noneditable.fl {
   z-index: 6;
 }
-.geniblocks.fv-gene-label.allele.noneditable.c {
+.labels .geniblocks.fv-gene-label.allele.noneditable.hl {
   z-index: 5;
 }
-.geniblocks.fv-gene-label.allele.noneditable.b {
+.labels .geniblocks.fv-gene-label.allele.noneditable.a {
   z-index: 4;
 }
-.geniblocks.fv-gene-label.allele.noneditable.fl {
+.labels .geniblocks.fv-gene-label.allele.noneditable.d {
   z-index: 3;
 }
-.geniblocks.fv-gene-label.allele.noneditable.hl {
+.labels .geniblocks.fv-gene-label.allele.noneditable.bog {
   z-index: 2;
 }
-.geniblocks.fv-gene-label.allele.noneditable.a {
+.labels .geniblocks.fv-gene-label.allele.noneditable.rh {
   z-index: 1;
 }
 .fv-layout .geniblocks.fv-gene-label {
@@ -2765,7 +3580,6 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  z-index: 2;
 }
 .fv-layout .geniblocks.chromosome-container .items.ltl .labels {
   justify-content: flex-start;
@@ -2776,7 +3590,7 @@ body {
   padding-right: 30px;
 }
 .fv-layout.fv-layout-a .geniblocks.chromosome-container .items.rtl .labels .fv-gene-label {
-  right: 1490px;
+  right: 236px;
 }
 .fv-layout.fv-layout-d .geniblocks.chromosome-container .items.rtl .labels .fv-gene-label {
   right: 235px;
@@ -2822,6 +3636,12 @@ body {
   left: 0px;
   right: -19px;
 }
+.fv-layout .t #mountNode {
+  margin-top: -23px;
+}
+.fv-layout .t .fv-gene-label-text {
+  margin-top: -19px;
+}
 .fv-layout .fl .line {
   width: 25px;
 }
@@ -2866,10 +3686,10 @@ body {
   width: 25px;
 }
 .fv-layout .c #mountNode {
-  margin-top: -17px;
+  margin-top: -16px;
 }
 .fv-layout .c .fv-gene-label-text {
-  margin-top: 19px;
+  margin-top: -20px;
 }
 .fv-layout .b .line {
   margin-top: 3px;
@@ -2880,6 +3700,29 @@ body {
 }
 .fv-layout .b .fv-gene-label-text {
   margin-top: 10px;
+}
+.fv-layout .d #mountNode {
+  margin-top: 3px;
+}
+.fv-layout .bog .line {
+  margin-top: 3px;
+  width: 25px;
+}
+.fv-layout .bog #mountNode {
+  margin-top: 30px;
+}
+.fv-layout .bog .fv-gene-label-text {
+  margin-top: 12px;
+}
+.fv-layout .ltl .t .line {
+  transform: rotate(-35deg);
+  left: -30px;
+  top: 12px;
+}
+.fv-layout .rtl .t .line {
+  transform: rotate(35deg);
+  right: -29px;
+  top: 12px;
 }
 .fv-layout .ltl .w .line {
   transform: rotate(-35deg);
@@ -2931,12 +3774,25 @@ body {
   top: 15px;
   right: -30px;
 }
+.fv-layout .ltl .bog .line {
+  transform: rotate(35deg);
+  top: 20px;
+  left: -30px;
+}
+.fv-layout .rtl .bog .line {
+  transform: rotate(-35deg);
+  top: 20px;
+  right: -30px;
+}
 
 .fv-layout-a.mission-backdrop {
-  background-image: url("../resources/fablevision/layout-a/screen_border.png"), url("../resources/fablevision/layout-a/screen_center_box.png"), url("../resources/fablevision/layout-a/screen_R_chromosome_box.png"), url("../resources/fablevision/layout-a/screen_L_chromosome_box.png"), url("../resources/fablevision/layout-a/screen_top_lines.png"), url("../resources/fablevision/layout-a/screen_target_yourdrake.png"), url("../resources/fablevision/layout-a/screen.png");
-  background-position: 50% 50%, 50% 6%, 100% 35%, 0% 35%, 50% 9.5%, 50% -2%, 50% 50%;
-  background-size: auto, auto, auto, auto, auto, 250px auto, auto;
+  background-image: url("../resources/fablevision/layout-a/screen_border.png"), url("../resources/fablevision/layout-a/screen_center_box.png"), url("../resources/fablevision/layout-a/screen_R_chromosome_box.png"), url("../resources/fablevision/layout-a/screen_L_chromosome_box.png"), url("../resources/fablevision/layout-a/screen_target_yourdrake.png"), url("../resources/fablevision/layout-a/screen_top_lines.png"), url("../resources/fablevision/layout-a/screen.png");
+  background-position: 50% 50%, 50% 6%, 100% 35%, 0% 35%, 50% -30%, 50% 9.5%, 50% 50%;
+  background-size: auto, auto, auto, auto, 250px auto, auto, auto;
   overflow: hidden;
+}
+.fv-layout-a.mission-backdrop.remediation {
+  background-image: url("../resources/fablevision/layout-a/screen_border_remedial.png"), url("../resources/fablevision/layout-a/screen_center_box.png"), url("../resources/fablevision/layout-a/screen_R_chromosome_box.png"), url("../resources/fablevision/layout-a/screen_L_chromosome_box.png"), url("../resources/fablevision/layout-a/screen_target_yourdrake.png"), url("../resources/fablevision/layout-a/screen_top_lines.png"), url("../resources/fablevision/layout-a/screen.png");
 }
 .fv-layout-a #mission-wrapper {
   margin: 150px auto;
@@ -2958,6 +3814,10 @@ body {
 }
 .fv-layout-a#challenges #left-column {
   width: 450px;
+}
+.fv-layout-a#challenges #left-column .genome {
+  margin-top: 70px;
+  margin-right: 40px;
 }
 .fv-layout-a#challenges #center-column {
   width: 500px;
@@ -3057,6 +3917,19 @@ body {
 .fv-layout-a .target-drake-gizmo #target-drake {
   margin-left: -80px;
 }
+.organism-color-text {
+  display: inline-block;
+  position: relative;
+  clear: both;
+  width: 100%;
+  text-align: center;
+  bottom: 30px;
+  margin-left: 15px;
+  color: #fff;
+  font-family: 'Yanone Kaffeesatz';
+  font-size: 2rem;
+  text-shadow: 0px 0px 4px #000;
+}
 
 .geniblocks.fv-stable,
 .geniblocks.clutch-view {
@@ -3105,6 +3978,23 @@ body {
   margin-top: 0.4rem;
 }
 
+.fv-layout-zoom.mission-backdrop {
+  background-image: none;
+  background-color: #000;
+}
+.fv-layout-zoom #zoom-challenge-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.fv-layout-zoom #zoom-challenge-container iframe {
+  width: 100%;
+  height: 94%;
+  border: none;
+}
+
 .gem-container .gem-fill {
   width: 82px;
   height: 158px;
@@ -3120,6 +4010,9 @@ body {
 .gem-container .gem-fill-2 {
   background-image: url("../resources/fablevision/venture-pad/gem_red.png");
 }
+.gem-container .gem-fill-3 {
+  background-image: url("../resources/fablevision/venture-pad/dark_crystal.png");
+}
 .gem-set {
   display: flex;
   flex-direction: row;
@@ -3128,39 +4021,42 @@ body {
   margin-left: 5px;
   width: 90px;
 }
+.gem-set .gem-container.navigable {
+  cursor: pointer;
+}
+.gem-set .gem-container.locked {
+  opacity: 0.5;
+  cursor: default;
+}
 .gem-set .gem-container .gem-outline-highlight {
   width: 100px;
   height: 150px;
   background-image: url("../resources/fablevision/venture-pad/gemslot_select.png");
   background-size: cover;
   background-repeat: no-repeat;
-  margin-top: -10px;
+  margin-top: -12px;
+  margin-left: -15px;
 }
-.gem-set .gem-container .gem-outline-highlight .gem-fill {
+.gem-set .gem-container .gem-outline-highlight .gem-fill,
+.gem-set .gem-container .gem-outline-highlight .gem-outline {
   position: absolute;
-  margin-right: 0;
   width: 73px;
   height: 150px;
   margin-left: 15px;
   margin-top: 15px;
-}
-.gem-set .gem-container .gem-outline {
-  width: 78px;
-  height: 138px;
-  background-image: url("../resources/fablevision/venture-pad/gemslot_empty.png");
   background-repeat: no-repeat;
+  background-size: contain;
 }
-.gem-set .gem-container .gem-outline .gem-number-text {
+.gem-set .gem-container .gem-outline-highlight .gem-outline {
+  background-image: url("../resources/fablevision/venture-pad/gemslot_empty.png");
+}
+.gem-set .gem-container .gem-outline-highlight .gem-outline .gem-number-text {
   position: absolute;
-  margin-left: 27px;
-  margin-top: 17px;
+  margin-left: 23px;
+  margin-top: 10px;
   font-family: 'Yanone Kaffeesatz';
   font-size: 4rem;
   color: #fff;
-}
-.gem-set .gem-container.highlight {
-  margin-right: 10px;
-  margin-left: -5px;
 }
 
 .geniblocks.level-indicator {
@@ -3221,8 +4117,59 @@ body {
   line-height: 1.15;
   color: #ddd;
 }
+.remediation .geniblocks.location-indicator {
+  background-image: url("../resources/fablevision/huds/Location_bar_remediation.png");
+}
 .os-windows .geniblocks.location-indicator .hud-text-area {
   margin-top: 0.2rem;
+}
+
+.navigation-dialog .gem-container {
+  margin-top: -30px;
+}
+.navigation-dialog .level-indicator .level-title {
+  font-size: 3rem;
+  position: absolute;
+  margin-left: 467px;
+  margin-top: -172px;
+}
+.navigation-dialog .level-navigation {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  margin-top: -110px;
+  margin-left: 400px;
+  width: 225px;
+  justify-content: space-around;
+}
+.navigation-dialog .level-navigation .level-label {
+  border: 4px solid #777;
+  border-radius: 10px;
+  width: 66px;
+  height: 95px;
+  text-align: center;
+}
+.navigation-dialog .level-navigation .level-nav-button {
+  width: 50px;
+  height: 50px;
+  margin-top: 22px;
+  cursor: pointer;
+}
+.navigation-dialog .level-navigation #prev-level-button {
+  background-image: url("../resources/fablevision/venture-pad/left_nav_button.png");
+}
+.navigation-dialog .level-navigation #next-level-button {
+  background-image: url("../resources/fablevision/venture-pad/right_nav_button.png");
+}
+.navigation-dialog #gem-label-0 {
+  margin-top: 20px;
+}
+.navigation-dialog .mission-lock {
+  width: 56px;
+  height: 52px;
+  background-image: url("../resources/fablevision/venture-pad/lock.png");
+  margin-top: -60px;
+  margin-left: 290px;
 }
 
 .geniblocks.parentDrake {
@@ -3270,6 +4217,461 @@ body {
   margin-top: 1rem;
 }
 
+.room {
+  background-position: 50% 7.25%, 50% 48%, 50% 50%;
+}
+.room.breedingbarn {
+  background-image: url("../resources/fablevision/rooms/hatchingbarn.jpg");
+}
+.room.breedingbarn .hotspot {
+  top: 10%;
+  left: 0;
+  height: 76%;
+  width: 85%;
+}
+.room.hatchery {
+  background-image: url("../resources/fablevision/rooms/hatchery.jpg");
+}
+.room.hatchery .hotspot {
+  top: 10%;
+  left: 0;
+  height: 54%;
+  width: 100%;
+}
+.room.home {
+  background-image: url("../resources/fablevision/rooms/missioncontrol.jpg");
+}
+.room.simroom {
+  background-image: url("../resources/fablevision/rooms/simroom.jpg");
+}
+.room.simroom .hotspot {
+  left: 30%;
+  top: 30%;
+  width: 30%;
+  height: 30%;
+}
+.room.zoomroom {
+  background-image: url("../resources/fablevision/rooms/zoom.jpg");
+}
+.room.zoomroom .hotspot {
+  left: 0;
+  top: 10%;
+  height: 75%;
+  width: 56%;
+}
+#enter-challenge-hotspot {
+  position: absolute;
+  cursor: pointer;
+}
+#easter-egg-trigger {
+  position: absolute;
+  cursor: pointer;
+  z-index: 15;
+}
+#easter-egg {
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+#easter-egg.hidden {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0.3;
+}
+#easter-egg.visible {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  background-color: rgba(0,0,0,0.7);
+  opacity: 1;
+}
+#easter-egg-image {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+#close-easter-egg {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  font-size: 3rem;
+  color: #fff;
+  font-family: sans-serif;
+}
+.home #easter-egg-trigger {
+  left: 1461px;
+  top: 421px;
+  width: 180px;
+  height: 252px;
+}
+.home #easter-egg.hidden {
+  left: 1530px;
+  top: 550px;
+}
+.home #easter-egg-image {
+  background-image: url("../resources/fablevision/rooms/eastereggs/missioncontrol-small-screen-right-kingdom_map03.jpg");
+}
+.simroom #easter-egg-trigger {
+  left: 1219px;
+  top: 837px;
+  width: 100px;
+  height: 77px;
+}
+.simroom #easter-egg.hidden {
+  left: 1250px;
+  top: 870px;
+}
+.simroom #easter-egg-image {
+  background-image: url("../resources/fablevision/rooms/eastereggs/simroom-floor-notebook4.jpg");
+}
+.zoomroom #easter-egg-trigger {
+  left: 1600px;
+  top: 637px;
+  width: 140px;
+  height: 274px;
+  transform: rotate(30deg);
+}
+.zoomroom #easter-egg.hidden {
+  left: 1700px;
+  top: 750px;
+}
+.zoomroom #easter-egg-image {
+  background-image: url("../resources/fablevision/rooms/eastereggs/zoomroom-rolled-up-poster-drakecolorposter4.jpg");
+}
+.room-sprite {
+  position: absolute;
+  pointer-events: none;
+}
+.home #sprite-1 {
+  background-image: url("../resources/fablevision/rooms/sprites/mission_control/MissionControl_spritesheet-group1_150x203-tiny.png");
+  width: 150px;
+  height: 203px;
+  left: 511px;
+  top: 495px;
+  animation: MissionControl_spritesheet-group1 7s steps(17) infinite;
+}
+.home #sprite-2 {
+  background-image: url("../resources/fablevision/rooms/sprites/mission_control/MissionControl_spritesheet-group2_206x227-tiny.png");
+  width: 206px;
+  height: 227px;
+  left: 800px;
+  top: 500px;
+  animation: MissionControl_spritesheet-group2 5s steps(23) infinite;
+}
+.simroom #sprite-1 {
+  background-image: url("../resources/fablevision/rooms/sprites/sim_room/outerpaper_spritesheet700x644-tiny.png");
+  width: 700px;
+  height: 568px;
+  left: 0px;
+  top: 38px;
+  animation: outerpaper_spritesheet 3s steps(24) infinite;
+}
+.simroom #sprite-2 {
+  background-image: url("../resources/fablevision/rooms/sprites/sim_room/RollMachine_spritesheet682x700-tiny.png");
+  width: 682px;
+  height: 700px;
+  left: 1011px;
+  top: 162px;
+  animation: RollMachine_spritesheet 4s steps(23) infinite;
+}
+.hatchery #sprite-1 {
+  background-image: url("../resources/fablevision/rooms/sprites/hatchery/HATCHERY_animation_spritesheet730x262-tiny.png");
+  width: 730px;
+  height: 262px;
+  left: 0;
+  top: 387px;
+  animation: HATCHERY_animation_spritesheet 2s steps(13) infinite;
+}
+.breedingbarn #sprite-1 {
+  background-image: url("../resources/fablevision/rooms/sprites/breeding_barn/FlyingDrake_Spritesheet_356x215-tiny.png");
+  width: 356px;
+  height: 215px;
+  left: 709px;
+  top: 0;
+  animation: FlyingDrake_Spritesheet 10s steps(22) infinite;
+}
+.breedingbarn #sprite-2 {
+  background-image: url("../resources/fablevision/rooms/sprites/breeding_barn/Tail-Orange_Spritesheet_375x454-tiny.png");
+  width: 360px;
+  height: 454px;
+  left: 566px;
+  top: 243px;
+  animation: Tail-Orange_Spritesheet 7s steps(24) infinite;
+}
+.breedingbarn #sprite-3 {
+  background-image: url("../resources/fablevision/rooms/sprites/breeding_barn/Tail-Blue_Spritesheet164x195-tiny.png");
+  width: 164px;
+  height: 195px;
+  left: 1200px;
+  top: 100px;
+  animation: Tail-Blue_Spritesheet 12s steps(15) infinite;
+}
+@-moz-keyframes MissionControl_spritesheet-group1 {
+  0% {
+    background-position: 0px;
+  }
+  20%, 100% {
+    background-position: -2550px;
+  }
+}
+@-webkit-keyframes MissionControl_spritesheet-group1 {
+  0% {
+    background-position: 0px;
+  }
+  20%, 100% {
+    background-position: -2550px;
+  }
+}
+@-o-keyframes MissionControl_spritesheet-group1 {
+  0% {
+    background-position: 0px;
+  }
+  20%, 100% {
+    background-position: -2550px;
+  }
+}
+@keyframes MissionControl_spritesheet-group1 {
+  0% {
+    background-position: 0px;
+  }
+  20%, 100% {
+    background-position: -2550px;
+  }
+}
+@-moz-keyframes MissionControl_spritesheet-group2 {
+  0% {
+    background-position: 0px;
+  }
+  20%, 100% {
+    background-position: -4738px;
+  }
+}
+@-webkit-keyframes MissionControl_spritesheet-group2 {
+  0% {
+    background-position: 0px;
+  }
+  20%, 100% {
+    background-position: -4738px;
+  }
+}
+@-o-keyframes MissionControl_spritesheet-group2 {
+  0% {
+    background-position: 0px;
+  }
+  20%, 100% {
+    background-position: -4738px;
+  }
+}
+@keyframes MissionControl_spritesheet-group2 {
+  0% {
+    background-position: 0px;
+  }
+  20%, 100% {
+    background-position: -4738px;
+  }
+}
+@-moz-keyframes outerpaper_spritesheet {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -16800px;
+  }
+}
+@-webkit-keyframes outerpaper_spritesheet {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -16800px;
+  }
+}
+@-o-keyframes outerpaper_spritesheet {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -16800px;
+  }
+}
+@keyframes outerpaper_spritesheet {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -16800px;
+  }
+}
+@-moz-keyframes RollMachine_spritesheet {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -15686px;
+  }
+}
+@-webkit-keyframes RollMachine_spritesheet {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -15686px;
+  }
+}
+@-o-keyframes RollMachine_spritesheet {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -15686px;
+  }
+}
+@keyframes RollMachine_spritesheet {
+  0% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -15686px;
+  }
+}
+@-moz-keyframes HATCHERY_animation_spritesheet {
+  0%, 70% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -9490px;
+  }
+}
+@-webkit-keyframes HATCHERY_animation_spritesheet {
+  0%, 70% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -9490px;
+  }
+}
+@-o-keyframes HATCHERY_animation_spritesheet {
+  0%, 70% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -9490px;
+  }
+}
+@keyframes HATCHERY_animation_spritesheet {
+  0%, 70% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -9490px;
+  }
+}
+@-moz-keyframes FlyingDrake_Spritesheet {
+  75% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -7832px;
+  }
+}
+@-webkit-keyframes FlyingDrake_Spritesheet {
+  75% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -7832px;
+  }
+}
+@-o-keyframes FlyingDrake_Spritesheet {
+  75% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -7832px;
+  }
+}
+@keyframes FlyingDrake_Spritesheet {
+  75% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -7832px;
+  }
+}
+@-moz-keyframes Tail-Orange_Spritesheet {
+  0%, 30% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -9000px;
+  }
+}
+@-webkit-keyframes Tail-Orange_Spritesheet {
+  0%, 30% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -9000px;
+  }
+}
+@-o-keyframes Tail-Orange_Spritesheet {
+  0%, 30% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -9000px;
+  }
+}
+@keyframes Tail-Orange_Spritesheet {
+  0%, 30% {
+    background-position: 0px;
+  }
+  100% {
+    background-position: -9000px;
+  }
+}
+@-moz-keyframes Tail-Blue_Spritesheet {
+  0% {
+    background-position: 0px;
+  }
+  20%, 100% {
+    background-position: -2460px;
+  }
+}
+@-webkit-keyframes Tail-Blue_Spritesheet {
+  0% {
+    background-position: 0px;
+  }
+  20%, 100% {
+    background-position: -2460px;
+  }
+}
+@-o-keyframes Tail-Blue_Spritesheet {
+  0% {
+    background-position: 0px;
+  }
+  20%, 100% {
+    background-position: -2460px;
+  }
+}
+@keyframes Tail-Blue_Spritesheet {
+  0% {
+    background-position: 0px;
+  }
+  20%, 100% {
+    background-position: -2460px;
+  }
+}
+
 .fv-layout .stable-drakes {
   margin-right: 10px;
 }
@@ -3295,16 +4697,16 @@ body {
 .geniblocks.target-drake-container {
   display: flex;
   flex-direction: row;
-  height: 272px;
-  width: 520px;
+  height: 195px;
+  width: 500px;
   background: url("../resources/fablevision/layout-c/target_drake_gizmo.png");
   background-repeat: no-repeat;
   background-size: cover;
   justify-content: center;
   align-self: center;
-  margin-bottom: -420px;
-  margin-top: 40px;
   z-index: 3;
+  position: absolute;
+  bottom: 2px;
 }
 .geniblocks.target-drake-container .target-drake-text {
   font-family: 'Yanone Kaffeesatz';
@@ -3316,6 +4718,9 @@ body {
 .geniblocks.target-drake-container .organism {
   margin-top: 10px;
 }
+.fv-layout-h .geniblocks.target-drake-container {
+  position: relative;
+}
 
 .fv-top-hud {
   z-index: 2;
@@ -3326,4 +4731,161 @@ body {
   position: absolute;
   left: 654px;
   top: 0px;
+}
+.fv-top-hud .map-button-container {
+  z-index: 3;
+  cursor: pointer;
+  position: absolute;
+  margin-top: -34px;
+  margin-left: -400px;
+  border-radius: 50px;
+  box-shadow: 0 0 15px 3px #291800;
+}
+.fv-top-hud .map-button-container .map-button {
+  width: 100px;
+  height: 50px;
+  background-image: url("../resources/fablevision/huds/map_button.png");
+}
+
+.venture-pad-container {
+  outline: none;
+  font-family: 'Yanone Kaffeesatz';
+  font-size: 4rem;
+  color: #fff;
+}
+.venture-pad-container .venture-pad-backdrop {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000;
+  opacity: 0.8;
+}
+.venture-pad-container .venture-pad-backdrop.light {
+  opacity: 0.2;
+}
+.venture-pad-container .venture-pad-background {
+  position: absolute;
+  top: 7%;
+  left: 28%;
+  width: 921px;
+  height: 894px;
+  background-image: url("../resources/fablevision/venture-pad/screen_behind.png");
+  background-position: 30% 50%;
+  background-repeat: no-repeat;
+  margin-left: 460px;
+  z-index: 11;
+}
+.venture-pad-container .venture-pad-screen {
+  position: absolute;
+  top: 125px;
+  left: 28%;
+  width: 700px;
+  height: 825px;
+  z-index: 12;
+  margin-left: 530px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: auto;
+}
+.venture-pad-container .venture-pad-screen .venture-pad-title {
+  margin-top: 34px;
+}
+.venture-pad-container .venture-pad-screen .venture-pad-flavor-text {
+  font-size: 1rem;
+  color: #808080;
+}
+.venture-pad-container .venture-pad-screen .venture-pad-separator {
+  position: absolute;
+  width: 720px;
+  height: 3px;
+  background-color: #808080;
+}
+.venture-pad-container .venture-pad-screen .venture-pad-separator#venture-pad-separator-1 {
+  margin-top: 20px;
+}
+.venture-pad-container .venture-pad-screen::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #555;
+}
+.venture-pad-container .venture-pad-screen::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+.venture-pad-container .venture-pad-screen::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+.venture-pad-container .venture-pad-overlay {
+  position: absolute;
+  top: 7%;
+  left: 28%;
+  width: 921px;
+  height: 894px;
+  margin-left: 460px;
+  background-image: url("../resources/fablevision/venture-pad/frame.png"), url("../resources/fablevision/venture-pad/screen_over.png");
+  background-position: 50% 50%, 30% 50%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 13;
+}
+.venture-pad-glass {
+  position: absolute;
+  width: 1590px;
+  height: 824px;
+  background-image: url("../resources/fablevision/venture-pad/glass.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 125px;
+  left: 25px;
+  z-index: 10;
+}
+.venture-pad-glass .venture-pad-map {
+  background-image: url("../resources/fablevision/venture-pad/map.png");
+  width: 1008px;
+  height: 798px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.venture-pad-glass .venture-pad-map .venture-pad-room-highlight {
+  position: absolute;
+}
+.venture-pad-glass .venture-pad-map .venture-pad-room-highlight.hatchery {
+  background-image: url("../resources/fablevision/venture-pad/map_hatchery_highlight.png");
+  width: 216px;
+  height: 114px;
+  margin-left: 70px;
+  margin-top: 310px;
+}
+.venture-pad-glass .venture-pad-map .venture-pad-room-highlight.zoomroom {
+  background-image: url("../resources/fablevision/venture-pad/map_zoomroom_highlight.png");
+  width: 167px;
+  height: 133px;
+  margin-left: 708px;
+  margin-top: 564px;
+}
+.venture-pad-glass .venture-pad-map .venture-pad-room-highlight.simroom {
+  background-image: url("../resources/fablevision/venture-pad/map_simfactory_highlight.png");
+  width: 222px;
+  height: 66px;
+  margin-left: 708px;
+  margin-top: 463px;
+}
+.venture-pad-glass .venture-pad-map .venture-pad-room-highlight.breedingbarn {
+  background-image: url("../resources/fablevision/venture-pad/map_breedingbarn_highlight.png");
+  width: 294px;
+  height: 319px;
+  margin-left: 355px;
+  margin-top: 377px;
+}
+.venture-pad-glass .venture-pad-map .venture-pad-room-highlight.home {
+  background-image: url("../resources/fablevision/venture-pad/map_missioncontrol_highlight.png");
+  width: 331px;
+  height: 222px;
+  margin-left: 339px;
+  margin-top: 207px;
 }
