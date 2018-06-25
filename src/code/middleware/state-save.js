@@ -50,10 +50,19 @@ export default () => store => next => action => {
         stateVersion: currentStateVersion
       };
     }
-    firebase.database().ref(userQueryString).update(userDataUpdate);
+    firebase.database().ref(userQueryString).update(userDataUpdate, onComplete);
   }
 
   return result;
+};
+
+const onComplete = function(error) {
+  if (error) {
+    console.logError(error);
+    return error;
+  } else {
+    return;
+  }
 };
 
 const getCurrentChallenge = function(nextState) {
