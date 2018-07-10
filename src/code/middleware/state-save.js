@@ -18,7 +18,6 @@ import actionTypes from '../action-types';
 import progressUtils from '../utilities/progress-utils';
 import { getFBClassId, getFBUserId } from "../utilities/firebase-auth";
 import { currentStateVersion } from '../migrations';
-import { makeMutable } from './its-log';
 
 export const authoringVersionNumber = 1;
 let userQueryString = getUserQueryString();
@@ -53,17 +52,17 @@ export default () => store => next => action => {
       } = nextState;
 
       // Stop nulls in remediationHistory from being sent to Firebase as this will throw an exception
-      let editedHistory = makeMutable(remediationHistory);
+      let editedHistory = remediationHistory.asMutable({ deep: true });
       for (let level in editedHistory) {
-        if (editedHistory[level] === null) {
+        if (!Array.isArray(editedHistory[level])) {
           editedHistory[level] = [];
-        } else if (Array.isArray(editedHistory[level])) {
+        } else {
           for (let mission in editedHistory[level]) {
-            if (editedHistory[level][mission] === null) {
+            if (!Array.isArray(editedHistory[level][mission])) {
               editedHistory[level][mission] = [];
-            } else if (Array.isArray(editedHistory[level][mission])) {
+            } else {
               for (let challenge in editedHistory[level][mission]) {
-                if (editedHistory[level][mission][challenge] === null) {
+                if (!editedHistory[level][mission][challenge]) {
                   editedHistory[level][mission][challenge] = 0;
                 }
               }
