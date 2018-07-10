@@ -45,13 +45,23 @@ export default () => store => next => action => {
         ||
         nextState.remediationHistory && JSON.stringify(prevState.remediationHistory) !== JSON.stringify(nextState.remediationHistory)
       )) {
+
       let {
         gems
         , remediationHistory
       } = nextState;
+
+      // Stop nulls in remediationHistory from being sent to Firebase as this will throw an exception
+      let editedHistory = JSON.parse(JSON.stringify(remediationHistory));
+      for (let challenge in remediationHistory) {
+        if (remediationHistory[challenge] === null) {
+          editedHistory[challenge] = [];
+        }
+      }
+
       userDataUpdate.state = {
         gems,
-        remediationHistory,
+        remediationHistory: editedHistory,
         stateVersion: currentStateVersion
       };
     }
