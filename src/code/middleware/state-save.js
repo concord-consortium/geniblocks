@@ -52,7 +52,7 @@ export default () => store => next => action => {
       } = nextState;
 
       // Stop nulls in remediationHistory from being sent to Firebase as this will throw an exception
-      let editedHistory = remediationHistory.asMutable();
+      let editedHistory = remediationHistory.asMutable({ deep: true });
       for (let level in editedHistory) {
         if (editedHistory[level] === null) {
           editedHistory[level] = [];
