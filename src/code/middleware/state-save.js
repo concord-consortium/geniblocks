@@ -18,6 +18,7 @@ import actionTypes from '../action-types';
 import progressUtils from '../utilities/progress-utils';
 import { getFBClassId, getFBUserId } from "../utilities/firebase-auth";
 import { currentStateVersion } from '../migrations';
+import { makeMutable } from './its-log';
 
 export const authoringVersionNumber = 1;
 let userQueryString = getUserQueryString();
@@ -52,7 +53,7 @@ export default () => store => next => action => {
       } = nextState;
 
       // Stop nulls in remediationHistory from being sent to Firebase as this will throw an exception
-      let editedHistory = remediationHistory.asMutable({ deep: true });
+      let editedHistory = makeMutable(remediationHistory);
       for (let level in editedHistory) {
         if (editedHistory[level] === null) {
           editedHistory[level] = [];
