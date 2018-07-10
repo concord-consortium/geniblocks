@@ -78,7 +78,6 @@ export default () => store => next => action => {
       };
     }
 
-    console.log(nextState.remediationHistory, userDataUpdate);
     firebase.database().ref(userQueryString).update(userDataUpdate, (error, userDataUpdate) => {
       if (error) {
         console.logError("Error updating user state!", userDataUpdate, error);
