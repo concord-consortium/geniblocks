@@ -52,10 +52,22 @@ export default () => store => next => action => {
       } = nextState;
 
       // Stop nulls in remediationHistory from being sent to Firebase as this will throw an exception
-      let editedHistory = JSON.parse(JSON.stringify(remediationHistory));
-      for (let challenge in remediationHistory) {
-        if (remediationHistory[challenge] === null) {
-          editedHistory[challenge] = [];
+      let editedHistory = remediationHistory.asMutable();
+      for (let level in editedHistory) {
+        if (editedHistory[level] === null) {
+          editedHistory[level] = [];
+        } else if (Array.isArray(editedHistory[level])) {
+          for (let mission in editedHistory[level]) {
+            if (editedHistory[level][mission] === null) {
+              editedHistory[level][mission] = [];
+            } else if (Array.isArray(editedHistory[level][mission])) {
+              for (let challenge in editedHistory[level][mission]) {
+                if (editedHistory[level][mission][challenge] === null) {
+                  editedHistory[level][mission][challenge] = 0;
+                }
+              }
+            }
+          }
         }
       }
 
