@@ -80,7 +80,7 @@ export default () => store => next => action => {
 
     firebase.database().ref(userQueryString).update(userDataUpdate, (error, userDataUpdate) => {
       if (error) {
-        console.logError("Error updating user state!", userDataUpdate, error);
+        console.error("Error updating user state!", userDataUpdate, error);
         return error;
       } else {
         return;
@@ -90,15 +90,6 @@ export default () => store => next => action => {
 
   return result;
 };
-
-// const onComplete = function(error) {
-//   if (error) {
-//     console.logError("Error updating user state!", error);
-//     return error;
-//   } else {
-//     return;
-//   }
-// };
 
 const getCurrentChallenge = function(nextState) {
   const {routeSpec, authoring, gems} = nextState;

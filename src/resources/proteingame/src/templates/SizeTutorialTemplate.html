@@ -1,0 +1,29 @@
+<div class="tutorial-inner">
+	<button class="close"></button>
+	<div class="pages">
+	<% _.each(pages, function(page, i) { %>
+		<div class="page">
+			<div class="text"><%= page.text %></div>
+			<div class="symbols">
+			<% _.each(page.symbols, function(symbol) { %>
+				<div class="symbol">
+					<div class="img-holder">
+						<img src=<%= "assets/images/tutorial/" + symbol.image %> >
+					</div>
+					<div class="label"><%= symbol.label %></div>
+				</div>
+			<% }) %>
+			</div>
+			<% if(i > 0) { %> 
+				<button class="prev"></button>
+			<% } %>
+			<% if(i < pages.length-1) { %> 
+				<button class="next">Next</button>
+			<% } else { %> 
+				<button class="finish">Got it!</button>
+			<% } %>
+		</div>
+		
+	<% }) %>
+	</div>
+</div>

@@ -1,0 +1,107 @@
+
+<div class="alpha">
+	<h2><% if(!game.isBossLevel){ %>Select <% } %>Alleles</h2>
+
+	<% if(!game.isBossLevel){ %>
+	<!-- dropdowns -->
+	<div class="allele-selectors">
+
+		<% _(chromosome.get("genes")).each(function(gene){ %>
+			<div class="allele-selector <% if(gene.isRelevant){%>relevant<%}%>" style="top: <%= gene.location %>%"  >
+	    		<h3><%= gene.name %></h3>
+	    		<select data-chromosome="Chromosome1A" data-gene="<%= gene.id %>" data-location="<%= gene.location %>">
+	    		<% _(gene.alleles).each(function(allele, i){ %>
+	    			<option 
+	    				value="<%= i %>"
+						<% if(gene.selected_allele == i) { %> selected <% } %>
+					>
+						
+						<%= allele.name %>
+	    			</option>
+	    		<% }); %><!-- each allele -->
+	    		</select>
+
+	    		<!-- <img src="<%= gene.alleles[gene.selected_allele].img %>" /> -->
+
+    		</div>
+    	<% }); %><!-- each gene -->
+	</div>
+	<% } else { %>
+		<div class="allele-selectors">
+		<% _(chromosome.get("genes")).each(function(gene){ %>
+			<div class="allele-label <% if(gene.isRelevant){%>relevant<%}%>" style="top: <%= gene.location %>%" 
+				data-chromosome="Chromosome1A" data-gene="<%= gene.id %>" data-location="<%= gene.location %>">
+	    		<% _(gene.alleles).each(function(allele, i){ %>
+					<%= allele.name %> 
+					<% if(i < gene.alleles.length-1) { %>
+						<%= ' /' %>
+					<% } %>
+	    		<% }); %><!-- each allele -->
+    		</div>
+		<% }); %><!-- each gene -->
+		</div>
+	<% } %>
+	<!-- scrubber -->
+	<div class="chromosome-scrubber">
+
+		<!-- even though this looks like an abs path, it's not due to the webpack html-loader tom-foolery -->
+		<img src="/assets/images/chromosome/chromosome_long.png" class="chromosome-image"></img>
+
+		<% _(chromosome.get("genes")).each(function(gene){ %>
+			<div class="gene-hotspot <% if(gene.isRelevant){%> relevant <%}%>" style="top: <%= gene.location %>%"></div>
+		<% }); %><!-- each gene -->
+		
+		
+
+		<div class="viewport-indicator"></div>
+	</div>
+</div>
+
+<div class="beta">
+	<h2>DNA</h2>
+	<div class="beta-inner">
+		<div class="full-code">
+    		<% _(chromosome.get("fullCode")).each(function(codeChunk){ %> 
+    			<span class="code-chunk"><%= codeChunk %> </span>
+    		<% }); %>
+    		<% _(chromosome.get("genes")).each(function(gene){ %>
+    			<span class="code-chunk allele-code <% if(gene.isRelevant){%> relevant <%}%>" style="top: <%= gene.location %>%"><%= gene.alleles[gene.selected_allele].code %> </span>
+    		<% }); %>
+		</div>
+		
+		<% if(!game.isBossLevel){ %>
+			<div class="allele-images">
+				<% _(chromosome.get("genes")).each(function(gene){ %>
+					<div class="allele-lockup <% if(gene.isRelevant){%> relevant <%}%>" style="top: <%= gene.location %>%" >
+						<div class="allele-image-wrapper">
+							<img src="<%= gene.alleles[gene.selected_allele].img %>" >
+						</div>
+						<label><%= gene.name %>
+					</div>
+
+				<% }); %><!-- each gene-->
+			</div>
+		<% } else { %>
+			<div class="allele-selectors">
+
+				<% _(chromosome.get("genes")).each(function(gene){ %>
+					<div class="allele-selector <% if(gene.isRelevant){%>relevant<%}%>" style="top: <%= gene.location %>%"  >
+						<h3><%= gene.name %></h3>
+						<select data-chromosome="Chromosome1A" data-gene="<%= gene.id %>" data-location="<%= gene.location %>" 
+							data-label="<%= gene.name %>">
+						<% _(gene.alleles).each(function(allele, i){ %>
+							<option 
+								value="<%= i %>" 
+								<% if(gene.selected_allele == i) { %> selected <% } %>
+								data-img="<%= gene.alleles[i].img %>"
+							>
+							</option>
+						<% }); %><!-- each allele -->
+						</select>
+		
+					</div>
+				<% }); %><!-- each gene -->
+			</div>
+		<% } %>
+	</div>
+</div>

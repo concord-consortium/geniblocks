@@ -141,6 +141,20 @@ See [https://github.com/zalmoxisus/redux-devtools-extension](https://github.com/
 
 Now you can see a list of actions and state changes, a history slider, have the ability to export and import state and history, and fire actions directly from the tool panel.
 
+## Protein Game
+
+The Protein Game was produced by FableVision and is added as-is to src/resources/proteingame.
+
+It can be built with
+
+```
+cd src/resources/proteingame
+npm install
+npm run deploy
+```
+
+The entire folder needs to be included, because the build process only builds the source into the dist folder, but the static files are outside this.
+
 ## Resources
 
 * [GeniBlocks Examples](http://concord-consortium.github.io/geniblocks/examples)

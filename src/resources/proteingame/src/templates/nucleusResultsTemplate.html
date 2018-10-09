@@ -1,0 +1,138 @@
+<div id="nucleus-results-inner">
+
+	<h2>RESULTS</h2>
+
+	<div class="code-animations left">
+			<% _.each(cellModel.get("chromosomePairs"), function(chromosomePair){ %>
+				<% _.each(chromosomePair.chromosomeA.genes, function(gene, index){ %>
+					<% if (gene.isRelevant) { %>
+					<div class="code-animation">
+						<p class="code">
+							<span class="code-inner">
+							<%	var code = gene.alleles[gene.selected_allele].code.replace(/T/g , "U"); %>
+							<%= code %><%= code %>
+							</span>
+						</p>
+						<img class="blob" src="/assets/images/chromosome/results_protein_blob.png" />
+						<img class="arrow" src="/assets/images/chromosome/arrow_right.png" />
+					</div>
+
+
+					<% var geneB = chromosomePair.chromosomeB.genes[index]; %>
+					<div class="code-animation">
+						<p class="code">
+							<span class="code-inner">
+								<%= code %><%= code %>
+							</span>
+						</p>
+						<img class="blob" src="/assets/images/chromosome/results_protein_blob.png" />
+						<img class="arrow" src="/assets/images/chromosome/arrow_right.png" />
+					</div>
+					<% } %>
+				<% }); %>
+
+
+
+
+
+
+			<% }); %>
+	</div>
+
+
+
+
+	<div class="chromosome-results-wrapper">
+		<!-- A genes -->
+		<div class="chromosome-results chromosome-a-results">
+			<% _.each(cellModel.get("chromosomePairs"), function(chromosomePair){ %>
+
+
+
+
+				<% _.each(chromosomePair.chromosomeA.genes, function(gene, index){ %>
+
+
+
+					<% if (gene.isRelevant) { %>
+					<div class="resulting-protein <% if (gene.has_changed){ %> changed <% } %>">
+						<div class="img-wrap">
+							<% for (var i = 0;i<20;i++) { %>
+								<img src="<%= gene.alleles[gene.selected_allele].img %>" style="top: <%= (Math.random() * 50)+25 %>%; animation-delay: <%= i*200 + (Math.random()*100) %>ms;" />
+							<% } %>
+						</div>
+
+						<div class="protein-text">
+							<h3><%= gene.name %></h3>
+							<p><%= gene.alleles[gene.selected_allele].name %></p>
+						</div>
+					</div>
+
+					<% var geneB = chromosomePair.chromosomeB.genes[index]; %>
+					<div class="resulting-protein <% if (geneB.has_changed){ %> changed <% } %>">
+						<div class="img-wrap">
+							<% for (var i = 0;i<20;i++) { %>
+								<img src="<%= geneB.alleles[geneB.selected_allele].img %>" style="top: <%= (Math.random() * 50)+25 %>%; animation-delay: <%= i*200 + (Math.random()*100) %>ms;" />
+							<% } %>
+						</div>
+						<div class="protein-text">
+							<h3><%= geneB.name %></h3>
+							<p><%= geneB.alleles[geneB.selected_allele].name %></p>
+						</div>
+					</div>
+
+
+
+					<% } %>
+
+
+
+
+
+				<% }); %>
+
+<!-- 				<% _.each(chromosomePair.chromosomeB.genes, function(gene, index){ %>
+					<% if (gene.isRelevant) { %>
+					<div class="resulting-protein <% if (gene.has_changed){ %> changed <% } %>">
+						<div class="img-wrap">
+							<img src="<%= gene.alleles[gene.selected_allele].img %>" />
+						</div>
+						<div class="protein-text">
+							<h3><%= gene.name %></h3>
+							<p><%= gene.alleles[gene.selected_allele].name %></p>
+						</div>
+					</div>
+					<% } %>
+
+				<% }); %> -->
+
+
+			<% }); %>
+		</div>
+
+
+	</div>
+
+
+
+<!-- 	<div class="code-animations right">
+			<% _.each(cellModel.get("chromosomePairs"), function(chromosomePair){ %>
+				<% _.each(chromosomePair.chromosomeA.genes, function(gene, index){ %>
+					<div class="code-animation">
+						<p class="code"><%= gene.alleles[gene.selected_allele].code %></p>
+						<img class="blob" src="/assets/images/chromosome/results_protein_blob.png" />
+						<img class="arrow" src="/assets/images/chromosome/arrow_right.png" />
+					</div>
+				<% }); %>
+			<% }); %>
+	</div>
+
+ -->
+
+
+
+
+	<button class="back">BACK</button>
+	<button class="close">DELIVER PROTEINS</button>
+</div>
+

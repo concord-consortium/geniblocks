@@ -1,0 +1,54 @@
+<div id="nucleus-inner">
+    <!-- <button class="close">X</button> -->
+
+    <div class="chromosome-viewer">
+    <!-- Chromosome 1A -->
+		<div class="chromosome chromosome-a">
+			<!-- templates/chromosomeTemplate.html -->
+	    </div>
+
+
+
+	    <!-- Chromosome 1B -->
+		<div class="chromosome chromosome-b">
+			<!-- templates/chromosomeTemplate.html -->
+	    </div>
+
+	    <div class="between-column">
+	    	<h2><% if(game.isBossLevel){ %>Select <% } %>Proteins</h2>
+	    	<div class="divider"></div>
+	    </div>
+
+	    <div class="meta-bar">
+
+		    <div class="chromosome-selectors">
+
+		    	<h2>Chromosome <strong><%= cellModel.get("current_pair_index") + 1 %></strong></h2>
+				<% _(cellModel.get("chromosomePairs")).each(function(gene, $index){ %>
+					<button class="c<%= $index %> <% if(cellModel.get("current_pair_index") == $index){ %> active <% } %>" value="<%= $index %>">
+						<div class="left-chrom"></div>
+						<div class="right-chrom"></div>
+					</button>
+				<% }); %>
+		    </div>
+    		
+    		
+    		<div class="target">
+	    		<h2>Target Color</h2>
+	    		<img src=<%= "assets/images/drakes/drake_" + cellModel.get("target_color") + ".png" %> />
+	    		<label><%= cellModel.get("target_color") %></label>
+    		</div>
+
+    		<button class="compile">BUILD</button>
+	    </div>
+
+
+    </div>
+
+
+	<div id="nucleus-results">
+		<!-- templates/nucleusResultsTemplate.html -->
+	</div>
+
+</div>
+

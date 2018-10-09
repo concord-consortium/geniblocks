@@ -1,0 +1,203 @@
+{
+    "3.2.1": { 
+        "protein": [
+            {
+                "text": "Melanin gives drakes their color. Watch closely to see how proteins make melanin.",
+                "symbols": [
+                    {
+                        "image": "disc.png",
+                        "label": "Melanin disc"
+                    }
+                ]
+            },
+            {
+                "text": "Melanin is made in mela-pods. Colors depend on how big the mela-pods get.",
+                "symbols": [
+                    {
+                        "image": "albino_pod.png",
+                        "label": "Albino mela-pod"
+                    },
+                    {
+                        "image": "orange_pod.png",
+                        "label": "Orange mela-pod"
+                    },
+                    {
+                        "image": "gray_pod.png",
+                        "label": "Gray mela-pod"
+                    }
+                ]
+            },
+            {
+                "text": "The proteins use triangular parts to make melanin discs. Watch the pod grow and change color as the melanin discs stack up. This is a demo, Cadet - just watch and learn!",
+                "symbols": [
+                    {
+                        "image": "mela_maker_protein.png",
+                        "label": "Mela-maker protein"
+                    },
+                    {
+                        "image": "mela_helper_protein.png",
+                        "label": "Mela-helper protein"
+                    },
+                    {
+                        "image": "disc.png",
+                        "label": "Melanin disc"
+                    },
+                    {
+                        "image": "melanin_parts.png",
+                        "label": "Melanin parts"
+                    }
+                ]
+            }
+        ]
+    },
+    "3.2.2": {
+        "protein": [
+            {
+                "text": "Proteins do the work to make melanin discs. The large gear brings in triangles and passes them to the small gear.",
+                "symbols": [
+                    {
+                        "image": "mela_maker_protein_labeled.png",
+                        "label": "Mela-maker protein"
+                    }
+                ]
+            },
+            {
+                "text": "A helper protein holds the gears together while the small gear builds the discs.",
+                "symbols": [
+                    {
+                        "image": "mela_helper_protein.png",
+                        "label": "Mela-helper protein"
+                    }
+                ]
+            },
+            {
+                "text": "Find the broken protein and figure out how to help make enough discs for a charcoal drake!"
+            },
+            {
+                "text": "Track your progress using the display on the right!",
+                "action": "highlight_chromoscope"
+            }
+        ]
+    },
+    "3.2.3": {
+        "protein": [
+            {
+                "text": "Knock the discs and the proteins out to shrink the pods to half-size.",
+                "symbols": [
+                    {
+                        "image": "disc.png",
+                        "label": "Melanin disc"
+                    },
+                    {
+                        "image": "mela_helper_protein.png",
+                        "label": "Mela-helper protein"
+                    }
+                ]
+            },
+            {
+                "text": "Remember, you can track your progress using the display on the right!",
+                "action": "highlight_chromoscope"
+            }
+        ]
+    },
+    "3.2.4": {
+        "nucleus": [
+            {
+                "text": "Alleles contain the DNA instructions for each protein.",
+                "symbols": [
+                    {
+                        "image": "allele_pulldown.png",
+                        "label": "Allele pulldown"
+                    },
+                    {
+                        "image": "dna.png",
+                        "label": "DNA"
+                    }
+                ]
+            },
+            {
+                "text": "To create the proteins for the charcoal drake, change the alleles so they contain different DNA instructions.",
+                "action":  "highlight_drake"
+            },
+            {
+                "text": "When you have found the right combination of alleles, click BUILD to see your results!",
+                "action": "highlight_build"
+            }
+        ],
+        "results": [
+            {
+                "text": "The protein making machine reads the instructions to create specific proteins in the drake’s cells.",
+                "symbols":[
+                    {
+                        "image": "protein_machine.png",
+                        "label": "Protein making machine"
+                    }
+                ]
+            }
+        ]
+    },
+    "3.3.2": {
+        "protein": [
+            {
+                "text": "Look closely at the mela-maker - what’s going wrong here?",
+                "symbols": [
+                    {
+                        "image": "maker_protein_broken.png",
+                        "label": "Mela-maker protein"
+                    }
+                ]
+            },
+            {
+                "text": "Help the mela-maker do its job. Hint: Create a forcefield <i><b>inside</b></i> the pod by clicking and dragging near the triangular parts.",
+                "symbols": [
+                    {
+                        "image": "forcefield.png",
+                        "label": "Forcefield"
+                    }
+                ]
+            }
+        ]
+    },
+    "3.4.1": {
+        "protein": [
+            {
+                "text": "Shiny drakes don’t have any mela-pods in their scale cells. When the scale cells are empty, they reflect light and look shiny.",
+                "symbols": [
+                    {
+                        "image": "cell_cutaway.png",
+                        "label": "Empty scale cells"
+                    }
+                ]
+            },
+            {
+                "text": "Mela-pods travel to the scale cells through tunnels with pod-releaser proteins.",
+                "symbols": [
+                    {
+                        "image": "melanocyte.png",
+                        "label": "Orange mela-pod"
+                    },
+                    {
+                        "image": "pod_releaser_protein.png",
+                        "label": "Pod-releaser protein"
+                    },
+                    {
+                        "image": "gate.png",
+                        "label": "Gate"
+                    }
+                ]
+            },
+            {
+                "text": "To make a copper drake, find a way to stop the mela-pods from getting into the scale cells!"
+            },
+            {
+                "text": "Watch for sparkles on the scale cell to show when you've made a shiny drake.",
+                "symbols": [
+                    {
+                        "image": "sparkles.png",
+                        "label": "Shiny sparkles"
+                    }
+                ]
+            }
+        ]
+    }
+}

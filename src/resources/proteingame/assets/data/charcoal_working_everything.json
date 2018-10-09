@@ -1,0 +1,193 @@
+{
+	"chromosome1A": {
+		"name": "Chromosome 1A",
+        "genes": [
+            {
+                "id": "trp_flower_01",
+                "name": "TRP Flower",
+                "value": "working",
+                "selected_allele": 0,
+                "location": 10,
+                "alleles": [
+                    {
+                        "id": "working",
+                        "name": "Working",
+                        "value": true,
+                        "img": "assets/images/chromosome/trp_02.png",
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACT<em>GACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG</em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG" 
+                    },
+                    { 
+                        "id": "broken",
+                        "name": "Broken",
+                        "value": false,
+                        "img": "assets/images/chromosome/trp_01.png",
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG<em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGA</em>CTGACTGACTGACTGACTGACTGACTG" 
+                    }
+                ]
+            },
+            {
+                "id": "tyr_mouth",
+                "name": "TYR Mouth",
+                "value": "working",
+                "selected_allele": 0,
+                "location": 35,
+                "alleles": [
+                    {
+                        "id": "working",
+                        "name": "Working",
+                        "value": true,
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACT<em>GACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG</em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG" 
+
+                    },
+                    { 
+                        "id": "broken",
+                        "name": "Broken",
+                        "value": false,
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG<em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGA</em>CTGACTGACTGACTGACTGACTGACTG" 
+                        
+                    }
+                ]
+            },
+            {
+                "id": "myocin_grabber",
+                "name": "Myocin Grabber",
+                "value": "working",
+                "selected_allele": 0,
+                "location": 65,
+                "alleles": [
+                    {
+                        "id": "working",
+                        "name": "Working",
+                        "value": true,
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACT<em>GACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG</em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG" 
+
+                    },
+                    { 
+                        "id": "broken",
+                        "name": "Broken",
+                        "value": false,
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG<em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGA</em>CTGACTGACTGACTGACTGACTGACTG" 
+                    }
+                ]
+            },
+            {
+                "id": "gate_stopper_button",
+                "name": "Gate Stopper Button",
+                "value": "working",
+                "selected_allele": 0,
+                "location": 80,
+                "alleles": [
+                    {
+                        "id": "working",
+                        "name": "Working",
+                        "value": true,
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACT<em>GACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG</em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG" 
+
+                    },
+                    { 
+                        "id": "broken",
+                        "name": "Broken",
+                        "value": false,
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG<em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGA</em>CTGACTGACTGACTGACTGACTGACTG" 
+                    }
+                ]
+            }
+        ]
+	},
+	"chromosome1B": {
+		"name": "Chromosome 1B",
+        "genes": [
+            {
+                "id": "trp_flower_01",
+                "name": "TRP Flower",
+                "value": "working",
+                "selected_allele": 0,
+                "location": 10,
+                "alleles": [
+                    {
+                        "id": "working",
+                        "name": "Working",
+                        "value": true,
+                        "img": "assets/images/chromosome/trp_02.png",
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACT<em>GACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG</em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG" 
+                    },
+                    { 
+                        "id": "broken",
+                        "name": "Broken",
+                        "value": false,
+                        "img": "assets/images/chromosome/trp_01.png",
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG<em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGA</em>CTGACTGACTGACTGACTGACTGACTG" 
+                    }
+                ]
+            },
+            {
+                "id": "tyr_mouth",
+                "name": "TYR Mouth",
+                "value": "working",
+                "selected_allele": 0,
+                "location": 35,
+                "alleles": [
+                    {
+                        "id": "working",
+                        "name": "Working",
+                        "value": true,
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACT<em>GACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG</em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG" 
+
+                    },
+                    { 
+                        "id": "broken",
+                        "name": "Broken",
+                        "value": false,
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG<em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGA</em>CTGACTGACTGACTGACTGACTGACTG" 
+                        
+                    }
+                ]
+            },
+            {
+                "id": "myocin_grabber",
+                "name": "Myocin Grabber",
+                "value": "working",
+                "selected_allele": 0,
+                "location": 65,
+                "alleles": [
+                    {
+                        "id": "working",
+                        "name": "Working",
+                        "value": true,
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACT<em>GACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG</em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG" 
+
+                    },
+                    { 
+                        "id": "broken",
+                        "name": "Broken",
+                        "value": false,
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG<em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGA</em>CTGACTGACTGACTGACTGACTGACTG" 
+                    }
+                ]
+            },
+            {
+                "id": "gate_stopper_button",
+                "name": "Gate Stopper Button",
+                "value": "working",
+                "selected_allele": 0,
+                "location": 80,
+                "alleles": [
+                    {
+                        "id": "working",
+                        "name": "Working",
+                        "value": true,
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACT<em>GACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG</em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG" 
+
+                    },
+                    { 
+                        "id": "broken",
+                        "name": "Broken",
+                        "value": false,
+                        "code": "ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTG<em>ACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGACTGA</em>CTGACTGACTGACTGACTGACTGACTG" 
+                    }
+                ]
+            }
+        ]
+	}
+
+}

@@ -188,8 +188,8 @@ function getChallengeType(state) {
       return "Breeding";
     } else if (state.challengeType && state.challengeType === "submit-parents") {
       return "Siblings";
-    } else {  // challengeType === "test-cross", nothing for this yet
-      return null;
+    } else if (state.challengeType && state.challengeType === "test-cross") {
+      return "TestCross";
     }
   }
   if (state.template === "FVEggGame" ||

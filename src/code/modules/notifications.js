@@ -69,6 +69,7 @@ export default function notifications(state = initialState, action) {
     case GUIDE_ALERT_RECEIVED:
     case actionTypes.MODAL_DIALOG_SHOWN:
     case actionTypes.MODAL_DIALOG_DISMISSED:
+    case actionTypes.VIEWED_EASTER_EGG:
     case LOCATION_CHANGE:
       return state;
     // For now, clear all messages every time the user does anything else

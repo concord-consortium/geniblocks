@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Phaser - ES6 - Webpack</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta http-equiv="cleartype" content="on">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:300,400" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/fonts/stylesheet.css">
+    
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #dummy-fonts span{
+            opacity:0;
+            display:block;
+            overflow: hidden;
+            position:absolute;
+            height:0;
+            width:0;
+        }
+
+        #yanoneregular-dummy{
+            font-family: 'yanone_kaffeesatzregular', sans-serif;
+        }
+        #yanonelight-dummy{
+            font-family: 'yanone_kaffeesatzlight', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dummy-fonts">
+        <span id="yanoneregular-dummy">Geniverse</span>
+        <span id="yanonelight-dummy">Geniverse</span>
+    </div>
+
+
+    <div id="protein-wrapper">
+        <div id="content">
+            <!-- canvas gets put in here -->
+        </div>
+
+        <div id="chromosome">
+            <!--Populated by backbone! Anything in here will be replaced!-->
+        </div>
+        <div id="nucleus">
+            <!--Populated by backbone! templates/nucleusTemplate.html -->
+        </div>
+        <div id="hud" class="hud">
+            <!--Populated by backbone! Anything in here will be replaced!-->
+        </div>
+    </div>
+    <script src="dist/vendor.bundle.js"></script>
+    <script src="dist/bundle.js"></script>
+
+</body>
+
+</html>

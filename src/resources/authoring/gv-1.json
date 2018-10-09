@@ -905,19 +905,25 @@
             "end" : {
               "failure" : [ {
                 "character" : "ELLIS",
-                "text" : "You got there, but you'll need to do better to earn a crystal!."
+                "text" : "You got there, but you'll need to do better to earn a crystal!"
               } ],
               "success" : [ {
                 "character" : "ELLIS",
-                "text" : "Now you’ve seen how a drake gets to be charcoal-gray! Great big pods of melanin give the scale cell its gray color."
+                "text" : "Get ready – you will need to work with those four protein moves to change the color of the scale cells. Different moves have different effects."
               } ]
             },
             "start" : [ {
-              "character" : "HERRERA",
-              "text" : "Welcome to the Zoom Room, Cadet! This room does exactly what it sounds like: our simulator can zoom into drake cells to see how the genetic instructions create proteins that change the drake."
+              "character" : "ELLIS",
+              "text" : "Welcome to the Zoom Room! We study drake skin cells here to find out how the different colors come to be."
             }, {
               "character" : "ELLIS",
-              "text" : "Cadet, we’ll start with a simple walkthrough of the equipment, and the basics of how drake scale color can be modified. Click the projection wall to begin."
+              "text" : "You will use our simulator to zoom into a drake's skin cells. There you will find the biological machines that make the color. They are called proteins."
+            }, {
+              "character" : "HERRERA",
+              "text" : "First we'll show you how to work with the proteins. Some of them look like gears, others like connectors. You'll see."
+            }, {
+              "character" : "ELLIS",
+              "text" : "You can learn 4 different ways to change how the proteins work. Click the projection screen to start zooming in."
             } ]
           },
           "id" : "cell-game-size-intro",
@@ -937,18 +943,18 @@
               } ],
               "success" : [ {
                 "character" : "ELLIS",
-                "text" : "Congratulations, Cadet!"
+                "text" : "Well done. Charcoal dragons that blend in with the dark sky could make or break the surprise attack on Darkwell. Now we know more about how to make that color."
               } ]
             },
             "start" : [ {
               "character" : "ELLIS",
-              "text" : "Let’s see if you can help out when one of the proteins that makes melanin stars is broken. Your goal is to turn a lava cell to charcoal-gray."
-            }, {
-              "character" : "HERRERA",
-              "text" : "I won’t lie to you, Cadet. Charcoal dragons that blend in with the dark sky could make or break the surprise attack on Darkwell."
+              "text" : "If you can sort this out, you will help us understand how different alleles produce orange and gray drakes. Starting with a lava orange drake, how can we make it charcoal gray?"
             }, {
               "character" : "ELLIS",
-              "text" : "Look carefully to find the broken protein. Then help it do its job right. Click the projection and work out how to create a charcoal scale color from lava."
+              "text" : "You will need to figure out how the protein machines work, and then make protein moves to change the outcome."
+            }, {
+              "character" : "HERRERA",
+              "text" : "After you zoom in, look on the right side of the screen to track your progress. Make sure you are going toward the right color."
             } ]
           },
           "id" : "cell-game-lava-charcoal-size",

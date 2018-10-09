@@ -1,0 +1,48 @@
+{
+    "steps":[
+        {
+            "alleles": "11111111",
+            "stars": 0,
+            "tyrs": 4,
+            "working": 1,
+            "action": "working_protein_assembled",
+            "count": 3,
+            "text": "Drag to connect",
+            "gameSpeed": 1,
+            "tyrosine": false
+        },
+        {
+            "alleles": "11111111",
+            "stars": 10,
+            "tyrs": 4,
+            "working": 2,
+            "action": "disc_destroyed",
+            "count": 3,
+            "text": "Tap several times to break",
+            "gameSpeed": 1,
+            "tyrosine": false,
+            "trp": false
+        },
+        {
+            "alleles": "11111111",
+            "tyrs": 4,
+            "working": 3,
+            "action": "protein_broken",
+            "count": 3,
+            "text": "Tap to break",
+            "gameSpeed": 0.5,
+            "tyrosine": false
+        },
+        {
+            "alleles": "11001111",
+            "tyrs": 1,
+            "working": 1,
+            "action": "tri_pushed_into_small_gear",
+            "count": 6,
+            "text": "Tap and hold to push",
+            "gameSpeed": 0.5,
+            "tyrosine": false,
+            "melanosomeScale": 1.4
+        }
+    ]
+}

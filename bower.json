@@ -15,6 +15,6 @@
     "react": "latest",
     "react-dnd": "~2.6.0",
     "react-dnd-html5-backend": "https://unpkg.com/react-dnd-html5-backend@2.1.2/dist/ReactDnDHTML5Backend.min.js",
-    "biologica.js": "~0.0.12"
+    "biologica.js": "~0.0.13"
   }
 }
