@@ -269,7 +269,7 @@ const containerStyle = { width: '100vw', height: '100vh' },
       // for Geniventure, content size is determined by the static size of the background image
       // minWidth/minHeight determine the limits below which we stop scaling and allow scrolling
       contentFn = function() { return { width: 1920, height: 1080,
-                                        minWidth: 1200, minHeight: 600 }; },
+                                        minWidth: 930, minHeight: 465 }; },
       FVScaledContainer = scaleToFit(dimensionsOptions, contentFn)(FVChallengeContainer),
       FVConnectedContainer = connect(mapStateToProps, mapDispatchToProps)(FVScaledContainer);
 

@@ -8,6 +8,7 @@ import GeneticsUtils from '../utilities/genetics-utils';
 import io from 'socket.io-client';
 import AuthoringUtils from '../utilities/authoring-utils';
 import { cloneDeep } from 'lodash';
+import uuid from 'uuid';
 
 var socket = null,
     session = "",
@@ -75,11 +76,18 @@ export function initializeITSSocket(guideServer, socketPath, store) {
   return socket;
 }
 
+let studentId;
+
 export default loggingMetadata => store => next => action => {
 
   let prevState = store.getState(),
       result = next(action),
       nextState = store.getState();
+
+  if (!loggingMetadata.studentId && !studentId) {
+    // sets an anonymous user for the ITS
+    studentId = "TEMP-TestUser-" + (uuid.v4().split("-")[0]);
+  }
 
   if (action.type === actionTypes.SESSION_STARTED) {
     session = action.session;
@@ -409,7 +417,7 @@ function createLogEntry(loggingMetadata, action, prevState, nextState){
   const message =
     {
       classInfo: loggingMetadata.classInfo,
-      studentId: loggingMetadata.studentId,
+      studentId: studentId,
       externalId: loggingMetadata.externalId,
       session: session,
       time: Date.now(),
