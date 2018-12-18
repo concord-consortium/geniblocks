@@ -3,7 +3,7 @@ var config     = require('../config').geniblocksCSS;
 var stylus     = require('gulp-stylus');
 var concat     = require('gulp-concat');
 
-gulp.task('geniblocks-css', function() {
+gulp.task('geniblocks-css', function(done) {
   gulp.src(config.src)
     .pipe(stylus({ compress: false}))
     .pipe(concat('geniblocks.css'))
@@ -15,4 +15,5 @@ gulp.task('geniblocks-css', function() {
     .pipe(stylus({ compress: true}))
     .pipe(concat('geniblocks.min.css'))
     .pipe(gulp.dest(config.dist));
+  done();
 });

@@ -19,7 +19,7 @@ var errorHandler = function (error) {
 
 // build stand-alone geniverse application, which pulls in
 // geniblocks components through `import`
-gulp.task('geniverse-js-dev', function() {
+gulp.task('geniverse-js-dev', function(done) {
   var b = browserify({
     debug: !production
   })
@@ -29,11 +29,12 @@ gulp.task('geniverse-js-dev', function() {
     .on('error', errorHandler)
     .pipe(source('geniverse.js'))
     .pipe(gulp.dest(gvConfig.public));
+  done();
 });
 
 // build separate, standalone geniblocks library, which can be used
 // by other projects
-gulp.task('geniblocks-js-dev', function(){
+gulp.task('geniblocks-js-dev', function(done){
   var b = browserify({
     debug: !production,
     standalone: 'GeniBlocks'
@@ -48,25 +49,36 @@ gulp.task('geniblocks-js-dev', function(){
     global: true  // apply to dependencies of dependencies as well
   });
   b.add(blocksConfig.src);
-  return b.bundle()
+  b.bundle()
     .on('error', errorHandler)
     .pipe(source('geniblocks.js'))
     .pipe(gulp.dest(blocksConfig.public))
     .pipe(gulp.dest(blocksConfig.dist));
+  done();
+    // .on('end', done);
 });
 
-gulp.task('geniblocks-js-min', function(){
+gulp.task('geniblocks-js-min', function(done){
   var b = browserify({
     debug: !production,
     standalone: 'GeniBlocks'
   })
-  .transform(babelify);
+  .transform(babelify)
+  // turn module requires (e.g. require('react')) into global references (e.g. window.React)
+  .transform(exposify, {
+    expose: {
+      'react': 'React',
+      'react-dom': 'ReactDOM'
+    },
+    global: true  // apply to dependencies of dependencies as well
+  });
   b.add(blocksConfig.src);
-  return b.bundle()
+  b.bundle()
     .on('error', errorHandler)
-    .pipe(source('geniblocks.min.js'))
-    .pipe(streamify(uglify()))
+    .pipe(source('geniblocks.js'))
+    .pipe(gulp.dest(blocksConfig.public))
     .pipe(gulp.dest(blocksConfig.dist));
+  done();
 });
 
-gulp.task('geni-js', ['geniverse-js-dev', 'geniblocks-js-dev', 'geniblocks-js-min']);
+gulp.task('geni-js', gulp.series('geniverse-js-dev', 'geniblocks-js-dev'));
