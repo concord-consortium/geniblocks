@@ -34,6 +34,7 @@ export default class extends Phaser.State {
     this.load.image('small_white_blur', 'assets/images/small_white_blur.png')
     this.load.image('medium_white_blur', 'assets/images/medium_white_blur.png')
     this.load.image('large_white_blur', 'assets/images/large_white_blur.png')
+    this.load.image('blobs', 'assets/images/blobs256.png')
 
     this.load.image('white_drake', 'assets/images/white_drake.png')
     this.load.image('red_drake', 'assets/images/red_drake.png')

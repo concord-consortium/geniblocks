@@ -21,15 +21,17 @@ class HudView extends View {
 			model: model
 		});
 		this.template = mainTemplate;
-		this.render();
-
         this.clickSfx = game.add.audio("click_hit");
+
+		this.render();
 
 		this.viewType = "protein";
 	}
+	
 	initialize(){
 		this.listenTo(this.model, "change", this.render);
 	}
+
 	render(){
 		var appTemplate = _.template(this.template);
 		var html = appTemplate({
@@ -106,7 +108,6 @@ class HudView extends View {
 		$("#stats").addClass("hidden");
 	}
 
-
 	setBlockInput(on) {
 		if(on) {
 			$("#input-blocker").removeClass("disabled");
@@ -115,14 +116,19 @@ class HudView extends View {
 			$("#input-blocker").addClass("disabled");
 		}
 	}
-	showNucleus(){
+
+	showNucleus(immediately){
 		var $nuc = $("#nucleus");
 
 		$nuc.removeClass("out");
+		$nuc.removeClass("notransition");
 
 		$nuc.addClass("notransition");
 		$nuc[0].offsetHeight; // trigger reflow, flush css changes
-		$nuc.removeClass("notransition");
+
+		if(immediately!==true){
+			$nuc.removeClass("notransition");
+		}
 
 		$nuc.addClass("in");
 		$nuc.addClass("viewing-chromosome");
@@ -134,6 +140,7 @@ class HudView extends View {
 		this.clickSfx.play();
 
 	}
+
 	setHighlight(target, on) {
 		var $el = $(target);
 

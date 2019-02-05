@@ -285,7 +285,6 @@ class Game extends Phaser.Game {
     game.paused = false;
     var currentState = game.state.states[game.state.current];
 
-
     // show size game until target color is achieved
     // then gates game until target shine level achieved
     if(game.state.current === 'GateActivity' && game.isBossLevel

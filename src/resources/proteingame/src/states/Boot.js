@@ -9,6 +9,7 @@ export default class extends Phaser.State {
   }
 
   preload () {
+    //game.time.advancedTiming = true;
     // WebFont.load({
     //   google: {
     //     families: ['Bangers']

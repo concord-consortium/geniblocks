@@ -3,7 +3,6 @@ import Phaser from 'phaser'
 import dat from 'dat-gui'
 import iframePhone from 'iframe-phone'
 import ExpandingCircles from '../sprites/common/ExpandingCircles'
-import BackgroundBlobs from '../sprites/common/BackgroundBlobs'
 import ColorIndicators from '../sprites/common/ColorIndicators'
 import GateMelanosome from '../sprites/gate_activity/GateMelanosome'
 import Gate from '../sprites/gate_activity/Gate'
@@ -106,9 +105,10 @@ export default class extends Phaser.State {
 
 
 
-        this.backgroundBmd = game.add.bitmapData(2048, 2048);
+        this.backgroundBmd = game.add.bitmapData(1024, 1024);
         this.cellBackgroundSprite = game.add.image(config.SAFE_ZONE_WIDTH/2,config.SAFE_ZONE_HEIGHT/2, this.backgroundBmd);
         this.cellBackgroundSprite.anchor.set(.5);
+        this.cellBackgroundSprite.x -= 512;
         this.cellBackgroundSprite.alpha = .8;
 
         this.cellGroup.add(this.cellBackgroundSprite);
@@ -116,12 +116,13 @@ export default class extends Phaser.State {
         //adjusts circular gradient to match cell wall curve
         var cellCurveScale = 1.2;
 
-        this.cellBmd = game.add.bitmapData(1024, 2048/cellCurveScale);
+        this.cellBmd = game.add.bitmapData(512, 512)///cellCurveScale);
         this.cellSprite = game.add.image(config.SAFE_ZONE_WIDTH/2, config.SAFE_ZONE_HEIGHT/2, this.cellBmd);
         this.cellSprite.anchor.set(1, .5);
-        this.cellSprite.scale.set(1.2, 1.2* cellCurveScale);
+        this.cellSprite.scale.set(2/1.8, 2);///cellCurveScale);
+        this.cellSprite.x -= 300;
 
-        this.cellWallBmd = game.add.bitmapData(1024, 2048);
+        this.cellWallBmd = game.add.bitmapData(1024, 1024);
         this.cellWallSprite = game.add.image(config.SAFE_ZONE_WIDTH/2, config.SAFE_ZONE_HEIGHT/2, this.cellWallBmd);
         this.cellWallSprite.anchor.set(1, .5);
 
@@ -130,7 +131,7 @@ export default class extends Phaser.State {
 
         var topCellOffset = 41;
         cellCurveScale = 1.85;
-        this.topCellBmd = game.add.bitmapData(1024, 2048/cellCurveScale);
+        this.topCellBmd = game.add.bitmapData(1024, 1024/cellCurveScale);
         this.topCellSprite = game.add.sprite(config.SAFE_ZONE_WIDTH/2-topCellOffset, config.SAFE_ZONE_HEIGHT/2, this.topCellBmd);
         this.topCellSprite.anchor.set(0, .5);
         this.topCellSprite.scale.set(1, cellCurveScale);
@@ -139,7 +140,7 @@ export default class extends Phaser.State {
         this.cellGroup.add(this.topCellSprite);
 
 
-        this.topCellWallBmd = game.add.bitmapData(2048, 2048);
+        this.topCellWallBmd = game.add.bitmapData(1024, 1024);
         this.topCellWallSprite = game.add.sprite(config.SAFE_ZONE_WIDTH/2, config.SAFE_ZONE_HEIGHT/2, this.topCellWallBmd);
         this.topCellWallSprite.anchor.set(.5);
         this.topCellWallSprite.alpha = 1;
@@ -194,26 +195,18 @@ export default class extends Phaser.State {
         game.stage.backgroundColor = '#001A38';
 
 
-
         
-        var blobs = new BackgroundBlobs({
-          game: game,
-          x: 0,
-          y: 0, 
-          blobTint: 0x000000,
-          blobAlpha: .5,
-          blobBlend: 0,
-          targetGroup: this.backgroundBlobsGroup
-        })
-
+        var blobs = game.add.image(config.SAFE_ZONE_WIDTH/2, config.SAFE_ZONE_HEIGHT/2, "blobs");
+        blobs.scale.set(4, 5);
+        blobs.anchor.set(.5);
+        blobs.alpha = 0.7;
+        this.backgroundBlobsGroup.add(blobs);
 
 
 
         this.updateColors();
 
         this.drawCells();
-
-
 
 
 
@@ -283,38 +276,15 @@ export default class extends Phaser.State {
 
 
 
-
-        // var fragmentSrc = [
-        //     "precision mediump float;",
-        //     // Incoming texture coordinates. 
-        //     'varying vec2 vTextureCoord;',
-        //     // Incoming vertex color
-        //     'varying vec4 vColor;',
-        //     // Sampler for a) sprite image or b) rendertarget in case of game.world.filter
-        //     'uniform sampler2D uSampler;',
-
-        //     "uniform vec2      resolution;",
-        //     "uniform float     time;",
-        //     "uniform vec2      mouse;",
-
-        //     "void main( void ) {",
-        //     // colorRGBA = (y % 2) * texel(u,v);
-        //     "gl_FragColor = mod(gl_FragCoord.x,2.0) * texture2D(uSampler, vTextureCoord);",
-        //     "}"
-        // ];
-
-        // var scanlineFilter = new Phaser.Filter(game, null, fragmentSrc);
-        // game.world.filters = [scanlineFilter];
-
-
-
         game.hudView.loadTutorial(this, "protein");
 
 
         if(game.isNucleus){
             game.input.enabled = false;
             if(game.isPostNucleus){
-              this.handleReturnFromNucleus();
+                this.handleReturnFromNucleus();
+            }else{
+                game.hudView.showNucleus(true);
             }
         }
 
@@ -401,7 +371,7 @@ export default class extends Phaser.State {
 
             if(shouldDraw){
                 var px = this.game.math.bezierInterpolation(this.path_points.x, i) + 2048 * this.bCellPos;//config.SAFE_ZONE_WIDTH/2;
-                var py = this.game.math.bezierInterpolation(this.path_points.y, i);
+                var py = this.game.math.bezierInterpolation(this.path_points.y, i) - 512;
                 
                 this.cellWallBmd.circle(px, py, totalThickness, lineColorString);                
             }
@@ -437,7 +407,7 @@ export default class extends Phaser.State {
             this.cellGroup.add(tunnelSprite);
 
             for(var x = 0; x < px; x+=2){
-                this.backgroundBmd.circle(x+125, py - (Math.sin(x*.05)*3)+y_offset, 5, "#669999");
+                this.backgroundBmd.circle(x+125, py - (Math.sin(x*.05)*3)+y_offset - 512, 5, "#669999");
             }
 
         }
@@ -452,9 +422,9 @@ export default class extends Phaser.State {
         var that = this;
         for(var i = 0; i<this.gaps.length; i++){
             var x_offset = 2048 * this.tCellPos - 230;
-            var y_offset = (2048-config.SAFE_ZONE_HEIGHT)/2;
+            var y_offset = (1024-config.SAFE_ZONE_HEIGHT)/2;
             var px = this.game.math.bezierInterpolation(this.path_points.x, this.gaps[i]) + x_offset;
-            var py = this.game.math.bezierInterpolation(this.path_points.y, this.gaps[i]) - y_offset;
+            var py = this.game.math.bezierInterpolation(this.path_points.y, this.gaps[i]) - y_offset - 512;
               
             var gate = new Gate({
                 game: game, 
@@ -554,8 +524,8 @@ export default class extends Phaser.State {
             }
 
             if(shouldDraw){
-                var px = this.game.math.bezierInterpolation(this.path_points.x, i) + 2048 * this.tCellPos;
-                var py = this.game.math.bezierInterpolation(this.path_points.y, i);
+                var px = this.game.math.bezierInterpolation(this.path_points.x, i) + 1024 * this.tCellPos - totalThickness*2;
+                var py = this.game.math.bezierInterpolation(this.path_points.y, i) - 512;
 
                 // white for now, tint as cell changes
                 var colorString = "rgba(255,255,255," + alpha + ")";
@@ -713,6 +683,7 @@ export default class extends Phaser.State {
 
     }
     render () {
+        //game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
     }
 
 

@@ -565,6 +565,11 @@ export default class extends Phaser.State {
     this.timer.start();
 
     this.resize();
+
+
+    if(game.isNucleus){
+      game.hudView.showNucleus(true);
+  }
   }
 
 

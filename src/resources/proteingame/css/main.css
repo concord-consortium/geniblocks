@@ -113,7 +113,6 @@
     transition-timing-function: cubic-bezier(0,0,0.05,1);
 }
 
-
 #nucleus .close,
 #nucleus .back,
 #nucleus .compile{
@@ -121,7 +120,7 @@
 	padding: 0.5em 1em;
 	color: #FCFC32;
 	border: solid 2px #FCFC32;
-	border-radius: 2px;
+	border-radius: 8px;
 	font-size: 18px;
 	font-weight: bold;
 	cursor: pointer;

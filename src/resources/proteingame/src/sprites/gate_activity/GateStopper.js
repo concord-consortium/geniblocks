@@ -150,8 +150,8 @@ export default class extends Phaser.Group {
 
 
             var distFromVerticalCenter = ((game.height/2) - this.hitArea.body.y);
-            var minVert = -500 * this.parent.scale.y;
-            var maxVert = 500 * this.parent.scale.y;
+            var minVert = -400 * this.parent.scale.y;
+            var maxVert = 460 * this.parent.scale.y;
 
             var distFromHorizontalCenter = (game.width/2) - this.hitArea.body.x;
             // account for approx curve of cell wall

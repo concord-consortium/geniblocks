@@ -92,7 +92,6 @@ export default class extends Phaser.State {
     this.generateTextures();
 
 
-    this.waybackGroup = game.add.group();
     this.backgroundBlobsGroup = game.add.group();
     this.backgroundGroup = game.add.group();
     this.sizeMelanosomeGroup = game.add.group();
@@ -122,10 +121,6 @@ export default class extends Phaser.State {
 
     game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
     game.stage.backgroundColor = '#223041';
-
-    this.backgroundSprite = game.add.sprite(0,0, "square");
-    this.backgroundSprite.tint = this.bgStartColor;
-    this.waybackGroup.add(this.backgroundSprite);
 
 
 
@@ -358,7 +353,9 @@ export default class extends Phaser.State {
     if(game.isNucleus){
       game.input.enabled = false;
       if(game.isPostNucleus){
-        this.handleReturnFromNucleus();
+          this.handleReturnFromNucleus();
+      }else{
+          game.hudView.showNucleus(true);
       }
     }
   }
@@ -366,8 +363,7 @@ export default class extends Phaser.State {
   update(){
 
     // update background color based on melanosome color
-    this.backgroundSprite.tint = Phaser.Color.interpolateColor(this.bgStartColor, this.sizeMelanosome.tint, 100, 60, .2);
-
+    game.stage.backgroundColor = Phaser.Color.interpolateColor(this.bgStartColor, this.sizeMelanosome.tint, 100, 60, .2);
     
     // multiple stars can be created destroyed on the same update, so check above/below target as well 
     if(!game.ftueData && (this.target_num_stars < this.numPreexistingStars && this.sizeMelanosome.numStars <= this.target_num_stars ||
@@ -478,7 +474,8 @@ export default class extends Phaser.State {
       },
       onPlayerBreak: function(){
         that.handleTyrPlayerBreak();
-      }
+      },
+      breakable: !(game.ftueData && game.ftueData.action === "tri_pushed_into_small_gear")
     });
 
     // this.sizeMelanosome.tyrs.push(newTyr);
@@ -1168,19 +1165,14 @@ export default class extends Phaser.State {
 
 
   render () {
-    // if (__DEV__) {
-    //   this.game.debug.spriteInfo(this.mushroom, 32, 32)
-    // }
+    //game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
   }
   resize(){
 
     var lGameScale=Math.round(10000 * Math.min(this.game.width/config.SAFE_ZONE_WIDTH,this.game.height / config.SAFE_ZONE_HEIGHT)) / 10000;
     this.world.scale.setTo (lGameScale,lGameScale);
     
-    this.backgroundSprite.width = game.width;
-    this.backgroundSprite.height = game.height;
 
-    // this.backgroundGroup.scale.setTo (lGameScale,lGameScale);
     this.sizeMelanosomeGroup.scale.setTo (lGameScale,lGameScale);
     this.tyrGroup.scale.setTo (lGameScale,lGameScale);
     this.tyrosineGroup.scale.setTo (lGameScale,lGameScale);

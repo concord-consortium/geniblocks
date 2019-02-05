@@ -5,7 +5,7 @@ import Tyrosine from './Tyrosine';
 
 export default class extends Phaser.Group {
 
-  constructor ({ game, x, y, asset, axleFlowerBmd, melanosome, shouldBeActive, allele, chromosome_id, anchorPosition, onSeparate, onPlayerBreak }) {
+  constructor ({ game, x, y, asset, axleFlowerBmd, melanosome, shouldBeActive, allele, chromosome_id, anchorPosition, onSeparate, onPlayerBreak, breakable=false }) {
     super(game)
 	this.game = game;
 	// this.tint = 0xffffff;
@@ -44,6 +44,7 @@ export default class extends Phaser.Group {
 
     this.onSeparate = onSeparate;
     this.onPlayerBreak = onPlayerBreak;
+    this.breakable = breakable;
 
     this.onStarCreation = new Phaser.Signal();
 
@@ -670,7 +671,9 @@ export default class extends Phaser.Group {
   }
 
   handleClick(){
-
+    if(!this.breakable) {
+        return;
+    }
     if(this.connecting_trp){
         this.onPlayerBreak.call();
         this.connecting_trp.fallOffTyr();

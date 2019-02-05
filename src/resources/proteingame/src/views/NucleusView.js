@@ -106,11 +106,9 @@ class NucleusView extends View {
 		$("#nucleus").addClass("out");
 		$("#nucleus").removeClass("in");
 
-
 		game.useBossMove();
 		game.hudView.viewType = "protein";
 		game.handleReturnFromNucleus();
-
 
 		if(game.nucleusOnly){
 	        game.phone.post("activityExit", {

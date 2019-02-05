@@ -44,6 +44,9 @@ export default class ZoomChallenge extends Component {
       }
       this.props.onWinZoomChallenge(stats);
     });
+    phone.addListener('challengeFail', () => {
+      this.props.onWinZoomChallenge({score: 5});
+    });
     phone.addListener('activityLoaded', (activityData) => {
       if (activityData && activityData.hasTutorial) {
         this.setState({ hasTutorial: activityData.hasTutorial });
