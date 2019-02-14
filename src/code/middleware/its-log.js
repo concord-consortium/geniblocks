@@ -84,7 +84,9 @@ export default loggingMetadata => store => next => action => {
       result = next(action),
       nextState = store.getState();
 
-  if (!loggingMetadata.studentId && !studentId) {
+  if (loggingMetadata.studentId){
+    studentId = loggingMetadata.studentId;
+  } else if (!loggingMetadata.studentId && !studentId) {
     // sets an anonymous user for the ITS
     studentId = "TEMP-TestUser-" + (uuid.v4().split("-")[0]);
   }
