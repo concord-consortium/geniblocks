@@ -122,6 +122,21 @@ export default function reducer(state, action) {
         });
       }
       return state;
+    case actionTypes.SESSION_EXPIRED:
+      state = state.merge({
+        notifications: {
+          closeButton: true,
+          onCloseButton: window.location.reload,
+          messages: [
+            {
+              text: [
+                "Session Expired! Sorry, your browser has lost connection, please close your browser and log in again"
+              ]
+            }
+          ]
+        }
+      });
+      return state;
     default:
       return state;
   }

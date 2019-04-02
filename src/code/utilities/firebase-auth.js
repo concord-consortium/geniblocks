@@ -26,7 +26,8 @@ export const initFirebase = new Promise(function (resolve, reject) {
 
   if (window.firebase !== undefined) {
     firebase.initializeApp(config);
-
+    const timeNow = new Date().getTime();
+    window.sessionStorage.setItem('lastUpdate', timeNow);
   // communicate with portal for JWT
   // if there is no domain parameter, there is no authentication
   if (!urlParams.domain) {

@@ -63,6 +63,36 @@ export function startSession(uuid) {
   };
 }
 
+export function expireSession() {
+  return {
+    type: actionTypes.SESSION_EXPIRED
+  };
+}
+
+export function checkSession() {
+  const timeNow = new Date().getTime();
+  const timeThen = window.sessionStorage.getItem('lastUpdate');
+  const timeDeltaSeconds = (timeNow - timeThen) / 1000;
+  const portalUser = window.sessionStorage.getItem('portalAuth') === "true";
+  if (!timeThen && portalUser) {
+    // this is set when the app is launched, so if it's missing then the session is gone?
+    console.log(">>>>>>>> no session! bounce...");
+    return false;
+  }
+  else {
+    if (portalUser && timeDeltaSeconds > 10) {
+      console.log(">>>>>>>> Portal user session expired! bounce...");
+      // Portal user session has expired
+      return false;
+    } else {
+      console.log(`>>>>>>>>>>> updating session ${timeDeltaSeconds} seconds old: `);
+      // Update session time
+      window.sessionStorage.setItem('lastUpdate', timeNow);
+      return true;
+    }
+  }
+}
+
 export function changeAuthoring(authoring) {
   return {
     type: actionTypes.AUTHORING_CHANGED,

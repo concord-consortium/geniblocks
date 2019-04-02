@@ -15,6 +15,7 @@
  */
 
 import actionTypes from '../action-types';
+import { checkSession, expireSession } from '../actions';
 import progressUtils from '../utilities/progress-utils';
 import { getFBClassId, getFBUserId } from "../utilities/firebase-auth";
 import { currentStateVersion } from '../migrations';
@@ -23,8 +24,11 @@ export const authoringVersionNumber = 1;
 let userQueryString = getUserQueryString();
 
 export default () => store => next => action => {
+  if (!checkSession()) {
+    return next(expireSession());
+  }
   let prevState = store.getState(),
-      result = next(action),
+    result = next(action),
     nextState = store.getState();
   // try to update user state path if it's missing
   if (!userQueryString) userQueryString = getUserQueryString();
@@ -32,12 +36,12 @@ export default () => store => next => action => {
   // and update savable state (gems) if they have changed
   if (userQueryString) {
     let time = firebase.database.ServerValue.TIMESTAMP,
-        currentChallenge = getCurrentChallenge(nextState),
-        stateMeta = {
-          lastActionTime: time,
-          currentChallenge
-        },
-        userDataUpdate = {stateMeta: stateMeta};
+      currentChallenge = getCurrentChallenge(nextState),
+      stateMeta = {
+        lastActionTime: time,
+        currentChallenge
+      },
+      userDataUpdate = { stateMeta: stateMeta };
 
     // Store updated gems if they have changed
     if (action.type !== actionTypes.LOAD_SAVED_STATE &&
@@ -87,7 +91,6 @@ export default () => store => next => action => {
       }
     });
   }
-
   return result;
 };
 
