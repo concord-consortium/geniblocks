@@ -807,6 +807,7 @@ export default class FVEggGame extends Component {
     _this = this;
     challengeDidChange = true;
     chromosomeDisplayStyle = {display: "none"},
+    hatchSoundPlayed = false;
     resetAnimationEvents({ showStaticGametes: false,
                           showHatchAnimation: this.props.showUserDrake,
                           clearAnimatedComponents: true,
@@ -880,7 +881,7 @@ export default class FVEggGame extends Component {
     // after the egg has hatched, reset gametes if the user selects another gamete
     if (hatchSoundPlayed) {
       resetAnimationEvents({ showStaticGametes: true, showHatchAnimation: false });
-      this.props.onResetGametes(true);
+      this.props.onResetGametes();
     }
 
     //if (!this.state.isIntroComplete) {
