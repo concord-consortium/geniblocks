@@ -80,6 +80,21 @@
       width: 1260px;
       margin: 0 -8px;
 
+    &.system-message
+      background-image: none
+      background-color: #DDD;
+      border-radius: 40px;
+      border: 6px solid #3bd018;
+      box-shadow: white 0 0 70px;
+      padding: 0;
+      height: 160px;
+      width: 1260px;
+      margin: 0 -8px;
+      &.offline
+        border: 6px solid #d0c03b;
+      &.disconnected
+        border: 6px solid #d03b18;
+
       .message-text
         color: #4b4b4b;
         font-family: sans-serif
@@ -119,6 +134,9 @@
       background-image: url('../resources/fablevision/huds/characters/Yeung_active.png')
     &.NETANYA
       background-image: url('../resources/fablevision/huds/characters/Takurua_active.png')
+
+    &.SYSTEM
+      background-image: none;
 
   .hint-arrow::before
     content: url('../resources/images/hint-arrow.svg')

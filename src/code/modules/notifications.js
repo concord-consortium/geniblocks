@@ -55,7 +55,8 @@ export default function notifications(state = initialState, action) {
         messages: allMessages,
         closeButton: action.closeButton,
         arrowAsCloseButton: action.arrowAsCloseButton,
-        isRaised: action.isRaised
+        isRaised: action.isRaised.ADVANCE_NOTIFICATIONS,
+        systemMessage: action.systemMessage
       };
     }
     case ADVANCE_NOTIFICATIONS:

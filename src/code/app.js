@@ -40,8 +40,7 @@ initFirebase.then(function (auth) {
   postAuthInitialization(auth);
 }, function(err){
     console.log(err);
-    // TODO: SET TO FALSE WHEN FINISHED TESTING
-    window.sessionStorage.setItem('portalAuth', true);
+    window.sessionStorage.setItem('portalAuth', false);
     postAuthInitialization(userAuth());
 });
 

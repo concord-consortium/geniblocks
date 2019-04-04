@@ -1,5 +1,5 @@
 /* global firebase */
-import urlParams, {updateUrlParameter} from "./url-params";
+import urlParams, { updateUrlParameter } from "./url-params";
 import jwt from 'jsonwebtoken';
 
 export const initFirebase = new Promise(function (resolve, reject) {
@@ -128,15 +128,20 @@ function _userAuth(token){
   }
   return _cachedAuth;
 }
-// var connectedRef = firebase.database().ref(".info/connected");
-//   connectedRef.on("value", function(snap) {
-//     if (snap.val() === true) {
-//       console.log("Firebase connected");
-//     } else {
-//       console.log("Firebase not connected");
-//     }
-//   });
+const connectedRef = firebase.database().ref(".info/connected");
+  connectedRef.on("value", function(snap) {
+    if (snap.val() === true) {
+      console.log("Firebase connected");
+      window.fbConnected = true;
+    } else {
+      console.log("Firebase not connected");
+      window.fbConnected = false;
+    }
+  });
 
+export const fbConnected = () => {
+  return window.fbConnected;
+};
 
 export function getFBClassId() {
   if (!_cachedAuth) {

@@ -9,7 +9,8 @@ function mapStateToProps (state) {
     closeButton: state.notifications.closeButton,
     arrowAsCloseButton: state.notifications.arrowAsCloseButton,
     isRaised: state.notifications.isRaised,
-    defaultCharacter: state.location.defaultCharacter
+    defaultCharacter: state.location.defaultCharacter,
+    systemMessage: state.notifications.systemMessage
   };
 }
 

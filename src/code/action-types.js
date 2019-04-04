@@ -33,7 +33,7 @@ const actionTypes = {
   ENTERED_CHALLENGE_FROM_ROOM: "Entered challenge from room",
   LOAD_SAVED_STATE: "Loaded saved state",
   VIEWED_EASTER_EGG: "Viewed easter egg",
-  SESSION_EXPIRED: "Portal user session expired"
+  CONNECTION_STATE_CHANGED: "Connection state changed"
 };
 
 export default actionTypes;

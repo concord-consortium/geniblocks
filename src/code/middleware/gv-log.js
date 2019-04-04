@@ -42,7 +42,8 @@ let listeningToITSData = false;
 const actionsToExclude = [
   actionTypes.SOCKET_CONNECTED,
   actionTypes.SOCKET_ERRORED,
-  actionTypes.SOCKET_RECEIVED
+  actionTypes.SOCKET_RECEIVED,
+  actionTypes.CONNECTION_STATE_CHANGED
 ];
 
 var session = "";

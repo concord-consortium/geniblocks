@@ -13,6 +13,12 @@ import migrate from './migrations';
 
 export { actionTypes };
 
+export const CONNECTION_STATUS = {
+  online: "online",
+  offline: "offline",
+  disconnected: "disconnected"
+};
+
 function _startSession(uuid, itsDBEndpoint) {
   return {
     type: actionTypes.SESSION_STARTED,
@@ -63,34 +69,79 @@ export function startSession(uuid) {
   };
 }
 
-export function expireSession() {
-  return {
-    type: actionTypes.SESSION_EXPIRED
-  };
-}
-
-export function checkSession() {
+export function checkSession(fbConnected) {
   const timeNow = new Date().getTime();
   const timeThen = window.sessionStorage.getItem('lastUpdate');
   const timeDeltaSeconds = (timeNow - timeThen) / 1000;
+  // two hours
+  const sessionExpired = timeDeltaSeconds > 60 * 60 * 2;
+
   const portalUser = window.sessionStorage.getItem('portalAuth') === "true";
-  if (!timeThen && portalUser) {
-    // this is set when the app is launched, so if it's missing then the session is gone?
-    console.log(">>>>>>>> no session! bounce...");
-    return false;
-  }
-  else {
-    if (portalUser && timeDeltaSeconds > 10) {
-      console.log(">>>>>>>> Portal user session expired! bounce...");
-      // Portal user session has expired
-      return false;
+  if (portalUser) {
+    // if we never set a session timestamp
+    if (!timeThen) return CONNECTION_STATUS.disconnected;
+    // if we're truly not connected for read/write to firebase
+    if (!fbConnected) return CONNECTION_STATUS.disconnected;
+    // if we are connected to firebase but session has expired
+    if (fbConnected && sessionExpired) {
+      return CONNECTION_STATUS.disconnected;
     } else {
-      console.log(`>>>>>>>>>>> updating session ${timeDeltaSeconds} seconds old: `);
       // Update session time
       window.sessionStorage.setItem('lastUpdate', timeNow);
-      return true;
+      return CONNECTION_STATUS.online;
+    }
+  } else {
+    // we're not a portal user
+    if (fbConnected) {
+      // We can read from firebase, but we're not storing progress crystals
+      return CONNECTION_STATUS.offline;
+    } else {
+      return CONNECTION_STATUS.disconnected;
     }
   }
+}
+
+export function setConnectionState(connectionState, notify = false) {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.CONNECTION_STATE_CHANGED,
+      connectionState
+    });
+    if (notify) {
+      dispatch(notifyConnectionState(connectionState));
+    }
+
+  };
+}
+
+export function notifyConnectionState(currentState) {
+  return (dispatch) => {
+    switch (currentState) {
+      case CONNECTION_STATUS.online:
+        dispatch(showSystemMessage({
+          message: {
+            text: "~CONNECTION.CONNECTED",
+          }
+        }));
+        break;
+      case CONNECTION_STATUS.offline:
+        dispatch(showSystemMessage({
+          message: {
+            text: "~CONNECTION.OFFLINE",
+          },
+          systemMessage: CONNECTION_STATUS.offline
+        }));
+        break;
+      case CONNECTION_STATUS.disconnected:
+        dispatch(showSystemMessage({
+          message: {
+            text: "~CONNECTION.DISCONNECTED",
+          },
+          systemMessage: CONNECTION_STATUS.disconnected
+        }));
+        break;
+    }
+  };
 }
 
 export function changeAuthoring(authoring) {
@@ -649,6 +700,18 @@ export function showNotifications({messages, closeButton, arrowAsCloseButton=fal
     closeButton,
     isRaised,
     isInterrupt
+  };
+}
+
+export function showSystemMessage({ message, closeButton = true, arrowAsCloseButton = false, isRaised = true, isInterrupt = true, systemMessage = "green" }) {
+  return {
+    type: actionTypes.NOTIFICATIONS_SHOWN,
+    messages: [message],
+    arrowAsCloseButton,
+    closeButton,
+    isRaised,
+    isInterrupt,
+    systemMessage
   };
 }
 

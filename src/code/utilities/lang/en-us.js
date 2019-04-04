@@ -88,5 +88,11 @@ export default {
   "~VENTURE.AWARD_FIRST": "Blue Crystal",
   "~VENTURE.AWARD_SECOND": "Yellow Crystal",
   "~VENTURE.AWARD_THIRD": "Red Crystal",
-  "~VENTURE.AWARD_NONE": "No Crystal"
+  "~VENTURE.AWARD_NONE": "No Crystal",
+
+  // Connection state
+  "~CONNECTION.CONNECTED": "You are connected! Your progress is being saved!",
+  "~CONNECTION.OFFLINE": "Your crystals are not being saved.",
+  "~CONNECTION.DISCONNECTED": "You have lost your connection! Your crystals are not being saved. Mission control asks you to close this window and launch Geniventure again."
+
 };

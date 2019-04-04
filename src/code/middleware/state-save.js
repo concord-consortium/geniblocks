@@ -15,18 +15,23 @@
  */
 
 import actionTypes from '../action-types';
-import { checkSession, expireSession } from '../actions';
+import { checkSession, setConnectionState, CONNECTION_STATUS } from '../actions';
 import progressUtils from '../utilities/progress-utils';
-import { getFBClassId, getFBUserId } from "../utilities/firebase-auth";
+import { getFBClassId, getFBUserId, fbConnected } from "../utilities/firebase-auth";
 import { currentStateVersion } from '../migrations';
 
 export const authoringVersionNumber = 1;
 let userQueryString = getUserQueryString();
 
 export default () => store => next => action => {
-  if (!checkSession()) {
-    return next(expireSession());
-  }
+  if (action.type === actionTypes.CONNECTION_STATE_CHANGED) return next(action);
+
+  const initialConnectionState = store.getState().connectionState;
+  let currentConnectionState = initialConnectionState;
+
+  // Check Firebase, session timeout, portal user
+  currentConnectionState = checkSession(fbConnected());
+
   let prevState = store.getState(),
     result = next(action),
     nextState = store.getState();
@@ -85,11 +90,17 @@ export default () => store => next => action => {
     firebase.database().ref(userQueryString).update(userDataUpdate, (error, userDataUpdate) => {
       if (error) {
         console.error("Error updating user state!", userDataUpdate, error);
-        return error;
+        currentConnectionState = CONNECTION_STATUS.disconnected;
+        // return error;
       } else {
         return;
       }
     });
+  }
+
+  if (currentConnectionState !== initialConnectionState) {
+    console.log(`Connection status changed from ${initialConnectionState} to ${currentConnectionState}`);
+    return store.dispatch(setConnectionState(currentConnectionState, currentConnectionState === CONNECTION_STATUS.disconnected));
   }
   return result;
 };

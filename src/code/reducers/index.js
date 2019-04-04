@@ -34,7 +34,8 @@ function initialState() {
             challengeErrors: 0,
             gems: [],
             authoring: window.GV2Authoring,
-            endMissionUrl: urlParams.start
+            endMissionUrl: urlParams.start,
+            connectionState: "online"
           });
 }
 
@@ -122,21 +123,10 @@ export default function reducer(state, action) {
         });
       }
       return state;
-    case actionTypes.SESSION_EXPIRED:
-      state = state.merge({
-        notifications: {
-          closeButton: true,
-          onCloseButton: window.location.reload,
-          messages: [
-            {
-              text: [
-                "Session Expired! Sorry, your browser has lost connection, please close your browser and log in again"
-              ]
-            }
-          ]
-        }
+    case actionTypes.CONNECTION_STATE_CHANGED:
+      return state.merge({
+        connectionState: action.connectionState
       });
-      return state;
     default:
       return state;
   }
