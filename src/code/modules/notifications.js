@@ -51,13 +51,14 @@ export default function notifications(state = initialState, action) {
       const allMessages = action.isInterrupt ?
         translatedMessages :
         state.messages.concat(translatedMessages);
-      return {
+      const notificationResponse = {
         messages: allMessages,
         closeButton: action.closeButton,
         arrowAsCloseButton: action.arrowAsCloseButton,
-        isRaised: action.isRaised.ADVANCE_NOTIFICATIONS,
-        systemMessage: action.systemMessage
+        isRaised: action.isRaised
       };
+      if (action.systemMessage) notificationResponse.systemMessage = action.systemMessage;
+      return notificationResponse;
     }
     case ADVANCE_NOTIFICATIONS:
       return Object.assign({}, state, { messages: state.messages.length > 1 ? state.messages.slice(1, state.length) : initialState });

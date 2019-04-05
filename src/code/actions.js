@@ -692,8 +692,8 @@ export function showNotification({message, closeButton, arrowAsCloseButton, isRa
   });
 }
 
-export function showNotifications({messages, closeButton, arrowAsCloseButton=false, isRaised=false, isInterrupt=false}) {
-  return {
+export function showNotifications({ messages, closeButton, arrowAsCloseButton = false, isRaised = false, isInterrupt = false, systemMessage }) {
+  const notification = {
     type: actionTypes.NOTIFICATIONS_SHOWN,
     messages,
     arrowAsCloseButton,
@@ -701,18 +701,18 @@ export function showNotifications({messages, closeButton, arrowAsCloseButton=fal
     isRaised,
     isInterrupt
   };
+  if (systemMessage) notification.systemMessage = systemMessage;
+  return notification;
 }
 
-export function showSystemMessage({ message, closeButton = true, arrowAsCloseButton = false, isRaised = true, isInterrupt = true, systemMessage = "green" }) {
-  return {
-    type: actionTypes.NOTIFICATIONS_SHOWN,
+export function showSystemMessage({ message, systemMessage = "green" }) {
+  return showNotifications({
     messages: [message],
-    arrowAsCloseButton,
-    closeButton,
-    isRaised,
-    isInterrupt,
+    closeButton: true,
+    isRaised: true,
+    isInterrupt: true,
     systemMessage
-  };
+  });
 }
 
 export function dismissModalDialog() {

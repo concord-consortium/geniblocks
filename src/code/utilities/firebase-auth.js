@@ -128,16 +128,22 @@ function _userAuth(token){
   }
   return _cachedAuth;
 }
-const connectedRef = firebase.database().ref(".info/connected");
-  connectedRef.on("value", function(snap) {
-    if (snap.val() === true) {
-      console.log("Firebase connected");
-      window.fbConnected = true;
-    } else {
-      console.log("Firebase not connected");
-      window.fbConnected = false;
-    }
-  });
+const connectionMonitor = () => {
+  if (window.firebase) {
+    const connectedRef = firebase.database().ref(".info/connected");
+    connectedRef.on("value", function (snap) {
+      if (snap.val() === true) {
+        console.log("Firebase connected");
+        window.fbConnected = true;
+      } else {
+        console.log("Firebase not connected");
+        window.fbConnected = false;
+      }
+    });
+    return connectedRef;
+  } else return;
+};
+connectionMonitor();
 
 export const fbConnected = () => {
   return window.fbConnected;
