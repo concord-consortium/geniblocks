@@ -91,7 +91,6 @@ export default () => store => next => action => {
       if (error) {
         console.error("Error updating user state!", userDataUpdate, error);
         currentConnectionState = CONNECTION_STATUS.disconnected;
-        // return error;
       } else {
         return;
       }
