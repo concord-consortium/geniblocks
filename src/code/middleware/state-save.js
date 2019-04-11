@@ -92,7 +92,8 @@ export default () => store => next => action => {
         console.error("Error updating user state!", userDataUpdate, error);
         currentConnectionState = CONNECTION_STATUS.disconnected;
       } else {
-        return;
+        // we saved successfully - we're online
+        currentConnectionState = CONNECTION_STATUS.online;
       }
     });
   }

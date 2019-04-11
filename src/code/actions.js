@@ -73,8 +73,8 @@ export function checkSession(fbConnected) {
   const timeNow = new Date().getTime();
   const timeThen = window.sessionStorage.getItem('lastUpdate');
   const timeDeltaSeconds = (timeNow - timeThen) / 1000;
-  // two hours
-  const sessionExpired = timeDeltaSeconds > 60 * 60 * 2;
+  // 24 hours
+  const sessionExpired = timeDeltaSeconds > 60 * 60 * 24;
 
   const portalUser = window.sessionStorage.getItem('portalAuth') === "true";
   if (portalUser) {
@@ -82,8 +82,12 @@ export function checkSession(fbConnected) {
     if (!timeThen) return CONNECTION_STATUS.disconnected;
     // if we're truly not connected for read/write to firebase
     if (!fbConnected) return CONNECTION_STATUS.disconnected;
-    // if we are connected to firebase but session has expired
+    // if we are connected to firebase but session has been idle for a long time
     if (fbConnected && sessionExpired) {
+      // May not have a live session - set status to offline
+      // but allow the student to keep playing - if they reconnect they can
+      // continue without loss of crystals
+      window.sessionStorage.setItem('lastUpdate', timeNow);
       return CONNECTION_STATUS.disconnected;
     } else {
       // Update session time
