@@ -92,7 +92,7 @@ export default {
 
   // Connection state
   "~CONNECTION.CONNECTED": "You are connected! Your progress is being saved!",
-  "~CONNECTION.OFFLINE": "Your crystals are not being saved.",
+  "~CONNECTION.ANONYMOUS": "Your crystals are not being saved.",
   "~CONNECTION.DISCONNECTED": "You have lost your connection! Your crystals are not being saved. Mission control asks you to close this window and launch Geniventure again."
 
 };

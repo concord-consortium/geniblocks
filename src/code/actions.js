@@ -15,7 +15,7 @@ export { actionTypes };
 
 export const CONNECTION_STATUS = {
   online: "online",
-  offline: "offline",
+  anonymous: "anonymous",
   disconnected: "disconnected"
 };
 
@@ -94,7 +94,7 @@ export function checkSession(fbConnected) {
     // we're not a portal user
     if (fbConnected) {
       // We can read from firebase, but we're not storing progress crystals
-      return CONNECTION_STATUS.offline;
+      return CONNECTION_STATUS.anonymous;
     } else {
       return CONNECTION_STATUS.disconnected;
     }
@@ -124,12 +124,12 @@ export function notifyConnectionState(currentState) {
           }
         }));
         break;
-      case CONNECTION_STATUS.offline:
+      case CONNECTION_STATUS.anonymous:
         dispatch(showSystemMessage({
           message: {
-            text: "~CONNECTION.OFFLINE",
+            text: "~CONNECTION.ANONYMOUS",
           },
-          systemMessage: CONNECTION_STATUS.offline
+          systemMessage: CONNECTION_STATUS.anonymous
         }));
         break;
       case CONNECTION_STATUS.disconnected:
