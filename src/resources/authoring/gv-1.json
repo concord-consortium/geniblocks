@@ -1073,7 +1073,7 @@
             },
             "start" : [ {
               "character" : "ELLIS",
-              "text" : "We’ll start by trying to modify our familiar charcoal drake so it is albino.  Click the projection to get started."
+              "text" : "Frost drakes are albino—they have no color in their scales. See if you can make one. Click the projection to get started."
             } ]
           },
           "id" : "cell-game-charcoal-frost-size",
@@ -1098,7 +1098,7 @@
             },
             "start" : [ {
               "character" : "ELLIS",
-              "text" : "You know what’s coming next! Now that we’ve modified the drake’s scale color from charcoal to albino , let’s try going the other way. Click the projection. "
+              "text" : "Going from frost to lava takes enough melanin to make a half-size pod. Figure out how to get there."
             } ]
           },
           "id" : "cell-game-frost-charcoal-size",
@@ -1123,7 +1123,7 @@
             },
             "start" : [ {
               "character" : "ELLIS",
-              "text" : "Let’s use our newly unlocked albino/color allele to modify the drake scale color from charcoal to albino, directly in the nucleus. Click the projection."
+              "text" : "Let’s use our newly unlocked albino/color allele to modify the drake scale color from frost to charcoal, directly in the nucleus. Click the projection."
             } ]
           },
           "id" : "cell-game-frost-charcoal-nucleus",
@@ -1230,16 +1230,22 @@
             "end" : {
               "failure" : [ {
                 "character" : "ELLIS",
-                "text" : "You got there, but you'll need to do better to earn a crystal!."
+                "text" : "You got there, but you’ll need to do better to earn a crystal!"
               } ],
               "success" : [ {
                 "character" : "ELLIS",
-                "text" : "You did it! Congratulations!"
+                "text" : "You did it! You’ve mastered three drake color genes. Congratulations!"
               } ]
             },
             "start" : [ {
               "character" : "ELLIS",
-              "text" : "Let’s use our newly unlocked shiny/dull allele to modify the drake scale color permanently from copper to lava, directly in the nucleus. Click the projection."
+              "text" : "Important heads up, Cadet! Change this drake from Lava to Steel by going to the nucleus. HINT: Make SURE to look at more than one chromosome pair!"
+            }, {
+              "character" : "HERRERA",
+              "text" : "Ellis, this is a tricky one. How about another hint?"
+            }, {
+              "character" : "ELLIS",
+              "text" : "OK, listen up Cadet, if you find yourself back at the cell and stuck, dive back into the nucleus and look for another change to make. Click the projection to start!"
             } ]
           },
           "id" : "cell-game-copper-lava-nucleus",
@@ -1582,7 +1588,7 @@
             },
             "start" : [ {
               "character" : "WEAVER",
-              "text" : "Good job, Rajput - she's putting you through the paces!"
+              "text" : "Good job, Rajput—she's putting you through the paces!"
             } ]
           },
           "id" : "clutch-5drakes-starterTraits2",
@@ -1792,7 +1798,7 @@
         "dialog" : {
           "end" : [ {
             "character" : "NETANYA",
-            "text" : "The bonded pair dragons will pave the way for our sneak attack. The Darkwellians will never see it coming, and the kingdom will finally be safe -- for dragons and humans alike!"
+            "text" : "The bonded pair dragons will pave the way for our sneak attack. The Darkwellians will never see it coming, and the kingdom will finally be safe—for dragons and humans alike!"
           } ],
           "middle" : [ {
             "character" : "NETANYA",
@@ -1800,16 +1806,16 @@
           } ],
           "start" : [ {
             "character" : "NETANYA",
-            "text" : "Good to see you again, Cadet. But bad news from the front-- the Darkwellians are beefing up their defenses bigtime. Herrera's sneak attack isn't just our best plan... Now it's our only option!"
+            "text" : "Good to see you again, Cadet. But bad news from the front—the Darkwellians are beefing up their defenses big-time. Herrera's sneak attack isn't just our best plan... Now it's our only option!"
           }, {
             "character" : "HERRERA",
             "text" : "The key is creating secret trails from Robinstow to the outskirts of Darkwell. We need dragons that can work in pairs and anticipate each other’s movements under attack."
           }, {
             "character" : "NETANYA",
-            "text" : "A bonded pair of dragons know each other so well, they can practically read each other’s minds... But it takes many years for a pair to develop that bond. Hmm, wait-- two drakes from the same parents are bonded right away!"
+            "text" : "A bonded pair of dragons know each other so well, they can practically read each other’s minds... But it takes many years for a pair to develop that bond. Hmm, wait—two drakes from the same parents are bonded right away!"
           }, {
             "character" : "HERRERA",
-            "text" : "There’s a catch, though-- the offspring must have different strengths so that together they can perform a wide variety of tasks, from clearing a trail to repelling attackers. Cadet, can we have the best of both worlds?"
+            "text" : "There’s a catch, though—the offspring must have different strengths so that together they can perform a wide variety of tasks, from clearing a trail to repelling attackers. Cadet, can we have the best of both worlds?"
           }, {
             "character" : "NETANYA",
             "text" : "Open your VentureMap and head over to the Breeding Barn. We need you at your best!"
@@ -1921,7 +1927,7 @@
           } ],
           "middle" : [ {
             "character" : "RAJPUT",
-            "text" : "Open your VentureMap and head on over to the Breeding Barn. Quickly! We don’t have much time!"
+            "text" : "Welcome back! Open your VenturePad to get started."
           } ],
           "start" : [ {
             "character" : "RAJPUT",
@@ -2059,7 +2065,7 @@
           } ],
           "middle" : [ {
             "character" : "WEAVER",
-            "text" : "Open your Venture Pad and head to the Hatchery!"
+            "text" : "Welcome back! Open your VenturePad to get started."
           } ],
           "start" : [ {
             "character" : "YEUNG",
@@ -2135,7 +2141,7 @@
           } ],
           "middle" : [ {
             "character" : "WEAVER",
-            "text" : "Open your Venture Pad and head to the Hatchery!"
+            "text" : "Welcome back! Open your VenturePad to get started."
           } ],
           "start" : [ {
             "character" : "NETANYA",
@@ -2203,7 +2209,7 @@
           } ],
           "middle" : [ {
             "character" : "WEAVER",
-            "text" : "Open your Venture Pad and head to the Hatchery!"
+            "text" : "Welcome back! Open your VenturePad to get started."
           } ],
           "start" : [ {
             "character" : "YEUNG",
@@ -2268,7 +2274,7 @@
           } ],
           "middle" : [ {
             "character" : "WEAVER",
-            "text" : "Middle of mission 6.4"
+            "text" : "Welcome back! Open your VenturePad to get started."
           } ],
           "start" : [ {
             "character" : "YEUNG",
@@ -2369,7 +2375,7 @@
           } ],
           "middle" : [ {
             "character" : "WEAVER",
-            "text" : "Middle of mission 6.5, but this text never gets displayed."
+            "text" : "Welcome back! Open your VenturePad to get started."
           } ],
           "start" : [ {
             "character" : "YEUNG",
@@ -3271,72 +3277,72 @@
       "container" : "FVContainer",
       "scoreMetrics" : [ "disc_clicked", "disc_destroyed", "protein_broken" ],
       "template" : "ZoomChallenge",
-      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=charcoal-frost&alleles=11111111&game=size&missionId=3.3.1&video=charcoal&skip=true"
+      "zoomUrl" : "https://organelle.concord.org/branch/geniventure/models/geniventure-cell/?chal=charcoal-frost&alleles=11111111&game=size&missionId=3.3.1&video=charcoal&skip=true"
     },
     "cell-game-charcoal-lava-size" : {
       "comment" : "*** Level 3, Mission 2.3: Charcoal -> Lava, Size - Heterozygous TRP ***",
       "container" : "FVContainer",
       "scoreMetrics" : [ "disc_clicked", "disc_destroyed", "protein_broken" ],
       "template" : "ZoomChallenge",
-      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=charcoal-lava&alleles=10111111&game=size&missionId=3.2.3&video=charcoal&skip=true"
+      "zoomUrl" : "https://organelle.concord.org/branch/geniventure/models/geniventure-cell/?chal=charcoal-lava&alleles=10111111&game=size&missionId=3.2.3&video=charcoal&skip=true"
     },
     "cell-game-copper-lava-gate" : {
       "comment" : "*** Level 3, Mission 4.2: Copper -> Lava, Gates - Broken TRP, Heterozygous ASIP ***",
       "container" : "FVContainer",
       "template" : "ZoomChallenge",
-      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=copper-lava&alleles=00111110&game=gate&missionId=3.4.2&video=copper&skip=true"
+      "zoomUrl" : "https://organelle.concord.org/branch/geniventure/models/geniventure-cell/?chal=copper-lava&alleles=00111110&game=gate&missionId=3.4.2&video=copper&skip=true"
     },
     "cell-game-copper-lava-nucleus" : {
-      "comment" : "*** Level 3, Mission 4.3: Copper -> Lava, Nucleus ***",
+      "comment" : "*** Level 3, Mission 4.3: Lava -> Steel, Nucleus ***",
       "container" : "FVContainer",
       "template" : "ZoomChallenge",
-      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=copper-lava&alleles=00111110&game=gate&nucleusGenes=00000011&missionId=3.4.3&skip=true"
+      "zoomUrl" : "https://organelle.concord.org/branch/geniventure/models/geniventure-cell/?chal=lava-steel&alleles=00111111&game=nucleus&fvInitialState=gate&missionId=3.4.3&nucleusGenes=11000011&boss=true&preAlleles=11111111&preTargetColor=charcoal&numStars=13"
     },
     "cell-game-frost-charcoal-nucleus" : {
       "comment" : "*** Level 3, Mission 3.3: Frost (Albino) -> Charcoal, Nucleus ***",
       "container" : "FVContainer",
       "scoreMetrics" : [ "barbell_grabbed", "broken_protein_assembled", "tri_pushed_into_small_gear", "working_protein_assembled" ],
       "template" : "ZoomChallenge",
-      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=frost-charcoal&alleles=11001111&game=size&nucleusGenes=00110000&missionId=3.3.3&skip=true"
+      "zoomUrl" : "https://organelle.concord.org/branch/geniventure/models/geniventure-cell/?chal=frost-charcoal&alleles=11001111&game=nucleus&fvInitialState=size&missionId=3.3.3&nucleusGenes=11110000&boss=true"
     },
     "cell-game-frost-charcoal-size" : {
-      "comment" : "*** Level 3, Mission 3.2: Frost (Albino) -> Charcoal, Size - Homozygous Broken TYR ***",
+      "comment" : "*** Level 3, Mission 3.2: Frost (Albino) -> Lava, Size - Homozygous Broken TYR ***",
       "container" : "FVContainer",
       "scoreMetrics" : [ "barbell_grabbed", "broken_protein_assembled", "tri_pushed_into_small_gear", "working_protein_assembled" ],
       "template" : "ZoomChallenge",
-      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=frost-charcoal&alleles=11001111&game=size&missionId=3.3.2&video=frost&skip=true"
+      "zoomUrl" : "https://organelle.concord.org/branch/geniventure/models/geniventure-cell/?chal=frost-lava&alleles=11001111&game=size&missionId=3.3.2&video=frost&skip=true"
     },
     "cell-game-lava-charcoal-nucleus" : {
       "comment" : "*** Level 3, Mission 2.4: Lava -> Charcoal, Nucleus ***",
       "container" : "FVContainer",
       "template" : "ZoomChallenge",
-      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=lava-charcoal&alleles=00111111&game=size&nucleusGenes=11000000&missionId=3.2.4"
+      "zoomUrl" : "https://organelle.concord.org/branch/geniventure/models/geniventure-cell/?chal=lava-charcoal&alleles=00111111&game=nucleus&fvInitialState=size&missionId=3.2.4&nucleusGenes=11000000&boss=true"
     },
     "cell-game-lava-charcoal-size" : {
       "comment" : "*** Level 3, Mission 2.2: Lava -> Charcoal, Size - Homozygous Broken TRP ***",
       "container" : "FVContainer",
       "scoreMetrics" : [ "barbell_grabbed", "broken_protein_assembled", "tri_pushed_into_small_gear", "working_protein_assembled" ],
       "template" : "ZoomChallenge",
-      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=lava-charcoal&alleles=00111111&game=size&missionId=3.2.2&video=lava&skip=true"
+      "zoomUrl" : "https://organelle.concord.org/branch/geniventure/models/geniventure-cell/?chal=lava-charcoal&alleles=00111111&game=size&missionId=3.2.2&video=lava&skip=true"
     },
     "cell-game-lava-copper-gate" : {
       "comment" : "*** Level 3, Mission 4.1: Lava -> Copper, Gates - Broken TRP ***",
       "container" : "FVContainer",
       "template" : "ZoomChallenge",
-      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=lava-copper&alleles=00111111&game=gate&missionId=3.4.1&video=lava&skip=true"
+      "zoomUrl" : "https://organelle.concord.org/branch/geniventure/models/geniventure-cell/?chal=lava-copper&alleles=00111111&game=gate&missionId=3.4.1&video=lava&skip=true"
     },
     "cell-game-lava-steel-nucleus" : {
       "comment" : "*** Level 3, Mission 4.5: Lava -> Steel, Nucleus ***",
       "container" : "FVContainer",
       "template" : "ZoomChallenge",
-      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=lava-steel&alleles=00111111&game=nucleus"
+      "zoomUrl" : "https://organelle.concord.org/branch/geniventure/models/geniventure-cell/?chal=lava-steel&alleles=00111111&game=nucleus"
     },
     "cell-game-size-intro" : {
       "comment" : "*** Level 3, Mission 2.1: Empty -> Charcoal, Size Tutorial ***",
       "container" : "FVContainer",
       "scoreMetrics" : [ "barbell_grabbed", "broken_protein_assembled", "tri_pushed_into_small_gear", "working_protein_assembled" ],
       "template" : "ZoomChallenge",
-      "zoomUrl" : "https://concord-consortium.github.io/organelle/models/geniventure-cell/?chal=frost-charcoal&alleles=11111111&numStars=0&game=size&missionId=3.2.1&video=frost"
+      "zoomUrl" : "https://organelle.concord.org/branch/geniventure/models/geniventure-cell/?chal=frost-frost&alleles=11111111&numStars=0&game=size&missionId=3.2.1&video=frost"
     },
     "clutch-5drakes-harderTraits-bothParents" : {
       "challengeType" : "match-target",

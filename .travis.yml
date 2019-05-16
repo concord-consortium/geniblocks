@@ -1,18 +1,20 @@
-language: node_js
-node_js:
-  - "5.2"
-install:
-- travis_retry gem install s3_website -v 3.4.0
-- travis_retry npm install
-before_script:
-  - npm install -g bower
-  - bower install
-  - npm run build
-script: 
-  - travis_retry npm test
-  - ./deploy/s3_deploy.sh
 sudo: false
+language: node_js
+node_js: lts/*
 cache:
   bundler: true
-  directories:
-    - node_modules
+  pip: true
+  npm: true
+before_install:
+- pyenv local 3.6
+- npm install -g bower
+- bower install
+install:
+- travis_retry gem install s3_website -v 3.4.0
+- travis_retry pip install awscli --upgrade --user
+- travis_retry npm ci
+script:
+- npm run build
+- npm run test
+after_script:
+- ./deploy/s3_deploy.sh

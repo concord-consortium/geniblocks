@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import iframePhone from 'iframe-phone';
+import urlParams from '../utilities/url-params';
+const zoomRelPath = "/models/geniventure-cell";
 var phone;
 
 export default class ZoomChallenge extends Component {
@@ -61,7 +63,22 @@ export default class ZoomChallenge extends Component {
   render() {
     let url = this.props.zoomUrl;
 
-    if (window.location.href.indexOf('/branch/staging') > -1 ) url = this.props.zoomUrl + "&staging=true";
+    // replace base of zoomUrl if `zoomBase` url parameter is passed
+    if (urlParams.zoomBase) {
+      // rather than searching/replacing the volatile part of the path
+      // (e.g. https://organelle.concord.org/branch/geniventure), we find
+      // the stable part of the path and replace everything before it.
+      const relIndex = url.indexOf(zoomRelPath);
+      const relUrl = url.substr(relIndex);
+      url = urlParams.zoomBase + relUrl;
+    }
+    // forward `gameBase` url parameter if it is passed
+    if (urlParams.gameBase) {
+      url += "&gameBase=" + urlParams.gameBase;
+    }
+    // add `staging` url parameter if no `gameBase` and launched from staging (legacy)
+    else if (window.location.href.indexOf('/branch/staging') > -1 ) url += "&staging=true";
+
     function togglePopups() {
       phone.post('togglePopups');
     }

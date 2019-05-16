@@ -124,21 +124,7 @@ class Game extends Phaser.Game {
             alleles = this.ftueData.alleles;
             this.numInitialStars = this.ftueData.stars;
         } else {
-            
             this.tutorialData = TutorialData[missionId];
-        
-            // temp hack so concord doesn't have to update the URL
-            if(missionId === "3.4.3") {
-                alleles = this.baseAlleles = "00111111";
-                this.initialState = "gate";
-                this.finalTarget = "steel";
-                this.isNucleus = true;
-                this.relevantGeneShorthand = "11000011";
-                this.isBossLevel = true;
-                this.preAlleles = "11111111";
-                this.preTargetColor = "charcoal";
-                this.numInitialStars = 13;
-            }
         }
     }
 
