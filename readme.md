@@ -64,6 +64,34 @@ Visual Studio Code can be configured to [show schema validation errors](https://
   }],
 ```
 
+### Authoring
+
+Geniventure uses an authoring document for much of its application configuration. A version of the authoring document is stored in the Firebase database and Geniventure reads the authoring configuration from the Firebase database by default. A version of this authoring document is also stored in the repository as [gv-1.json](src/resources/authoring/gv-1.json). Geniventure supports a `localAuthoring` URL parameter which can be used to specify the authoring document to use. The `localAuthoring` parameter is currently assumed to be the base name of an authoring file in the `src/resources/authoring` directory, i.e. `localAuthoring=gv-1` specifies the default [gv-1.json](src/resources/authoring/gv-1.json) document. This is particularly useful for testing authoring changes locally during development (where a copy of the authoring document can be used) and for testing authoring changes on branch builds (where it can override the version stored in Firebase).
+
+Currently, staging deploys of Geniventure (path includes `/branch/staging`) use the [staging](https://console.firebase.google.com/u/0/project/gvstaging/database/gvstaging/data/) Firebase database. All other deploys use the [production](https://console.firebase.google.com/u/0/project/gvdemo-6f015/database/gvdemo-6f015/data/) Firebase database. The authoring instances in Firebase support direct access by project team members, i.e. at any given time there may be edits to the authoring in Firebase that are not represented in the version of the authoring document in code and which should not be overwritten.
+
+##### Synchronizing authoring in Firebase
+
+1. Navigate to the current `/{version}/authoring` key of the appropriate database -- e.g. [staging](https://console.firebase.google.com/u/0/project/gvstaging/database/gvstaging/data/1/authoring) or [production](https://console.firebase.google.com/u/0/project/gvdemo-6f015/database/gvdemo-6f015/data/1/authoring). (The current `version` is `1` but this may change in future.)
+1. Use the `Export JSON` option of the three-dot menu at the upper right to download the current version of the authoring document locally.
+1. Compare the exported document with the local authoring document [gv-1.json](src/resources/authoring/gv-1.json).
+1. Copy any desired changes from the exported JSON to the local authoring document [gv-1.json](src/resources/authoring/gv-1.json).
+1. Commit the updated version of the local authoring document to the GitHub repository.
+
+##### Updating authoring in Firebase
+
+1. Synchronize the [staging](https://console.firebase.google.com/u/0/project/gvstaging/database/gvstaging/data/1/authoring) version of the authoring document as described above to make sure that the local authoring document contains all desired changes. Save the exported authoring as a backup and for use in comparing the update result.
+1. Synchronize the [production](https://console.firebase.google.com/u/0/project/gvdemo-6f015/database/gvdemo-6f015/data/1/authoring) version of the authoring document as described above to make sure that the local authoring document contains all desired changes. (This should be less common than local changes to the staging database, but it never hurts to double-check.) Save the exported authoring as a backup and for use in comparing the update result.
+1. Deploy the appropriate code version with any authoring changes to the `staging` branch of the GitHub repository.
+1. Test the staging deployment with the updated authoring in code at https://geniventure.concord.org/branch/staging/?localAuthoring=gv-1.
+1. Upon acceptance, use `npm run deploy:authoring:staging` to update the version of the authoring document stored in the `staging` database. (Authentication instructions can be found in the [deploy-authoring.js](script/deploy-authoring.js) script. WARNING: Take care not to inadvertently commit any credentials to the GitHub repository!)
+   * Alternatively, the authoring document can be uploaded manually using the `Import JSON` option of the [staging](https://console.firebase.google.com/u/0/project/gvstaging/database/gvstaging/data/1/authoring) Firebase console.
+1. Test the staging deployment with the updated authoring in Firebase at https://geniventure.concord.org/branch/staging/.
+1. Upon acceptance, deploy the appropriate code version with authoring to the `production` branch of the GitHub repository.
+1. Use `npm run deploy:authoring:production` to update the version of the authoring document stored in the `production` database.
+   * Alternatively, the authoring document can be uploaded manually using the `Import JSON` option of the [production](https://console.firebase.google.com/u/0/project/gvdemo-6f015/database/gvdemo-6f015/data/1/authoring) Firebase console.
+1. Test the production deployment at https://geniventure.concord.org.
+
 ### Narrative
 
 The narrative text alone can be exported from the authoring document using
@@ -137,6 +165,10 @@ See [https://github.com/zalmoxisus/redux-devtools-extension](https://github.com/
 3. Or click the DevTools icon (greenish atom) to open tools in separate window
 
 Now you can see a list of actions and state changes, a history slider, have the ability to export and import state and history, and fire actions directly from the tool panel.
+
+## Organelle Model
+
+The Organelle model is used to show the zoom room animation, the cell model animation, and to launch the protein game.
 
 ## Protein Game
 
