@@ -1,13 +1,13 @@
-# GeniBlocks
+# Geniventure / GeniBlocks
 [![Build Status](https://travis-ci.org/concord-consortium/geniblocks.svg?branch=master)](https://travis-ci.org/concord-consortium/geniblocks)
 
-This repo contains the React-based `Geniverse-2.0` project, as well as an
+This repository contains the React-based `Geniventure` project, as well as an
 independent collection of small, modular React components (`GeniBlocks`)
 that can be used as building blocks for other genetics-based applications.
 
 ### GeniBlocks components
 
-The `GeniBlocks` components are a collection of "dumb" (mostly) stateless views
+The `GeniBlocks` components are a collection of "dumb" (sometimes) stateless views
 that render entirely based on their properties, and output events that an
 outside container or application can handle. As such, many of the views
 can be written as [Stateless functional components](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components).
@@ -15,7 +15,7 @@ can be written as [Stateless functional components](https://facebook.github.io/r
 Many views take a [Biologica.js](https://github.com/concord-consortium/biologica.js)
 organism as a property.
 
-The components are used by `Geniverse-2.0`, but are also built to `/dist` as their
+The components are used by `Geniventure`, but are also built to `/dist` as their
 own independent React component library. The examples in `/public/examples` all
 use the GeniBlocks library this way.
 
@@ -23,13 +23,13 @@ use the GeniBlocks library this way.
 
     npm install
     bower install
-    npm start             # or 'gulp'
+    npm start:gv2
 
 or to build without watching:
 
     gulp clean-and-build  # or its alias 'npm run build'
 
-in a separate shell/console:
+and in a separate shell/console:
 
     npm run gv2           # or its alias 'live-server public/gv2'
 
@@ -47,7 +47,7 @@ which will launch a browser tab pointing to the examples page.
 
 By default, Geniventure will try to fetch the authoring for the activities from the Firebase database.
 
-You can add the url parameter `localAuthoring=x` to the url to load a JSON file stored in `src/resources/authoring` instead of loading the default authoring stored. E.g. http://127.0.0.1:8080/gv2/?localAuthoring=gv-1
+You can add the url parameter `localAuthoring=x` to the url to load a JSON file stored in `src/resources/authoring` instead of loading the default authoring stored, e.g. http://localhost:8080/gv2/?localAuthoring=gv-1
 
 The authored activities in the authoring folder should be named `gv-x` for reasonably-up-to-date copies of the official authoring, where x is the version at the root of the Firebase document. Experimental activities can be given other names.
 
@@ -141,7 +141,11 @@ development and deployment of demos.
 
 ## Logging and Intelligent Tutoring
 
-The `Geniverse-2.0` application is designed to log its state and relevant user actions to the CC Log Manager. Through a partnership with North Carolina State University (supported by the [GeniGUIDE](https://concord.org/projects/geniguide) project) it is also designed to communicate with an Intelligent Tutoring System (ITS) being developed at NCSU.
+The `Geniventure` application is designed to log its state and relevant user actions to the CC Log Manager. Through a partnership with North Carolina State University (supported by the [GeniGUIDE](https://concord.org/projects/geniguide) project) it is also designed to communicate with an Intelligent Tutoring System (ITS) being developed at NCSU.
+
+The code for the ITS (Intelligent Tutoring Service) is at https://github.com/IntelliMedia/guide-server. CC maintains a fork of the repository at https://github.com/concord-consortium/guide-server. To test the ITS locally, follow the instructions in the ITS repository for running locally. Then follow the instructions above for running Geniventure locally. Finally, the following URL points the locally running Geniventure (using local authoring) at the locally running ITS server:
+
+http://localhost:8080/gv2/?localAuthoring=gv-1&itsUrl=ws://localhost:3000/guide-protocol&itsPath=/socket.io
 
 ## Code Linting
 
@@ -168,7 +172,7 @@ Now you can see a list of actions and state changes, a history slider, have the 
 
 ## Organelle Model
 
-The Organelle model is used to show the zoom room animation, the cell model animation, and to launch the protein game.
+The Organelle model is used to show the zoom room video animation, the cell model animation, and to launch the protein game. It is hosted at https://github.com/concord-consortium/organelle and deploys to https://organelle.concord.org. The Geniventure-specific version of the Organelle model is deployed to https://organelle.concord.org/branch/geniventure/. Geniventure supports a `zoomBase` URL parameter which can be used to direct Geniventure to an alternate URL during development, e.g. `zoomBase=https://organelle.concord.org/branch/dev-branch-name`.
 
 ## Protein Game
 
@@ -184,6 +188,14 @@ npm run deploy
 
 The entire folder needs to be included, because the build process only builds the source into the dist folder, but the static files are outside this.
 
+Like the organelle model, the protein game URL can also be controlled by URL parameter. The following URL indicates the organelle model URL (`zoomBase=https://organelle.concord.org/branch/geniventure-master`) and the specific protein game URL (`gameBase=https://geniventure.concord.org/branch/master/resources/proteingame/`):
+
+https://geniventure.concord.org/branch/master/?localAuthoring=gv-1&zoomBase=https://organelle.concord.org/branch/geniventure-master&gameBase=https://geniventure.concord.org/branch/master/resources/proteingame/
+
+The following URL will run Geniventure (with local authoring), the organelle model, and the protein game locally, assuming the appropriate development servers have been started:
+
+http://localhost:8080/gv2/?localAuthoring=gv-1&zoomBase=http://localhost:9000&gameBase=http://localhost:3000
+
 ## Resources
 
 * [GeniBlocks Examples](http://concord-consortium.github.io/geniblocks/examples)
@@ -194,7 +206,7 @@ The entire folder needs to be included, because the build process only builds th
 
 ## Support
 
-`Geniverse-2.0` and `GeniBlocks` development is supported in part by
+`Geniventure` and `GeniBlocks` development is supported in part by
 
 * [GeniConnect](https://concord.org/projects/geniconnect)
 * [GeniGUIDE](https://concord.org/projects/geniguide)

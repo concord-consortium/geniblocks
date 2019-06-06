@@ -8,6 +8,7 @@ import GeneticsUtils from '../utilities/genetics-utils';
 import io from 'socket.io-client';
 import AuthoringUtils from '../utilities/authoring-utils';
 import { cloneDeep } from 'lodash';
+import urlParams from '../utilities/url-params';
 import uuid from 'uuid';
 
 var socket = null,
@@ -15,7 +16,7 @@ var socket = null,
     lastActionSequenceId = -1,
     isConnectonEstablished = false,
     msgQueue = [],
-    ITS_groupId = "GUIDE-3.10";
+    ITS_groupId = urlParams.itsGroup || "GUIDE-3.10";
 
 export function initializeITSSocket(guideServer, socketPath, store) {
   socket = io(guideServer, {

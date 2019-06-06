@@ -2536,7 +2536,7 @@
     },
     "allele-targetMatch-hidden-harderTraits2" : {
       "challengeType" : "match-target",
-      "comment" : "*** Level 6, Mission 1.3: Genome Challenge (Polyallelic traits (tails) and sex-linked (nose spike) and deep/faded color) ***",
+      "comment" : "*** Level 6, Mission 1.4: Genome Challenge (Polyallelic traits (tails) and sex-linked (nose spike) and deep/faded color) ***",
       "container" : "FVContainer",
       "initialDrake" : [ {
         "alleles" : "a:A1,b:a,a:Bog,a:C"
@@ -2852,7 +2852,7 @@
       "container" : "FVContainer",
       "hiddenAlleles" : "A2",
       "initialDrake" : [ {
-        "alleles" : "a:A1,b:A1,a:H,b:h,a:Bog,a:D,a:rh,b:rh",
+        "alleles" : "a:a,b:A1,a:H,b:h,a:Bog,a:D,a:rh,b:rh",
         "sex" : 0
       } ],
       "instructions" : "Match the target drake!",
@@ -2863,7 +2863,7 @@
       "randomizeTrials" : true,
       "showUserDrake" : true,
       "targetDrakes" : [ {
-        "alleles" : "a:A1,b:a,a:h,b:h",
+        "alleles" : "a:A1,b:A1,a:h,b:h",
         "sex" : 1
       } ],
       "template" : "FVGenomeChallenge",
@@ -2899,7 +2899,7 @@
       "comment" : "*** Level 6, Mission 1.1: Genome Challenge (Polyallelic traits (tails) and sex-linked (nose spike) and deep/faded color) ***",
       "container" : "FVContainer",
       "initialDrake" : [ {
-        "alleles" : "a:a,b:a,a:Bog"
+        "alleles" : "a:a,b:a,a:C,a:Bog"
       } ],
       "instructions" : "Match the target drake!",
       "linkedGenes" : {
@@ -2919,10 +2919,10 @@
     },
     "allele-targetMatch-visible-harderTraits2" : {
       "challengeType" : "match-target",
-      "comment" : "*** Level 6, Mission 1.1: Genome Challenge (Polyallelic traits (tails) and sex-linked (nose spike) and deep/faded color) ***",
+      "comment" : "*** Level 6, Mission 1.2: Genome Challenge (Polyallelic traits (tails) and sex-linked (nose spike) and deep/faded color) ***",
       "container" : "FVContainer",
       "initialDrake" : [ {
-        "alleles" : "a:a,a:A1,a:Bog,a:C"
+        "alleles" : "a:a,b:A1,a:Bog,a:C"
       } ],
       "instructions" : "Match the target drake!",
       "linkedGenes" : {
@@ -3338,7 +3338,7 @@
       "zoomUrl" : "https://organelle.concord.org/branch/geniventure/models/geniventure-cell/?chal=lava-steel&alleles=00111111&game=nucleus"
     },
     "cell-game-size-intro" : {
-      "comment" : "*** Level 3, Mission 2.1: Empty -> Charcoal, Size Tutorial ***",
+      "comment" : "*** Level 3, Mission 2.1: Frost, Size Tutorial ***",
       "container" : "FVContainer",
       "scoreMetrics" : [ "barbell_grabbed", "broken_protein_assembled", "tri_pushed_into_small_gear", "working_protein_assembled" ],
       "template" : "ZoomChallenge",
@@ -5080,7 +5080,7 @@
           "sex" : 0
         } ]
       } ],
-      "goalMoves" : [ [ 0, 0, 0, 0, 0 ] ],
+      "goalMoves" : [ [ 3, 2, 2, 2, 2 ] ],
       "hiddenAlleles" : "A2",
       "linkedGenes" : {
         "drakes" : [ 0, 1, 2, 3 ],
@@ -5162,7 +5162,7 @@
           "sex" : 0
         } ]
       } ],
-      "goalMoves" : [ [ 0, 0, 0, 0 ] ],
+      "goalMoves" : [ [ 2, 2, 2, 2 ] ],
       "hiddenAlleles" : "A2",
       "linkedGenes" : {
         "drakes" : [ 0, 1, 2, 3 ],
@@ -5235,7 +5235,7 @@
           "sex" : 0
         } ]
       } ],
-      "goalMoves" : [ [ 0, 0, 0, 0 ] ],
+      "goalMoves" : [ [ 10, 5, 5, 5 ] ],
       "hiddenAlleles" : "A2",
       "linkedGenes" : {
         "drakes" : [ 0, 1, 2, 3 ],
@@ -5249,7 +5249,7 @@
           "alleles" : "Hl-Hl, W-W, H-H, A1-A1, B-B, C-C, Bog-Bog, D-D, rh-rh",
           "sex" : 1
         }, {
-          "alleles" : "hl-hl-, w-w, h-h, a-a, b-b, C-C, Bog-Bog, D-D, rh-rh",
+          "alleles" : "hl-hl, w-w, h-h, a-a, b-b, C-C, Bog-Bog, D-D, rh-rh",
           "sex" : 1
         }, {
           "alleles" : "Hl-Hl, W-W, H-H, A1-A1, B-B, C-C, Bog-Bog, D-D, rh-rh",

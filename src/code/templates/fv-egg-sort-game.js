@@ -438,8 +438,11 @@ export default class FVEggSortGame extends Component {
   }
 
   static authoredDrakesToDrakeArray = function(authoredChallenge) {
-    if (authoredChallenge.trialGenerator)
-      return generateTrialDrakes(authoredChallenge.trialGenerator);
+    if (authoredChallenge.trialGenerator) {
+      const drakes = generateTrialDrakes(authoredChallenge.trialGenerator);
+      if (drakes.length) FVEggSortGame.maxScore = drakes.length;
+      return drakes;
+    }
     return [];
   }
 

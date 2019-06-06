@@ -57,8 +57,14 @@ const ITSServers = {
 
 const postAuthInitialization = function (auth) {
   store = configureStore();
-  const instance = window.location.href.indexOf('/branch/staging') < 0 ? "production" : "staging";
-  const ITSServer = ITSServers[instance];
+  const isStagingBranch = window.location.host.indexOf('/branch/staging') >= 0;
+  const isLocalhost = (window.location.host.indexOf('localhost') >= 0) ||
+                      (window.location.host.indexOf('127.0.0.1') >= 0);
+  const instance = urlParams.itsInstance ||
+                    (isStagingBranch || isLocalhost ? "staging" : "production");
+  const ITSServer = urlParams.itsUrl && urlParams.itsPath
+                      ? { url: urlParams.itsUrl, path: urlParams.itsPath }
+                      : ITSServers[instance];
 
   initializeITSSocket(ITSServer.url, ITSServer.path, store);
 

@@ -35,7 +35,7 @@ export default {
   // Remediation
   "~ALERT.START_REMEDIATION": "Let's do a bonus challenge now, and come back to this one later.",
   "~REMEDIATION.START_SIM": "We're going to simplify things by just looking at ${0}.",
-  "~REMEDIATION.COMPLETED_CHALLENGE": "Excellent! Let's go back to that other challenge now.",
+  "~REMEDIATION.COMPLETED_CHALLENGE": "Bonus challenge complete! Let's go back to that other challenge now.",
 
   // Challenge buttons
   "~BUTTON.OK": "OK",

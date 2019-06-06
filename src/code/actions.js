@@ -593,9 +593,11 @@ function _submitEggForBasket(eggDrakeIndex, basketIndex, isCorrect, state) {
   const incrementMoves = !isCorrect,
         submittedDrake = GeneticsUtils.convertDrakeToOrg(state.drakes[eggDrakeIndex]),
         submittedBasket = state.baskets[basketIndex],
+        // if the basket has a sex criterion then use it, otherwise use the drake's sex
+        phenotypeSex = submittedBasket.sex != null ? submittedBasket.sex : submittedDrake.sex,
         // Each basket has multiple accepted alleles combinations which, at the time of this writing, all
-        // have the same phenotype. Therefore, we can simply look at the first one
-        submittedBasketPhenotypes = GeneticsUtils.convertGeneStringToPhenotype(submittedBasket.alleles[0]),
+        // have the same phenotype. Therefore, we can simply look at the first one.
+        submittedBasketPhenotypes = GeneticsUtils.convertGeneStringToPhenotype(submittedBasket.alleles[0], phenotypeSex),
         drakeCriteria = {
           sex: submittedDrake.sex,
           alleles: submittedDrake.alleles

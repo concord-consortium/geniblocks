@@ -26,6 +26,7 @@ export function remediation(state = initialRemediationState, action) {
       else
         return initialRemediationState;
     case ENDED_REMEDIATION:
+    case actionTypes.NAVIGATED:
       return initialRemediationState;
     // otherwise keep the remediation challenge
     default:
@@ -132,13 +133,46 @@ export function endRemediation() {
 function getMatchDrakeRemediation(trait, practiceCriteria) {
   const templateName = "FVGenomeChallenge";
 
-  let baseAlleles = "a:W,b:W,a:M,b:M,a:T,b:T,a:H,b:H,a:Hl,b:Hl,a:Fl,b:Fl,a:A1,b:A1,a:C,b:C,a:b,b:b,a:d,b:d,a:rh,b:rh,a:Bog,b:Bog";
+  let baseAlleles = "a:W,b:W,a:M,b:M,a:T,b:T,a:H,b:H,a:Hl,b:Hl,a:Fl,b:Fl,a:A1,b:A1,a:C,b:C,a:Bog,b:Bog";
   baseAlleles = baseAlleles.replace(GeneticsUtils.getAllelesForTrait(trait, "dominant"), "");
-  let userAlleles, targetAlleles;
+  let userAlleles = "", targetAlleles = "";
+  let userBlackAlleles = "a:b,b:b";
+  let userDiluteAlleles = "a:d,b:d";
+  let targetBlackAlleles = userBlackAlleles;
+  let targetDiluteAlleles = userDiluteAlleles;
+  let userNoseAlleles = "a:rh,b:rh";
+  let targetNoseAlleles = userNoseAlleles;
+  let hiddenAlleles = ['Tk', 'A2'];
   switch(trait) {
-    case 'sex':
-      userAlleles   = "";
-      targetAlleles = "";
+    case 'tail':
+      userAlleles = "a:T,b:t";
+      targetAlleles = "a:Tk,b:t";
+      hiddenAlleles = ['A2'];
+      break;
+    case 'black':
+      userDiluteAlleles = targetDiluteAlleles = "a:D,b:D";
+      if (practiceCriteria === "SimpleDominant") {
+        targetBlackAlleles = "a:B,b:B";
+      }
+      else {
+        userBlackAlleles = "a:B,b:B";
+      }
+      break;
+    case 'dilute':
+      // for X-linked traits, randomize homozygous dominant <=> homozygous recessive
+      if (Math.round(Math.random())) {
+        userDiluteAlleles = "a:D,b:D";
+      } else {
+        targetDiluteAlleles = "a:D,b:D";
+      }
+      break;
+    case 'nose':
+      // for X-linked traits, randomize homozygous dominant <=> homozygous recessive
+      if (Math.round(Math.random())) {
+        userNoseAlleles = "a:Rh,b:Rh";
+      } else {
+        targetNoseAlleles = "a:Rh,b:Rh";
+      }
       break;
     default:
       if (practiceCriteria === "SimpleDominant") {
@@ -156,18 +190,27 @@ function getMatchDrakeRemediation(trait, practiceCriteria) {
       userSex = Math.round(Math.random());
       targetSex = 1 - userSex;
       break;
+    case 'dilute':
+    case 'nose':
+      userSex = 1;
+      targetSex = 0;
+      break;
     default:
       userSex = targetSex = Math.round(Math.random());
   }
 
+  // Allele overwriting seems not to work correctly for X-linked alleles,
+  // so we have to be careful not to duplicate alleles.
+  const allUserAlleles = `${userAlleles ? userAlleles + "," : ""}${userBlackAlleles},${userDiluteAlleles},${userNoseAlleles}`;
+  const allTargetAlleles = `${targetAlleles ? targetAlleles + "," : ""}${targetBlackAlleles},${targetDiluteAlleles},${targetNoseAlleles}`;
   const authoring = {
     "challengeType" : "match-target",
     "initialDrake" : [ {
-      "alleles" : `${userAlleles},${baseAlleles}`,     // earlier alleles overwrite later ones
+      "alleles" : `${allUserAlleles},${baseAlleles}`, // earlier alleles overwrite later ones
       "sex" : userSex
     } ],
     "targetDrakes" : [ {
-      "alleles" : `${targetAlleles},${baseAlleles}`,
+      "alleles" : `${allTargetAlleles},${baseAlleles}`,
       "sex" : targetSex
     } ]
   };
@@ -179,7 +222,7 @@ function getMatchDrakeRemediation(trait, practiceCriteria) {
       userChangeableGenes: [trait],
       showUserDrake: true,
       visibleGenes: [],
-      hiddenAlleles: ['Tk', 'A2'],
+      hiddenAlleles: hiddenAlleles,
       numTargets: 1,
       numTrials: 1,
       trial: 0,
@@ -193,13 +236,29 @@ function getEggSortRemediation(trait, /* practiceCriteria */) {
   const templateName = "FVEggSortGame";
 
   let dominantLabel, recessiveLabel;
+  const domAllele = trait !== "sex" ? GeneticsUtils.dominant(trait) : "";
+  const recAllele = trait !== "sex" ? GeneticsUtils.recessive(trait) : "";
 
-  if (trait === "horns") {
-    dominantLabel = "Drakes without horns";
-    recessiveLabel = "Drakes with horns";
-  } else {
-    dominantLabel = `Drakes with ${GeneticsUtils.commonName(trait)}`;
-    recessiveLabel = `Drakes without ${GeneticsUtils.commonName(trait)}`;
+  switch (trait) {
+    case "horns":
+      dominantLabel = "Drakes without horns";
+      recessiveLabel = "Drakes with horns";
+      break;
+    case "black":
+      dominantLabel = "Drakes with gray color";
+      recessiveLabel = "Drakes with orange color";
+      break;
+    case "dilute":
+      dominantLabel = "Drakes with deep color";
+      recessiveLabel = "Drakes with faded color";
+      break;
+    case "nose":
+      dominantLabel = "Drakes with a nose spike";
+      recessiveLabel = "Drakes without a nose spike";
+      break;
+    default:
+      dominantLabel = `Drakes with ${GeneticsUtils.commonName(trait)}`;
+      recessiveLabel = `Drakes without ${GeneticsUtils.commonName(trait)}`;
   }
 
   let baskets;
@@ -215,15 +274,38 @@ function getEggSortRemediation(trait, /* practiceCriteria */) {
         "sex" : 1
       }];
       break;
+    case 'dilute':
+    case 'nose':
+      // Basket-matching doesn't handle sex-linked traits for ungendered baskets properly,
+      // so we cheat by always keying on the first allele and making sure that the first
+      // allele is always determinative for the drakes used in remediation.
+      baskets = [{
+        "alleles": [`a:${domAllele}`],
+        "label": dominantLabel
+      }, {
+        "alleles": [`a:${recAllele}`],
+        "label": recessiveLabel
+      }];
+      break;
+    case 'tail':
+      baskets = [{
+        "alleles": ["a:T", "b:T"],
+        "label": "Drakes with a long tail"
+      }, {
+        "alleles": ["a:Tk,b:Tk", "a:Tk,b:t", "a:t,b:Tk"],
+        "label": "Drakes with a kinked tail"
+      }, {
+        "alleles": ["a:t,b:t"],
+        "label": "Drakes with a short tail"
+      }];
+      break;
     default:
       baskets = [{
         "alleles" : [ `a:${GeneticsUtils.dominant(trait)}`, `b:${GeneticsUtils.dominant(trait)}` ],
-        "label" : dominantLabel,
-        "sex" : 1
+        "label" : dominantLabel
       }, {
         "alleles" : [ GeneticsUtils.getAllelesForTrait(trait, "recessive") ],
-        "label" : recessiveLabel,
-        "sex" : 1
+        "label" : recessiveLabel
       }];
   }
 
@@ -251,6 +333,47 @@ function getEggSortRemediation(trait, /* practiceCriteria */) {
         },
         {
           "alleles" : "",
+          "sex" : 1
+        }
+      ];
+      break;
+    case 'tail':
+      trialGenerator.drakes = [
+        {
+          "alleles" : "a:T,b:t",
+          "sex" : 0
+        },
+        {
+          "alleles" : "a:t,b:Tk",
+          "sex" : 0
+        },
+        {
+          "alleles" : "a:Tk,b:T",
+          "sex" : 1
+        },
+        {
+          "alleles" : "a:t,b:t",
+          "sex" : 1
+        }
+      ];
+      break;
+    case 'dilute':
+    case 'nose':
+      trialGenerator.drakes = [
+        {
+          "alleles" : `a:${domAllele}`,
+          "sex" : 0
+        },
+        {
+          "alleles" : `a:${recAllele}`,
+          "sex" : 0
+        },
+        {
+          "alleles" : `a:${domAllele},b:${recAllele}`,
+          "sex" : 1
+        },
+        {
+          "alleles" : `a:${recAllele},b:${recAllele}`,
           "sex" : 1
         }
       ];
@@ -286,6 +409,7 @@ function getEggSortRemediation(trait, /* practiceCriteria */) {
     templateName,
     stateProps: {
       userChangeableGenes: [trait],
+      visibleGenes: [],
       numTrials: 1,
       trial: 0,
       goalMoves: -1,

@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 
 /**
- * push-staging.js
+ * deploy-authoring.js
  * 
- * Uploads the local authoring document to the staging firebase database.
+ * Uploads the local authoring document to either the staging or production firebase database.
+ *
+ * Usage:
+ *  -d/--dry-run      report what would be deployed without actually deploying (default: false)
+ *  -p/--production   deploy to production database; otherwise staging database (default: false)
  */
 
 const argv = require('minimist')(process.argv.slice(2));

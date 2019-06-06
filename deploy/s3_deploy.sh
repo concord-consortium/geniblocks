@@ -4,10 +4,6 @@ DISTRIBUTION_ID='E2X2BQ2N6BGETV'
 # name of branch to deploy to root of site
 PRODUCTION_BRANCH='production'
 
-# Travis settings define S3_ACCESS_KEY_ID and S3_SECRET_KEY
-export AWS_ACCESS_KEY_ID=$S3_ACCESS_KEY_ID
-export AWS_SECRET_ACCESS_KEY=$S3_SECRET_KEY
-
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
 	echo "skipping deploy to S3: this is a pull request"
 	exit 0

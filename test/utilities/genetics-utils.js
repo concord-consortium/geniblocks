@@ -227,13 +227,13 @@ describe("GeneticsUtils.convertGeneStringToPhenotype()", function() {
 
   it("should return the empty object when passed an empty string", function() {
     const geneString = "",
-          phenotype = GeneticsUtils.convertGeneStringToPhenotype(geneString);
+          phenotype = GeneticsUtils.convertGeneStringToPhenotype(geneString, 0);
     assert.deepEqual(phenotype, {}, "should handle empty string");
   });
 
   it("should handle a simple allele string", function() {
     const geneString2 = "a:w,b:w",
-          phenotype = GeneticsUtils.convertGeneStringToPhenotype(geneString2);
+          phenotype = GeneticsUtils.convertGeneStringToPhenotype(geneString2, 0);
     assert.deepEqual(phenotype, {"wings": "No wings"}, "should handle simple allele");
   });
   
