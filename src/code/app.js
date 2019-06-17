@@ -70,7 +70,7 @@ ITSServers.cc = ITSServers.ccProduction;
 
 const postAuthInitialization = function (auth) {
   store = configureStore();
-  const isStagingBranch = window.location.host.indexOf('/branch/staging') >= 0;
+  const isStagingBranch = window.location.pathname.indexOf('/branch/staging') >= 0;
   const isLocalhost = (window.location.host.indexOf('localhost') >= 0) ||
                       (window.location.host.indexOf('127.0.0.1') >= 0);
   const instance = urlParams.itsInstance ||
