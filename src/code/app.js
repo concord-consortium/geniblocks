@@ -45,15 +45,28 @@ initFirebase.then(function (auth) {
 });
 
 const ITSServers = {
-  production: {
+  ncsuProduction: {
     url: "wss://guide.intellimedia.ncsu.edu:/guide-protocol",
     path: "/v3/socket.io"
   },
-  staging: {
+  ncsuStaging: {
     url: "wss://imediadev.csc.ncsu.edu:/guide-protocol",
     path: "/guide/v3/socket.io"
+  },
+  ccProduction: {
+    url: "wss://geniventure-its.herokuapp.com:/guide-protocol",
+    path: "/socket.io"
+  },
+  ccStaging: {
+    url: "wss://geniventure-its-staging.herokuapp.com:/guide-protocol",
+    path: "/socket.io"
   }
 };
+// default to CC's staging ITS server and NCSU's production ITS server for now
+ITSServers.staging = ITSServers.ccStaging;
+ITSServers.production = ITSServers.ncsuProduction;
+ITSServers.ncsu = ITSServers.ncsuProduction;
+ITSServers.cc = ITSServers.ccProduction;
 
 const postAuthInitialization = function (auth) {
   store = configureStore();
