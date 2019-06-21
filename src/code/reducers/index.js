@@ -34,7 +34,8 @@ function initialState() {
             challengeErrors: 0,
             gems: [],
             authoring: window.GV2Authoring,
-            endMissionUrl: urlParams.start
+            endMissionUrl: urlParams.start,
+            connectionState: "online"
           });
 }
 
@@ -122,6 +123,10 @@ export default function reducer(state, action) {
         });
       }
       return state;
+    case actionTypes.CONNECTION_STATE_CHANGED:
+      return state.merge({
+        connectionState: action.connectionState
+      });
     default:
       return state;
   }

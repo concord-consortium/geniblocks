@@ -12,6 +12,9 @@
 		"resources/fablevision/huds/HUD_top.png",
 		"resources/fablevision/huds/scroll.png",
 		"resources/fablevision/huds/HUD_bottom.png",
+		"resources/fablevision/huds/Avatar_center.png",
+		"resources/fablevision/huds/Avatar_center_yellow.png",
+		"resources/fablevision/huds/Avatar_center_red.png",
 		"resources/fablevision/huds/characters/Hatch_active.png",
 		"resources/fablevision/huds/move-screens/blue_moves.png",
 		"resources/fablevision/huds/move-screens/yellow_moves.png",
@@ -38,7 +41,10 @@
 		"resources/fablevision/layout-c/egg_animation.png",
 		"resources/fablevision/huds/HUD_top.png",
 		"resources/fablevision/huds/scroll.png",
-		"resources/fablevision/huds/HUD_bottom.png"
+		"resources/fablevision/huds/HUD_bottom.png",
+		"resources/fablevision/huds/Avatar_center.png",
+		"resources/fablevision/huds/Avatar_center_yellow.png",
+		"resources/fablevision/huds/Avatar_center_red.png"
 	],
 	"hatchery": [
 		"resources/fablevision/rooms/hatchery.jpg",
@@ -65,8 +71,8 @@
 		"resources/fablevision/layout-b/target_gizmo_single.png",
 		"resources/fablevision/layout-h/background.jpg",
 		"resources/fablevision/layout-c/egg_animation.png",
-    "resources/fablevision/huds/scroll.png",
-    "resources/fablevision/layout-i/screen.jpg"
+		"resources/fablevision/huds/scroll.png",
+		"resources/fablevision/layout-i/screen.jpg"
 	],
 	"zoomroom": [
 		"resources/fablevision/rooms/zoom.jpg",

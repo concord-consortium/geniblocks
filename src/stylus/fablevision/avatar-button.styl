@@ -1,8 +1,23 @@
+@keyframes pulse {
+  from { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  to { transform: scale(1); }
+}
+
 .geniblocks.avatar-button
   width: 116px
   height: 107px
   background-image: url('../resources/fablevision/huds/Avatar_base.png')
   background-size: cover
+  cursor: pointer
+  &.anonymous
+    animation-name: pulse
+    animation-duration: 0.5s
+    animation-iteration-count: 1
+  &.disconnected
+    animation-name: pulse
+    animation-duration: 0.5s
+    animation-iteration-count: 3
 
   .avatar-center
     position:absolute
@@ -12,3 +27,9 @@
     height: 74px
     background-image: url('../resources/fablevision/huds/Avatar_center.png')
     background-size: 100% 100%
+    &.anonymous
+      background-image: url('../resources/fablevision/huds/Avatar_center_yellow.png')
+    &.disconnected
+      background-image: url('../resources/fablevision/huds/Avatar_center_red.png')
+
+

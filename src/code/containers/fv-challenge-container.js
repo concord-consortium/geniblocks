@@ -16,7 +16,9 @@ import preloadImageList from '../preload-images.json';
 import { changeAllele, selectAllele, changeSex, submitDrake, submitParents,
         keepOffspring, fertilize, breedClutch, hatch,
         changeBasketSelection, changeDrakeSelection, submitEggForBasket,
-        winZoomChallenge, toggleMap, enterChallengeFromRoom, showEasterEgg, readyToAnswer, clearClutch } from '../actions';
+        winZoomChallenge, toggleMap, enterChallengeFromRoom, showEasterEgg, readyToAnswer, clearClutch,
+        notifyConnectionState
+} from '../actions';
 import { addGameteChromosome, resetGametes,
         addGametesToPool, selectGameteInPool, resetGametePools } from '../modules/gametes';
 import { tutorialNext, tutorialPrevious, tutorialMore, tutorialClosed, restartTutorial } from '../modules/tutorials';
@@ -54,7 +56,7 @@ class FVChallengeContainer extends Component {
         })
         .catch(function (err) {
           console.error('One or more images have failed to load :(');
-          console.error(err.errored);
+          console.error(err);
           // load page regardless, we probably have an error in our preloaded images paths
           self.setState({imagesLoaded: true});
         });
@@ -69,7 +71,8 @@ class FVChallengeContainer extends Component {
     }
 
     const { template, style, location, showingRoom, tutorials, isRemediation, ...otherProps } = this.props,
-          { challengeType, interactionType, routeSpec, trial, numTrials, correct, challenges, showAward } = this.props;
+      { challengeType, interactionType, routeSpec, trial, numTrials, correct, challenges, showAward,
+        connectionState } = this.props;
 
     const _showEasterEgg = () => {
       this.props.onShowEasterEgg();
@@ -141,7 +144,8 @@ class FVChallengeContainer extends Component {
         <BottomHUDView routeSpec={routeSpec} numChallenges={challenges} trial={trial + 1} trialCount={numTrials}
           currScore={correct} maxScore={maxScore} currMoves={this.props.moves} showAward={showAward}
           goalMoves={goalMoves} showMoveCounter={showMoveCounter} gems={this.props.gems} showChallengeWidgets={showChallengeWidgets}
-          showTutorialButton={showTutorialButton} onRestartTutorial={this.props.onRestartTutorial} isRemediation={isRemediation} />
+          showTutorialButton={showTutorialButton} onRestartTutorial={this.props.onRestartTutorial} isRemediation={isRemediation}
+          connectionState={connectionState} onNotifyConnectionState={this.props.onNotifyConnectionState} />
         <NotificationContainer />
         <ModalMessageContainer />
       </div>
@@ -180,7 +184,9 @@ class FVChallengeContainer extends Component {
     onRestartTutorial: PropTypes.func,
     onShowEasterEgg: PropTypes.func,
     onReadyToAnswer: PropTypes.func,
-    isRemediation: PropTypes.bool
+    isRemediation: PropTypes.bool,
+    connectionState: PropTypes.string,
+    onNotifyConnectionState: PropTypes.func
   }
 }
 
@@ -222,7 +228,8 @@ function mapStateToProps (state) {
       tutorials: state.tutorials,
       showIntroductionAnimations: state.showIntroductionAnimations,
       showDrakeColorHint: state.showDrakeColorHint,
-      isRemediation: state.isRemediation
+      isRemediation: state.isRemediation,
+      connectionState: state.connectionState
     };
   }
 
@@ -260,7 +267,8 @@ function mapDispatchToProps(dispatch) {
     onTutorialClosed: () => dispatch(tutorialClosed()),
     onRestartTutorial: () => dispatch(restartTutorial()),
     onShowEasterEgg: () => dispatch(showEasterEgg()),
-    onReadyToAnswer: (ready) => dispatch(readyToAnswer(ready))
+    onReadyToAnswer: (ready) => dispatch(readyToAnswer(ready)),
+    onNotifyConnectionState: (currentState) => dispatch(notifyConnectionState(currentState))
   };
 }
 

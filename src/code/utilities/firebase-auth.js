@@ -1,5 +1,5 @@
 /* global firebase */
-import urlParams, {updateUrlParameter} from "./url-params";
+import urlParams, { updateUrlParameter } from "./url-params";
 import jwt from 'jsonwebtoken';
 
 export const initFirebase = new Promise(function (resolve, reject) {
@@ -26,7 +26,8 @@ export const initFirebase = new Promise(function (resolve, reject) {
 
   if (window.firebase !== undefined) {
     firebase.initializeApp(config);
-
+    const timeNow = new Date().getTime();
+    window.sessionStorage.setItem('lastUpdate', timeNow);
   // communicate with portal for JWT
   // if there is no domain parameter, there is no authentication
   if (!urlParams.domain) {
@@ -127,15 +128,26 @@ function _userAuth(token){
   }
   return _cachedAuth;
 }
-// var connectedRef = firebase.database().ref(".info/connected");
-//   connectedRef.on("value", function(snap) {
-//     if (snap.val() === true) {
-//       console.log("Firebase connected");
-//     } else {
-//       console.log("Firebase not connected");
-//     }
-//   });
+const connectionMonitor = () => {
+  if (window.firebase) {
+    const connectedRef = firebase.database().ref(".info/connected");
+    connectedRef.on("value", function (snap) {
+      if (snap.val() === true) {
+        console.log("Firebase connected");
+        window.fbConnected = true;
+      } else {
+        console.log("Firebase not connected");
+        window.fbConnected = false;
+      }
+    });
+    return connectedRef;
+  } else return;
+};
+connectionMonitor();
 
+export const fbConnected = () => {
+  return window.fbConnected;
+};
 
 export function getFBClassId() {
   if (!_cachedAuth) {

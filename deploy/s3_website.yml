@@ -1,13 +1,11 @@
-s3_id: <%= ENV['S3_ACCESS_KEY_ID'] %>
-s3_secret: <%= ENV['S3_SECRET_KEY'] %>
 s3_bucket: models-resources
 s3_key_prefix: geniblocks
 s3_endpoint: us-east-1
 gzip: true
 
-# cloudfront_distribution_id: E5NG9HSJ9YM99
-# cloudfront_invalidate_root: true
-# cloudfront_wildcard_invalidation: true
+cloudfront_distribution_id: E2X2BQ2N6BGETV
+cloudfront_invalidate_root: true
+cloudfront_wildcard_invalidation: true
 
 <% if ENV['TRAVIS_BRANCH'] == 'production' %>
 # in this case we are going to deploy this branch to the top level of the domain
@@ -16,15 +14,15 @@ ignore_on_server: ^geniblocks/(version/|branch/)
 <% else %>
 # in this case we are going to deploy this code to a subfolder of either the branch
 # or version folder. So ignore everything except this folder.
-ignore_on_server: ^(?!geniblocks/<%= Regexp.escape(ENV['DEPLOY_DIR']) %>/)
+ignore_on_server: ^(?!geniblocks/<%= Regexp.escape(ENV['S3_DEPLOY_DIR']) %>/)
 <% end %>
 max_age:
   "geniblocks/*": 600 # 10 minutes
   "geniblocks/version/*": 31536000 # 1 year
   "geniblocks/branch/*": 0
 
-# cloudfront_distribution_config:
-#   aliases:
-#     quantity: 1
-#     items:
-#       - geniblocks.concord.org
+cloudfront_distribution_config:
+  aliases:
+    quantity: 1
+    items:
+      - geniventure.concord.org

@@ -13,6 +13,12 @@ import migrate from './migrations';
 
 export { actionTypes };
 
+export const CONNECTION_STATUS = {
+  online: "online",
+  anonymous: "anonymous",
+  disconnected: "disconnected"
+};
+
 function _startSession(uuid, itsDBEndpoint) {
   return {
     type: actionTypes.SESSION_STARTED,
@@ -60,6 +66,85 @@ export function startSession(uuid) {
       });
     }
 
+  };
+}
+
+export function checkSession(fbConnected) {
+  const timeNow = new Date().getTime();
+  const timeThen = window.sessionStorage.getItem('lastUpdate');
+  const timeDeltaSeconds = (timeNow - timeThen) / 1000;
+  // 24 hours
+  const sessionExpired = timeDeltaSeconds > 60 * 60 * 24;
+
+  const portalUser = window.sessionStorage.getItem('portalAuth') === "true";
+  if (portalUser) {
+    // if we never set a session timestamp
+    if (!timeThen) return CONNECTION_STATUS.disconnected;
+    // if we're truly not connected for read/write to firebase
+    if (!fbConnected) return CONNECTION_STATUS.disconnected;
+    // if we are connected to firebase but session has been idle for a long time
+    if (fbConnected && sessionExpired) {
+      // May not have a live session - set status to offline
+      // but allow the student to keep playing - if they reconnect they can
+      // continue without loss of crystals
+      window.sessionStorage.setItem('lastUpdate', timeNow);
+      return CONNECTION_STATUS.disconnected;
+    } else {
+      // Update session time
+      window.sessionStorage.setItem('lastUpdate', timeNow);
+      return CONNECTION_STATUS.online;
+    }
+  } else {
+    // we're not a portal user
+    if (fbConnected) {
+      // We can read from firebase, but we're not storing progress crystals
+      return CONNECTION_STATUS.anonymous;
+    } else {
+      return CONNECTION_STATUS.disconnected;
+    }
+  }
+}
+
+export function setConnectionState(connectionState, notify = false) {
+  return (dispatch) => {
+    dispatch({
+      type: actionTypes.CONNECTION_STATE_CHANGED,
+      connectionState
+    });
+    if (notify) {
+      dispatch(notifyConnectionState(connectionState));
+    }
+
+  };
+}
+
+export function notifyConnectionState(currentState) {
+  return (dispatch) => {
+    switch (currentState) {
+      case CONNECTION_STATUS.online:
+        dispatch(showSystemMessage({
+          message: {
+            text: "~CONNECTION.CONNECTED",
+          }
+        }));
+        break;
+      case CONNECTION_STATUS.anonymous:
+        dispatch(showSystemMessage({
+          message: {
+            text: "~CONNECTION.ANONYMOUS",
+          },
+          systemMessage: CONNECTION_STATUS.anonymous
+        }));
+        break;
+      case CONNECTION_STATUS.disconnected:
+        dispatch(showSystemMessage({
+          message: {
+            text: "~CONNECTION.DISCONNECTED",
+          },
+          systemMessage: CONNECTION_STATUS.disconnected
+        }));
+        break;
+    }
   };
 }
 
@@ -508,9 +593,11 @@ function _submitEggForBasket(eggDrakeIndex, basketIndex, isCorrect, state) {
   const incrementMoves = !isCorrect,
         submittedDrake = GeneticsUtils.convertDrakeToOrg(state.drakes[eggDrakeIndex]),
         submittedBasket = state.baskets[basketIndex],
+        // if the basket has a sex criterion then use it, otherwise use the drake's sex
+        phenotypeSex = submittedBasket.sex != null ? submittedBasket.sex : submittedDrake.sex,
         // Each basket has multiple accepted alleles combinations which, at the time of this writing, all
-        // have the same phenotype. Therefore, we can simply look at the first one
-        submittedBasketPhenotypes = GeneticsUtils.convertGeneStringToPhenotype(submittedBasket.alleles[0]),
+        // have the same phenotype. Therefore, we can simply look at the first one.
+        submittedBasketPhenotypes = GeneticsUtils.convertGeneStringToPhenotype(submittedBasket.alleles[0], phenotypeSex),
         drakeCriteria = {
           sex: submittedDrake.sex,
           alleles: submittedDrake.alleles
@@ -611,8 +698,8 @@ export function showNotification({message, closeButton, arrowAsCloseButton, isRa
   });
 }
 
-export function showNotifications({messages, closeButton, arrowAsCloseButton=false, isRaised=false, isInterrupt=false}) {
-  return {
+export function showNotifications({ messages, closeButton, arrowAsCloseButton = false, isRaised = false, isInterrupt = false, systemMessage }) {
+  const notification = {
     type: actionTypes.NOTIFICATIONS_SHOWN,
     messages,
     arrowAsCloseButton,
@@ -620,6 +707,18 @@ export function showNotifications({messages, closeButton, arrowAsCloseButton=fal
     isRaised,
     isInterrupt
   };
+  if (systemMessage) notification.systemMessage = systemMessage;
+  return notification;
+}
+
+export function showSystemMessage({ message, systemMessage = "green" }) {
+  return showNotifications({
+    messages: [message],
+    closeButton: true,
+    isRaised: true,
+    isInterrupt: true,
+    systemMessage
+  });
 }
 
 export function dismissModalDialog() {

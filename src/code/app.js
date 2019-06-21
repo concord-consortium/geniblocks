@@ -36,27 +36,48 @@ if (navigator.userAgent.indexOf('Windows') >= 0)
 let store, history;
 
 initFirebase.then(function (auth) {
+  window.sessionStorage.setItem('portalAuth', true);
   postAuthInitialization(auth);
 }, function(err){
-  console.log(err);
-  postAuthInitialization(userAuth());
+    console.log(err);
+    window.sessionStorage.setItem('portalAuth', false);
+    postAuthInitialization(userAuth());
 });
 
 const ITSServers = {
-  production: {
+  ncsuProduction: {
     url: "wss://guide.intellimedia.ncsu.edu:/guide-protocol",
     path: "/v3/socket.io"
   },
-  staging: {
+  ncsuStaging: {
     url: "wss://imediadev.csc.ncsu.edu:/guide-protocol",
     path: "/guide/v3/socket.io"
+  },
+  ccProduction: {
+    url: "wss://geniventure-its.herokuapp.com:/guide-protocol",
+    path: "/socket.io"
+  },
+  ccStaging: {
+    url: "wss://geniventure-its-staging.herokuapp.com:/guide-protocol",
+    path: "/socket.io"
   }
 };
+// default to CC's staging ITS server and NCSU's production ITS server for now
+ITSServers.staging = ITSServers.ccStaging;
+ITSServers.production = ITSServers.ncsuProduction;
+ITSServers.ncsu = ITSServers.ncsuProduction;
+ITSServers.cc = ITSServers.ccProduction;
 
 const postAuthInitialization = function (auth) {
   store = configureStore();
-  const instance = window.location.href.indexOf('/branch/staging') < 0 ? "production" : "staging";
-  const ITSServer = ITSServers[instance];
+  const isStagingBranch = window.location.pathname.indexOf('/branch/staging') >= 0;
+  const isLocalhost = (window.location.host.indexOf('localhost') >= 0) ||
+                      (window.location.host.indexOf('127.0.0.1') >= 0);
+  const instance = urlParams.itsInstance ||
+                    (isStagingBranch || isLocalhost ? "staging" : "production");
+  const ITSServer = urlParams.itsUrl && urlParams.itsPath
+                      ? { url: urlParams.itsUrl, path: urlParams.itsPath }
+                      : ITSServers[instance];
 
   initializeITSSocket(ITSServer.url, ITSServer.path, store);
 

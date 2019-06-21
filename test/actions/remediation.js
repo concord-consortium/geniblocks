@@ -286,21 +286,20 @@ describe('Remediation', () => {
                     "a:Fl",
                     "b:Fl"
                   ],
-                  label: "Drakes with arms",
-                  sex: 1
+                  label: "Drakes with arms"
                 },
                 {
                   alleles: [
                     "a:fl,b:fl"
                   ],
-                  label: "Drakes without arms",
-                  sex: 1
+                  label: "Drakes without arms"
                 }
               ],
               hiddenAlleles: [],
               userChangeableGenes: [
                 "forelimbs"
               ],
+              visibleGenes: [],
               notifications: {
                 closeButton: true,
                 messages: [

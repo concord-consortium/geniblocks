@@ -35,7 +35,7 @@ export default {
   // Remediation
   "~ALERT.START_REMEDIATION": "Let's do a bonus challenge now, and come back to this one later.",
   "~REMEDIATION.START_SIM": "We're going to simplify things by just looking at ${0}.",
-  "~REMEDIATION.COMPLETED_CHALLENGE": "Excellent! Let's go back to that other challenge now.",
+  "~REMEDIATION.COMPLETED_CHALLENGE": "Bonus challenge complete! Let's go back to that other challenge now.",
 
   // Challenge buttons
   "~BUTTON.OK": "OK",
@@ -88,5 +88,11 @@ export default {
   "~VENTURE.AWARD_FIRST": "Blue Crystal",
   "~VENTURE.AWARD_SECOND": "Yellow Crystal",
   "~VENTURE.AWARD_THIRD": "Red Crystal",
-  "~VENTURE.AWARD_NONE": "No Crystal"
+  "~VENTURE.AWARD_NONE": "No Crystal",
+
+  // Connection state
+  "~CONNECTION.CONNECTED": "You are connected! Your progress is being saved!",
+  "~CONNECTION.ANONYMOUS": "Your crystals are not being saved.",
+  "~CONNECTION.DISCONNECTED": "You have lost your connection! Your crystals are not being saved. Mission control asks you to close this window and launch Geniventure again."
+
 };

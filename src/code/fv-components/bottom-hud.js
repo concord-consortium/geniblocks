@@ -1,9 +1,9 @@
 import React, {PropTypes} from 'react';
-import AvatarButtonView from './avatar-button';
 import LevelIndicatorView from './level-indicator';
 import CountView from './counter';
 import GemSetView from './gem-set';
 import t from '../utilities/translate';
+import ConnectionStateView from './connection-state';
 
 const gemColors = {
   2: "blue",
@@ -29,12 +29,14 @@ const BottomHUDView = React.createClass({
     showChallengeWidgets: PropTypes.bool,
     showTutorialButton: PropTypes.bool,
     onRestartTutorial: PropTypes.func,
-    isRemediation: PropTypes.bool
+    isRemediation: PropTypes.bool,
+    connectionState: PropTypes.string,
+    onNotifyConnectionState: PropTypes.func
   },
 
   render() {
     let {routeSpec, trial, trialCount, currScore, maxScore, currMoves, goalMoves, showMoveCounter, numChallenges,
-      gems, showTutorialButton, onRestartTutorial, isRemediation} = this.props,
+      gems, showTutorialButton, onRestartTutorial, isRemediation, connectionState} = this.props,
         scoreView = maxScore ?
           <CountView
             countTitleText={t('~COUNTER.SCORE_LABEL')}
@@ -91,7 +93,7 @@ const BottomHUDView = React.createClass({
 
     return (
       <div id='fv-bottom-hud' className='fv-hud fv-bottom-hud' >
-        <AvatarButtonView />
+        <ConnectionStateView connectionState={connectionState} onNotifyConnectionState={this.props.onNotifyConnectionState}/>
         { routeWidgets }
         {challengeWidgets}
         {tutorialWidgets}

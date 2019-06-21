@@ -15,16 +15,25 @@
  */
 
 import actionTypes from '../action-types';
+import { checkSession, setConnectionState, CONNECTION_STATUS } from '../actions';
 import progressUtils from '../utilities/progress-utils';
-import { getFBClassId, getFBUserId } from "../utilities/firebase-auth";
+import { getFBClassId, getFBUserId, fbConnected } from "../utilities/firebase-auth";
 import { currentStateVersion } from '../migrations';
 
 export const authoringVersionNumber = 1;
 let userQueryString = getUserQueryString();
 
 export default () => store => next => action => {
+  if (action.type === actionTypes.CONNECTION_STATE_CHANGED) return next(action);
+
+  const initialConnectionState = store.getState().connectionState;
+  let currentConnectionState = initialConnectionState;
+
+  // Check Firebase, session timeout, portal user
+  currentConnectionState = checkSession(fbConnected());
+
   let prevState = store.getState(),
-      result = next(action),
+    result = next(action),
     nextState = store.getState();
   // try to update user state path if it's missing
   if (!userQueryString) userQueryString = getUserQueryString();
@@ -32,12 +41,12 @@ export default () => store => next => action => {
   // and update savable state (gems) if they have changed
   if (userQueryString) {
     let time = firebase.database.ServerValue.TIMESTAMP,
-        currentChallenge = getCurrentChallenge(nextState),
-        stateMeta = {
-          lastActionTime: time,
-          currentChallenge
-        },
-        userDataUpdate = {stateMeta: stateMeta};
+      currentChallenge = getCurrentChallenge(nextState),
+      stateMeta = {
+        lastActionTime: time,
+        currentChallenge
+      },
+      userDataUpdate = { stateMeta: stateMeta };
 
     // Store updated gems if they have changed
     if (action.type !== actionTypes.LOAD_SAVED_STATE &&
@@ -81,13 +90,18 @@ export default () => store => next => action => {
     firebase.database().ref(userQueryString).update(userDataUpdate, (error, userDataUpdate) => {
       if (error) {
         console.error("Error updating user state!", userDataUpdate, error);
-        return error;
+        currentConnectionState = CONNECTION_STATUS.disconnected;
       } else {
-        return;
+        // we saved successfully - we're online
+        currentConnectionState = CONNECTION_STATUS.online;
       }
     });
   }
 
+  if (currentConnectionState !== initialConnectionState) {
+    console.log(`Connection status changed from ${initialConnectionState} to ${currentConnectionState}`);
+    return store.dispatch(setConnectionState(currentConnectionState, currentConnectionState === CONNECTION_STATUS.disconnected));
+  }
   return result;
 };
 

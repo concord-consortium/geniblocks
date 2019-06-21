@@ -102,8 +102,7 @@ export default class ClutchGame extends Component {
       child = null;
 
     const handleAlleleChange = function (chrom, side, prevAllele, newAllele, orgName) {
-      const index = orgName === "mother" ? 0 : 1,
-        incrementMoves = !isSubmitParents;
+      const index = orgName === "mother" ? 0 : 1;
 
       if (isTestCross) {
         const isHiddenParent = hiddenParent && ((hiddenParent.sex === BioLogica.FEMALE && orgName === "mother") || (hiddenParent.sex === BioLogica.MALE && orgName === "father"));
@@ -116,7 +115,7 @@ export default class ClutchGame extends Component {
         }
       }
       else {
-        onChromosomeAlleleChange(index, chrom, side, prevAllele, newAllele, incrementMoves);
+        onChromosomeAlleleChange(index, chrom, side, prevAllele, newAllele, true);
       }
     };
 
@@ -408,10 +407,7 @@ export default class ClutchGame extends Component {
     return 1;
   }
   static shouldShowMovesCounter = function(challengeType) {
-    if (challengeType === "submit-parents" || challengeType === "test-cross") {
-      return false;
-    }
-    return true;
+    return challengeType !== "test-cross";
   }
   static getHiddenParent = function(authoredChallenge) {
     if (authoredChallenge.challengeType === "test-cross") {

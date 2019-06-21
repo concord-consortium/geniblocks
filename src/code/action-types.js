@@ -32,7 +32,8 @@ const actionTypes = {
   TOGGLE_MAP: "Map toggled",
   ENTERED_CHALLENGE_FROM_ROOM: "Entered challenge from room",
   LOAD_SAVED_STATE: "Loaded saved state",
-  VIEWED_EASTER_EGG: "Viewed easter egg"
+  VIEWED_EASTER_EGG: "Viewed easter egg",
+  CONNECTION_STATE_CHANGED: "Connection state changed"
 };
 
 export default actionTypes;

@@ -85,12 +85,12 @@
                 "text": "Knock the discs and the proteins out to shrink the pods to half-size.",
                 "symbols": [
                     {
-                        "image": "disc.png",
+                        "image": "disc-orange.png",
                         "label": "Melanin disc"
                     },
                     {
-                        "image": "mela_helper_protein.png",
-                        "label": "Mela-helper protein"
+                        "image": "mela_maker_protein_complex.png",
+                        "label": "Mela-maker protein complex"
                     }
                 ]
             },
