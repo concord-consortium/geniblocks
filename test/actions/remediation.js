@@ -296,10 +296,9 @@ describe('Remediation', () => {
                 }
               ],
               hiddenAlleles: [],
-              userChangeableGenes: [
+              visibleGenes: [
                 "forelimbs"
               ],
-              visibleGenes: [],
               notifications: {
                 closeButton: true,
                 messages: [
