@@ -64,7 +64,7 @@ const ITSServers = {
 };
 // default to CC's staging ITS server and NCSU's production ITS server for now
 ITSServers.staging = ITSServers.ccStaging;
-ITSServers.production = ITSServers.ncsuProduction;
+ITSServers.production = ITSServers.ccProduction;
 ITSServers.ncsu = ITSServers.ncsuProduction;
 ITSServers.cc = ITSServers.ccProduction;
 

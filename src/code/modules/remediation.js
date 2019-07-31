@@ -408,8 +408,7 @@ function getEggSortRemediation(trait, /* practiceCriteria */) {
     authoring,
     templateName,
     stateProps: {
-      userChangeableGenes: [trait],
-      visibleGenes: [],
+      visibleGenes: [trait],
       numTrials: 1,
       trial: 0,
       goalMoves: -1,
