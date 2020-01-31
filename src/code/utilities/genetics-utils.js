@@ -451,7 +451,8 @@ export default class GeneticsUtils {
       hindlimbs: "legs",
       black: "gray and orange",
       dilute: "deep color",
-      nose: "nose spike"
+      nose: "nose spike",
+      metallic: "shiny"
     };
     return traitMap[trait] || trait;
   }

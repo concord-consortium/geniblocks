@@ -23,11 +23,11 @@ use the GeniBlocks library this way.
 
     npm install
     bower install
-    npm start:gv2
+    npm run start:gv2
 
 or to build without watching:
 
-    gulp clean-and-build  # or its alias 'npm run build'
+    gulp cleanAndBuild  # or its alias 'npm run build'
 
 and in a separate shell/console:
 

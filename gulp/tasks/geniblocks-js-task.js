@@ -19,21 +19,21 @@ var errorHandler = function (error) {
 
 // build stand-alone geniverse application, which pulls in
 // geniblocks components through `import`
-gulp.task('geniverse-js-dev', function() {
+var geniverseJsDev = function() {
   var b = browserify({
     debug: !production
   })
   .transform(babelify);
   b.add(gvConfig.src);
-  b.bundle()
+  return b.bundle()
     .on('error', errorHandler)
     .pipe(source('geniverse.js'))
     .pipe(gulp.dest(gvConfig.public));
-});
+};
 
 // build separate, standalone geniblocks library, which can be used
 // by other projects
-gulp.task('geniblocks-js-dev', function(){
+var geniblocksJsDev = function(){
   var b = browserify({
     debug: !production,
     standalone: 'GeniBlocks'
@@ -53,9 +53,9 @@ gulp.task('geniblocks-js-dev', function(){
     .pipe(source('geniblocks.js'))
     .pipe(gulp.dest(blocksConfig.public))
     .pipe(gulp.dest(blocksConfig.dist));
-});
+};
 
-gulp.task('geniblocks-js-min', function(){
+var geniblocksJsMin = function(){
   var b = browserify({
     debug: !production,
     standalone: 'GeniBlocks'
@@ -67,6 +67,8 @@ gulp.task('geniblocks-js-min', function(){
     .pipe(source('geniblocks.min.js'))
     .pipe(streamify(uglify()))
     .pipe(gulp.dest(blocksConfig.dist));
-});
+};
 
-gulp.task('geni-js', ['geniverse-js-dev', 'geniblocks-js-dev', 'geniblocks-js-min']);
+exports.geniJsDev = geniverseJsDev;
+exports.geniJs = gulp.parallel(geniverseJsDev, geniblocksJsDev,
+                      geniblocksJsMin);
