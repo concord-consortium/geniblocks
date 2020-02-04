@@ -23,10 +23,10 @@ var trimTrailing = function () {
   return es.map(doStrip);
 };
 
-gulp.task('trim-trailing-spaces', function() {
+exports.trimTrailingSpaces = function trimTrailingSpaces() {
   ['examples', 'code', 'stylus'].forEach(function (type) {
     gulp.src(config.trim[type].src)
       .pipe(trimTrailing())
       .pipe(gulp.dest(config.trim[type].dest));
   });
-});
+};

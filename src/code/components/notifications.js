@@ -62,7 +62,10 @@ class Notifications extends React.Component {
                     </div>,
 
           traitHighlightView = message.trait ? (
-            <div className={`hint-arrow ${message.trait}`} />
+            [
+              <div className={`hint-arrow ${message.trait}`} />,
+              <div className={`hint-arrow-second-parent ${message.trait}`} />
+            ]
       ) : null;
 
     return (

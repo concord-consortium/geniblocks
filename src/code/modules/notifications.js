@@ -61,7 +61,9 @@ export default function notifications(state = initialState, action) {
       return notificationResponse;
     }
     case ADVANCE_NOTIFICATIONS:
-      return Object.assign({}, state, { messages: state.messages.length > 1 ? state.messages.slice(1, state.length) : initialState });
+      return Object.assign({}, state, { messages: state.messages.length > 1
+                                                    ? state.messages.slice(1, state.length)
+                                                    : initialState.messages });
 
     case CLOSE_NOTIFICATIONS:
       return initialState;

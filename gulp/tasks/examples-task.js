@@ -24,24 +24,25 @@ function escapeRegExp(str) {
 }
 
 // Copy non-JS/CSS files directly
-gulp.task('examples', function() {
+var examples = function() {
   return gulpSrc(config.src.concat(config.jssrc), { base: config.dir })
     .pipe(gulp.dest(config.dest));
-});
+};
 
 /*
  * Stylus --> CSS
  */
-gulp.task('examples-css', function() {
+var examplesCss = function() {
   var folders = getFolders(config.dir);
 
-  return folders.map(function(folder) {
-    gulp.src(path.join(config.dir, folder, '/**/*.styl'))
+  var tasks = folders.map(function(folder) {
+    return gulp.src(path.join(config.dir, folder, '/**/*.styl'))
       .pipe(stylus({compress: false}))
       .pipe(concat('example.css'))
       .pipe(gulp.dest(path.join(config.dest, folder)));
   });
-});
+  return Promise.all(tasks);
+};
 
 /*
  * JS (Browserify)
@@ -52,8 +53,8 @@ var errorHandler = function (error) {
   this.emit('end');
 };
 
-gulp.task('examples-js', function(){
-  return configJS.src.map(function(src) {
+var examplesJs = function(){
+  var tasks = configJS.src.map(function(src) {
     var folderRegEx = new RegExp(escapeRegExp(configJS.dir) + "(.*)\/", "g");
     var folder = folderRegEx.exec(src)[1];
     var filename = /[^\/]*$/.exec(src)[0];
@@ -67,4 +68,9 @@ gulp.task('examples-js', function(){
       .pipe(source(filename))
       .pipe(gulp.dest(path.join(configJS.dest, folder)));
   });
-});
+  return Promise.all(tasks);
+};
+
+exports.examples = examples;
+exports.examplesCss = examplesCss;
+exports.examplesJs = examplesJs;

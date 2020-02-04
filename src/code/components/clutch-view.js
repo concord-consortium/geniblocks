@@ -2,6 +2,8 @@ import React, {PropTypes} from 'react';
 import FVEggHatchView from '../fv-components/fv-egg-hatch';
 import classNames from 'classnames';
 
+let disabledTimer;
+
 const ClutchView = React.createClass({
 
   propTypes: {
@@ -45,6 +47,12 @@ const ClutchView = React.createClass({
     }
   },
 
+  componentWillUnmount() {
+    if (disabledTimer) {
+      clearTimeout(disabledTimer);
+    }
+  },
+
   render() {
     const handleClick = this.props.onClick ? (id, org) => {
       let _this = this;
@@ -57,7 +65,7 @@ const ClutchView = React.createClass({
 
         // Disable clicks for a bit to avoid mass submissions
         _this.setState({tempDisabled: true});
-        setTimeout(function() {
+        disabledTimer = setTimeout(function() {
           _this.setState({tempDisabled: false});
         }, 2000);
       }

@@ -3,17 +3,17 @@ var blocksConfig      = require('../config').geniblocksRsrc;
 var gvConfig          = require('../config').geniverseRsrc;
 
 // Copy files directly simple
-gulp.task('geniblocks-rsrc', function() {
+exports.geniblocksRsrc = function geniblocksRsrc() {
   return gulp.src(blocksConfig.src)
     .pipe(gulp.dest(blocksConfig.dest));
-});
+};
 
 
-gulp.task('geniverse-rsrc', function() {
+exports.geniverseRsrc = function geniverseRsrc() {
   gulp.src(gvConfig.index)
     .pipe(gulp.dest(gvConfig.destIndex));
 
   return gulp.src(gvConfig.src)
     .pipe(gulp.dest(gvConfig.dest));
-});
+};
 

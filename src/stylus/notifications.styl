@@ -119,6 +119,7 @@
     height: 359px
     background-repeat: no-repeat
     background-size: contain
+    pointer-events: auto
 
     &.ELLIS
       background-image: url('../resources/fablevision/huds/characters/Ellis_active.png')
@@ -141,14 +142,15 @@
 
     &.SYSTEM
       background-image: none;
+      pointer-events: none;
 
-  .hint-arrow::before
+  .hint-arrow::before, .hint-arrow-second-parent::before
     content: url('../resources/images/hint-arrow.svg')
     position: absolute
     left: -152px
     top: 6px
 
-  .hint-arrow
+  .hint-arrow, .hint-arrow-second-parent
     position: absolute
     border: 3px solid #15e617
     border-radius: 10px;
@@ -187,18 +189,22 @@
 
 .fv-layout-h
   .hint-arrow
-    left: -1000px;
+    left: 165px;
+    width: 435px;
+    height: 51px;
+  .hint-arrow-second-parent
+    left: 1314px;
     width: 435px;
     height: 51px;
 
   &.fixed-father
-    .hint-arrow
-      left: 165px;
+    .hint-arrow-second-parent
+      left: -1000px;
   &.fixed-mother
     .hint-arrow
-      left: 1314px;
+      left: -1000px;
 
-  .hint-arrow
+  .hint-arrow, .hint-arrow-second-parent
     &.tail
       top: -418px;
     &.metallic
@@ -223,7 +229,9 @@
       top: -39px;
 
 .fv-layout-h.submit-parents
-  .hint-arrow
+  .hint-arrow, .hint-arrow-second-parent
+    &.tail
+      top: -358px;
     &.metallic
       top: -324px;
     &.wings

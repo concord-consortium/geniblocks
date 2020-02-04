@@ -293,7 +293,7 @@ export function loadStateFromAuthoring(state, authoring) {
 export function loadStateFromRemediation(state, remediation, authoring) {
   // get authoring props specific to challengeType
   const {challengeType, attribute, practiceCriteria} = remediation;
-  const remediationChallengeProps = getRemediationChallengeProps(challengeType, attribute, practiceCriteria);
+  const remediationChallengeProps = getRemediationChallengeProps(challengeType, attribute, practiceCriteria, state);
 
   if (!remediationChallengeProps) {
     // bail
