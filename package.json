@@ -25,7 +25,7 @@
     "classnames": "^2.2.5",
     "iframe-phone": "^1.2.0",
     "image-promise": "^5.0.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.15",
     "mustache": "^2.3.2",
     "react": "^15.6.2",
