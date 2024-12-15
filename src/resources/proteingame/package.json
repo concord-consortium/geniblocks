@@ -32,7 +32,7 @@
     "dat-gui": "^0.5.0",
     "html-loader": "^0.4.5",
     "iframe-phone": "^1.2.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "phaser-ce": "2.7.3",
     "webfontloader": "^1.6.27"
   }
